@@ -167,7 +167,7 @@
         <div class="header">
             <h1>🤖 자동매매 결과 (오전 04/08시간대 진입)</h1>
             <div class="subtitle">AI 코인선물 숏포지션 자동매매 시스템</div>
-            <div class="subtitle">생성 시간: 2026-01-25 16:40:21</div>
+            <div class="subtitle">생성 시간: 2026-01-25 20:40:02</div>
         </div>
         
         <div class="nav-menu">
@@ -181,35 +181,35 @@
         
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-value">0</div>
+                <div class="stat-value">1</div>
                 <div class="stat-label">총 거래 횟수</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value positive">0</div>
+                <div class="stat-value positive">1</div>
                 <div class="stat-label">수익 거래</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">0.0%</div>
+                <div class="stat-value">100.0%</div>
                 <div class="stat-label">승률</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value negative">+0.00%</div>
+                <div class="stat-value positive">+4.93%</div>
                 <div class="stat-label">누적 수익률</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value negative">+0.00%</div>
+                <div class="stat-value positive">+4.93%</div>
                 <div class="stat-label">평균 수익률</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value negative">$+0.00</div>
+                <div class="stat-value positive">$+12.32</div>
                 <div class="stat-label">누적 PNL</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">$323.52</div>
+                <div class="stat-value">$335.69</div>
                 <div class="stat-label">총 잔액</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">$86.56</div>
+                <div class="stat-value">$335.69</div>
                 <div class="stat-label">사용 가능 잔액</div>
             </div>
         </div>
@@ -241,12 +241,12 @@
                     <td>2026-01-25 (일) 04:40</td>
                     <td><a href="https://www.binance.com/en/futures/DASHUSDT" class="symbol-link" target="_blank">DASHUSDT</a></td>
                     <td>$65.310000</td>
-                    <td>-</td>
-                    <td class="">-</td>
-                    <td class="">-</td>
+                    <td>$62.090000</td>
+                    <td class="pnl-positive">+4.93%</td>
+                    <td class="pnl-positive">$+12.32</td>
                     <td>$250</td>
                     <td>1x</td>
-                    <td><span class="status-badge status-open">대기중</span></td>
+                    <td><span class="status-badge status-closed">완료</span></td>
                 </tr>
             
                 </tbody>
@@ -255,7 +255,76 @@
     </div>
     
     <script>
-        Plotly.newPlot('pnlChart', [], {title: '완료된 거래가 없습니다'});
+        
+        const dates = ["2026-01-25"];
+        const opens = [0];
+        const highs = [4.93];
+        const lows = [0];
+        const closes = [4.93];
+        
+        const candlestick = {
+            type: 'candlestick',
+            x: dates,
+            open: opens,
+            high: highs,
+            low: lows,
+            close: closes,
+            increasing: {
+                line: { color: '#26a69a', width: 2 },
+                fillcolor: '#26a69a'
+            },
+            decreasing: {
+                line: { color: '#ef5350', width: 2 },
+                fillcolor: '#ef5350'
+            },
+            name: '일별 누적 수익률'
+        };
+        
+        const line = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            x: dates,
+            y: closes,
+            line: {
+                color: 'rgba(102, 126, 234, 0.6)',
+                width: 2,
+                dash: 'dot'
+            },
+            marker: {
+                size: 6,
+                color: 'rgba(102, 126, 234, 0.8)'
+            },
+            name: '누적 라인'
+        };
+        
+        const data = [candlestick, line];
+        
+        const layout = {
+            title: '',
+            xaxis: {
+                title: '날짜',
+                rangeslider: { visible: false },
+                type: 'date'
+            },
+            yaxis: {
+                title: '누적 수익률 (%)',
+                ticksuffix: '%',
+                zeroline: true,
+                zerolinecolor: '#999',
+                zerolinewidth: 2
+            },
+            height: 500,
+            showlegend: true
+        };
+        
+        const config = {
+            responsive: true,
+            displayModeBar: true,
+            displaylogo: false
+        };
+        
+        Plotly.newPlot('pnlChart', data, layout, config);
+        
     </script>
 </body>
 </html>
