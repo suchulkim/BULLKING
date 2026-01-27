@@ -1,1666 +1,577 @@
 <!DOCTYPE html>
-        <html lang="ko">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-            <title>코인선물 숏포지션 패턴 검출 현황</title>
-            <!-- Bootstrap CSS 추가 -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-            <!-- FontAwesome CSS 추가 -->
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-            <style>
-                * {
-                    box-sizing: border-box;
-                }
-                
-                body {
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    margin: 0;
-                    padding: 10px;
-                    background-color: #f5f7fa;
-                    color: #333;
-                    font-size: 18px;
-                    line-height: 1.6;
-                }
-                
-                .container {
-                    max-width: 1400px;
-                    margin: 0 auto;
-                    background-color: white;
-                    border-radius: 12px;
-                    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-                    overflow: hidden;
-                }
-                
-                .header {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    color: white;
-                    padding: 25px 20px;
-                    text-align: center;
-                }
-                
-                .header h1 {
-                    margin: 0 0 12px 0;
-                    font-size: 1.8em;
-                    font-weight: 700;
-                    line-height: 1.3;
-                }
-                
-                .header p {
-                    margin: 8px 0;
-                    opacity: 0.95;
-                    font-size: 1em;
-                }
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>코인선물 위꼬리 음봉 패턴 검출 현황</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f5f7fa;
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0 0 12px 0;
+            font-size: 1.8em;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .header p {
+            margin: 8px 0;
+            opacity: 0.95;
+            font-size: 1em;
+        }
+        
+        .config-badge {
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9em;
+        }
 
-                .nav-section {
-                    background: white;
-                    padding: 20px 15px;
-                    text-align: center;
-                    border-bottom: 1px solid #eee;
-                }
-                
-                .nav-section h5 {
-                    margin-bottom: 15px;
-                    color: #333;
-                    font-size: 1.1em;
-                }
-                
-                .nav-section .btn {
-                    margin: 8px 5px;
-                    padding: 16px 20px;
-                    border-radius: 10px;
-                    text-decoration: none;
-                    font-weight: 600;
-                    font-size: 1.5em;
-                    transition: all 0.3s ease;
-                    display: inline-block;
-                    border: 2px solid transparent;
-                    min-height: 50px;
-                    min-width: 48px;
-                }
-                
-                .nav-section .btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                    text-decoration: none;
-                }
-                
-                .nav-section .btn-warning {
-                    background-color: #ffc107;
-                    border-color: #ffc107;
-                    color: #000;
-                }
-                
-                .nav-section .btn-warning:hover {
-                    background-color: #e0a800;
-                    border-color: #d39e00;
-                    color: #000;
-                }
+        .nav-section {
+            background: white;
+            padding: 20px 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-section .btn {
+            margin: 8px 5px;
+            padding: 16px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+            min-height: 50px;
+            min-width: 48px;
+        }
+        
+        .nav-section .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
 
-                
-                .stats-container {
-                    padding: 20px 15px;
-                    background-color: #f8f9ff;
-                }
-                
-                .stats-grid {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 15px;
-                    margin-bottom: 25px;
-                }
-                
-                .stat-card {
-                    background: white;
-                    padding: 20px 15px;
-                    border-radius: 12px;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                    text-align: center;
-                    border-left: 4px solid #667eea;
-                }
-                
-                .stat-number {
-                    font-size: 2.2em;
-                    font-weight: bold;
-                    color: #667eea;
-                    margin-bottom: 8px;
-                    line-height: 1.2;
-                }
-                
-                .stat-label {
-                    color: #666;
-                    font-size: 1em;
-                    line-height: 1.4;
-                }
-                
-                .analysis-info {
-                    background: white;
-                    padding: 20px;
-                    border-radius: 12px;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                }
-                
-                .analysis-info h3 {
-                    font-size: 1.3em;
-                    margin-bottom: 15px;
-                    color: #333;
-                }
-                
-                .analysis-info ul {
-                    padding-left: 20px;
-                    margin: 0;
-                }
-                
-                .analysis-info li {
-                    margin-bottom: 12px;
-                    font-size: 0.95em;
-                    line-height: 1.6;
-                }
-                
-                .section-title {
-                    font-size: 1.4em;
-                    color: #333;
-                    margin-bottom: 20px;
-                    padding-bottom: 12px;
-                    border-bottom: 3px solid #667eea;
-                    line-height: 1.4;
-                }
-                
-                .table-container {
-                    padding: 20px 15px;
-                }
-                
-                .table-wrapper {
-                    overflow-x: auto;
-                    margin-bottom: 25px;
-                    -webkit-overflow-scrolling: touch;
-                }
-                
-                table {
-                    width: 100%;
-                    min-width: 800px;
-                    border-collapse: collapse;
-                    background: white;
-                    border-radius: 10px;
-                    overflow: hidden;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                }
-                
-                th {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    color: white;
-                    padding: 16px 10px;
-                    text-align: center;
-                    font-weight: 600;
-                    font-size: 1.5em;
-                    white-space: nowrap;
-                }
-                
-                td {
-                    padding: 14px 10px;
-                    text-align: center;
-                    border-bottom: 1px solid #eee;
-                    font-size: 1.3em;
-                }
-                
-                tr:hover {
-                    background-color: #f8f9ff;
-                }
-                
-                .optimal-row {
-                    background-color: #fff8e1;
-                }
-                
-                .optimal-row:hover {
-                    background-color: #fff3c4;
-                }
-                
-                .symbol-cell {
-                    font-weight: bold;
-                    color: #667eea;
-                }
-                
-                .symbol-link {
-                    color: #667eea;
-                    text-decoration: none;
-                    font-weight: bold;
-                    transition: all 0.3s ease;
-                    display: inline-block;
-                    padding: 8px 10px;
-                    min-height: 44px;
-                    min-width: 44px;
-                    line-height: 1.4;
-                }
-                
-                .symbol-link:hover {
-                    color: #4a90e2;
-                    text-decoration: underline;
-                    background-color: rgba(102, 126, 234, 0.1);
-                    border-radius: 6px;
-                }
-                
-                .positive {
-                    color: #4caf50;
-                    font-weight: bold;
-                }
-                
-                .negative {
-                    color: #f44336;
-                    font-weight: bold;
-                }
-                
-                .pattern-badge {
-                    display: inline-block;
-                    padding: 8px 12px;
-                    border-radius: 6px;
-                    font-size: 0.85em;
-                    font-weight: bold;
-                    white-space: nowrap;
-                }
-                
-                .pattern1 {
-                    background-color: #e3f2fd;
-                    color: #1976d2;
-                }
-                
-                .pattern2 {
-                    background-color: #fce4ec;
-                    color: #c2185b;
-                }
-                
-                .optimal-badge {
-                    background-color: #fff3e0;
-                    color: #ef6c00;
-                    padding: 4px 8px;
-                    border-radius: 4px;
-                    font-size: 0.8em;
-                    font-weight: bold;
-                }
-                
-                .footer {
-                    background-color: #f8f9fa;
-                    padding: 25px 20px;
-                    text-align: center;
-                    color: #666;
-                    font-size: 0.9em;
-                    line-height: 1.8;
-                }
-                
-                .note {
-                    background-color: #e8f4fd;
-                    border-left: 4px solid #2196f3;
-                    padding: 18px;
-                    margin: 20px 0;
-                    border-radius: 8px;
-                }
-                
-                .note-title {
-                    font-weight: bold;
-                    color: #1976d2;
-                    margin-bottom: 10px;
-                    font-size: 1.05em;
-                }
-                
-                .note p {
-                    margin: 8px 0;
-                    line-height: 1.7;
-                }
-                
-                /* 데스크톱 스타일 */
-                @media (min-width: 769px) {
-                    body {
-                        padding: 20px;
-                        font-size: 16px;
-                    }
-                    
-                    .header h1 {
-                        font-size: 2.5em;
-                    }
-                    
-                    .header p {
-                        font-size: 1.1em;
-                    }
-                    
-                    .stats-grid {
-                        grid-template-columns: repeat(4, 1fr);
-                    }
-                    
-                    .nav-section .btn {
-                        display: inline-block;
-                        width: auto;
-                    }
-                }
-                
-                /* 모바일 스타일 강화 */
-                @media (max-width: 768px) {
-                    body {
-                        padding: 5px;
-                    }
-                    
-                    .header {
-                        padding: 20px 15px;
-                    }
-                    
-                    .header h1 {
-                        font-size: 1.5em;
-                        word-break: keep-all;
-                    }
-                    
-                    .header p {
-                        font-size: 0.95em;
-                    }
-                    
-                    .stats-grid {
-                        grid-template-columns: 1fr 1fr;
-                        gap: 12px;
-                    }
-                    
-                    .stat-card {
-                        padding: 18px 12px;
-                    }
-                    
-                    .stat-number {
-                        font-size: 2em;
-                    }
-                    
-                    .stat-label {
-                        font-size: 0.9em;
-                    }
-                    
-                    th {
-                        padding: 14px 8px;
-                        font-size: 0.85em;
-                    }
-                    
-                    td {
-                        padding: 12px 8px;
-                        font-size: 0.85em;
-                    }
-                    
-                    .nav-section .btn {
-                        display: block;
-                        margin: 10px auto;
-                        width: 100%;
-                        max-width: 400px;
-                        font-size: 1.05em;
-                    }
-                    
-                    .section-title {
-                        font-size: 1.2em;
-                    }
-                    
-                    .analysis-info {
-                        padding: 18px 15px;
-                    }
-                    
-                    .analysis-info h3 {
-                        font-size: 1.2em;
-                    }
-                    
-                    .analysis-info li {
-                        font-size: 0.9em;
-                    }
-                    
-                    .pattern-badge {
-                        font-size: 0.8em;
-                        padding: 6px 10px;
-                    }
-                    
-                    .table-wrapper {
-                        border-radius: 10px;
-                        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                    }
-                    
-                    .footer {
-                        font-size: 0.85em;
-                        padding: 20px 15px;
-                    }
-                }
-                
-                /* 아주 작은 화면 */
-                @media (max-width: 375px) {
-                    .header h1 {
-                        font-size: 1.3em;
-                    }
-                    
-                    .stat-number {
-                        font-size: 1.8em;
-                    }
-                    
-                    .stat-label {
-                        font-size: 0.85em;
-                    }
-                    
-                    th, td {
-                        font-size: 0.8em;
-                        padding: 10px 6px;
-                    }
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <div class="header">
-                    <h1>📊 코인선물 숏포지션 패턴 검출 현황</h1>
-                    <p>분석 시간: 2026-01-24 20:37:47</p>
-                    <p>USD/KRW 환율: 1457.34원</p>
-                </div>
-
-                <div class="nav-section">
-                    <div class="d-flex justify-content-center gap-2 flex-wrap">
-                        <a href="dashboard.html" class="btn btn-primary btn-lg">
-                            <i class="fas fa-chart-line"></i> 코인선물 종합지수
-                        </a>
-                        <a href="BinanceMarketOverview.html" class="btn btn-info btn-lg">
-                            <i class="fas fa-globe"></i> 코인선물 시장 현황
-                        </a>
-                        <a href="AI_Choice.html" class="btn btn-success btn-lg">
-                            <i class="fas fa-robot"></i> 코인선물 AI 숏포지션 종목 분석
-                        </a>
-                    </div>
-                </div>
-
+        .stats-container {
+            padding: 20px 15px;
+            background-color: #fff5f5;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #f44336;
+        }
+        
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #f44336;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+        
+        .analysis-info {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .analysis-info h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .analysis-info ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        
+        .analysis-info li {
+            margin-bottom: 12px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #f44336;
+            line-height: 1.4;
+        }
+        
+        .table-container {
+            padding: 20px 15px;
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 25px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);
+            color: white;
+            padding: 16px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.5em;
+            white-space: nowrap;
+        }
+        
+        td {
+            padding: 14px 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 1.3em;
+        }
+        
+        tr:hover {
+            background-color: #fff5f5;
+        }
+        
+        .optimal-row {
+            background-color: #fff8e1;
+        }
+        
+        .optimal-row:hover {
+            background-color: #fff3c4;
+        }
+        
+        .symbol-cell {
+            font-weight: bold;
+            color: #f44336;
+        }
+        
+        .symbol-link {
+            color: #f44336;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 8px 10px;
+            min-height: 44px;
+            min-width: 44px;
+            line-height: 1.4;
+        }
+        
+        .symbol-link:hover {
+            color: #c62828;
+            text-decoration: underline;
+            background-color: rgba(244, 67, 54, 0.1);
+            border-radius: 6px;
+        }
+        
+        .positive {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .negative {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        .ratio-high {
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        .ratio-medium {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        .ratio-low {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background-color: #f8f9fa;
+            padding: 25px 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+        
+        .note {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #c62828;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .note p {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+        
+        @media (min-width: 769px) {
+            body {
+                padding: 20px;
+                font-size: 16px;
+            }
             
-                <div class="stats-container">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-number">85</div>
-                            <div class="stat-label">전체 패턴 발견</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">55</div>
-                            <div class="stat-label">양봉-음봉-음봉</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">30</div>
-                            <div class="stat-label">음봉-음봉-음봉</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">35</div>
-                            <div class="stat-label">⭐ 최적 조건</div>
-                        </div>
-                    </div>
-                    
-                    <div class="analysis-info">
-                        <h3>📋 분석 조건</h3>
-                        <ul>
-                            <li><strong>분석 방법:</strong> 10개 4시간봉<br>(7개 추세 + 3개 패턴)</li>
-                            <li><strong>패턴 1:</strong> 양봉-음봉-음봉(현재)<br>상승 후 단기 조정</li>
-                            <li><strong>패턴 2:</strong> 음봉-음봉-음봉(현재)<br>상승 후 강한 조정</li>
-                            <li><strong>⭐ 최적 조건:</strong> 상승 추세 후 패턴<br>(반등 가능성 높음)</li>
-                            <li><strong>우선순위:</strong> 상승율 높은 순</li>
-                        </ul>
-                    </div>
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .header p {
+                font-size: 1.1em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .nav-section .btn {
+                display: inline-block;
+                width: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.5em;
+                word-break: keep-all;
+            }
+            
+            .header p {
+                font-size: 0.95em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            
+            .stat-card {
+                padding: 18px 12px;
+            }
+            
+            .stat-number {
+                font-size: 2em;
+            }
+            
+            .stat-label {
+                font-size: 0.9em;
+            }
+            
+            th {
+                padding: 14px 8px;
+                font-size: 0.85em;
+            }
+            
+            td {
+                padding: 12px 8px;
+                font-size: 0.85em;
+            }
+            
+            .nav-section .btn {
+                display: block;
+                margin: 10px auto;
+                width: 100%;
+                max-width: 400px;
+                font-size: 1.05em;
+            }
+            
+            .section-title {
+                font-size: 1.2em;
+            }
+            
+            .analysis-info {
+                padding: 18px 15px;
+            }
+            
+            .analysis-info h3 {
+                font-size: 1.2em;
+            }
+            
+            .analysis-info li {
+                font-size: 0.9em;
+            }
+            
+            .table-wrapper {
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            
+            .footer {
+                font-size: 0.85em;
+                padding: 20px 15px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .header h1 {
+                font-size: 1.3em;
+            }
+            
+            .stat-number {
+                font-size: 1.8em;
+            }
+            
+            .stat-label {
+                font-size: 0.85em;
+            }
+            
+            th, td {
+                font-size: 0.8em;
+                padding: 10px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📉 코인선물 위꼬리 음봉 패턴 검출 현황</h1>
+            <p>분석 시간: 2026-01-27 22:10:48</p>
+            <p>USD/KRW 환율: 1444.38원</p>
+            <div>
+                <span class="config-badge">비율: 2.0배 이상</span>
+                <span class="config-badge">몸통: 0.5% 이상</span>
+                <span class="config-badge">위꼬리: 1.0% 이상</span>
+                <span class="config-badge">거래대금: $100,000 이상</span>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                <a href="dashboard.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-chart-line"></i> 코인선물 종합지수
+                </a>
+                <a href="BinanceMarketOverview.html" class="btn btn-info btn-lg">
+                    <i class="fas fa-globe"></i> 코인선물 시장 현황
+                </a>
+                <a href="AI_Choice.html" class="btn btn-success btn-lg">
+                    <i class="fas fa-robot"></i> 코인선물 AI 숏포지션 종목 분석
+                </a>
+            </div>
+        </div>
+    
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">전체 패턴 발견</div>
                 </div>
-                <div class="table-container">
-                    <h2 class="section-title">⭐ 최적 조건: 상승 추세 후 패턴 발생 (35개)</h2>
-                    <div class="note">
-                        <div class="note-title">💡 투자 포인트</div>
-                        <p>상승 추세 후 조정/하락 패턴이 나타난 종목들로, 반등 가능성이 높습니다. 상승율이 높은 순서로 정렬되어 있습니다.</p>
-                    </div>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>순위</th>
-                                    <th>심볼</th>
-                                    <th>현재가</th>
-                                    <th>추세</th>
-                                    <th>상승율%</th>
-                                    <th>캔들1%</th>
-                                    <th>캔들2%</th>
-                                    <th>캔들3%</th>
-                                    <th>종합%</th>
-                                    <th>거래대금</th>
-                                    <th>패턴</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="optimal-row">
-                                    <td>1</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ACUUSDT" target="_blank" class="symbol-link">ACUUSDT</a></td>
-                                    <td>0.217060</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">139.76%</td>
-                                    <td class="negative">-8.48%</td>
-                                    <td class="negative">-6.63%</td>
-                                    <td class="negative">-11.32%</td>
-                                    <td class="negative">-26.44%</td>
-                                    <td>₩807,205,893,162</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>2</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/STGUSDT" target="_blank" class="symbol-link">STGUSDT</a></td>
-                                    <td>0.181400</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">14.03%</td>
-                                    <td class="negative">-1.93%</td>
-                                    <td class="negative">-0.57%</td>
-                                    <td class="negative">-5.77%</td>
-                                    <td class="negative">-8.26%</td>
-                                    <td>₩38,073,110,424</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>3</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ZROUSDT" target="_blank" class="symbol-link">ZROUSDT</a></td>
-                                    <td>2.047700</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">13.02%</td>
-                                    <td class="negative">-2.28%</td>
-                                    <td class="negative">-0.52%</td>
-                                    <td class="negative">-7.44%</td>
-                                    <td class="negative">-10.25%</td>
-                                    <td>₩117,221,966,080</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>4</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/IRYSUSDT" target="_blank" class="symbol-link">IRYSUSDT</a></td>
-                                    <td>0.050538</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">11.95%</td>
-                                    <td class="positive">17.51%</td>
-                                    <td class="negative">-20.30%</td>
-                                    <td class="negative">-2.52%</td>
-                                    <td class="negative">-5.32%</td>
-                                    <td>₩94,570,749,863</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>5</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ZBTUSDT" target="_blank" class="symbol-link">ZBTUSDT</a></td>
-                                    <td>0.104900</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">11.40%</td>
-                                    <td class="positive">4.36%</td>
-                                    <td class="negative">-2.91%</td>
-                                    <td class="negative">-1.59%</td>
-                                    <td class="negative">-0.14%</td>
-                                    <td>₩41,329,716,804</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>6</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/XNYUSDT" target="_blank" class="symbol-link">XNYUSDT</a></td>
-                                    <td>0.004513</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">10.61%</td>
-                                    <td class="negative">-1.49%</td>
-                                    <td class="negative">-1.43%</td>
-                                    <td class="negative">-6.51%</td>
-                                    <td class="negative">-9.42%</td>
-                                    <td>₩14,644,231,876</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>7</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/TAUSDT" target="_blank" class="symbol-link">TAUSDT</a></td>
-                                    <td>0.037450</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">8.69%</td>
-                                    <td class="positive">1.43%</td>
-                                    <td class="negative">-1.92%</td>
-                                    <td class="negative">-7.42%</td>
-                                    <td class="negative">-7.91%</td>
-                                    <td>₩8,009,917,123</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>8</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BOBUSDT" target="_blank" class="symbol-link">BOBUSDT</a></td>
-                                    <td>0.009066</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">7.51%</td>
-                                    <td class="positive">3.51%</td>
-                                    <td class="negative">-2.86%</td>
-                                    <td class="negative">-0.87%</td>
-                                    <td class="negative">-0.22%</td>
-                                    <td>₩3,782,866,798</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>9</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SLPUSDT" target="_blank" class="symbol-link">SLPUSDT</a></td>
-                                    <td>0.001008</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">7.49%</td>
-                                    <td class="negative">-3.20%</td>
-                                    <td class="negative">-2.44%</td>
-                                    <td class="negative">-2.43%</td>
-                                    <td class="negative">-8.07%</td>
-                                    <td>₩23,254,336,761</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>10</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BANKUSDT" target="_blank" class="symbol-link">BANKUSDT</a></td>
-                                    <td>0.052950</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">5.72%</td>
-                                    <td class="negative">-1.77%</td>
-                                    <td class="negative">-0.87%</td>
-                                    <td class="negative">-1.63%</td>
-                                    <td class="negative">-4.27%</td>
-                                    <td>₩8,679,571,872</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>11</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/DASHUSDT" target="_blank" class="symbol-link">DASHUSDT</a></td>
-                                    <td>65.160000</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">5.65%</td>
-                                    <td class="negative">-2.46%</td>
-                                    <td class="negative">-0.56%</td>
-                                    <td class="negative">-0.47%</td>
-                                    <td class="negative">-3.49%</td>
-                                    <td>₩370,909,430,117</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>12</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ILVUSDT" target="_blank" class="symbol-link">ILVUSDT</a></td>
-                                    <td>5.883000</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">4.91%</td>
-                                    <td class="negative">-1.15%</td>
-                                    <td class="negative">-0.07%</td>
-                                    <td class="negative">-0.44%</td>
-                                    <td class="negative">-1.66%</td>
-                                    <td>₩5,804,349,884</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>13</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/CCUSDT" target="_blank" class="symbol-link">CCUSDT</a></td>
-                                    <td>0.150030</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">4.81%</td>
-                                    <td class="negative">-0.64%</td>
-                                    <td class="negative">-0.32%</td>
-                                    <td class="negative">-2.20%</td>
-                                    <td class="negative">-3.16%</td>
-                                    <td>₩34,610,657,952</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>14</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/XPINUSDT" target="_blank" class="symbol-link">XPINUSDT</a></td>
-                                    <td>0.002369</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">4.14%</td>
-                                    <td class="negative">-1.23%</td>
-                                    <td class="negative">-1.16%</td>
-                                    <td class="negative">-0.34%</td>
-                                    <td class="negative">-2.73%</td>
-                                    <td>₩2,681,473,962</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>15</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/IDOLUSDT" target="_blank" class="symbol-link">IDOLUSDT</a></td>
-                                    <td>0.034320</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">3.14%</td>
-                                    <td class="negative">-0.86%</td>
-                                    <td class="negative">-0.03%</td>
-                                    <td class="negative">-0.46%</td>
-                                    <td class="negative">-1.36%</td>
-                                    <td>₩1,469,846,769</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>16</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/RIFUSDT" target="_blank" class="symbol-link">RIFUSDT</a></td>
-                                    <td>0.040370</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">2.88%</td>
-                                    <td class="positive">3.19%</td>
-                                    <td class="negative">-1.11%</td>
-                                    <td class="negative">-1.27%</td>
-                                    <td class="positive">0.81%</td>
-                                    <td>₩2,042,175,158</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>17</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/THEUSDT" target="_blank" class="symbol-link">THEUSDT</a></td>
-                                    <td>0.239200</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">2.78%</td>
-                                    <td class="positive">1.04%</td>
-                                    <td class="negative">-1.36%</td>
-                                    <td class="negative">-0.13%</td>
-                                    <td class="negative">-0.44%</td>
-                                    <td>₩3,181,335,129</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>18</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/RONINUSDT" target="_blank" class="symbol-link">RONINUSDT</a></td>
-                                    <td>0.157300</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">2.59%</td>
-                                    <td class="negative">-2.40%</td>
-                                    <td class="negative">-0.38%</td>
-                                    <td class="negative">-0.44%</td>
-                                    <td class="negative">-3.22%</td>
-                                    <td>₩9,826,125,955</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>19</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/QUSDT" target="_blank" class="symbol-link">QUSDT</a></td>
-                                    <td>0.018011</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">2.59%</td>
-                                    <td class="positive">0.74%</td>
-                                    <td class="negative">-3.11%</td>
-                                    <td class="negative">-1.50%</td>
-                                    <td class="negative">-3.87%</td>
-                                    <td>₩4,381,501,278</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>20</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ATUSDT" target="_blank" class="symbol-link">ATUSDT</a></td>
-                                    <td>0.164270</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">2.58%</td>
-                                    <td class="positive">0.33%</td>
-                                    <td class="negative">-0.54%</td>
-                                    <td class="negative">-0.36%</td>
-                                    <td class="negative">-0.57%</td>
-                                    <td>₩6,409,364,996</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>21</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SOONUSDT" target="_blank" class="symbol-link">SOONUSDT</a></td>
-                                    <td>0.313700</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">2.06%</td>
-                                    <td class="positive">1.20%</td>
-                                    <td class="negative">-0.47%</td>
-                                    <td class="negative">-1.60%</td>
-                                    <td class="negative">-0.87%</td>
-                                    <td>₩4,185,007,354</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>22</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ZENUSDT" target="_blank" class="symbol-link">ZENUSDT</a></td>
-                                    <td>10.045000</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">1.86%</td>
-                                    <td class="positive">1.94%</td>
-                                    <td class="negative">-1.99%</td>
-                                    <td class="negative">-0.75%</td>
-                                    <td class="negative">-0.80%</td>
-                                    <td>₩65,169,603,702</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>23</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ELSAUSDT" target="_blank" class="symbol-link">ELSAUSDT</a></td>
-                                    <td>0.149200</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">1.67%</td>
-                                    <td class="negative">-5.30%</td>
-                                    <td class="negative">-0.05%</td>
-                                    <td class="negative">-5.54%</td>
-                                    <td class="negative">-10.89%</td>
-                                    <td>₩126,549,681,548</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>24</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ONDOUSDT" target="_blank" class="symbol-link">ONDOUSDT</a></td>
-                                    <td>0.344600</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">1.58%</td>
-                                    <td class="positive">0.17%</td>
-                                    <td class="negative">-0.63%</td>
-                                    <td class="negative">-0.17%</td>
-                                    <td class="negative">-0.63%</td>
-                                    <td>₩53,274,181,938</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>25</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SOLVUSDT" target="_blank" class="symbol-link">SOLVUSDT</a></td>
-                                    <td>0.012170</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">1.36%</td>
-                                    <td class="positive">0.39%</td>
-                                    <td class="negative">-0.63%</td>
-                                    <td class="negative">-3.79%</td>
-                                    <td class="negative">-4.03%</td>
-                                    <td>₩2,753,573,484</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>26</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/MONUSDT" target="_blank" class="symbol-link">MONUSDT</a></td>
-                                    <td>0.018580</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">1.27%</td>
-                                    <td class="positive">2.56%</td>
-                                    <td class="negative">-0.48%</td>
-                                    <td class="negative">-0.75%</td>
-                                    <td class="positive">1.34%</td>
-                                    <td>₩33,266,007,397</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>27</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BUSDT" target="_blank" class="symbol-link">BUSDT</a></td>
-                                    <td>0.200300</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">1.00%</td>
-                                    <td class="positive">0.35%</td>
-                                    <td class="negative">-0.64%</td>
-                                    <td class="negative">-0.15%</td>
-                                    <td class="negative">-0.45%</td>
-                                    <td>₩1,958,037,104</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>28</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/HBARUSDT" target="_blank" class="symbol-link">HBARUSDT</a></td>
-                                    <td>0.108010</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">0.91%</td>
-                                    <td class="negative">-0.13%</td>
-                                    <td class="negative">-0.87%</td>
-                                    <td class="negative">-0.28%</td>
-                                    <td class="negative">-1.27%</td>
-                                    <td>₩56,606,839,871</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>29</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SANDUSDT" target="_blank" class="symbol-link">SANDUSDT</a></td>
-                                    <td>0.151840</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">0.91%</td>
-                                    <td class="negative">-4.07%</td>
-                                    <td class="negative">-0.25%</td>
-                                    <td class="negative">-0.09%</td>
-                                    <td class="negative">-4.40%</td>
-                                    <td>₩145,535,110,041</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>30</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ENAUSDT" target="_blank" class="symbol-link">ENAUSDT</a></td>
-                                    <td>0.175300</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">0.69%</td>
-                                    <td class="positive">0.40%</td>
-                                    <td class="negative">-0.28%</td>
-                                    <td class="negative">-0.06%</td>
-                                    <td class="positive">0.06%</td>
-                                    <td>₩156,092,836,859</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>31</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ZECUSDT" target="_blank" class="symbol-link">ZECUSDT</a></td>
-                                    <td>371.430000</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">0.68%</td>
-                                    <td class="positive">3.93%</td>
-                                    <td class="negative">-2.34%</td>
-                                    <td class="negative">-0.45%</td>
-                                    <td class="positive">1.14%</td>
-                                    <td>₩520,666,130,529</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>32</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BLURUSDT" target="_blank" class="symbol-link">BLURUSDT</a></td>
-                                    <td>0.031310</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">0.35%</td>
-                                    <td class="negative">-1.07%</td>
-                                    <td class="negative">-0.48%</td>
-                                    <td class="negative">-0.25%</td>
-                                    <td class="negative">-1.80%</td>
-                                    <td>₩7,320,582,481</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>33</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SKYAIUSDT" target="_blank" class="symbol-link">SKYAIUSDT</a></td>
-                                    <td>0.040360</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">0.31%</td>
-                                    <td class="negative">-1.41%</td>
-                                    <td class="negative">-1.24%</td>
-                                    <td class="negative">-0.79%</td>
-                                    <td class="negative">-3.44%</td>
-                                    <td>₩1,079,297,344</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>34</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ALCHUSDT" target="_blank" class="symbol-link">ALCHUSDT</a></td>
-                                    <td>0.109090</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">0.19%</td>
-                                    <td class="negative">-0.22%</td>
-                                    <td class="negative">-3.56%</td>
-                                    <td class="negative">-5.87%</td>
-                                    <td class="negative">-9.64%</td>
-                                    <td>₩10,593,582,479</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr class="optimal-row">
-                                    <td>35</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/KGENUSDT" target="_blank" class="symbol-link">KGENUSDT</a></td>
-                                    <td>0.311400</td>
-                                    <td class="positive">상승</td>
-                                    <td class="positive">0.11%</td>
-                                    <td class="positive">0.41%</td>
-                                    <td class="negative">-1.15%</td>
-                                    <td class="negative">-1.53%</td>
-                                    <td class="negative">-2.26%</td>
-                                    <td>₩10,943,692,527</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">⭐ 최적 조건</div>
                 </div>
-                <div class="table-container">
-                    <h2 class="section-title">📊 일반 조건: 기타 패턴 (50개)</h2>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>순위</th>
-                                    <th>심볼</th>
-                                    <th>현재가</th>
-                                    <th>추세</th>
-                                    <th>추세%</th>
-                                    <th>캔들1%</th>
-                                    <th>캔들2%</th>
-                                    <th>캔들3%</th>
-                                    <th>종합%</th>
-                                    <th>거래대금</th>
-                                    <th>패턴</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/OPUSDT" target="_blank" class="symbol-link">OPUSDT</a></td>
-                                    <td>0.304000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.17%</td>
-                                    <td class="positive">0.59%</td>
-                                    <td class="negative">-0.56%</td>
-                                    <td class="negative">-0.03%</td>
-                                    <td class="positive">0.00%</td>
-                                    <td>₩53,807,277,043</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SYNUSDT" target="_blank" class="symbol-link">SYNUSDT</a></td>
-                                    <td>0.054080</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.86%</td>
-                                    <td class="positive">1.04%</td>
-                                    <td class="negative">-0.49%</td>
-                                    <td class="negative">-0.55%</td>
-                                    <td class="negative">-0.01%</td>
-                                    <td>₩1,137,400,825</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/MORPHOUSDT" target="_blank" class="symbol-link">MORPHOUSDT</a></td>
-                                    <td>1.194100</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.22%</td>
-                                    <td class="positive">0.28%</td>
-                                    <td class="negative">-0.03%</td>
-                                    <td class="negative">-0.28%</td>
-                                    <td class="negative">-0.02%</td>
-                                    <td>₩4,166,310,404</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/COTIUSDT" target="_blank" class="symbol-link">COTIUSDT</a></td>
-                                    <td>0.018740</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-3.21%</td>
-                                    <td class="positive">1.12%</td>
-                                    <td class="negative">-0.90%</td>
-                                    <td class="negative">-0.11%</td>
-                                    <td class="positive">0.12%</td>
-                                    <td>₩3,272,039,704</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/AVAXUSDT" target="_blank" class="symbol-link">AVAXUSDT</a></td>
-                                    <td>12.105000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.32%</td>
-                                    <td class="positive">0.23%</td>
-                                    <td class="negative">-0.30%</td>
-                                    <td class="negative">-0.07%</td>
-                                    <td class="negative">-0.13%</td>
-                                    <td>₩148,141,958,146</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/RAYSOLUSDT" target="_blank" class="symbol-link">RAYSOLUSDT</a></td>
-                                    <td>1.010000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-2.12%</td>
-                                    <td class="positive">0.68%</td>
-                                    <td class="negative">-0.43%</td>
-                                    <td class="negative">-0.10%</td>
-                                    <td class="positive">0.15%</td>
-                                    <td>₩3,743,715,942</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ZEREBROUSDT" target="_blank" class="symbol-link">ZEREBROUSDT</a></td>
-                                    <td>0.012190</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-2.87%</td>
-                                    <td class="positive">1.64%</td>
-                                    <td class="negative">-0.97%</td>
-                                    <td class="negative">-0.49%</td>
-                                    <td class="positive">0.18%</td>
-                                    <td>₩3,228,461,334</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/OLUSDT" target="_blank" class="symbol-link">OLUSDT</a></td>
-                                    <td>0.018960</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.99%</td>
-                                    <td class="positive">0.47%</td>
-                                    <td class="negative">-0.58%</td>
-                                    <td class="negative">-0.11%</td>
-                                    <td class="negative">-0.21%</td>
-                                    <td>₩646,299,014</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SPXUSDT" target="_blank" class="symbol-link">SPXUSDT</a></td>
-                                    <td>0.400500</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-6.82%</td>
-                                    <td class="positive">1.69%</td>
-                                    <td class="negative">-1.47%</td>
-                                    <td class="negative">-0.47%</td>
-                                    <td class="negative">-0.25%</td>
-                                    <td>₩17,199,152,719</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/VIRTUALUSDT" target="_blank" class="symbol-link">VIRTUALUSDT</a></td>
-                                    <td>0.826200</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.88%</td>
-                                    <td class="positive">0.94%</td>
-                                    <td class="negative">-1.20%</td>
-                                    <td class="negative">-0.02%</td>
-                                    <td class="negative">-0.28%</td>
-                                    <td>₩66,047,217,575</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>11</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SUNUSDT" target="_blank" class="symbol-link">SUNUSDT</a></td>
-                                    <td>0.020668</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-2.72%</td>
-                                    <td class="positive">0.17%</td>
-                                    <td class="negative">-0.13%</td>
-                                    <td class="negative">-0.35%</td>
-                                    <td class="negative">-0.31%</td>
-                                    <td>₩2,422,648,404</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>12</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SSVUSDT" target="_blank" class="symbol-link">SSVUSDT</a></td>
-                                    <td>4.168000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.44%</td>
-                                    <td class="negative">-0.12%</td>
-                                    <td class="negative">-0.14%</td>
-                                    <td class="negative">-0.05%</td>
-                                    <td class="negative">-0.31%</td>
-                                    <td>₩4,893,970,880</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BOMEUSDT" target="_blank" class="symbol-link">BOMEUSDT</a></td>
-                                    <td>0.000592</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.71%</td>
-                                    <td class="positive">0.76%</td>
-                                    <td class="negative">-0.40%</td>
-                                    <td class="negative">-0.03%</td>
-                                    <td class="positive">0.33%</td>
-                                    <td>₩8,824,790,818</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>14</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/INJUSDT" target="_blank" class="symbol-link">INJUSDT</a></td>
-                                    <td>4.563000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.35%</td>
-                                    <td class="positive">0.26%</td>
-                                    <td class="negative">-0.57%</td>
-                                    <td class="negative">-0.07%</td>
-                                    <td class="negative">-0.37%</td>
-                                    <td>₩26,565,745,922</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>15</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/DOTUSDT" target="_blank" class="symbol-link">DOTUSDT</a></td>
-                                    <td>1.917000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.62%</td>
-                                    <td class="positive">0.26%</td>
-                                    <td class="negative">-0.36%</td>
-                                    <td class="negative">-0.31%</td>
-                                    <td class="negative">-0.41%</td>
-                                    <td>₩92,220,813,693</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>16</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/JELLYJELLYUSDT" target="_blank" class="symbol-link">JELLYJELLYUSDT</a></td>
-                                    <td>0.060280</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.92%</td>
-                                    <td class="positive">1.27%</td>
-                                    <td class="negative">-0.12%</td>
-                                    <td class="negative">-0.71%</td>
-                                    <td class="positive">0.44%</td>
-                                    <td>₩5,979,914,797</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>17</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/1000000BOBUSDT" target="_blank" class="symbol-link">1000000BOBUSDT</a></td>
-                                    <td>0.017680</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.73%</td>
-                                    <td class="positive">1.53%</td>
-                                    <td class="negative">-0.56%</td>
-                                    <td class="negative">-0.45%</td>
-                                    <td class="positive">0.52%</td>
-                                    <td>₩465,486,681</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>18</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/DUSDT" target="_blank" class="symbol-link">DUSDT</a></td>
-                                    <td>0.012550</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.24%</td>
-                                    <td class="positive">0.63%</td>
-                                    <td class="negative">-1.10%</td>
-                                    <td class="negative">-0.08%</td>
-                                    <td class="negative">-0.55%</td>
-                                    <td>₩3,442,724,569</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>19</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SWARMSUSDT" target="_blank" class="symbol-link">SWARMSUSDT</a></td>
-                                    <td>0.011820</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-2.73%</td>
-                                    <td class="positive">1.36%</td>
-                                    <td class="negative">-0.25%</td>
-                                    <td class="negative">-0.51%</td>
-                                    <td class="positive">0.60%</td>
-                                    <td>₩1,788,161,678</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>20</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/TAGUSDT" target="_blank" class="symbol-link">TAGUSDT</a></td>
-                                    <td>0.000389</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.26%</td>
-                                    <td class="positive">0.83%</td>
-                                    <td class="negative">-0.10%</td>
-                                    <td class="negative">-0.10%</td>
-                                    <td class="positive">0.62%</td>
-                                    <td>₩673,871,269</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>21</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/LTCUSDT" target="_blank" class="symbol-link">LTCUSDT</a></td>
-                                    <td>68.450000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.38%</td>
-                                    <td class="positive">0.82%</td>
-                                    <td class="negative">-0.15%</td>
-                                    <td class="negative">-0.04%</td>
-                                    <td class="positive">0.63%</td>
-                                    <td>₩138,762,838,433</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>22</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/EVAAUSDT" target="_blank" class="symbol-link">EVAAUSDT</a></td>
-                                    <td>0.844500</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.51%</td>
-                                    <td class="positive">0.97%</td>
-                                    <td class="negative">-0.19%</td>
-                                    <td class="negative">-0.13%</td>
-                                    <td class="positive">0.65%</td>
-                                    <td>₩1,980,715,311</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>23</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/FETUSDT" target="_blank" class="symbol-link">FETUSDT</a></td>
-                                    <td>0.233300</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.95%</td>
-                                    <td class="positive">1.03%</td>
-                                    <td class="negative">-0.04%</td>
-                                    <td class="negative">-0.30%</td>
-                                    <td class="positive">0.69%</td>
-                                    <td>₩34,051,353,715</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>24</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ZKUSDT" target="_blank" class="symbol-link">ZKUSDT</a></td>
-                                    <td>0.028840</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.56%</td>
-                                    <td class="positive">1.10%</td>
-                                    <td class="negative">-1.19%</td>
-                                    <td class="negative">-0.79%</td>
-                                    <td class="negative">-0.88%</td>
-                                    <td>₩13,516,123,975</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>25</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/HIPPOUSDT" target="_blank" class="symbol-link">HIPPOUSDT</a></td>
-                                    <td>0.001028</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.45%</td>
-                                    <td class="positive">2.26%</td>
-                                    <td class="negative">-1.06%</td>
-                                    <td class="negative">-0.29%</td>
-                                    <td class="positive">0.91%</td>
-                                    <td>₩1,137,640,079</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>26</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/EDUUSDT" target="_blank" class="symbol-link">EDUUSDT</a></td>
-                                    <td>0.156400</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-3.89%</td>
-                                    <td class="positive">0.76%</td>
-                                    <td class="negative">-1.44%</td>
-                                    <td class="negative">-0.32%</td>
-                                    <td class="negative">-1.00%</td>
-                                    <td>₩1,986,210,856</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>27</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/KSMUSDT" target="_blank" class="symbol-link">KSMUSDT</a></td>
-                                    <td>6.767000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.21%</td>
-                                    <td class="positive">1.33%</td>
-                                    <td class="negative">-0.07%</td>
-                                    <td class="negative">-0.19%</td>
-                                    <td class="positive">1.06%</td>
-                                    <td>₩4,029,418,664</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>28</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/GMTUSDT" target="_blank" class="symbol-link">GMTUSDT</a></td>
-                                    <td>0.016250</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-2.43%</td>
-                                    <td class="negative">-0.97%</td>
-                                    <td class="negative">-0.06%</td>
-                                    <td class="negative">-0.25%</td>
-                                    <td class="negative">-1.28%</td>
-                                    <td>₩9,959,889,431</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>29</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/FARTCOINUSDT" target="_blank" class="symbol-link">FARTCOINUSDT</a></td>
-                                    <td>0.304500</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.64%</td>
-                                    <td class="positive">2.37%</td>
-                                    <td class="negative">-0.78%</td>
-                                    <td class="negative">-0.13%</td>
-                                    <td class="positive">1.45%</td>
-                                    <td>₩120,940,877,968</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>30</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/RVVUSDT" target="_blank" class="symbol-link">RVVUSDT</a></td>
-                                    <td>0.002927</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-6.60%</td>
-                                    <td class="positive">3.90%</td>
-                                    <td class="negative">-1.46%</td>
-                                    <td class="negative">-3.94%</td>
-                                    <td class="negative">-1.50%</td>
-                                    <td>₩4,026,821,181</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>31</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/AVAAIUSDT" target="_blank" class="symbol-link">AVAAIUSDT</a></td>
-                                    <td>0.009500</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-0.21%</td>
-                                    <td class="positive">0.73%</td>
-                                    <td class="negative">-2.26%</td>
-                                    <td class="negative">-0.11%</td>
-                                    <td class="negative">-1.64%</td>
-                                    <td>₩1,409,846,037</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>32</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/USUSDT" target="_blank" class="symbol-link">USUSDT</a></td>
-                                    <td>0.006090</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-5.55%</td>
-                                    <td class="positive">3.36%</td>
-                                    <td class="negative">-0.16%</td>
-                                    <td class="negative">-0.98%</td>
-                                    <td class="positive">2.22%</td>
-                                    <td>₩1,930,638,309</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>33</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/KMNOUSDT" target="_blank" class="symbol-link">KMNOUSDT</a></td>
-                                    <td>0.046980</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-3.82%</td>
-                                    <td class="positive">0.04%</td>
-                                    <td class="negative">-1.17%</td>
-                                    <td class="negative">-1.12%</td>
-                                    <td class="negative">-2.24%</td>
-                                    <td>₩2,807,075,692</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>34</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/PIPPINUSDT" target="_blank" class="symbol-link">PIPPINUSDT</a></td>
-                                    <td>0.371170</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-3.31%</td>
-                                    <td class="negative">-0.44%</td>
-                                    <td class="negative">-1.51%</td>
-                                    <td class="negative">-0.53%</td>
-                                    <td class="negative">-2.48%</td>
-                                    <td>₩81,060,413,584</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>35</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/APRUSDT" target="_blank" class="symbol-link">APRUSDT</a></td>
-                                    <td>0.103040</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.58%</td>
-                                    <td class="positive">2.45%</td>
-                                    <td class="negative">-3.33%</td>
-                                    <td class="negative">-1.66%</td>
-                                    <td class="negative">-2.54%</td>
-                                    <td>₩1,970,264,138</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>36</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/1000RATSUSDT" target="_blank" class="symbol-link">1000RATSUSDT</a></td>
-                                    <td>0.042860</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-2.80%</td>
-                                    <td class="positive">1.91%</td>
-                                    <td class="negative">-1.49%</td>
-                                    <td class="negative">-3.01%</td>
-                                    <td class="negative">-2.60%</td>
-                                    <td>₩2,310,917,972</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>37</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ARIAUSDT" target="_blank" class="symbol-link">ARIAUSDT</a></td>
-                                    <td>0.079710</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-5.65%</td>
-                                    <td class="negative">-1.67%</td>
-                                    <td class="negative">-0.65%</td>
-                                    <td class="negative">-0.36%</td>
-                                    <td class="negative">-2.68%</td>
-                                    <td>₩909,610,142</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>38</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/PARTIUSDT" target="_blank" class="symbol-link">PARTIUSDT</a></td>
-                                    <td>0.090700</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-3.18%</td>
-                                    <td class="positive">3.99%</td>
-                                    <td class="negative">-0.77%</td>
-                                    <td class="negative">-0.44%</td>
-                                    <td class="positive">2.77%</td>
-                                    <td>₩4,328,224,023</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>39</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SXTUSDT" target="_blank" class="symbol-link">SXTUSDT</a></td>
-                                    <td>0.029560</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-3.80%</td>
-                                    <td class="positive">0.07%</td>
-                                    <td class="negative">-1.55%</td>
-                                    <td class="negative">-1.30%</td>
-                                    <td class="negative">-2.78%</td>
-                                    <td>₩8,928,883,237</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>40</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SANTOSUSDT" target="_blank" class="symbol-link">SANTOSUSDT</a></td>
-                                    <td>2.360000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-2.37%</td>
-                                    <td class="negative">-0.45%</td>
-                                    <td class="negative">-2.36%</td>
-                                    <td class="negative">-0.13%</td>
-                                    <td class="negative">-2.94%</td>
-                                    <td>₩4,143,252,214</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>41</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SAFEUSDT" target="_blank" class="symbol-link">SAFEUSDT</a></td>
-                                    <td>0.181100</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-7.88%</td>
-                                    <td class="negative">-2.07%</td>
-                                    <td class="negative">-0.43%</td>
-                                    <td class="negative">-1.31%</td>
-                                    <td class="negative">-3.81%</td>
-                                    <td>₩4,086,805,780</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>42</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/4USDT" target="_blank" class="symbol-link">4USDT</a></td>
-                                    <td>0.018660</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-2.95%</td>
-                                    <td class="positive">1.08%</td>
-                                    <td class="negative">-1.53%</td>
-                                    <td class="negative">-3.57%</td>
-                                    <td class="negative">-4.01%</td>
-                                    <td>₩8,896,350,294</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>43</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SPORTFUNUSDT" target="_blank" class="symbol-link">SPORTFUNUSDT</a></td>
-                                    <td>0.063740</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-14.93%</td>
-                                    <td class="negative">-1.21%</td>
-                                    <td class="negative">-1.68%</td>
-                                    <td class="negative">-2.06%</td>
-                                    <td class="negative">-4.95%</td>
-                                    <td>₩18,369,222,511</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>44</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SCRTUSDT" target="_blank" class="symbol-link">SCRTUSDT</a></td>
-                                    <td>0.165100</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-5.03%</td>
-                                    <td class="negative">-1.04%</td>
-                                    <td class="negative">-2.97%</td>
-                                    <td class="negative">-0.96%</td>
-                                    <td class="negative">-4.97%</td>
-                                    <td>₩23,737,958,243</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>45</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/IPUSDT" target="_blank" class="symbol-link">IPUSDT</a></td>
-                                    <td>2.448000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-4.98%</td>
-                                    <td class="positive">5.89%</td>
-                                    <td class="negative">-0.49%</td>
-                                    <td class="negative">-0.16%</td>
-                                    <td class="positive">5.24%</td>
-                                    <td>₩192,785,798,691</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>46</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/FRAXUSDT" target="_blank" class="symbol-link">FRAXUSDT</a></td>
-                                    <td>0.912800</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-7.14%</td>
-                                    <td class="negative">-4.04%</td>
-                                    <td class="negative">-1.26%</td>
-                                    <td class="negative">-0.22%</td>
-                                    <td class="negative">-5.52%</td>
-                                    <td>₩54,538,024,461</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>47</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ARCUSDT" target="_blank" class="symbol-link">ARCUSDT</a></td>
-                                    <td>0.056920</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-5.88%</td>
-                                    <td class="negative">-1.55%</td>
-                                    <td class="negative">-1.59%</td>
-                                    <td class="negative">-3.28%</td>
-                                    <td class="negative">-6.42%</td>
-                                    <td>₩23,613,240,090</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>48</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/DAMUSDT" target="_blank" class="symbol-link">DAMUSDT</a></td>
-                                    <td>0.022840</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-4.49%</td>
-                                    <td class="negative">-1.46%</td>
-                                    <td class="negative">-5.52%</td>
-                                    <td class="negative">-0.57%</td>
-                                    <td class="negative">-7.55%</td>
-                                    <td>₩1,420,053,396</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>49</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ZAMAUSDT" target="_blank" class="symbol-link">ZAMAUSDT</a></td>
-                                    <td>0.056000</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-1.93%</td>
-                                    <td class="positive">0.99%</td>
-                                    <td class="negative">-1.79%</td>
-                                    <td class="negative">-7.28%</td>
-                                    <td class="negative">-8.09%</td>
-                                    <td>₩21,804,304,348</td>
-                                    <td><span class="pattern-badge pattern1">양봉-음봉-음봉</span></td>
-                                </tr>
-                                <tr>
-                                    <td>50</td>
-                                    <td class="symbol-cell"><a href="https://www.binance.com/en/futures/DUSKUSDT" target="_blank" class="symbol-link">DUSKUSDT</a></td>
-                                    <td>0.136830</td>
-                                    <td class="negative">하락</td>
-                                    <td class="negative">-11.81%</td>
-                                    <td class="negative">-3.40%</td>
-                                    <td class="negative">-3.87%</td>
-                                    <td class="negative">-6.26%</td>
-                                    <td class="negative">-13.53%</td>
-                                    <td>₩187,961,769,944</td>
-                                    <td><span class="pattern-badge pattern2">음봉-음봉-음봉</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-number">6.73배</div>
+                    <div class="stat-label">최대 비율</div>
                 </div>
-                <div class="footer">
-                    <div class="note">
-                        <div class="note-title">⚠️ 투자 유의사항</div>
-                        <p>본 분석은 참고용이며, 실제 투자 시에는 추가적인 기술적 분석, 펀더멘털 분석, 리스크 관리가 필요합니다.</p>
-                        <p>패턴 분석만으로는 완전한 투자 판단을 할 수 없으며, 개별 종목의 뉴스 및 차트를 반드시 확인하시기 바랍니다.</p>
-                    </div>
-                    <p>생성 시간: 2026-01-24 20:37:47<br>분석 대상: 바이낸스 USDT 선물<br>데이터: 4시간봉 10개</p>
-                    <p>패턴1: 55개 (최적: 17개)<br>패턴2: 30개 (최적: 18개)</p>
+                <div class="stat-card">
+                    <div class="stat-number">3.67배</div>
+                    <div class="stat-label">평균 비율</div>
                 </div>
             </div>
+            
+            <div class="analysis-info">
+                <h3>📋 분석 조건</h3>
+                <ul>
+                    <li><strong>분석 방법:</strong> 10개 4시간봉<br>(9개 추세 + 1개 패턴)</li>
+                    <li><strong>패턴:</strong> 위꼬리 음봉<br>(위꼬리/몸통 비율 2.0배 이상)</li>
+                    <li><strong>위꼬리 계산:</strong> 고가 - 시가<br>(음봉이므로 시가가 위쪽)</li>
+                    <li><strong>몸통 계산:</strong> 시가 - 종가<br>(음봉이므로 항상 양수)</li>
+                    <li><strong>⭐ 최적 조건:</strong> 상승 추세 후 위꼬리 음봉<br>(상승 시도 후 매도 압력)</li>
+                    <li><strong>우선순위:</strong> 위꼬리/몸통 비율 높은 순</li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-container">
+            <h2 class="section-title">⭐ 최적 조건: 상승 추세 후 위꼬리 음봉 (3개)</h2>
+            <div class="note">
+                <div class="note-title">💡 투자 포인트</div>
+                <p>상승 추세 후 위꼬리 음봉은 <strong>상승 시도 후 강한 매도 압력</strong>을 의미합니다.</p>
+                <p>비율이 높을수록 고점 저항이 강하며, <strong>단기 조정 후 재상승</strong> 또는 <strong>추세 전환</strong> 가능성이 있습니다.</p>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순위</th>
+                            <th>심볼</th>
+                            <th>현재가</th>
+                            <th>추세</th>
+                            <th>추세%</th>
+                            <th>몸통%</th>
+                            <th>위꼬리%</th>
+                            <th>비율(배)</th>
+                            <th>거래대금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="optimal-row">
+                            <td>1</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/HEMIUSDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                            <td>0.015290</td>
+                            <td class="positive">상승</td>
+                            <td class="positive">10.78%</td>
+                            <td>0.71%</td>
+                            <td>4.81%</td>
+                            <td class="ratio-high">6.73배</td>
+                            <td>₩9,999,780,830</td>
+                        </tr>
+                        <tr class="optimal-row">
+                            <td>2</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/HYPEUSDT" target="_blank" class="symbol-link">HYPEUSDT</a></td>
+                            <td>27.538000</td>
+                            <td class="positive">상승</td>
+                            <td class="positive">24.91%</td>
+                            <td>0.66%</td>
+                            <td>2.09%</td>
+                            <td class="ratio-medium">3.19배</td>
+                            <td>₩1,043,057,890,982</td>
+                        </tr>
+                        <tr class="optimal-row">
+                            <td>3</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/NAORISUSDT" target="_blank" class="symbol-link">NAORISUSDT</a></td>
+                            <td>0.026200</td>
+                            <td class="positive">상승</td>
+                            <td class="positive">6.04%</td>
+                            <td>1.13%</td>
+                            <td>2.64%</td>
+                            <td class="ratio-low">2.33배</td>
+                            <td>₩5,669,390,122</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="table-container">
+            <h2 class="section-title">📊 일반 조건: 기타 패턴 (1개)</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순위</th>
+                            <th>심볼</th>
+                            <th>현재가</th>
+                            <th>추세</th>
+                            <th>추세%</th>
+                            <th>몸통%</th>
+                            <th>위꼬리%</th>
+                            <th>비율(배)</th>
+                            <th>거래대금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/TRUTHUSDT" target="_blank" class="symbol-link">TRUTHUSDT</a></td>
+                            <td>0.012668</td>
+                            <td class="negative">하락</td>
+                            <td class="negative">-2.72%</td>
+                            <td>0.64%</td>
+                            <td>1.55%</td>
+                            <td class="ratio-low">2.41배</td>
+                            <td>₩5,521,123,753</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="note">
+                <div class="note-title">⚠️ 투자 유의사항</div>
+                <p>위꼬리 음봉은 <strong>상승 시도 후 매도 압력</strong>을 시사하지만, 절대적인 하락 신호는 아닙니다.</p>
+                <p>추가적인 기술적 분석, 거래량 분석, 추세 확인이 필요합니다.</p>
+                <p>특히 <strong>상승 추세 중</strong> 나타난 위꼬리는 단기 조정 후 재상승 가능성도 있습니다.</p>
+                <p><strong>손절 라인 설정</strong>은 필수입니다.</p>
+            </div>
+            <p>생성 시간: 2026-01-27 22:10:48<br>분석 대상: 바이낸스 USDT 선물<br>데이터: 4시간봉 10개</p>
+            <p>위꼬리 음봉: 4개 (최적: 3개)</p>
+            <p>분석 조건: 위꼬리/몸통 ≥ 2.0배 | 몸통 ≥ 0.5% | 위꼬리 ≥ 1.0% | 거래대금 ≥ $100,000</p>
+        </div>
+    </div>
 
-            <!-- Bootstrap JS 추가 -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        </body>
-        </html>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
