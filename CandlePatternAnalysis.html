@@ -3,630 +3,584 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>코인선물 위꼬리 음봉 패턴 검출 현황</title>
+    <title>코인선물 롱포지션 4단계 패턴 검출</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        
+        * { box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 10px;
-            background-color: #f5f7fa;
-            color: #333;
-            font-size: 18px;
-            line-height: 1.6;
+            margin: 0; padding: 10px;
+            background-color: #f5f7fa; color: #333;
+            font-size: 16px; line-height: 1.6;
         }
-        
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            overflow: hidden;
+            max-width: 1500px; margin: 0 auto;
+            background-color: white; border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1); overflow: hidden;
         }
-        
         .header {
-            background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
+            background: linear-gradient(135deg, #0d2b0d 0%, #1a4a1a 50%, #1b6b1b 100%);
+            color: white; padding: 25px 20px; text-align: center;
         }
-        
-        .header h1 {
-            margin: 0 0 12px 0;
-            font-size: 1.8em;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        
-        .header p {
-            margin: 8px 0;
-            opacity: 0.95;
-            font-size: 1em;
-        }
-        
-        .config-badge {
-            background-color: rgba(255,255,255,0.2);
-            padding: 8px 15px;
-            border-radius: 8px;
-            display: inline-block;
-            margin: 5px;
-            font-size: 0.9em;
-        }
+        .header h1 { margin: 0 0 12px 0; font-size: 1.8em; font-weight: 700; }
+        .header p  { margin: 6px 0; opacity: 0.9; font-size: 1em; }
 
         .nav-section {
-            background: white;
-            padding: 20px 15px;
-            text-align: center;
+            background: white; padding: 20px 15px; text-align: center;
             border-bottom: 1px solid #eee;
         }
-        
         .nav-section .btn {
-            margin: 8px 5px;
-            padding: 16px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.5em;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: 2px solid transparent;
-            min-height: 50px;
-            min-width: 48px;
+            margin: 8px 5px; padding: 10px 18px; border-radius: 10px;
+            text-decoration: none; font-weight: 600; font-size: 1em;
+            transition: all 0.3s ease; display: inline-block;
         }
-        
         .nav-section .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .stats-container {
-            padding: 20px 15px;
-            background-color: #fff5f5;
+        /* 단계 카드 */
+        .steps-container {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 15px; padding: 20px 15px; background: #f8fff8;
         }
-        
+        .step-card {
+            background: white; border-radius: 12px;
+            padding: 18px 15px; text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .step-card.step1 { border-top: 4px solid #4caf50; }
+        .step-card.step2 { border-top: 4px solid #00bcd4; }
+        .step-card.step3 { border-top: 4px solid #8bc34a; }
+        .step-card.step4 { border-top: 4px solid #ff9800; }
+        .step-num  { font-size: 1.8em; font-weight: bold; margin-bottom: 8px; }
+        .step1 .step-num { color: #4caf50; }
+        .step2 .step-num { color: #00bcd4; }
+        .step3 .step-num { color: #8bc34a; }
+        .step4 .step-num { color: #ff9800; }
+        .step-title { font-size: 1em; font-weight: bold; margin-bottom: 8px; }
+        .step-desc  { font-size: 0.88em; color: #555; line-height: 1.5; }
+
+        /* 통계 */
+        .stats-container { padding: 20px 15px; }
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
+            display: grid; grid-template-columns: repeat(5, 1fr);
+            gap: 15px; margin-bottom: 20px;
         }
-        
         .stat-card {
-            background: white;
-            padding: 20px 15px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: white; padding: 20px 15px;
+            border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             text-align: center;
-            border-left: 4px solid #f44336;
         }
-        
-        .stat-number {
-            font-size: 2.2em;
-            font-weight: bold;
-            color: #f44336;
-            margin-bottom: 8px;
-            line-height: 1.2;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 1em;
-            line-height: 1.4;
-        }
-        
-        .analysis-info {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .analysis-info h3 {
-            font-size: 1.3em;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        
-        .analysis-info ul {
-            padding-left: 20px;
-            margin: 0;
-        }
-        
-        .analysis-info li {
-            margin-bottom: 12px;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-        
+        .stat-card.s1 { border-left: 4px solid #4caf50; }
+        .stat-card.s2 { border-left: 4px solid #00bcd4; }
+        .stat-card.s3 { border-left: 4px solid #8bc34a; }
+        .stat-card.s4 { border-left: 4px solid #ff9800; }
+        .stat-card.sopt { border-left: 4px solid #9c27b0; }
+        .stat-number { font-size: 2.2em; font-weight: bold; margin-bottom: 6px; }
+        .stat-card.s1   .stat-number { color: #4caf50; }
+        .stat-card.s2   .stat-number { color: #00bcd4; }
+        .stat-card.s3   .stat-number { color: #8bc34a; }
+        .stat-card.s4   .stat-number { color: #ff9800; }
+        .stat-card.sopt .stat-number { color: #9c27b0; }
+        .stat-label { color: #666; font-size: 0.95em; line-height: 1.4; }
+
+        /* 테이블 */
         .section-title {
-            font-size: 1.4em;
-            color: #333;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 3px solid #f44336;
-            line-height: 1.4;
+            font-size: 1.3em; color: #333; margin-bottom: 18px;
+            padding-bottom: 10px; border-bottom: 3px solid #1b6b1b;
         }
-        
-        .table-container {
-            padding: 20px 15px;
-        }
-        
-        .table-wrapper {
-            overflow-x: auto;
-            margin-bottom: 25px;
-            -webkit-overflow-scrolling: touch;
-        }
-        
+        .table-container { padding: 20px 15px; }
+        .table-wrapper { overflow-x: auto; margin-bottom: 25px; -webkit-overflow-scrolling: touch; }
         table {
-            width: 100%;
-            min-width: 800px;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
+            width: 100%; min-width: 850px; border-collapse: collapse;
+            background: white; border-radius: 10px; overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
         th {
-            background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);
-            color: white;
-            padding: 16px 10px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.5em;
-            white-space: nowrap;
+            background: linear-gradient(135deg, #0d2b0d 0%, #1b6b1b 100%);
+            color: white; padding: 14px 8px; text-align: center;
+            font-weight: 600; font-size: 0.9em; white-space: nowrap;
         }
-        
         td {
-            padding: 14px 10px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            font-size: 1.3em;
+            padding: 12px 8px; text-align: center;
+            border-bottom: 1px solid #eee; font-size: 0.9em;
         }
-        
-        tr:hover {
-            background-color: #fff5f5;
-        }
-        
-        .optimal-row {
-            background-color: #fff8e1;
-        }
-        
-        .optimal-row:hover {
-            background-color: #fff3c4;
-        }
-        
-        .symbol-cell {
-            font-weight: bold;
-            color: #f44336;
-        }
-        
+        tr:hover { background-color: #f8fff8; }
+        .optimal-row { background-color: #e8f5e9; }
+        .optimal-row:hover { background-color: #c8e6c9; }
+        .third-row   { background-color: #f1f8e9; }
+        .third-row:hover { background-color: #dcedc8; }
+
+        .symbol-cell { font-weight: bold; color: #1b6b1b; }
         .symbol-link {
-            color: #f44336;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
-            padding: 8px 10px;
-            min-height: 44px;
-            min-width: 44px;
-            line-height: 1.4;
+            color: #1b6b1b; text-decoration: none; font-weight: bold;
+            transition: all 0.3s ease; display: inline-block;
+            padding: 6px 8px; border-radius: 6px;
         }
-        
         .symbol-link:hover {
-            color: #c62828;
-            text-decoration: underline;
-            background-color: rgba(244, 67, 54, 0.1);
-            border-radius: 6px;
+            color: #4caf50; text-decoration: underline;
+            background-color: rgba(27,107,27,0.1);
         }
-        
-        .positive {
-            color: #4caf50;
-            font-weight: bold;
-        }
-        
-        .negative {
-            color: #f44336;
-            font-weight: bold;
-        }
-        
-        .ratio-high {
-            color: #c62828;
-            font-weight: bold;
-        }
-        
-        .ratio-medium {
-            color: #f44336;
-            font-weight: bold;
-        }
-        
-        .ratio-low {
-            color: #ff9800;
-            font-weight: bold;
-        }
-        
-        .footer {
-            background-color: #f8f9fa;
-            padding: 25px 20px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-            line-height: 1.8;
-        }
-        
+        .positive { color: #4caf50; font-weight: bold; }
+        .negative { color: #f44336; font-weight: bold; }
+
         .note {
-            background-color: #ffebee;
-            border-left: 4px solid #f44336;
-            padding: 18px;
-            margin: 20px 0;
-            border-radius: 8px;
+            background-color: #e8f5e9; border-left: 4px solid #4caf50;
+            padding: 15px 18px; margin: 15px 0; border-radius: 8px;
         }
-        
-        .note-title {
-            font-weight: bold;
-            color: #c62828;
-            margin-bottom: 10px;
-            font-size: 1.05em;
+        .note-title { font-weight: bold; color: #2e7d32; margin-bottom: 8px; }
+        .note p { margin: 6px 0; line-height: 1.6; font-size: 0.95em; }
+
+        /* 필터 흐름 화살표 */
+        .funnel {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; padding: 16px 20px; background: #fff;
+            border-bottom: 1px solid #eee; flex-wrap: wrap;
         }
-        
-        .note p {
-            margin: 8px 0;
-            line-height: 1.7;
+        .funnel-step {
+            display: flex; flex-direction: column; align-items: center;
+            background: #f0fff0; border-radius: 10px;
+            padding: 10px 18px; min-width: 110px;
         }
-        
-        @media (min-width: 769px) {
-            body {
-                padding: 20px;
-                font-size: 16px;
-            }
-            
-            .header h1 {
-                font-size: 2.5em;
-            }
-            
-            .header p {
-                font-size: 1.1em;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .nav-section .btn {
-                display: inline-block;
-                width: auto;
-            }
+        .funnel-step .label { font-size: 0.78em; color: #666; }
+        .funnel-step .count { font-size: 1.5em; font-weight: bold; color: #1b6b1b; }
+        .funnel-arrow { font-size: 1.6em; color: #aaa; }
+
+        .footer {
+            background-color: #0d2b0d; color: #aaa;
+            padding: 25px 20px; text-align: center;
+            font-size: 0.88em; line-height: 1.8;
         }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 5px;
-            }
-            
-            .header {
-                padding: 20px 15px;
-            }
-            
-            .header h1 {
-                font-size: 1.5em;
-                word-break: keep-all;
-            }
-            
-            .header p {
-                font-size: 0.95em;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            
-            .stat-card {
-                padding: 18px 12px;
-            }
-            
-            .stat-number {
-                font-size: 2em;
-            }
-            
-            .stat-label {
-                font-size: 0.9em;
-            }
-            
-            th {
-                padding: 14px 8px;
-                font-size: 0.85em;
-            }
-            
-            td {
-                padding: 12px 8px;
-                font-size: 0.85em;
-            }
-            
-            .nav-section .btn {
-                display: block;
-                margin: 10px auto;
-                width: 100%;
-                max-width: 400px;
-                font-size: 1.05em;
-            }
-            
-            .section-title {
-                font-size: 1.2em;
-            }
-            
-            .analysis-info {
-                padding: 18px 15px;
-            }
-            
-            .analysis-info h3 {
-                font-size: 1.2em;
-            }
-            
-            .analysis-info li {
-                font-size: 0.9em;
-            }
-            
-            .table-wrapper {
-                border-radius: 10px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
-            
-            .footer {
-                font-size: 0.85em;
-                padding: 20px 15px;
-            }
+
+        @media (max-width: 900px) {
+            .steps-container { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
         }
-        
-        @media (max-width: 375px) {
-            .header h1 {
-                font-size: 1.3em;
-            }
-            
-            .stat-number {
-                font-size: 1.8em;
-            }
-            
-            .stat-label {
-                font-size: 0.85em;
-            }
-            
-            th, td {
-                font-size: 0.8em;
-                padding: 10px 6px;
-            }
+        @media (max-width: 480px) {
+            .steps-container { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .header h1 { font-size: 1.3em; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📉 코인선물 위꼬리 음봉 패턴 검출 현황</h1>
-            <p>분석 시간: 2026-02-22 08:48:28</p>
-            <p>USD/KRW 환율: 1447.74원</p>
-            <div>
-                <span class="config-badge">비율: 2.0배 이상</span>
-                <span class="config-badge">몸통: 0.5% 이상</span>
-                <span class="config-badge">위꼬리: 1.0% 이상</span>
-                <span class="config-badge">거래대금: $100,000 이상</span>
-            </div>
-        </div>
+<div class="container">
 
-        <div class="nav-section">
-            <div class="d-flex justify-content-center gap-2 flex-wrap">
-                <a href="dashboard.html" class="btn btn-primary btn-lg">
-                    <i class="fas fa-chart-line"></i> 코인선물 종합지수
-                </a>
-                <a href="BinanceMarketOverview.html" class="btn btn-info btn-lg">
-                    <i class="fas fa-globe"></i> 코인선물 시장 현황
-                </a>
-                <a href="AI_Choice.html" class="btn btn-success btn-lg">
-                    <i class="fas fa-robot"></i> 코인선물 AI 숏포지션 종목 분석
-                </a>
-            </div>
-        </div>
-    
-        <div class="stats-container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">9</div>
-                    <div class="stat-label">전체 패턴 발견</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">6</div>
-                    <div class="stat-label">⭐ 최적 조건</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">4.89배</div>
-                    <div class="stat-label">최대 비율</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3.85배</div>
-                    <div class="stat-label">평균 비율</div>
-                </div>
-            </div>
-            
-            <div class="analysis-info">
-                <h3>📋 분석 조건</h3>
-                <ul>
-                    <li><strong>분석 방법:</strong> 10개 4시간봉<br>(9개 추세 + 1개 패턴)</li>
-                    <li><strong>패턴:</strong> 위꼬리 음봉<br>(위꼬리/몸통 비율 2.0배 이상)</li>
-                    <li><strong>위꼬리 계산:</strong> 고가 - 시가<br>(음봉이므로 시가가 위쪽)</li>
-                    <li><strong>몸통 계산:</strong> 시가 - 종가<br>(음봉이므로 항상 양수)</li>
-                    <li><strong>⭐ 최적 조건:</strong> 상승 추세 후 위꼬리 음봉<br>(상승 시도 후 매도 압력)</li>
-                    <li><strong>우선순위:</strong> 위꼬리/몸통 비율 높은 순</li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-container">
-            <h2 class="section-title">⭐ 최적 조건: 상승 추세 후 위꼬리 음봉 (6개)</h2>
-            <div class="note">
-                <div class="note-title">💡 투자 포인트</div>
-                <p>상승 추세 후 위꼬리 음봉은 <strong>상승 시도 후 강한 매도 압력</strong>을 의미합니다.</p>
-                <p>비율이 높을수록 고점 저항이 강하며, <strong>단기 조정 후 재상승</strong> 또는 <strong>추세 전환</strong> 가능성이 있습니다.</p>
-            </div>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>순위</th>
-                            <th>심볼</th>
-                            <th>현재가</th>
-                            <th>추세</th>
-                            <th>추세%</th>
-                            <th>몸통%</th>
-                            <th>위꼬리%</th>
-                            <th>비율(배)</th>
-                            <th>거래대금</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="optimal-row">
-                            <td>1</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/AGLDUSDT" target="_blank" class="symbol-link">AGLDUSDT</a></td>
-                            <td>0.263600</td>
-                            <td class="positive">상승</td>
-                            <td class="positive">23.19%</td>
-                            <td>0.72%</td>
-                            <td>3.50%</td>
-                            <td class="ratio-high">4.89배</td>
-                            <td>₩116,280,356,365</td>
-                        </tr>
-                        <tr class="optimal-row">
-                            <td>2</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/GPSUSDT" target="_blank" class="symbol-link">GPSUSDT</a></td>
-                            <td>0.013309</td>
-                            <td class="positive">상승</td>
-                            <td class="positive">0.13%</td>
-                            <td>0.64%</td>
-                            <td>2.48%</td>
-                            <td class="ratio-medium">3.86배</td>
-                            <td>₩10,207,351,164</td>
-                        </tr>
-                        <tr class="optimal-row">
-                            <td>3</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ICNTUSDT" target="_blank" class="symbol-link">ICNTUSDT</a></td>
-                            <td>0.394100</td>
-                            <td class="positive">상승</td>
-                            <td class="positive">1.88%</td>
-                            <td>0.50%</td>
-                            <td>1.87%</td>
-                            <td class="ratio-medium">3.70배</td>
-                            <td>₩2,220,751,158</td>
-                        </tr>
-                        <tr class="optimal-row">
-                            <td>4</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/AXSUSDT" target="_blank" class="symbol-link">AXSUSDT</a></td>
-                            <td>1.339000</td>
-                            <td class="positive">상승</td>
-                            <td class="positive">3.36%</td>
-                            <td>0.96%</td>
-                            <td>3.33%</td>
-                            <td class="ratio-medium">3.46배</td>
-                            <td>₩114,853,126,157</td>
-                        </tr>
-                        <tr class="optimal-row">
-                            <td>5</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SLPUSDT" target="_blank" class="symbol-link">SLPUSDT</a></td>
-                            <td>0.000643</td>
-                            <td class="positive">상승</td>
-                            <td class="positive">0.49%</td>
-                            <td>1.67%</td>
-                            <td>5.49%</td>
-                            <td class="ratio-medium">3.29배</td>
-                            <td>₩2,693,666,941</td>
-                        </tr>
-                        <tr class="optimal-row">
-                            <td>6</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/SKLUSDT" target="_blank" class="symbol-link">SKLUSDT</a></td>
-                            <td>0.006740</td>
-                            <td class="positive">상승</td>
-                            <td class="positive">2.56%</td>
-                            <td>1.17%</td>
-                            <td>2.35%</td>
-                            <td class="ratio-low">2.00배</td>
-                            <td>₩4,870,203,547</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="table-container">
-            <h2 class="section-title">📊 일반 조건: 기타 패턴 (3개)</h2>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>순위</th>
-                            <th>심볼</th>
-                            <th>현재가</th>
-                            <th>추세</th>
-                            <th>추세%</th>
-                            <th>몸통%</th>
-                            <th>위꼬리%</th>
-                            <th>비율(배)</th>
-                            <th>거래대금</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/DAMUSDT" target="_blank" class="symbol-link">DAMUSDT</a></td>
-                            <td>0.018040</td>
-                            <td class="negative">하락</td>
-                            <td class="negative">-7.35%</td>
-                            <td>0.55%</td>
-                            <td>4.58%</td>
-                            <td class="ratio-high">8.30배</td>
-                            <td>₩861,491,607</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BDXNUSDT" target="_blank" class="symbol-link">BDXNUSDT</a></td>
-                            <td>0.009870</td>
-                            <td class="negative">하락</td>
-                            <td class="negative">-5.15%</td>
-                            <td>0.70%</td>
-                            <td>2.01%</td>
-                            <td class="ratio-low">2.86배</td>
-                            <td>₩700,219,234</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BEATUSDT" target="_blank" class="symbol-link">BEATUSDT</a></td>
-                            <td>0.244000</td>
-                            <td class="negative">하락</td>
-                            <td class="negative">-5.09%</td>
-                            <td>0.85%</td>
-                            <td>1.95%</td>
-                            <td class="ratio-low">2.29배</td>
-                            <td>₩16,649,288,192</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="note">
-                <div class="note-title">⚠️ 투자 유의사항</div>
-                <p>위꼬리 음봉은 <strong>상승 시도 후 매도 압력</strong>을 시사하지만, 절대적인 하락 신호는 아닙니다.</p>
-                <p>추가적인 기술적 분석, 거래량 분석, 추세 확인이 필요합니다.</p>
-                <p>특히 <strong>상승 추세 중</strong> 나타난 위꼬리는 단기 조정 후 재상승 가능성도 있습니다.</p>
-                <p><strong>손절 라인 설정</strong>은 필수입니다.</p>
-            </div>
-            <p>생성 시간: 2026-02-22 08:48:28<br>분석 대상: 바이낸스 USDT 선물<br>데이터: 4시간봉 10개</p>
-            <p>위꼬리 음봉: 9개 (최적: 6개)</p>
-            <p>분석 조건: 위꼬리/몸통 ≥ 2.0배 | 몸통 ≥ 0.5% | 위꼬리 ≥ 1.0% | 거래대금 ≥ $100,000</p>
+    <!-- 헤더 -->
+    <div class="header">
+        <h1>📈 코인선물 롱포지션 4단계 패턴 검출</h1>
+        <p>분석 시간: 2026-02-22 10:52:43 | USD/KRW: 1447.95원</p>
+        <p>일봉(음봉→양봉) → 4시간봉(양봉→양봉) → 1시간봉(양봉) → 거래대금 순차 필터링</p>
+    </div>
+
+    <!-- 네비게이션 -->
+    <div class="nav-section">
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
+            <a href="dashboard.html" class="btn btn-primary">
+                <i class="fas fa-chart-line"></i> 코인선물 종합지수
+            </a>
+            <a href="BinanceMarketOverview.html" class="btn btn-info text-white">
+                <i class="fas fa-globe"></i> 시장 현황
+            </a>
+            <a href="AI_Choice.html" class="btn btn-success">
+                <i class="fas fa-robot"></i> AI 롱포지션 분석
+            </a>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 필터 흐름 -->
+    <div class="funnel">
+        <div class="funnel-step">
+            <span class="label">전체 종목</span>
+            <span class="count">전체</span>
+        </div>
+        <span class="funnel-arrow">→</span>
+        <div class="funnel-step" style="background:#e8f5e9;">
+            <span class="label">1차 (일봉)</span>
+            <span class="count" style="color:#4caf50;">80</span>
+        </div>
+        <span class="funnel-arrow">→</span>
+        <div class="funnel-step" style="background:#e0f7fa;">
+            <span class="label">2차 (4H)</span>
+            <span class="count" style="color:#00bcd4;">14</span>
+        </div>
+        <span class="funnel-arrow">→</span>
+        <div class="funnel-step" style="background:#f1f8e9;">
+            <span class="label">3차 (1H)</span>
+            <span class="count" style="color:#8bc34a;">10</span>
+        </div>
+        <span class="funnel-arrow">→</span>
+        <div class="funnel-step" style="background:#fff3e0;">
+            <span class="label">4차 (TOP20)</span>
+            <span class="count" style="color:#ff9800;">3</span>
+        </div>
+        <span class="funnel-arrow">→</span>
+        <div class="funnel-step" style="background:#f3e5f5;">
+            <span class="label">⭐ 최적</span>
+            <span class="count" style="color:#9c27b0;">3</span>
+        </div>
+    </div>
+
+    <!-- 단계 설명 -->
+    <div class="steps-container">
+        <div class="step-card step1">
+            <div class="step-num">1차</div>
+            <div class="step-title">📅 일봉 2개</div>
+            <div class="step-desc">
+                이전 일봉 <strong>음봉</strong><br>
+                현재 일봉 <strong>양봉</strong><br>
+                일간 반등 전환 확인
+            </div>
+        </div>
+        <div class="step-card step2">
+            <div class="step-num">2차</div>
+            <div class="step-title">⏰ 4시간봉 2개</div>
+            <div class="step-desc">
+                1차 통과 대상<br>
+                <strong>양봉 → 양봉</strong><br>
+                중기 상승 모멘텀 확인
+            </div>
+        </div>
+        <div class="step-card step3">
+            <div class="step-num">3차</div>
+            <div class="step-title">⚡ 1시간봉 1개</div>
+            <div class="step-desc">
+                2차 통과 대상<br>
+                현재봉 <strong>양봉</strong><br>
+                단기 상승 모멘텀 확인
+            </div>
+        </div>
+        <div class="step-card step4">
+            <div class="step-num">4차</div>
+            <div class="step-title">💰 거래대금 TOP20</div>
+            <div class="step-desc">
+                3차 통과 대상<br>
+                <strong>24시간 거래대금 상위 20개</strong><br>
+                유동성 최우선 선별
+            </div>
+        </div>
+    </div>
+
+    <!-- 통계 카드 -->
+    <div class="stats-container">
+        <div class="stats-grid">
+            <div class="stat-card s1">
+                <div class="stat-number">80</div>
+                <div class="stat-label">1차 통과<br>(일봉 음봉→양봉)</div>
+            </div>
+            <div class="stat-card s2">
+                <div class="stat-number">14</div>
+                <div class="stat-label">2차 통과<br>(4H 양봉→양봉)</div>
+            </div>
+            <div class="stat-card s3">
+                <div class="stat-number">10</div>
+                <div class="stat-label">3차 통과<br>(1H 양봉)</div>
+            </div>
+            <div class="stat-card s4">
+                <div class="stat-number">3</div>
+                <div class="stat-label">4차 통과<br>(거래대금 TOP20, 최소 50억이상)</div>
+            </div>
+            <div class="stat-card sopt">
+                <div class="stat-number">3</div>
+                <div class="stat-label">⭐ 최적<br>(1~4차 모두 통과)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 테이블 -->
+    
+        <div class="table-container">
+            <h2 class="section-title">⭐ 최적 조건: 1~4차 모두 통과 (3개)</h2>
+            <div class="note"><div class="note-title">💡 투자 포인트</div><p>일봉 반등전환 + 4시간봉 연속 양봉 + 1시간봉 양봉 + 거래대금 TOP20 동시 충족. 롱포지션 최우선 진입 검토 종목.</p></div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순위</th><th>심볼</th><th>현재가</th>
+                            <th>일봉D1%</th><th>일봉D2%</th>
+                            <th>4H-C1%</th><th>4H-C2%</th><th>종합%</th>
+                            <th>3차</th><th>4차</th><th>거래대금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <tr class="optimal-row">
+                <td>1</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/JTOUSDT"
+                       target="_blank" class="symbol-link">JTOUSDT</a>
+                </td>
+                <td>0.311600</td>
+                <td class="negative">-2.29%</td>
+                <td class="positive">+1.43%</td>
+                <td class="positive">+0.79%</td>
+                <td class="positive">+1.50%</td>
+                <td class="positive">+1.43%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">⭐</td>
+                <td>₩21,278,412,512</td>
+            </tr>
+            <tr class="optimal-row">
+                <td>2</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/BASUSDT"
+                       target="_blank" class="symbol-link">BASUSDT</a>
+                </td>
+                <td>0.005077</td>
+                <td class="negative">-6.84%</td>
+                <td class="positive">+0.20%</td>
+                <td class="positive">+0.06%</td>
+                <td class="positive">+0.16%</td>
+                <td class="negative">-6.42%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">⭐</td>
+                <td>₩7,535,144,089</td>
+            </tr>
+            <tr class="optimal-row">
+                <td>3</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/KITEUSDT"
+                       target="_blank" class="symbol-link">KITEUSDT</a>
+                </td>
+                <td>0.224950</td>
+                <td class="negative">-15.91%</td>
+                <td class="positive">+1.95%</td>
+                <td class="positive">+4.88%</td>
+                <td class="positive">+1.93%</td>
+                <td class="negative">-7.15%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">⭐</td>
+                <td>₩190,693,785,255</td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+    
+        <div class="table-container">
+            <h2 class="section-title">📊 3차 통과: 1~3차 통과 (거래대금 TOP20 미포함) (7개)</h2>
+            <div class="note"><div class="note-title">💡 투자 포인트</div><p>단기 상승 모멘텀 확인됐으나 거래대금 TOP20 외 종목. 유동성 확인 후 진입 검토.</p></div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순위</th><th>심볼</th><th>현재가</th>
+                            <th>일봉D1%</th><th>일봉D2%</th>
+                            <th>4H-C1%</th><th>4H-C2%</th><th>종합%</th>
+                            <th>3차</th><th>4차</th><th>거래대금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <tr class="third-row">
+                <td>1</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/AERGOUSDT"
+                       target="_blank" class="symbol-link">AERGOUSDT</a>
+                </td>
+                <td>0.056640</td>
+                <td class="negative">-1.03%</td>
+                <td class="positive">+1.76%</td>
+                <td class="positive">+0.04%</td>
+                <td class="positive">+1.51%</td>
+                <td class="positive">+2.27%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩759,328,986</td>
+            </tr>
+            <tr class="third-row">
+                <td>2</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/SANTOSUSDT"
+                       target="_blank" class="symbol-link">SANTOSUSDT</a>
+                </td>
+                <td>1.921000</td>
+                <td class="negative">-0.62%</td>
+                <td class="positive">+0.16%</td>
+                <td class="positive">+1.37%</td>
+                <td class="positive">+0.10%</td>
+                <td class="positive">+1.01%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩1,436,766,337</td>
+            </tr>
+            <tr class="third-row">
+                <td>3</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/B2USDT"
+                       target="_blank" class="symbol-link">B2USDT</a>
+                </td>
+                <td>0.723000</td>
+                <td class="negative">-0.36%</td>
+                <td class="positive">+0.46%</td>
+                <td class="positive">+0.13%</td>
+                <td class="positive">+0.44%</td>
+                <td class="positive">+0.67%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩945,539,993</td>
+            </tr>
+            <tr class="third-row">
+                <td>4</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/IDOLUSDT"
+                       target="_blank" class="symbol-link">IDOLUSDT</a>
+                </td>
+                <td>0.021670</td>
+                <td class="negative">-1.87%</td>
+                <td class="positive">+0.79%</td>
+                <td class="positive">+0.23%</td>
+                <td class="positive">+0.79%</td>
+                <td class="negative">-0.06%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩499,826,178</td>
+            </tr>
+            <tr class="third-row">
+                <td>5</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/XVSUSDT"
+                       target="_blank" class="symbol-link">XVSUSDT</a>
+                </td>
+                <td>2.950000</td>
+                <td class="negative">-2.39%</td>
+                <td class="positive">+0.27%</td>
+                <td class="positive">+0.44%</td>
+                <td class="positive">+0.34%</td>
+                <td class="negative">-1.33%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩1,437,357,222</td>
+            </tr>
+            <tr class="third-row">
+                <td>6</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/PARTIUSDT"
+                       target="_blank" class="symbol-link">PARTIUSDT</a>
+                </td>
+                <td>0.103450</td>
+                <td class="negative">-3.84%</td>
+                <td class="positive">+0.40%</td>
+                <td class="positive">+1.16%</td>
+                <td class="positive">+0.43%</td>
+                <td class="negative">-1.85%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩4,781,628,783</td>
+            </tr>
+            <tr class="third-row">
+                <td>7</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/BANKUSDT"
+                       target="_blank" class="symbol-link">BANKUSDT</a>
+                </td>
+                <td>0.038580</td>
+                <td class="negative">-5.96%</td>
+                <td class="positive">+0.21%</td>
+                <td class="positive">+0.13%</td>
+                <td class="positive">+0.21%</td>
+                <td class="negative">-5.42%</td>
+                <td style="font-size:1.2em">✅</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩1,776,578,789</td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+    
+        <div class="table-container">
+            <h2 class="section-title">📋 2차 통과: 1~2차 통과 (3차 미통과) (4개)</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순위</th><th>심볼</th><th>현재가</th>
+                            <th>일봉D1%</th><th>일봉D2%</th>
+                            <th>4H-C1%</th><th>4H-C2%</th><th>종합%</th>
+                            <th>3차</th><th>4차</th><th>거래대금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <tr class="">
+                <td>1</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/XNYUSDT"
+                       target="_blank" class="symbol-link">XNYUSDT</a>
+                </td>
+                <td>0.004506</td>
+                <td class="negative">-13.23%</td>
+                <td class="positive">+0.31%</td>
+                <td class="positive">+0.13%</td>
+                <td class="positive">+0.29%</td>
+                <td class="negative">-12.49%</td>
+                <td style="font-size:1.2em">❌</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩7,688,447,402</td>
+            </tr>
+            <tr class="">
+                <td>2</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/OMUSDT"
+                       target="_blank" class="symbol-link">OMUSDT</a>
+                </td>
+                <td>0.066230</td>
+                <td class="negative">-2.74%</td>
+                <td class="positive">+2.66%</td>
+                <td class="positive">+1.16%</td>
+                <td class="positive">+2.57%</td>
+                <td class="positive">+3.65%</td>
+                <td style="font-size:1.2em">❌</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩24,581,625,612</td>
+            </tr>
+            <tr class="">
+                <td>3</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/GLMUSDT"
+                       target="_blank" class="symbol-link">GLMUSDT</a>
+                </td>
+                <td>0.167810</td>
+                <td class="negative">-0.07%</td>
+                <td class="positive">+0.38%</td>
+                <td class="positive">+0.02%</td>
+                <td class="positive">+0.33%</td>
+                <td class="positive">+0.66%</td>
+                <td style="font-size:1.2em">❌</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩4,382,467,396</td>
+            </tr>
+            <tr class="">
+                <td>4</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/USDCUSDT"
+                       target="_blank" class="symbol-link">USDCUSDT</a>
+                </td>
+                <td>0.999767</td>
+                <td class="negative">-0.01%</td>
+                <td class="positive">+0.00%</td>
+                <td class="positive">+0.00%</td>
+                <td class="positive">+0.00%</td>
+                <td class="positive">+0.00%</td>
+                <td style="font-size:1.2em">❌</td>
+                <td style="font-size:1.2em">❌</td>
+                <td>₩2,726,515,844</td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+
+    <!-- 푸터 -->
+    <div class="footer">
+        <div class="note" style="background:#1a3a1a; border-color:#4caf50; margin-bottom:15px;">
+            <div class="note-title" style="color:#81c784;">⚠️ 투자 유의사항</div>
+            <p style="color:#aaa;">본 분석은 참고용이며, 실제 투자 시 추가 분석·리스크 관리가 필요합니다.</p>
+            <p style="color:#aaa;">패턴 분석만으로 투자 판단을 내리지 마시고 개별 차트 및 뉴스를 반드시 확인하세요.</p>
+        </div>
+        <p>생성: 2026-02-22 10:52:43 | 바이낸스 USDT 선물 전종목</p>
+        <p>1차: 80개 → 2차: 14개 → 3차: 10개 → 4차: 3개 | ⭐ 최적: 3개</p>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
