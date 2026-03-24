@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>롱포지션 3단계 패턴 AI 분석 결과</title>
+    <title>롱포지션 음음양양 패턴 AI 분석 결과</title>
     <script src="https://s3.tradingview.com/tv.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
     <style>
@@ -32,10 +32,10 @@
                    border-radius:12px;transition:all 0.3s ease;font-weight:700;
                    font-size:1.5rem;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
         .nav-link.dashboard{background:linear-gradient(135deg,#667eea,#764ba2);}
-        .nav-link.market   {background:linear-gradient(135deg,#f093fb,#f5576c);}
         .nav-link.pattern  {background:linear-gradient(135deg,#4facfe,#00f2fe);}
         .nav-link.trading  {background:linear-gradient(135deg,#43e97b,#38f9d7);}
-        .nav-link:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.3);filter:brightness(1.1);}
+        .nav-link:hover{transform:translateY(-3px);
+                         box-shadow:0 8px 25px rgba(0,0,0,0.3);filter:brightness(1.1);}
         .analysis-summary{background:var(--card-bg);border-radius:15px;padding:2rem;
                             margin-bottom:2rem;box-shadow:0 8px 25px rgba(0,0,0,0.1);
                             border:1px solid var(--border-color);}
@@ -45,62 +45,67 @@
                     border-radius:15px;text-align:center;border:2px solid var(--border-color);
                     transition:transform 0.3s ease;}
         .stat-card:hover{transform:translateY(-5px);}
-        .stat-value{font-size:2.2rem;font-weight:bold;color:var(--accent-color);margin-bottom:0.5rem;}
+        .stat-value{font-size:2.2rem;font-weight:bold;color:var(--accent-color);
+                     margin-bottom:0.5rem;}
         .stat-label{color:var(--secondary-color);font-size:1.5rem;font-weight:500;}
         .chart-section{background:var(--card-bg);border-radius:15px;padding:2rem;
-                         margin-bottom:2rem;box-shadow:0 8px 25px rgba(0,0,0,0.1);
-                         border:1px solid var(--border-color);}
+                        margin-bottom:2rem;box-shadow:0 8px 25px rgba(0,0,0,0.1);
+                        border:1px solid var(--border-color);}
         .chart-header{display:flex;justify-content:space-between;align-items:center;
-                        margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
+                       margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
         .chart-btn{padding:0.8rem 1.5rem;border:none;border-radius:8px;cursor:pointer;
                     font-weight:600;font-size:1.5rem;transition:all 0.3s ease;
                     text-decoration:none;display:inline-block;text-align:center;}
         .binance-btn{background:linear-gradient(135deg,#f0b90b,#f8d12f);color:#1e2329;}
-        .binance-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(240,185,11,0.4);}
+        .binance-btn:hover{transform:translateY(-2px);
+                            box-shadow:0 4px 12px rgba(240,185,11,0.4);}
         .chart-container{height:800px;margin-top:1.5rem;border-radius:10px;overflow:hidden;
-                           box-shadow:0 5px 15px rgba(0,0,0,0.2);background:var(--chart-bg);}
+                          box-shadow:0 5px 15px rgba(0,0,0,0.2);background:var(--chart-bg);}
         .history-section{background:var(--card-bg);border-radius:15px;padding:2rem;
-                           margin-bottom:2rem;box-shadow:0 8px 25px rgba(0,0,0,0.1);
-                           border:1px solid var(--border-color);}
+                          margin-bottom:2rem;box-shadow:0 8px 25px rgba(0,0,0,0.1);
+                          border:1px solid var(--border-color);}
         .history-table{width:100%;border-collapse:collapse;margin-top:1.5rem;
-                         background:white;border-radius:10px;overflow:hidden;
-                         box-shadow:0 3px 15px rgba(0,0,0,0.1);}
+                        background:white;border-radius:10px;overflow:hidden;
+                        box-shadow:0 3px 15px rgba(0,0,0,0.1);}
         .history-table th,.history-table td{padding:1rem;text-align:left;
-                                              border-bottom:1px solid var(--border-color);}
-        .history-table th{background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));
-                            color:white;font-weight:600;font-size:1.3rem;text-transform:uppercase;}
+                                             border-bottom:1px solid var(--border-color);}
+        .history-table th{background:linear-gradient(135deg,var(--primary-color),
+                            var(--secondary-color));color:white;font-weight:600;
+                            font-size:1.3rem;text-transform:uppercase;}
         .history-table tr:hover{background:#f8fff8;}
         .symbol-link{color:var(--accent-color);text-decoration:none;font-weight:bold;
-                       padding:0.3rem 0.6rem;border-radius:5px;transition:all 0.3s ease;}
+                      padding:0.3rem 0.6rem;border-radius:5px;transition:all 0.3s ease;}
         .symbol-link:hover{background:var(--accent-color);color:white;}
         .risk-badge{padding:0.4rem 0.8rem;border-radius:20px;font-size:1.3rem;
-                      font-weight:bold;text-transform:uppercase;}
-        .risk-low    {background:#d4edda;color:#155724;border:1px solid #c3e6cb;}
-        .risk-medium {background:#fff3cd;color:#856404;border:1px solid #ffeaa7;}
-        .risk-high   {background:#f8d7da;color:#721c24;border:1px solid #f5c6cb;}
-        .risk-profit {background:linear-gradient(135deg,#28a745,#20c997);color:white;
-                        border:2px solid #155724;font-weight:900;}
+                     font-weight:bold;text-transform:uppercase;}
+        .risk-low   {background:#d4edda;color:#155724;border:1px solid #c3e6cb;}
+        .risk-medium{background:#fff3cd;color:#856404;border:1px solid #ffeaa7;}
+        .risk-high  {background:#f8d7da;color:#721c24;border:1px solid #f5c6cb;}
         .tracking-result{padding:0.5rem 1rem;border-radius:8px;font-weight:bold;
-                           font-size:1.2rem;text-align:center;}
-        .tracking-profit    {background:linear-gradient(135deg,#d4edda,#c3e6cb);color:#155724;border:2px solid #28a745;}
-        .tracking-loss      {background:linear-gradient(135deg,#f8d7da,#f5c6cb);color:#721c24;border:2px solid #dc3545;}
+                          font-size:1.2rem;text-align:center;}
+        .tracking-profit {background:linear-gradient(135deg,#d4edda,#c3e6cb);
+                           color:#155724;border:2px solid #28a745;}
+        .tracking-loss   {background:linear-gradient(135deg,#f8d7da,#f5c6cb);
+                           color:#721c24;border:2px solid #dc3545;}
         .tracking-pending{background:linear-gradient(135deg,#fff3cd,#ffeaa7);
-                            color:#856404;border:2px solid #ffc107;}
+                           color:#856404;border:2px solid #ffc107;}
         .tracking-failed {background:#e9ecef;color:#6c757d;border:2px solid #adb5bd;}
         .return-stats{font-size:1.1rem;margin-top:0.3rem;}
         .best-return {color:var(--success-color);font-weight:bold;}
         .worst-return{color:var(--danger-color); font-weight:bold;}
         .warning-box {background:linear-gradient(135deg,#fff3cd,#ffeaa7);
-                        border:2px solid #ffc107;border-radius:15px;padding:2rem;margin:2rem 0;
-                        box-shadow:0 5px 20px rgba(255,193,7,0.2);}
+                       border:2px solid #ffc107;border-radius:15px;padding:2rem;
+                       margin:2rem 0;box-shadow:0 5px 20px rgba(255,193,7,0.2);}
         .warning-title{color:#856404;font-weight:bold;margin-bottom:1rem;font-size:1.2rem;}
         .warning-text {color:#856404;line-height:1.8;}
-        .section-title{font-size:1.8rem;margin-bottom:1rem;color:var(--primary-color);font-weight:700;}
+        .section-title{font-size:1.8rem;margin-bottom:1rem;
+                        color:var(--primary-color);font-weight:700;}
         .tracking-info{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);
-                         border:2px solid #4caf50;border-radius:12px;padding:1.5rem;
-                         margin-top:1.5rem;box-shadow:0 3px 10px rgba(76,175,80,0.2);}
-        .tracking-info-title{color:#1b5e20;font-weight:bold;margin-bottom:0.5rem;font-size:1.5rem;}
-        .tracking-info-text {color:#2e7d32;line-height:1.6;font-size:1.4rem;}
+                        border:2px solid #4caf50;border-radius:12px;padding:1.5rem;
+                        margin-top:1.5rem;box-shadow:0 3px 10px rgba(76,175,80,0.2);}
+        .tracking-info-title{color:#1b5e20;font-weight:bold;
+                              margin-bottom:0.5rem;font-size:1.5rem;}
+        .tracking-info-text{color:#2e7d32;line-height:1.6;font-size:1.4rem;}
         .positive{color:var(--success-color);}
         .negative{color:var(--danger-color);}
     </style>
@@ -108,27 +113,28 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1>📈 AI 롱포지션 3단계 패턴 분석</h1>
+        <h1>📈 AI 롱포지션 음음양양 패턴 분석</h1>
         <div class="subtitle">
-            1H 역배열(200MA&gt;50MA&gt;현재가) + 음봉→양봉→양봉(진행) •
-            3시간 성과 추적 • 2026-03-24 22:50:37
+            1H 역배열(200MA&gt;50MA&gt;현재가) + 음봉→음봉→양봉→양봉(진행) •
+            3시간 성과 추적 • 2026-03-24 23:37:27
         </div>
     </div>
     <div class="nav-menu">
         <div class="nav-links">
-            <a href="bullking_dashboard.html"            class="nav-link dashboard">📊 불단왕 거시지표</a>
-            <a href="CandlePatternAnalysis.html" class="nav-link pattern">📈 롱포지션 3단계 패턴 검출 현황</a>
-            <a href="Trading_result.html"        class="nav-link trading">📈 코인선물 롱포지션 매매 결과 분석</a>
+            <a href="bullking_dashboard.html"    class="nav-link dashboard">📊 불단왕 거시지표</a>
+            <a href="CandlePatternAnalysis.html" class="nav-link pattern">📈 롱포지션 패턴 검출 현황</a>
+            <a href="Trading_result.html"        class="nav-link trading">📈 매매 결과 분석</a>
         </div>
     </div>
     
             <div class="analysis-summary">
                 <h2 class="section-title">📈 분석 대상 종목</h2>
                 <div class="warning-box" style="margin-top:1.5rem;">
-                    <div class="warning-title">⏳ 현재 감지된 3단계 패턴이 없습니다</div>
+                    <div class="warning-title">⏳ 현재 감지된 패턴이 없습니다</div>
                     <div class="warning-text">
-                        1H 역배열(200MA &gt; 50MA &gt; 현재가) + 음봉→양봉→양봉 패턴이<br>
-                        현재 조건을 만족하는 종목이 없습니다.<br><br>
+                        1H 역배열(200MA &gt; 50MA &gt; 현재가) +
+                        음봉→음봉→양봉→양봉 패턴이<br>
+                        현재 조건을 만족하는 종목이 없습니다.
                     </div>
                 </div>
             </div>
@@ -156,18 +162,22 @@
                 "enable_publishing":false,"hide_top_toolbar":false,
                 "hide_legend":false,"save_image":false,
                 "container_id":"tradingview_chart",
-                "studies":["RSI@tv-basicstudies","MASimple@tv-basicstudies","Volume@tv-basicstudies"]
+                "studies":["RSI@tv-basicstudies",
+                           "MASimple@tv-basicstudies",
+                           "Volume@tv-basicstudies"]
             });
         </script>
     
         <div class="history-section">
-            <h2 class="section-title">📋 3단계 롱반등 패턴 AI 3시간 성과 추적</h2>
+            <h2 class="section-title">📋 음음양양 패턴 AI 3시간 성과 추적</h2>
             <div class="tracking-info">
                 <div class="tracking-info-title">📊 추적 성과 요약</div>
                 <div class="tracking-info-text">
-                    <strong>승률:</strong> 66.7% (2/3) |
+                    <strong>승률:</strong>
+                    66.7% (2/3) |
                     <strong>누적 수익률:</strong>
-                    <span class="positive">+0.63%</span> |
+                    <span class="positive">
+                        +0.63%</span> |
                     <strong>총 추적 건수:</strong> 3건
                 </div>
             </div>
@@ -186,7 +196,8 @@
                     <tbody>
                 <tr style="font-size:1.2rem;">
                     <td style="font-weight:bold;">2026-03-24 (화) 19:50</td>
-                    <td><a href="https://www.binance.com/en/futures/ASTER_USDT" target="_blank" class="symbol-link">ASTERUSDT</a></td>
+                    <td><a href="https://www.binance.com/en/futures/ASTER_USDT" target="_blank"
+                           class="symbol-link">ASTERUSDT</a></td>
                     <td style="font-weight:bold;">32</td>
                     <td style="font-weight:bold;">31.8%</td>
                     <td><div class="tracking-result tracking-loss">-0.30%</div></td>
@@ -195,7 +206,8 @@
                 </tr>
                 <tr style="font-size:1.2rem;">
                     <td style="font-weight:bold;">2026-03-24 (화) 16:50</td>
-                    <td><a href="https://www.binance.com/en/futures/FARTCOIN_USDT" target="_blank" class="symbol-link">FARTCOINUSDT</a></td>
+                    <td><a href="https://www.binance.com/en/futures/FARTCOIN_USDT" target="_blank"
+                           class="symbol-link">FARTCOINUSDT</a></td>
                     <td style="font-weight:bold;">27</td>
                     <td style="font-weight:bold;">27.3%</td>
                     <td><div class="tracking-result tracking-profit">+0.22%</div></td>
@@ -204,7 +216,8 @@
                 </tr>
                 <tr style="font-size:1.2rem;">
                     <td style="font-weight:bold;">2026-03-24 (화) 15:50</td>
-                    <td><a href="https://www.binance.com/en/futures/PAXG_USDT" target="_blank" class="symbol-link">PAXGUSDT</a></td>
+                    <td><a href="https://www.binance.com/en/futures/PAXG_USDT" target="_blank"
+                           class="symbol-link">PAXGUSDT</a></td>
                     <td style="font-weight:bold;">36</td>
                     <td style="font-weight:bold;">35.9%</td>
                     <td><div class="tracking-result tracking-profit">+0.71%</div></td>
@@ -223,23 +236,25 @@
             name:'일별 누적 수익률'
         };
         const line = {
-            type:'scatter',mode:'lines+markers',x:["2026-03-24"],y:[0.63],
+            type:'scatter',mode:'lines+markers',
+            x:["2026-03-24"],y:[0.63],
             line:{color:'rgba(76,175,80,0.6)',width:2,dash:'dot'},
             marker:{size:6,color:'rgba(76,175,80,0.8)'},
             name:'누적 라인'
         };
         Plotly.newPlot('cumulativeReturnChart',[candlestick,line],{
-            title:{text:'3단계 롱반등 패턴 AI 누적 수익률 차트',font:{size:18}},
+            title:{text:'음음양양 패턴 AI 누적 수익률 차트',font:{size:18}},
             xaxis:{title:'날짜',rangeslider:{visible:false},type:'date'},
             yaxis:{title:'누적 수익률 (%)',ticksuffix:'%',
                     zeroline:true,zerolinecolor:'#999',zerolinewidth:2},
             showlegend:true,height:500
         },{responsive:true,displayModeBar:true,displaylogo:false});</script>
-        <div class="warning-box">
+    <div class="warning-box">
         <div class="warning-title">🚨 CRITICAL INVESTMENT WARNING 🚨</div>
         <div class="warning-text">
             <strong>이 시스템은 교육 목적으로만 제공됩니다:</strong><br><br>
-            🟢 <strong>3단계 롱패턴: 1H 역배열(200MA&gt;50MA&gt;현재가) + 음봉→양봉→양봉(진행) 반등 포착</strong><br>
+            🟢 <strong>음음양양 패턴: 1H 역배열(200MA&gt;50MA&gt;현재가) +
+                음봉→음봉→양봉→양봉(진행) 반등 포착</strong><br>
             📊 <strong>3시간 성과 추적 시스템: 진입 후 3시간 경과 기준 수익률 측정</strong><br>
             🔴 <strong>AI 분석도 절대 100% 정확하지 않습니다</strong><br>
             🔴 <strong>과거 데이터가 미래 수익을 보장하지 않습니다</strong>
