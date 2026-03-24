@@ -62,7 +62,7 @@
     <div class="header">
         <h1>🤖 자동매매 결과 (롱포지션)</h1>
         <div class="subtitle">AI 코인선물 롱포지션 자동매매 시스템 — 3시간 추적</div>
-        <div class="subtitle">생성 시간: 2026-03-25 06:51:04</div>
+        <div class="subtitle">생성 시간: 2026-03-25 07:51:10</div>
     </div>
 
     <div class="nav-menu">
@@ -75,35 +75,35 @@
 
     <div class="stats-grid">
         <div class="stat-card">
-            <div class="stat-value">4</div>
+            <div class="stat-value">5</div>
             <div class="stat-label">총 거래 횟수</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value positive">2</div>
+            <div class="stat-value positive">3</div>
             <div class="stat-label">수익 거래</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">50.0%</div>
+            <div class="stat-value">60.0%</div>
             <div class="stat-label">승률</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value negative">-16.04%</div>
+            <div class="stat-value negative">-11.14%</div>
             <div class="stat-label">누적 수익률</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value negative">-4.01%</div>
+            <div class="stat-value negative">-2.23%</div>
             <div class="stat-label">평균 수익률</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value negative">$-16.04</div>
+            <div class="stat-value negative">$-11.14</div>
             <div class="stat-label">누적 PNL</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">$359.76</div>
+            <div class="stat-value">$364.50</div>
             <div class="stat-label">총 잔액</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">$262.89</div>
+            <div class="stat-value">$364.50</div>
             <div class="stat-label">사용 가능 잔액</div>
         </div>
     </div>
@@ -129,12 +129,12 @@
                 <td>2026-03-25 (수) 04:51</td>
                 <td><a href="https://www.binance.com/en/futures/XRPUSDT" class="symbol-link" target="_blank">XRPUSDT</a></td>
                 <td>$1.388500</td>
-                <td>-</td>
-                <td class="">-</td>
-                <td class="">-</td>
+                <td>$1.411200</td>
+                <td class="pnl-positive">+4.90%</td>
+                <td class="pnl-positive">$+4.90</td>
                 <td>$100.0</td>
                 <td>3x</td>
-                <td><span class="status-badge status-open">대기중</span></td>
+                <td><span class="status-badge status-closed">완료</span></td>
             </tr>
 
             <tr>
@@ -190,14 +190,14 @@
 <script>
         const candlestick = {
             type:'candlestick', x:["2026-03-24", "2026-03-25"],
-            open:[0, 2.17], high:[3.67, 2.17], low:[0, -16.04], close:[2.17, -16.04],
+            open:[0, 2.17], high:[3.67, 2.17], low:[0, -16.04], close:[2.17, -11.14],
             increasing:{line:{color:'#26a69a',width:2},fillcolor:'#26a69a'},
             decreasing:{line:{color:'#ef5350',width:2},fillcolor:'#ef5350'},
             name:'일별 누적 수익률'
         };
         const line = {
             type:'scatter', mode:'lines+markers',
-            x:["2026-03-24", "2026-03-25"], y:[2.17, -16.04],
+            x:["2026-03-24", "2026-03-25"], y:[2.17, -11.14],
             line:{color:'rgba(15,96,15,0.6)',width:2,dash:'dot'},
             marker:{size:6,color:'rgba(15,96,15,0.8)'},
             name:'누적 라인'
