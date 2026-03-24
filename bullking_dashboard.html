@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>불단왕 거시판단 대시보드 v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://s3.tradingview.com/tv.js"></script>
+<style>
+/* ══ 흰 배경 라이트 테마 ════════════════════════════════ */
+:root{
+  --bg       :#f8f9fa; --card    :#ffffff; --border :#e0e6ed;
+  --border2  :#c8d6e5;
+  --green    :#28a745; --red     :#dc3545; --yellow :#e67e00;
+  --text     :#2c3e50; --muted   :#6c757d; --sub    :#495057;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Noto Sans KR',sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.6;font-size:14px;
+}
+.container{
+  max-width:1440px;margin:0 auto;padding:20px 24px;
+}
+
+/* ── 헤더 ── */
+.header{
+  background:linear-gradient(135deg,#0d2b0d,#1a4a1a);
+  color:white;padding:2rem;border-radius:15px;
+  margin-bottom:2rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  border:1px solid #2d4a2d;
+  position:relative;overflow:hidden;
+}
+.header::after{
+  content:'';position:absolute;top:0;left:-200%;
+  width:60%;height:3px;
+  background:linear-gradient(90deg,transparent,#00ff9d88,transparent);
+  animation:scan 6s linear infinite;
+}
+@keyframes scan{to{left:300%}}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 14px rgba(40,167,69,.55)}
+  50%     {box-shadow:0 0 28px rgba(40,167,69,.95)}
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.logo{width:46px;height:46px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,#28a745,#20c997);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;animation:glow 3s ease-in-out infinite;}
+.header h1{font-family:Rajdhani,sans-serif;font-size:2.5rem;font-weight:700;
+  margin-bottom:.4rem;text-shadow:0 0 20px rgba(40,167,69,.4);color:#fff;}
+.header .subtitle{font-size:1.15rem;opacity:.88;letter-spacing:.4px;color:#d4edda;}
+.header-right{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.live-dot{width:8px;height:8px;border-radius:50%;
+  background:#00ff9d;box-shadow:0 0 8px #00ff9d;
+  animation:blink 1.5s ease-in-out infinite;}
+.live-txt{font-family:Rajdhani,sans-serif;font-size:12px;
+  color:#00ff9d;letter-spacing:2px;font-weight:700;}
+.timestamp{font-size:11px;color:#a8d5b5;
+  background:rgba(0,0,0,.25);padding:5px 12px;
+  border-radius:6px;border:1px solid #2d4a2d;}
+
+/* ── 네비 ── */
+.nav-menu{
+  background:var(--card);border-radius:15px;padding:1.5rem;
+  margin-bottom:2rem;box-shadow:0 5px 20px rgba(0,0,0,.08);
+  border:1px solid var(--border);
+}
+.nav-links{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;}
+.nav-link{
+  padding:1rem 2rem;color:white;text-decoration:none;
+  border-radius:12px;transition:all .3s ease;
+  font-weight:700;font-size:1.35rem;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+.nav-link.dashboard{background:linear-gradient(135deg,#667eea,#764ba2);}
+.nav-link.market   {background:linear-gradient(135deg,#f093fb,#f5576c);}
+.nav-link.pattern  {background:linear-gradient(135deg,#4facfe,#00f2fe);}
+.nav-link.trading  {background:linear-gradient(135deg,#43e97b,#38f9d7);}
+.nav-link:hover{transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,.25);filter:brightness(1.05);}
+
+/* ── 섹션 카드 ── */
+.section-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;padding:2rem;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+  animation:fadeUp .5s ease both;
+  transition:border-color .2s,box-shadow .2s;
+}
+.section-card:hover{
+  border-color:var(--border2);
+  box-shadow:0 8px 30px rgba(0,0,0,.12);
+}
+.section-title{
+  font-family:Rajdhani,sans-serif;
+  font-size:1.8rem;font-weight:700;color:var(--text);
+}
+
+/* ── 테이블 hover ── */
+table tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
+table tbody tr:hover{background:#f0fff4;}
+table tbody td{vertical-align:middle;}
+
+/* ── 반응형 ── */
+@media(max-width:700px){
+  .header h1{font-size:1.8rem;}
+  .nav-link{font-size:1.1rem;padding:.7rem 1.2rem;}
+}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:#f1f3f5;}
+::-webkit-scrollbar-thumb{background:#ced4da;border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ── 헤더 ── -->
+<div class="header">
+  <div class="header-inner">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div class="logo">🔫</div>
+      <div>
+        <h1>불단왕 거시판단 대시보드</h1>
+        <div class="subtitle">
+          TOTAL3 · BTC.D · USDT.D &nbsp;|&nbsp;
+          1H 봉 3개 추세 분석 &nbsp;|&nbsp;
+          2개↑ 일치 = 매수신호 &nbsp;|&nbsp;
+          일봉(D) SMA50 / SMA200
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="live-dot"></div>
+      <span class="live-txt">LIVE</span>
+      <span class="timestamp">📅 2026-03-24 22:36:53</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── 네비게이션 ── -->
+<div class="nav-menu">
+  <div class="nav-links">
+    <a href="CandlePatternAnalysis.html" class="nav-link pattern">📈 롱포지션 패턴 검출</a>
+    <a href="AI_Choice.html"             class="nav-link trading">🤖 AI 종목 선택</a>
+  </div>
+</div>
+
+<!-- ── 지표 현황 테이블 ── -->
+
+<div class="section-card" style="margin-bottom:2rem;">
+  <h2 class="section-title" style="margin-bottom:1.5rem;">
+    📊 거시지표 현황
+    <span style="font-size:1.2rem;color:#8b949e;font-weight:400;">— 1시간봉 기준 최근 3봉 추세</span>
+  </h2>
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr style="background:linear-gradient(135deg,#0d2b0d,#1a4a1a);
+                   border-bottom:2px solid #28a745;">
+          <th style="padding:1rem 1.2rem;text-align:left;color:#f0f6fc;
+                     font-size:1.3rem;font-weight:700;white-space:nowrap;">지표</th>
+          <th style="padding:1rem .8rem;text-align:right;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">현재가</th>
+          <th style="padding:1rem .8rem;text-align:right;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">봉1 변동률</th>
+          <th style="padding:1rem .8rem;text-align:right;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">봉2 변동률</th>
+          <th style="padding:1rem .8rem;text-align:right;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">봉3 (최신)</th>
+          <th style="padding:1rem .8rem;text-align:center;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">추세</th>
+          <th style="padding:1rem .8rem;text-align:right;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">50MA</th>
+          <th style="padding:1rem .8rem;text-align:right;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">↔50MA (%)</th>
+          <th style="padding:1rem .8rem;text-align:right;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">200MA</th>
+          <th style="padding:1rem .8rem;text-align:right;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">↔200MA (%)</th>
+          <th style="padding:1rem .8rem;text-align:center;color:#f0f6fc;
+                     font-size:1.2rem;white-space:nowrap;">신호</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:1rem 1.2rem;">
+            <div style="font-weight:700;font-size:1.45rem;color:#28a745;
+                        font-family:Rajdhani,sans-serif;letter-spacing:.5px;">TOTAL3</div>
+            <div style="font-size:1.1rem;color:#6c757d;margin-top:2px;">알트코인 시가총액 (BTC·ETH·스테이블 제외)</div>
+          </td>
+          <td style="text-align:right;font-weight:700;color:#212529;
+                     font-family:Rajdhani,sans-serif;font-size:1.3rem;
+                     padding:.9rem .8rem;white-space:nowrap;">721.6B</td>
+          <td style="text-align:right;color:#dc3545;font-weight:700;background:rgba(220,53,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▼ 0.010%</td>
+          <td style="text-align:right;color:#dc3545;font-weight:700;background:rgba(220,53,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▼ 0.111%</td>
+          <td style="text-align:right;color:#dc3545;font-weight:700;background:rgba(220,53,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▼ 0.363%</td>
+          <td style="text-align:center;padding:.8rem .6rem;"><span style="padding:.3rem .85rem;border-radius:20px;font-size:1.15rem;font-weight:700;background:linear-gradient(135deg,#dc3545,#c82333);color:white;">▼ 하락</span></td>
+          <td style="text-align:right;color:#212529;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">717.9B</td>
+          <td style="text-align:right;color:#28a745;font-weight:600;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">+0.517%</td>
+          <td style="text-align:right;color:#212529;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">728.4B</td>
+          <td style="text-align:right;color:#dc3545;font-weight:600;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">-0.925%</td>
+          <td style="text-align:center;padding:.8rem .6rem;"><span style="padding:.35rem 1rem;border-radius:20px;font-size:1.2rem;font-weight:700;background:linear-gradient(135deg,#dc3545,#c82333);color:white;box-shadow:0 2px 10px rgba(220,53,69,.3);">관망 ❌</span></td>
+        </tr>
+        <tr>
+          <td style="padding:1rem 1.2rem;">
+            <div style="font-weight:700;font-size:1.45rem;color:#ffc107;
+                        font-family:Rajdhani,sans-serif;letter-spacing:.5px;">BTC.D</div>
+            <div style="font-size:1.1rem;color:#6c757d;margin-top:2px;">비트코인 도미넌스</div>
+          </td>
+          <td style="text-align:right;font-weight:700;color:#212529;
+                     font-family:Rajdhani,sans-serif;font-size:1.3rem;
+                     padding:.9rem .8rem;white-space:nowrap;">59.00%</td>
+          <td style="text-align:right;color:#28a745;font-weight:700;background:rgba(40,167,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▼ 0.086%</td>
+          <td style="text-align:right;color:#28a745;font-weight:700;background:rgba(40,167,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▼ 0.065%</td>
+          <td style="text-align:right;color:#28a745;font-weight:700;background:rgba(40,167,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▼ 0.037%</td>
+          <td style="text-align:center;padding:.8rem .6rem;"><span style="padding:.3rem .85rem;border-radius:20px;font-size:1.15rem;font-weight:700;background:linear-gradient(135deg,#28a745,#20c997);color:white;">▼ 하락</span></td>
+          <td style="text-align:right;color:#212529;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">58.89%</td>
+          <td style="text-align:right;color:#dc3545;font-weight:600;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">+0.184%</td>
+          <td style="text-align:right;color:#212529;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">58.93%</td>
+          <td style="text-align:right;color:#dc3545;font-weight:600;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">+0.116%</td>
+          <td style="text-align:center;padding:.8rem .6rem;"><span style="padding:.35rem 1rem;border-radius:20px;font-size:1.2rem;font-weight:700;background:linear-gradient(135deg,#28a745,#20c997);color:white;box-shadow:0 2px 10px rgba(40,167,69,.45);">매수 ✅</span></td>
+        </tr>
+        <tr>
+          <td style="padding:1rem 1.2rem;">
+            <div style="font-weight:700;font-size:1.45rem;color:#00bcd4;
+                        font-family:Rajdhani,sans-serif;letter-spacing:.5px;">USDT.D</div>
+            <div style="font-size:1.1rem;color:#6c757d;margin-top:2px;">테더 도미넌스</div>
+          </td>
+          <td style="text-align:right;font-weight:700;color:#212529;
+                     font-family:Rajdhani,sans-serif;font-size:1.3rem;
+                     padding:.9rem .8rem;white-space:nowrap;">7.69%</td>
+          <td style="text-align:right;color:#dc3545;font-weight:700;background:rgba(220,53,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▲ 0.082%</td>
+          <td style="text-align:right;color:#dc3545;font-weight:700;background:rgba(220,53,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▲ 0.223%</td>
+          <td style="text-align:right;color:#dc3545;font-weight:700;background:rgba(220,53,69,.07);font-family:Rajdhani,sans-serif;font-size:1.25rem;padding:.9rem .8rem;white-space:nowrap;">▲ 0.428%</td>
+          <td style="text-align:center;padding:.8rem .6rem;"><span style="padding:.3rem .85rem;border-radius:20px;font-size:1.15rem;font-weight:700;background:linear-gradient(135deg,#dc3545,#c82333);color:white;">▲ 상승</span></td>
+          <td style="text-align:right;color:#212529;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">7.78%</td>
+          <td style="text-align:right;color:#28a745;font-weight:600;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">-1.192%</td>
+          <td style="text-align:right;color:#212529;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">7.63%</td>
+          <td style="text-align:right;color:#dc3545;font-weight:600;font-family:Rajdhani,sans-serif;font-size:1.2rem;padding:.9rem .8rem;white-space:nowrap;">+0.859%</td>
+          <td style="text-align:center;padding:.8rem .6rem;"><span style="padding:.35rem 1rem;border-radius:20px;font-size:1.2rem;font-weight:700;background:linear-gradient(135deg,#dc3545,#c82333);color:white;box-shadow:0 2px 10px rgba(220,53,69,.3);">관망 ❌</span></td>
+        </tr></tbody>
+    </table>
+  </div>
+  <div style="margin-top:1.2rem;padding:1rem 1.4rem;
+              background:#f0fff4;border-radius:10px;
+              border-left:3px solid #28a745;">
+    <span style="font-size:1.2rem;color:#495057;line-height:1.9;">
+      <strong style="color:#212529;">신호 기준 :</strong>
+      &nbsp;TOTAL3 ▲ = 매수 우호 &nbsp;|&nbsp;
+      BTC.D ▼ = 알트 강세 &nbsp;|&nbsp;
+      USDT.D ▼ = 자금 유입 &nbsp;|&nbsp;
+      <strong style="color:#1b6b1b;">3봉 중 2봉 이상 동일 방향 → 해당 추세로 판단</strong>
+      &nbsp;|&nbsp; ↔MA% = (현재가 − MA) ÷ MA × 100
+    </span>
+  </div>
+</div>
+
+<!-- ── 차트 섹션 타이틀 ── -->
+<div class="section-card" style="margin-bottom:1.5rem;padding:1.5rem 2rem;">
+  <h2 class="section-title">
+    📈 시장 흐름 차트
+    <span style="font-size:1.2rem;color:#6c757d;font-weight:400;">
+      — 일봉(D) · SMA50 / SMA200 · TradingView 실시간
+    </span>
+  </h2>
+</div>
+
+
+<div class="section-card" style="margin-bottom:1.5rem;animation-delay:0.05s;">
+  <div style="display:flex;align-items:center;justify-content:space-between;
+              margin-bottom:1rem;flex-wrap:wrap;gap:.8rem;">
+    <div>
+      <h3 style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                 color:#1b6b1b;margin-bottom:3px;">🌐  TOTAL3</h3>
+      <div style="font-size:1.15rem;color:#6c757d;">CRYPTOCAP:TOTAL3 · 일봉(D)</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <span style="font-size:1.15rem;color:#495057;">
+        <span style="color:#26a69a;font-weight:700;font-size:1.35rem;">━━</span> SMA50 &nbsp;
+        <span style="color:#ef5350;font-weight:700;font-size:1.35rem;">━━</span> SMA200 &nbsp;
+        <span style="color:#6c757d;">· 일봉(D)</span>
+      </span>
+      <a href="https://www.tradingview.com/chart/?symbol=CRYPTOCAP:TOTAL3" target="_blank"
+         style="padding:.5rem 1.2rem;
+                background:linear-gradient(135deg,#667eea,#764ba2);
+                color:white;border-radius:8px;text-decoration:none;
+                font-size:1.2rem;font-weight:600;
+                box-shadow:0 3px 12px rgba(102,126,234,.3);">
+        ↗ 크게 보기
+      </a>
+    </div>
+  </div>
+  <div id="tv_CRYPTOCAP_TOTAL3" style="width:100%;height:480px;background:#0c1220;border-radius:8px;"></div>
+  <script>
+  (function(){
+    new TradingView.widget({
+      "autosize":true,"symbol":"CRYPTOCAP:TOTAL3","interval":"D","range":"12M",
+      "timezone":"Asia/Seoul","theme":"dark","style":"1","locale":"kr",
+      "toolbar_bg":"#0c1220","enable_publishing":false,
+      "hide_side_toolbar":true,"allow_symbol_change":false,
+      "save_image":false,"container_id":"tv_CRYPTOCAP_TOTAL3",
+      "studies":[
+        {"id":"MASimple@tv-basicstudies","inputs":{"length":50}},
+        {"id":"MASimple@tv-basicstudies","inputs":{"length":200}}
+      ],
+      "studies_overrides":{
+        "moving average.plot.color":"#26a69a",
+        "moving average.plot.linewidth":3,
+        "moving average 1.plot.color":"#ef5350",
+        "moving average 1.plot.linewidth":3
+      },
+      "overrides":{
+        "paneProperties.background":"#06090f",
+        "paneProperties.vertGridProperties.color":"#111827",
+        "paneProperties.horzGridProperties.color":"#111827"
+      }
+    });
+  })();
+  </script>
+  <div style="margin-top:.8rem;padding:.8rem 1rem;
+              background:#f8f9fa;border-radius:8px;
+              border:1px solid #e9ecef;
+              font-size:1.2rem;color:#6c757d;line-height:1.5;">
+    <span style="color:#28a745;margin-right:5px;">📌</span>50MA 탑승=메이저 알트장 / 이탈=잡알트 단타만 / 400선 근접=역사적 바닥
+  </div>
+</div>
+
+<div class="section-card" style="margin-bottom:1.5rem;animation-delay:0.10s;">
+  <div style="display:flex;align-items:center;justify-content:space-between;
+              margin-bottom:1rem;flex-wrap:wrap;gap:.8rem;">
+    <div>
+      <h3 style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                 color:#0288d1;margin-bottom:3px;">💵  USDT 도미넌스</h3>
+      <div style="font-size:1.15rem;color:#6c757d;">CRYPTOCAP:USDT.D · 일봉(D)</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <span style="font-size:1.15rem;color:#495057;">
+        <span style="color:#26a69a;font-weight:700;font-size:1.35rem;">━━</span> SMA50 &nbsp;
+        <span style="color:#ef5350;font-weight:700;font-size:1.35rem;">━━</span> SMA200 &nbsp;
+        <span style="color:#6c757d;">· 일봉(D)</span>
+      </span>
+      <a href="https://www.tradingview.com/chart/?symbol=CRYPTOCAP:USDT.D" target="_blank"
+         style="padding:.5rem 1.2rem;
+                background:linear-gradient(135deg,#667eea,#764ba2);
+                color:white;border-radius:8px;text-decoration:none;
+                font-size:1.2rem;font-weight:600;
+                box-shadow:0 3px 12px rgba(102,126,234,.3);">
+        ↗ 크게 보기
+      </a>
+    </div>
+  </div>
+  <div id="tv_CRYPTOCAP_USDT_D" style="width:100%;height:480px;background:#0c1220;border-radius:8px;"></div>
+  <script>
+  (function(){
+    new TradingView.widget({
+      "autosize":true,"symbol":"CRYPTOCAP:USDT.D","interval":"D","range":"12M",
+      "timezone":"Asia/Seoul","theme":"dark","style":"1","locale":"kr",
+      "toolbar_bg":"#0c1220","enable_publishing":false,
+      "hide_side_toolbar":true,"allow_symbol_change":false,
+      "save_image":false,"container_id":"tv_CRYPTOCAP_USDT_D",
+      "studies":[
+        {"id":"MASimple@tv-basicstudies","inputs":{"length":50}},
+        {"id":"MASimple@tv-basicstudies","inputs":{"length":200}}
+      ],
+      "studies_overrides":{
+        "moving average.plot.color":"#26a69a",
+        "moving average.plot.linewidth":3,
+        "moving average 1.plot.color":"#ef5350",
+        "moving average 1.plot.linewidth":3
+      },
+      "overrides":{
+        "paneProperties.background":"#06090f",
+        "paneProperties.vertGridProperties.color":"#111827",
+        "paneProperties.horzGridProperties.color":"#111827"
+      }
+    });
+  })();
+  </script>
+  <div style="margin-top:.8rem;padding:.8rem 1rem;
+              background:#f8f9fa;border-radius:8px;
+              border:1px solid #e9ecef;
+              font-size:1.2rem;color:#6c757d;line-height:1.5;">
+    <span style="color:#28a745;margin-right:5px;">📌</span>하락 추세=매수 자금 유입 / 8% 이상=역대 고점 경계 / 고점 꺾임=ㄴ자 반등
+  </div>
+</div>
+
+<div class="section-card" style="margin-bottom:1.5rem;animation-delay:0.15s;">
+  <div style="display:flex;align-items:center;justify-content:space-between;
+              margin-bottom:1rem;flex-wrap:wrap;gap:.8rem;">
+    <div>
+      <h3 style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                 color:#e65100;margin-bottom:3px;">₿  BTC 도미넌스</h3>
+      <div style="font-size:1.15rem;color:#6c757d;">CRYPTOCAP:BTC.D · 일봉(D)</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <span style="font-size:1.15rem;color:#495057;">
+        <span style="color:#26a69a;font-weight:700;font-size:1.35rem;">━━</span> SMA50 &nbsp;
+        <span style="color:#ef5350;font-weight:700;font-size:1.35rem;">━━</span> SMA200 &nbsp;
+        <span style="color:#6c757d;">· 일봉(D)</span>
+      </span>
+      <a href="https://www.tradingview.com/chart/?symbol=CRYPTOCAP:BTC.D" target="_blank"
+         style="padding:.5rem 1.2rem;
+                background:linear-gradient(135deg,#667eea,#764ba2);
+                color:white;border-radius:8px;text-decoration:none;
+                font-size:1.2rem;font-weight:600;
+                box-shadow:0 3px 12px rgba(102,126,234,.3);">
+        ↗ 크게 보기
+      </a>
+    </div>
+  </div>
+  <div id="tv_CRYPTOCAP_BTC_D" style="width:100%;height:480px;background:#0c1220;border-radius:8px;"></div>
+  <script>
+  (function(){
+    new TradingView.widget({
+      "autosize":true,"symbol":"CRYPTOCAP:BTC.D","interval":"D","range":"12M",
+      "timezone":"Asia/Seoul","theme":"dark","style":"1","locale":"kr",
+      "toolbar_bg":"#0c1220","enable_publishing":false,
+      "hide_side_toolbar":true,"allow_symbol_change":false,
+      "save_image":false,"container_id":"tv_CRYPTOCAP_BTC_D",
+      "studies":[
+        {"id":"MASimple@tv-basicstudies","inputs":{"length":50}},
+        {"id":"MASimple@tv-basicstudies","inputs":{"length":200}}
+      ],
+      "studies_overrides":{
+        "moving average.plot.color":"#26a69a",
+        "moving average.plot.linewidth":3,
+        "moving average 1.plot.color":"#ef5350",
+        "moving average 1.plot.linewidth":3
+      },
+      "overrides":{
+        "paneProperties.background":"#06090f",
+        "paneProperties.vertGridProperties.color":"#111827",
+        "paneProperties.horzGridProperties.color":"#111827"
+      }
+    });
+  })();
+  </script>
+  <div style="margin-top:.8rem;padding:.8rem 1rem;
+              background:#f8f9fa;border-radius:8px;
+              border:1px solid #e9ecef;
+              font-size:1.2rem;color:#6c757d;line-height:1.5;">
+    <span style="color:#28a745;margin-right:5px;">📌</span>뚜렷한 하락 전환=알트 상대 강세 / 상승 지속=비트만 오르는 장
+  </div>
+</div>
+
+<div class="section-card" style="margin-bottom:1.5rem;animation-delay:0.20s;">
+  <div style="display:flex;align-items:center;justify-content:space-between;
+              margin-bottom:1rem;flex-wrap:wrap;gap:.8rem;">
+    <div>
+      <h3 style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                 color:#e65100;margin-bottom:3px;">₿  BTC / USDT</h3>
+      <div style="font-size:1.15rem;color:#6c757d;">BINANCE:BTCUSDT · 일봉(D)</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <span style="font-size:1.15rem;color:#495057;">
+        <span style="color:#26a69a;font-weight:700;font-size:1.35rem;">━━</span> SMA50 &nbsp;
+        <span style="color:#ef5350;font-weight:700;font-size:1.35rem;">━━</span> SMA200 &nbsp;
+        <span style="color:#6c757d;">· 일봉(D)</span>
+      </span>
+      <a href="https://www.tradingview.com/chart/?symbol=BINANCE:BTCUSDT" target="_blank"
+         style="padding:.5rem 1.2rem;
+                background:linear-gradient(135deg,#667eea,#764ba2);
+                color:white;border-radius:8px;text-decoration:none;
+                font-size:1.2rem;font-weight:600;
+                box-shadow:0 3px 12px rgba(102,126,234,.3);">
+        ↗ 크게 보기
+      </a>
+    </div>
+  </div>
+  <div id="tv_BINANCE_BTCUSDT" style="width:100%;height:480px;background:#0c1220;border-radius:8px;"></div>
+  <script>
+  (function(){
+    new TradingView.widget({
+      "autosize":true,"symbol":"BINANCE:BTCUSDT","interval":"D","range":"12M",
+      "timezone":"Asia/Seoul","theme":"dark","style":"1","locale":"kr",
+      "toolbar_bg":"#0c1220","enable_publishing":false,
+      "hide_side_toolbar":true,"allow_symbol_change":false,
+      "save_image":false,"container_id":"tv_BINANCE_BTCUSDT",
+      "studies":[
+        {"id":"MASimple@tv-basicstudies","inputs":{"length":50}},
+        {"id":"MASimple@tv-basicstudies","inputs":{"length":200}}
+      ],
+      "studies_overrides":{
+        "moving average.plot.color":"#26a69a",
+        "moving average.plot.linewidth":3,
+        "moving average 1.plot.color":"#ef5350",
+        "moving average 1.plot.linewidth":3
+      },
+      "overrides":{
+        "paneProperties.background":"#06090f",
+        "paneProperties.vertGridProperties.color":"#111827",
+        "paneProperties.horzGridProperties.color":"#111827"
+      }
+    });
+  })();
+  </script>
+  <div style="margin-top:.8rem;padding:.8rem 1rem;
+              background:#f8f9fa;border-radius:8px;
+              border:1px solid #e9ecef;
+              font-size:1.2rem;color:#6c757d;line-height:1.5;">
+    <span style="color:#28a745;margin-right:5px;">📌</span>50MA 터치 후 캔들 방향 확인 → 권총매매 타점 탐색 / 200MA 붕괴=하락장 진입
+  </div>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
