@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>코인선물 롱포지션 3단계 패턴 검출 — 2026-03-29 05:50:19</title>
+    <title>코인선물 롱포지션 3단계 패턴 검출 — 2026-03-29 06:50:20</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -167,7 +167,7 @@
     <!-- 헤더 -->
     <div class="header">
         <h1>📊 코인선물 롱포지션 3단계 패턴 검출</h1>
-        <p>분석 시간: 2026-03-29 05:50:19 | USD/KRW: 1509.02원</p>
+        <p>분석 시간: 2026-03-29 06:50:20 | USD/KRW: 1509.02원</p>
         <p>거래대금 필터 → 1H 역배열(200MA&gt;50MA&gt;현재가) → 음봉·음봉·양봉·양봉(진행) 패턴</p>
     </div>
 
@@ -192,17 +192,17 @@
         <span class="funnel-arrow">→</span>
         <div class="funnel-step" style="background:#e8f5e9;">
             <span class="label">1차 (거래대금)</span>
-            <span class="count" style="color:#4caf50;">29</span>
+            <span class="count" style="color:#4caf50;">30</span>
         </div>
         <span class="funnel-arrow">→</span>
         <div class="funnel-step" style="background:#e0f2f1;">
             <span class="label">2차 (200MA&gt;50MA&gt;현재가)</span>
-            <span class="count" style="color:#26a69a;">9</span>
+            <span class="count" style="color:#26a69a;">15</span>
         </div>
         <span class="funnel-arrow">→</span>
         <div class="funnel-step" style="background:#c8e6c9;">
             <span class="label">⭐ 3차 (음음양양)</span>
-            <span class="count" style="color:#1b5e20;">1</span>
+            <span class="count" style="color:#1b5e20;">0</span>
         </div>
     </div>
 
@@ -241,19 +241,19 @@
     <div class="stats-container">
         <div class="stats-grid">
             <div class="stat-card s1">
-                <div class="stat-number">29</div>
+                <div class="stat-number">30</div>
                 <div class="stat-label">1차 통과<br>(거래대금 1000억+)</div>
             </div>
             <div class="stat-card s2">
-                <div class="stat-number">9</div>
+                <div class="stat-number">15</div>
                 <div class="stat-label">2차 통과<br>(200MA&gt;50MA&gt;현재가)</div>
             </div>
             <div class="stat-card s3">
-                <div class="stat-number">1</div>
+                <div class="stat-number">0</div>
                 <div class="stat-label">3차 통과<br>(음음양양 패턴)</div>
             </div>
             <div class="stat-card sopt">
-                <div class="stat-number">8</div>
+                <div class="stat-number">15</div>
                 <div class="stat-label">패턴 대기 중<br>(2차 통과 / 3차 미감지)</div>
             </div>
         </div>
@@ -261,7 +261,7 @@
 
     <!-- 테이블 1: 3차 통과 (최종 감지) -->
     <div class="table-container">
-        <h2 class="section-title">⭐ 최종 감지: 3차 통과 (1개)</h2>
+        <h2 class="section-title">⭐ 최종 감지: 3차 통과 (0개)</h2>
         <div class="note">
             <div class="note-title">💡 투자 포인트</div>
             <p>역배열 구간(200MA&gt;50MA&gt;현재가)에서 음봉→음봉→양봉→양봉(진행) 패턴 발생 종목.</p>
@@ -281,33 +281,14 @@
                         <th>거래대금</th>
                     </tr>
                 </thead>
-                <tbody>
-            <tr class="optimal-row">
-                <td>1</td>
-                <td class="symbol-cell">
-                    <a href="https://www.binance.com/en/futures/LINKUSDT?timeframe=1h"
-                       target="_blank" class="symbol-link">LINK<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
-                </td>
-                <td>8.599000</td>
-                <td class="positive">+1.03%</td>
-                <td>8.666320</td>
-                <td>8.958420</td>
-                <td class="negative">-0.78%</td>
-                <td class="negative">-4.01%</td>
-                <td class="negative">+3.37%</td>
-                <td class="negative">-0.36%</td>
-                <td class="negative">-0.02%</td>
-                <td class="positive">+0.03%</td>
-                <td class="positive">+0.00%</td>
-                <td>1,059억</td>
-            </tr></tbody>
+                <tbody><tr><td colspan="14" style="text-align:center;padding:30px;color:#999;">감지된 종목이 없습니다</td></tr></tbody>
             </table>
         </div>
     </div>
 
     <!-- 테이블 2: 2차 통과 (패턴 대기) -->
     <div class="table-container">
-        <h2 class="section-title">📋 2차 통과 — 패턴 대기 중 (8개)</h2>
+        <h2 class="section-title">📋 2차 통과 — 패턴 대기 중 (15개)</h2>
         <div class="note">
             <div class="note-title">💡 관찰 포인트</div>
             <p>200MA&gt;50MA&gt;현재가 조건 충족 종목. 음음양양 패턴 미발생 상태 — 다음 스캔 시 3차 진입 가능성 있음.</p>
@@ -330,119 +311,224 @@
                     <a href="https://www.binance.com/en/futures/BTCUSDT?timeframe=1h"
                        target="_blank" class="symbol-link">BTC<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>66889.400000</td>
-                <td class="positive">+1.39%</td>
-                <td>67062.282000</td>
-                <td>69282.868000</td>
-                <td class="negative">-0.26%</td>
-                <td class="negative">-3.45%</td>
-                <td class="negative">+3.31%</td>
-                <td>8.8조</td>
+                <td>66732.000000</td>
+                <td class="positive">+1.02%</td>
+                <td>67030.852000</td>
+                <td>69265.772500</td>
+                <td class="negative">-0.45%</td>
+                <td class="negative">-3.66%</td>
+                <td class="negative">+3.33%</td>
+                <td>8.7조</td>
             </tr>
             <tr class="third-row">
                 <td>2</td>
                 <td class="symbol-cell">
-                    <a href="https://www.binance.com/en/futures/SOLUSDT?timeframe=1h"
-                       target="_blank" class="symbol-link">SOL<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                    <a href="https://www.binance.com/en/futures/ETHUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">ETH<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>83.300000</td>
-                <td class="positive">+0.81%</td>
-                <td>83.967200</td>
-                <td>88.124350</td>
-                <td class="negative">-0.79%</td>
-                <td class="negative">-5.47%</td>
-                <td class="negative">+4.95%</td>
-                <td>1.7조</td>
+                <td>2014.620000</td>
+                <td class="positive">+1.47%</td>
+                <td>2016.135400</td>
+                <td>2098.994600</td>
+                <td class="negative">-0.08%</td>
+                <td class="negative">-4.02%</td>
+                <td class="negative">+4.11%</td>
+                <td>6.9조</td>
             </tr>
             <tr class="third-row">
                 <td>3</td>
                 <td class="symbol-cell">
-                    <a href="https://www.binance.com/en/futures/RIVERUSDT?timeframe=1h"
-                       target="_blank" class="symbol-link">RIVER<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                    <a href="https://www.binance.com/en/futures/SOLUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">SOL<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>14.129000</td>
-                <td class="positive">+12.16%</td>
-                <td>14.498100</td>
-                <td>21.519940</td>
-                <td class="negative">-2.55%</td>
-                <td class="negative">-34.34%</td>
-                <td class="negative">+48.43%</td>
-                <td>5,592억</td>
+                <td>82.750000</td>
+                <td class="negative">-0.06%</td>
+                <td>83.914200</td>
+                <td>88.095650</td>
+                <td class="negative">-1.39%</td>
+                <td class="negative">-6.07%</td>
+                <td class="negative">+4.98%</td>
+                <td>1.7조</td>
             </tr>
             <tr class="third-row">
                 <td>4</td>
                 <td class="symbol-cell">
-                    <a href="https://www.binance.com/en/futures/ZECUSDT?timeframe=1h"
-                       target="_blank" class="symbol-link">ZEC<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                    <a href="https://www.binance.com/en/futures/RIVERUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">RIVER<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>218.030000</td>
-                <td class="positive">+1.63%</td>
-                <td>218.169600</td>
-                <td>225.864350</td>
-                <td class="negative">-0.06%</td>
-                <td class="negative">-3.47%</td>
-                <td class="negative">+3.53%</td>
-                <td>3,238억</td>
+                <td>13.803000</td>
+                <td class="positive">+6.73%</td>
+                <td>14.467800</td>
+                <td>21.477965</td>
+                <td class="negative">-4.59%</td>
+                <td class="negative">-35.73%</td>
+                <td class="negative">+48.45%</td>
+                <td>5,599억</td>
             </tr>
             <tr class="third-row">
                 <td>5</td>
                 <td class="symbol-cell">
-                    <a href="https://www.binance.com/en/futures/PIPPINUSDT?timeframe=1h"
-                       target="_blank" class="symbol-link">PIPPIN<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                    <a href="https://www.binance.com/en/futures/ZECUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">ZEC<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>0.053440</td>
-                <td class="positive">+0.72%</td>
-                <td>0.053853</td>
-                <td>0.076483</td>
-                <td class="negative">-0.77%</td>
-                <td class="negative">-30.13%</td>
-                <td class="negative">+42.02%</td>
-                <td>2,643억</td>
+                <td>216.260000</td>
+                <td class="positive">+0.69%</td>
+                <td>218.113200</td>
+                <td>225.796150</td>
+                <td class="negative">-0.85%</td>
+                <td class="negative">-4.22%</td>
+                <td class="negative">+3.52%</td>
+                <td>3,257억</td>
             </tr>
             <tr class="third-row">
                 <td>6</td>
                 <td class="symbol-cell">
-                    <a href="https://www.binance.com/en/futures/QUSDT?timeframe=1h"
-                       target="_blank" class="symbol-link">Q<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                    <a href="https://www.binance.com/en/futures/PTBUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">PTB<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>0.008907</td>
-                <td class="negative">-26.65%</td>
-                <td>0.010986</td>
-                <td>0.012417</td>
-                <td class="negative">-18.93%</td>
-                <td class="negative">-28.27%</td>
-                <td class="negative">+13.02%</td>
-                <td>1,562억</td>
+                <td>0.001356</td>
+                <td class="negative">-20.18%</td>
+                <td>0.001623</td>
+                <td>0.001625</td>
+                <td class="negative">-16.47%</td>
+                <td class="negative">-16.58%</td>
+                <td class="negative">+0.14%</td>
+                <td>2,630억</td>
             </tr>
             <tr class="third-row">
                 <td>7</td>
                 <td class="symbol-cell">
-                    <a href="https://www.binance.com/en/futures/SUIUSDT?timeframe=1h"
-                       target="_blank" class="symbol-link">SUI<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                    <a href="https://www.binance.com/en/futures/PIPPINUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">PIPPIN<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>0.884300</td>
-                <td class="positive">+0.99%</td>
-                <td>0.895352</td>
-                <td>0.932465</td>
-                <td class="negative">-1.23%</td>
-                <td class="negative">-5.17%</td>
-                <td class="negative">+4.15%</td>
-                <td>1,274억</td>
+                <td>0.053310</td>
+                <td class="positive">+0.68%</td>
+                <td>0.053867</td>
+                <td>0.076306</td>
+                <td class="negative">-1.03%</td>
+                <td class="negative">-30.14%</td>
+                <td class="negative">+41.66%</td>
+                <td>2,527억</td>
             </tr>
             <tr class="third-row">
                 <td>8</td>
                 <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/BNBUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">BNB<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                </td>
+                <td>615.880000</td>
+                <td class="positive">+0.81%</td>
+                <td>616.800800</td>
+                <td>631.882650</td>
+                <td class="negative">-0.15%</td>
+                <td class="negative">-2.53%</td>
+                <td class="negative">+2.45%</td>
+                <td>2,501억</td>
+            </tr>
+            <tr class="third-row">
+                <td>9</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/1000PEPEUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">1000PEPE<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                </td>
+                <td>0.003325</td>
+                <td class="positive">+1.39%</td>
+                <td>0.003331</td>
+                <td>0.003398</td>
+                <td class="negative">-0.17%</td>
+                <td class="negative">-2.15%</td>
+                <td class="negative">+2.02%</td>
+                <td>2,192억</td>
+            </tr>
+            <tr class="third-row">
+                <td>10</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/ADAUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">ADA<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                </td>
+                <td>0.249000</td>
+                <td class="positive">+1.14%</td>
+                <td>0.249398</td>
+                <td>0.258731</td>
+                <td class="negative">-0.16%</td>
+                <td class="negative">-3.76%</td>
+                <td class="negative">+3.74%</td>
+                <td>1,827억</td>
+            </tr>
+            <tr class="third-row">
+                <td>11</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/ENAUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">ENA<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                </td>
+                <td>0.092700</td>
+                <td class="positive">+3.34%</td>
+                <td>0.092956</td>
+                <td>0.096706</td>
+                <td class="negative">-0.28%</td>
+                <td class="negative">-4.14%</td>
+                <td class="negative">+4.03%</td>
+                <td>1,648억</td>
+            </tr>
+            <tr class="third-row">
+                <td>12</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/QUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">Q<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                </td>
+                <td>0.008836</td>
+                <td class="negative">-29.16%</td>
+                <td>0.010916</td>
+                <td>0.012394</td>
+                <td class="negative">-19.06%</td>
+                <td class="negative">-28.71%</td>
+                <td class="negative">+13.54%</td>
+                <td>1,564억</td>
+            </tr>
+            <tr class="third-row">
+                <td>13</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/SUIUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">SUI<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                </td>
+                <td>0.879600</td>
+                <td class="positive">+0.11%</td>
+                <td>0.894746</td>
+                <td>0.932061</td>
+                <td class="negative">-1.69%</td>
+                <td class="negative">-5.63%</td>
+                <td class="negative">+4.17%</td>
+                <td>1,285억</td>
+            </tr>
+            <tr class="third-row">
+                <td>14</td>
+                <td class="symbol-cell">
                     <a href="https://www.binance.com/en/futures/DOTUSDT?timeframe=1h"
                        target="_blank" class="symbol-link">DOT<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>1.282000</td>
-                <td class="positive">+0.08%</td>
-                <td>1.295440</td>
-                <td>1.392175</td>
-                <td class="negative">-1.04%</td>
-                <td class="negative">-7.91%</td>
-                <td class="negative">+7.47%</td>
-                <td>1,173억</td>
+                <td>1.271000</td>
+                <td class="negative">-1.24%</td>
+                <td>1.294800</td>
+                <td>1.390945</td>
+                <td class="negative">-1.84%</td>
+                <td class="negative">-8.62%</td>
+                <td class="negative">+7.43%</td>
+                <td>1,181억</td>
+            </tr>
+            <tr class="third-row">
+                <td>15</td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/LINKUSDT?timeframe=1h"
+                       target="_blank" class="symbol-link">LINK<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                </td>
+                <td>8.568000</td>
+                <td class="positive">+0.30%</td>
+                <td>8.661480</td>
+                <td>8.956105</td>
+                <td class="negative">-1.08%</td>
+                <td class="negative">-4.33%</td>
+                <td class="negative">+3.40%</td>
+                <td>1,051억</td>
             </tr></tbody>
             </table>
         </div>
@@ -455,9 +541,9 @@
             <p style="color:#aaa;">본 분석은 참고용이며, 실제 투자 시 추가 분석·리스크 관리가 필요합니다.</p>
             <p style="color:#aaa;">패턴 분석만으로 투자 판단을 내리지 마시고 개별 차트 및 뉴스를 반드시 확인하세요.</p>
         </div>
-        <p>생성: 2026-03-29 05:50:19 | 바이낸스 USDT 선물 전종목</p>
+        <p>생성: 2026-03-29 06:50:20 | 바이낸스 USDT 선물 전종목</p>
         <p>종목명 클릭 → Binance 선물 1H 차트 &nbsp;|&nbsp; MA = 1H 완성봉 단순이동평균 &nbsp;|&nbsp; 역배열강도 = (200MA−50MA)÷50MA×100</p>
-        <p>1차: 29개 → 2차: 9개 → ⭐ 3차: 1개</p>
+        <p>1차: 30개 → 2차: 15개 → ⭐ 3차: 0개</p>
     </div>
 
 </div>
