@@ -62,7 +62,7 @@
     <div class="header">
         <h1>🤖 자동매매 결과 (롱포지션)</h1>
         <div class="subtitle">AI 코인선물 롱포지션 자동매매 시스템 — 3시간 추적</div>
-        <div class="subtitle">생성 시간: 2026-03-28 10:51:56</div>
+        <div class="subtitle">생성 시간: 2026-03-28 11:51:25</div>
     </div>
 
     <div class="nav-menu">
@@ -75,7 +75,7 @@
 
     <div class="stats-grid">
         <div class="stat-card">
-            <div class="stat-value">26</div>
+            <div class="stat-value">27</div>
             <div class="stat-label">총 거래 횟수</div>
         </div>
         <div class="stat-card">
@@ -83,27 +83,27 @@
             <div class="stat-label">수익 거래</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">46.2%</div>
+            <div class="stat-value">44.4%</div>
             <div class="stat-label">승률</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value positive">+8.32%</div>
+            <div class="stat-value positive">+3.31%</div>
             <div class="stat-label">누적 수익률</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value positive">+0.32%</div>
+            <div class="stat-value positive">+0.12%</div>
             <div class="stat-label">평균 수익률</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value positive">$+8.32</div>
+            <div class="stat-value positive">$+3.31</div>
             <div class="stat-label">누적 PNL</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">$385.20</div>
+            <div class="stat-value">$380.04</div>
             <div class="stat-label">총 잔액</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">$182.01</div>
+            <div class="stat-value">$279.05</div>
             <div class="stat-label">사용 가능 잔액</div>
         </div>
     </div>
@@ -141,12 +141,12 @@
                 <td>2026-03-28 (토) 08:51</td>
                 <td><a href="https://www.binance.com/en/futures/FILUSDT" class="symbol-link" target="_blank">FILUSDT</a></td>
                 <td>$0.839000</td>
-                <td>-</td>
-                <td class="">-</td>
-                <td class="">-</td>
+                <td>$0.825000</td>
+                <td class="pnl-negative">-5.01%</td>
+                <td class="pnl-negative">$-5.01</td>
                 <td>$100.0</td>
                 <td>3x</td>
-                <td><span class="status-badge status-open">대기중</span></td>
+                <td><span class="status-badge status-closed">완료</span></td>
             </tr>
 
             <tr>
@@ -466,14 +466,14 @@
 <script>
         const candlestick = {
             type:'candlestick', x:["2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28"],
-            open:[0, 2.17, -12.46, -13.58, 15.89], high:[3.67, 2.17, -3.99, 15.89, 15.89], low:[0, -16.04, -14.33, -14.19, 7.59], close:[2.17, -12.46, -13.58, 15.89, 8.32],
+            open:[0, 2.17, -12.46, -13.58, 15.89], high:[3.67, 2.17, -3.99, 15.89, 15.89], low:[0, -16.04, -14.33, -14.19, 3.31], close:[2.17, -12.46, -13.58, 15.89, 3.31],
             increasing:{line:{color:'#26a69a',width:2},fillcolor:'#26a69a'},
             decreasing:{line:{color:'#ef5350',width:2},fillcolor:'#ef5350'},
             name:'일별 누적 수익률'
         };
         const line = {
             type:'scatter', mode:'lines+markers',
-            x:["2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28"], y:[2.17, -12.46, -13.58, 15.89, 8.32],
+            x:["2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28"], y:[2.17, -12.46, -13.58, 15.89, 3.31],
             line:{color:'rgba(15,96,15,0.6)',width:2,dash:'dot'},
             marker:{size:6,color:'rgba(15,96,15,0.8)'},
             name:'누적 라인'
