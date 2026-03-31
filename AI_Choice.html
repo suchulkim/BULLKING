@@ -116,7 +116,7 @@
         <h1>📈 AI 롱포지션 음음양양 패턴 분석</h1>
         <div class="subtitle">
             1H 역배열(200MA&gt;50MA&gt;현재가) + 음봉→음봉→양봉→양봉(진행) •
-            3시간 성과 추적 • 2026-03-31 09:50:36
+            3시간 성과 추적 • 2026-03-31 10:50:37
         </div>
     </div>
     <div class="nav-menu">
@@ -139,6 +139,17 @@
                 </div>
             </div>
     
+            <div class="warning-box"
+                 style="background:linear-gradient(135deg,#fff3cd,#ffeaa7);margin-top:2rem;">
+                <div class="warning-title">⚠️ 모든 종목이 필터링 규칙으로 제외되었습니다</div>
+                <div class="warning-text" style="font-size:1.4rem;line-height:1.8;">
+                    <strong>제외된 종목 목록:</strong><br>
+                    • 손실 이력: WLDUSDT, DOTUSDT<br>
+                    
+                    
+                    <br><strong>현재 분석 주기에는 추적 대상이 없습니다.</strong>
+                </div>
+            </div>
     
         <div class="chart-section">
             <div class="chart-header">
@@ -174,10 +185,10 @@
                 <div class="tracking-info-title">📊 추적 성과 요약</div>
                 <div class="tracking-info-text">
                     <strong>승률:</strong>
-                    56.4% (22/39) |
+                    57.5% (23/40) |
                     <strong>누적 수익률:</strong>
                     <span class="negative">
-                        -1.97%</span> |
+                        -0.96%</span> |
                     <strong>총 추적 건수:</strong> 40건
                 </div>
             </div>
@@ -200,9 +211,9 @@
                            class="symbol-link">HYPEUSDT</a></td>
                     <td style="font-weight:bold;">4</td>
                     <td style="font-weight:bold;">3.7%</td>
-                    <td><div class="tracking-result tracking-pending">대기중</div></td>
-                    <td><div class="return-stats">-</div></td>
-                    <td><span class="risk-badge risk-medium">대기</span></td>
+                    <td><div class="tracking-result tracking-profit">+1.01%</div></td>
+                    <td><div class="return-stats"><span class="best-return">최고:+1.02%</span><br><span class="worst-return">최저:-1.24%</span></div></td>
+                    <td><span class="risk-badge risk-low">완료</span></td>
                 </tr>
                 <tr style="font-size:1.2rem;">
                     <td style="font-weight:bold;">2026-03-31 (화) 06:50</td>
@@ -600,14 +611,14 @@
         <script>
         const candlestick = {
             type:'candlestick', x:["2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29", "2026-03-30", "2026-03-31"],
-            open:[0, 0.63, -3.54, 1.79, -3.77, -0.66, -2.53, -1.56], high:[0.93, 0.63, 4.44, 5.05, -0.66, -0.66, -1.56, -1.56], low:[0, -5.35, -3.54, -3.77, -7.95, -2.53, -2.53, -1.97], close:[0.63, -3.54, 1.79, -3.77, -0.66, -2.53, -1.56, -1.97],
+            open:[0, 0.63, -3.54, 1.79, -3.77, -0.66, -2.53, -1.56], high:[0.93, 0.63, 4.44, 5.05, -0.66, -0.66, -1.56, -0.96], low:[0, -5.35, -3.54, -3.77, -7.95, -2.53, -2.53, -1.97], close:[0.63, -3.54, 1.79, -3.77, -0.66, -2.53, -1.56, -0.96],
             increasing:{line:{color:'#26a69a',width:2},fillcolor:'#26a69a'},
             decreasing:{line:{color:'#ef5350',width:2},fillcolor:'#ef5350'},
             name:'일별 누적 수익률'
         };
         const line = {
             type:'scatter',mode:'lines+markers',
-            x:["2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29", "2026-03-30", "2026-03-31"],y:[0.63, -3.54, 1.79, -3.77, -0.66, -2.53, -1.56, -1.97],
+            x:["2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29", "2026-03-30", "2026-03-31"],y:[0.63, -3.54, 1.79, -3.77, -0.66, -2.53, -1.56, -0.96],
             line:{color:'rgba(76,175,80,0.6)',width:2,dash:'dot'},
             marker:{size:6,color:'rgba(76,175,80,0.8)'},
             name:'누적 라인'
