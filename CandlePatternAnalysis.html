@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>코인선물 롱포지션 3단계 패턴 검출 — 2026-04-01 20:12:08</title>
+    <title>코인선물 롱포지션 3단계 패턴 검출 — 2026-04-01 20:14:04</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -15,7 +15,7 @@
             font-size: 16px; line-height: 1.6;
         }
         .container {
-            max-width: 1500px; margin: 0 auto;
+            max-width: 1600px; margin: 0 auto;
             background-color: white; border-radius: 12px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1); overflow: hidden;
         }
@@ -42,7 +42,7 @@
 
         /* 단계 카드 */
         .steps-container {
-            display: grid; grid-template-columns: repeat(3, 1fr);
+            display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 15px; padding: 20px 15px; background: #f8fff8;
         }
         .step-card {
@@ -50,52 +50,78 @@
             padding: 18px 15px; text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
-        .step-card.step1 { border-top: 4px solid #4caf50; }
-        .step-card.step2 { border-top: 4px solid #26a69a; }
-        .step-card.step3 { border-top: 4px solid #66bb6a; }
-        .step-num  { font-size: 1.8em; font-weight: bold; margin-bottom: 8px; }
-        .step1 .step-num { color: #4caf50; }
-        .step2 .step-num { color: #26a69a; }
-        .step3 .step-num { color: #66bb6a; }
+        .step-card.step1  { border-top: 4px solid #4caf50; }
+        .step-card.step2a { border-top: 4px solid #26a69a; }
+        .step-card.step2b { border-top: 4px solid #5c6bc0; }
+        .step-card.step3  { border-top: 4px solid #66bb6a; }
+        .step-num { font-size: 1.8em; font-weight: bold; margin-bottom: 8px; }
+        .step1  .step-num { color: #4caf50; }
+        .step2a .step-num { color: #26a69a; }
+        .step2b .step-num { color: #5c6bc0; }
+        .step3  .step-num { color: #66bb6a; }
         .step-title { font-size: 1em; font-weight: bold; margin-bottom: 8px; }
         .step-desc  { font-size: 0.88em; color: #555; line-height: 1.5; }
 
         /* 통계 */
         .stats-container { padding: 20px 15px; }
         .stats-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 15px; margin-bottom: 20px;
+            display: grid; grid-template-columns: repeat(6, 1fr);
+            gap: 12px; margin-bottom: 20px;
         }
         .stat-card {
-            background: white; padding: 20px 15px;
+            background: white; padding: 16px 12px;
             border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             text-align: center;
         }
         .stat-card.s1   { border-left: 4px solid #4caf50; }
-        .stat-card.s2   { border-left: 4px solid #26a69a; }
-        .stat-card.s3   { border-left: 4px solid #66bb6a; }
+        .stat-card.s2a  { border-left: 4px solid #26a69a; }
+        .stat-card.s2b  { border-left: 4px solid #5c6bc0; }
+        .stat-card.s3a  { border-left: 4px solid #66bb6a; }
+        .stat-card.s3b  { border-left: 4px solid #7986cb; }
         .stat-card.sopt { border-left: 4px solid #1b5e20; }
-        .stat-number { font-size: 2.2em; font-weight: bold; margin-bottom: 6px; }
+        .stat-number { font-size: 2em; font-weight: bold; margin-bottom: 6px; }
         .stat-card.s1   .stat-number { color: #4caf50; }
-        .stat-card.s2   .stat-number { color: #26a69a; }
-        .stat-card.s3   .stat-number { color: #66bb6a; }
+        .stat-card.s2a  .stat-number { color: #26a69a; }
+        .stat-card.s2b  .stat-number { color: #5c6bc0; }
+        .stat-card.s3a  .stat-number { color: #388e3c; }
+        .stat-card.s3b  .stat-number { color: #3949ab; }
         .stat-card.sopt .stat-number { color: #1b5e20; }
-        .stat-label { color: #666; font-size: 0.95em; line-height: 1.4; }
+        .stat-label { color: #666; font-size: 0.85em; line-height: 1.4; }
 
         /* 퍼널 */
         .funnel {
             display: flex; align-items: center; justify-content: center;
-            gap: 8px; padding: 16px 20px; background: #fff;
+            gap: 6px; padding: 16px 20px; background: #fff;
             border-bottom: 1px solid #eee; flex-wrap: wrap;
         }
         .funnel-step {
             display: flex; flex-direction: column; align-items: center;
             background: #f0fff0; border-radius: 10px;
-            padding: 10px 18px; min-width: 110px;
+            padding: 10px 14px; min-width: 100px;
         }
-        .funnel-step .label { font-size: 0.78em; color: #666; }
-        .funnel-step .count { font-size: 1.5em; font-weight: bold; color: #1b5e20; }
-        .funnel-arrow { font-size: 1.6em; color: #aaa; }
+        .funnel-step .label { font-size: 0.75em; color: #666; }
+        .funnel-step .count { font-size: 1.4em; font-weight: bold; color: #1b5e20; }
+        .funnel-arrow { font-size: 1.4em; color: #aaa; }
+
+        /* 배지 */
+        .badge-type {
+            display: inline-block; padding: 3px 10px;
+            border-radius: 20px; color: white;
+            font-size: 0.8em; font-weight: bold;
+        }
+
+        /* 섹션 탭 */
+        .section-tabs {
+            display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 8px 18px; border-radius: 8px; border: none;
+            font-weight: 600; font-size: 0.9em; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn.active-a { background: #e0f2f1; color: #00695c; border: 2px solid #26a69a; }
+        .tab-btn.active-b { background: #e8eaf6; color: #283593; border: 2px solid #5c6bc0; }
+        .tab-btn.inactive { background: #f5f5f5; color: #888; border: 2px solid #ddd; }
 
         /* 테이블 */
         .section-title {
@@ -105,7 +131,7 @@
         .table-container { padding: 20px 15px; }
         .table-wrapper { overflow-x: auto; margin-bottom: 25px; -webkit-overflow-scrolling: touch; }
         table {
-            width: 100%; min-width: 900px; border-collapse: collapse;
+            width: 100%; min-width: 1000px; border-collapse: collapse;
             background: white; border-radius: 10px; overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -141,7 +167,11 @@
             background-color: #e8f5e9; border-left: 4px solid #4caf50;
             padding: 15px 18px; margin: 15px 0; border-radius: 8px;
         }
+        .note.note-b {
+            background-color: #e8eaf6; border-left: 4px solid #5c6bc0;
+        }
         .note-title { font-weight: bold; color: #2e7d32; margin-bottom: 8px; }
+        .note.note-b .note-title { color: #283593; }
         .note p { margin: 6px 0; line-height: 1.6; font-size: 0.95em; }
 
         .footer {
@@ -150,11 +180,11 @@
             font-size: 0.88em; line-height: 1.8;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
             .steps-container { grid-template-columns: repeat(2, 1fr); }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .steps-container { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .header h1 { font-size: 1.3em; }
@@ -167,8 +197,11 @@
     <!-- 헤더 -->
     <div class="header">
         <h1>📊 코인선물 롱포지션 3단계 패턴 검출</h1>
-        <p>분석 시간: 2026-04-01 20:12:08 | USD/KRW: 1516.97원</p>
-        <p>거래대금 필터 → 15m 역배열(200MA&gt;50MA&gt;현재가) → 음봉·음봉·양봉·양봉(진행) 패턴</p>
+        <p>분석 시간: 2026-04-01 20:14:04 | USD/KRW: 1516.97원</p>
+        <p>
+            [A타입] 거래대금 → 200MA&gt;50MA&gt;현재가 → 음음양양 패턴 &nbsp;|&nbsp;
+            [B타입] 거래대금 → 200MA&gt;현재가&gt;50MA → 음음양양 패턴
+        </p>
     </div>
 
     <!-- 네비게이션 -->
@@ -187,7 +220,7 @@
     <div class="funnel">
         <div class="funnel-step">
             <span class="label">전체 종목</span>
-            <span class="count">전체</span>
+            <span class="count">542</span>
         </div>
         <span class="funnel-arrow">→</span>
         <div class="funnel-step" style="background:#e8f5e9;">
@@ -196,13 +229,23 @@
         </div>
         <span class="funnel-arrow">→</span>
         <div class="funnel-step" style="background:#e0f2f1;">
-            <span class="label">2차 (200MA&gt;50MA&gt;현재가)</span>
-            <span class="count" style="color:#26a69a;">3</span>
+            <span class="label">2차A (현재가&lt;50MA)</span>
+            <span class="count" style="color:#00695c;">3</span>
+        </div>
+        <span class="funnel-arrow">+</span>
+        <div class="funnel-step" style="background:#e8eaf6;">
+            <span class="label">2차B (50MA&lt;현재가&lt;200MA)</span>
+            <span class="count" style="color:#283593;">1</span>
         </div>
         <span class="funnel-arrow">→</span>
         <div class="funnel-step" style="background:#c8e6c9;">
-            <span class="label">⭐ 3차 (음음양양)</span>
+            <span class="label">⭐ 3차A (음음양양)</span>
             <span class="count" style="color:#1b5e20;">1</span>
+        </div>
+        <span class="funnel-arrow">+</span>
+        <div class="funnel-step" style="background:#c5cae9;">
+            <span class="label">⭐ 3차B (음음양양)</span>
+            <span class="count" style="color:#1a237e;">0</span>
         </div>
     </div>
 
@@ -217,13 +260,22 @@
                 유동성 확보 종목만
             </div>
         </div>
-        <div class="step-card step2">
-            <div class="step-num">2차</div>
-            <div class="step-title">📉 15m 역배열 + 하방</div>
+        <div class="step-card step2a">
+            <div class="step-num">2차A</div>
+            <div class="step-title">📉 역배열 + 현재가 하방</div>
             <div class="step-desc">
                 15m 완성봉 기준<br>
                 <strong>200MA &gt; 50MA &gt; 현재가</strong><br>
                 역배열 구간 + 50MA 아래
+            </div>
+        </div>
+        <div class="step-card step2b">
+            <div class="step-num">2차B</div>
+            <div class="step-title">📊 역배열 + 현재가 중간</div>
+            <div class="step-desc">
+                15m 완성봉 기준<br>
+                <strong>200MA &gt; 현재가 &gt; 50MA</strong><br>
+                역배열 구간 + 50MA~200MA 사이
             </div>
         </div>
         <div class="step-card step3">
@@ -244,35 +296,43 @@
                 <div class="stat-number">38</div>
                 <div class="stat-label">1차 통과<br>(거래대금 1000억+)</div>
             </div>
-            <div class="stat-card s2">
+            <div class="stat-card s2a">
                 <div class="stat-number">3</div>
-                <div class="stat-label">2차 통과<br>(200MA&gt;50MA&gt;현재가)</div>
+                <div class="stat-label">2차A 통과<br>(현재가 &lt; 50MA)</div>
             </div>
-            <div class="stat-card s3">
+            <div class="stat-card s2b">
                 <div class="stat-number">1</div>
-                <div class="stat-label">3차 통과<br>(음음양양 패턴)</div>
+                <div class="stat-label">2차B 통과<br>(50MA &lt; 현재가 &lt; 200MA)</div>
+            </div>
+            <div class="stat-card s3a">
+                <div class="stat-number">1</div>
+                <div class="stat-label">⭐ 3차A 감지<br>(A타입 + 음음양양)</div>
+            </div>
+            <div class="stat-card s3b">
+                <div class="stat-number">0</div>
+                <div class="stat-label">⭐ 3차B 감지<br>(B타입 + 음음양양)</div>
             </div>
             <div class="stat-card sopt">
-                <div class="stat-number">2</div>
+                <div class="stat-number">3</div>
                 <div class="stat-label">패턴 대기 중<br>(2차 통과 / 3차 미감지)</div>
             </div>
         </div>
     </div>
 
-    <!-- 테이블 1: 3차 통과 (최종 감지) -->
+    <!-- 테이블 1: 3차A 통과 -->
     <div class="table-container">
-        <h2 class="section-title">⭐ 최종 감지: 3차 통과 (1개)</h2>
+        <h2 class="section-title">⭐ 3차A 최종 감지: 200MA &gt; 50MA &gt; 현재가 + 음음양양 (1개)</h2>
         <div class="note">
-            <div class="note-title">💡 투자 포인트</div>
-            <p>역배열 구간(200MA&gt;50MA&gt;현재가)에서 음봉→음봉→양봉→양봉(진행) 패턴 발생 종목.</p>
-            <p>2연속 하락 후 반등 전환 시그널 — 단기 롱 진입 검토 가능.</p>
+            <div class="note-title">💡 A타입 투자 포인트</div>
+            <p>현재가가 50MA 아래에 위치한 깊은 역배열 구간에서 반등 캔들 패턴 발생.</p>
+            <p>낙폭이 크고 반등 탄력이 강할 수 있음. 단기 롱 진입 검토 가능.</p>
             <p>진행 중인 양봉이므로 봉 마감 전 패턴이 바뀔 수 있습니다. 반드시 차트를 직접 확인하세요.</p>
         </div>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>순위</th><th>심볼</th><th>현재가</th>
+                        <th>순위</th><th>타입</th><th>심볼</th><th>현재가</th>
                         <th>24H%</th>
                         <th>15m 50MA</th><th>15m 200MA</th>
                         <th>↔50MA</th><th>↔200MA</th><th>역배열강도</th>
@@ -284,39 +344,68 @@
                 <tbody>
             <tr class="optimal-row">
                 <td>1</td>
+                <td><span class="badge-type" style="background:#26a69a">A타입</span></td>
                 <td class="symbol-cell">
                     <a href="https://www.binance.com/en/futures/RIVERUSDT?timeframe=15m"
                        target="_blank" class="symbol-link">RIVER<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>15.239000</td>
-                <td class="negative">-12.87%</td>
+                <td>15.231000</td>
+                <td class="negative">-12.68%</td>
                 <td>15.891980</td>
                 <td>16.280430</td>
-                <td class="negative">-4.11%</td>
-                <td class="negative">-6.40%</td>
+                <td class="negative">-4.16%</td>
+                <td class="negative">-6.45%</td>
                 <td class="negative">+2.44%</td>
                 <td class="negative">-0.69%</td>
                 <td class="negative">-0.39%</td>
                 <td class="positive">+0.18%</td>
-                <td class="positive">+0.11%</td>
-                <td>3,680억</td>
+                <td class="positive">+0.05%</td>
+                <td>3,679억</td>
             </tr></tbody>
             </table>
         </div>
     </div>
 
-    <!-- 테이블 2: 2차 통과 (패턴 대기) -->
+    <!-- 테이블 2: 3차B 통과 -->
     <div class="table-container">
-        <h2 class="section-title">📋 2차 통과 — 패턴 대기 중 (2개)</h2>
-        <div class="note">
-            <div class="note-title">💡 관찰 포인트</div>
-            <p>200MA&gt;50MA&gt;현재가 조건 충족 종목. 음음양양 패턴 미발생 상태 — 다음 스캔 시 3차 진입 가능성 있음.</p>
+        <h2 class="section-title">⭐ 3차B 최종 감지: 200MA &gt; 현재가 &gt; 50MA + 음음양양 (0개)</h2>
+        <div class="note note-b">
+            <div class="note-title">💡 B타입 투자 포인트</div>
+            <p>현재가가 50MA 위, 200MA 아래 구간(역배열 중간)에서 반등 캔들 패턴 발생.</p>
+            <p>50MA를 지지선으로 활용 중인 가능성. 200MA 저항 돌파 여부 주목.</p>
+            <p>진행 중인 양봉이므로 봉 마감 전 패턴이 바뀔 수 있습니다. 반드시 차트를 직접 확인하세요.</p>
         </div>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>순위</th><th>심볼</th><th>현재가</th>
+                        <th>순위</th><th>타입</th><th>심볼</th><th>현재가</th>
+                        <th>24H%</th>
+                        <th>15m 50MA</th><th>15m 200MA</th>
+                        <th>↔50MA</th><th>↔200MA</th><th>역배열강도</th>
+                        <th>음봉1%</th><th>음봉2%</th>
+                        <th>양봉1%</th><th>양봉2%(진행)</th>
+                        <th>거래대금</th>
+                    </tr>
+                </thead>
+                <tbody><tr><td colspan="15" style="text-align:center;padding:30px;color:#999;">감지된 종목이 없습니다</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 테이블 3: 2차 통과 대기 (A+B 합산) -->
+    <div class="table-container">
+        <h2 class="section-title">📋 2차 통과 — 패턴 대기 중 (3개)</h2>
+        <div class="note">
+            <div class="note-title">💡 관찰 포인트</div>
+            <p>A타입(2개): 200MA&gt;50MA&gt;현재가 조건 충족 | B타입(1개): 200MA&gt;현재가&gt;50MA 조건 충족.</p>
+            <p>음음양양 패턴 미발생 상태 — 다음 스캔 시 3차 진입 가능성 있음.</p>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>순위</th><th>타입</th><th>심볼</th><th>현재가</th>
                         <th>24H%</th>
                         <th>15m 50MA</th><th>15m 200MA</th>
                         <th>↔50MA</th><th>↔200MA</th><th>역배열강도</th>
@@ -324,36 +413,57 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
             <tr class="third-row">
                 <td>1</td>
+                <td><span class="badge-type" style="background:#26a69a">A타입</span></td>
                 <td class="symbol-cell">
                     <a href="https://www.binance.com/en/futures/SIRENUSDT?timeframe=15m"
                        target="_blank" class="symbol-link">SIREN<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>0.303560</td>
-                <td class="negative">-77.65%</td>
+                <td>0.299680</td>
+                <td class="negative">-77.38%</td>
                 <td>0.356610</td>
                 <td>1.188296</td>
-                <td class="negative">-14.88%</td>
-                <td class="negative">-74.45%</td>
+                <td class="negative">-15.96%</td>
+                <td class="negative">-74.78%</td>
                 <td class="negative">+233.22%</td>
                 <td>1.9조</td>
             </tr>
             <tr class="third-row">
                 <td>2</td>
+                <td><span class="badge-type" style="background:#26a69a">A타입</span></td>
                 <td class="symbol-cell">
                     <a href="https://www.binance.com/en/futures/BCHUSDT?timeframe=15m"
                        target="_blank" class="symbol-link">BCH<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
                 </td>
-                <td>462.250000</td>
-                <td class="negative">-1.12%</td>
+                <td>462.370000</td>
+                <td class="negative">-1.22%</td>
                 <td>462.604400</td>
                 <td>464.288900</td>
-                <td class="negative">-0.08%</td>
-                <td class="negative">-0.44%</td>
+                <td class="negative">-0.05%</td>
+                <td class="negative">-0.41%</td>
                 <td class="negative">+0.36%</td>
-                <td>1,879억</td>
-            </tr></tbody>
+                <td>1,867억</td>
+            </tr>
+                    
+            <tr class="third-row">
+                <td>1</td>
+                <td><span class="badge-type" style="background:#5c6bc0">B타입</span></td>
+                <td class="symbol-cell">
+                    <a href="https://www.binance.com/en/futures/TRXUSDT?timeframe=15m"
+                       target="_blank" class="symbol-link">TRX<span style="color:#aaa;font-weight:400;font-size:0.85em">/USDT</span></a>
+                </td>
+                <td>0.315550</td>
+                <td class="negative">-0.23%</td>
+                <td>0.315012</td>
+                <td>0.317134</td>
+                <td class="positive">+0.17%</td>
+                <td class="negative">-0.50%</td>
+                <td class="negative">+0.67%</td>
+                <td>1,197억</td>
+            </tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -365,9 +475,10 @@
             <p style="color:#aaa;">본 분석은 참고용이며, 실제 투자 시 추가 분석·리스크 관리가 필요합니다.</p>
             <p style="color:#aaa;">패턴 분석만으로 투자 판단을 내리지 마시고 개별 차트 및 뉴스를 반드시 확인하세요.</p>
         </div>
-        <p>생성: 2026-04-01 20:12:08 | 바이낸스 USDT 선물 전종목</p>
-        <p>종목명 클릭 → Binance 선물 15m 차트 &nbsp;|&nbsp; MA = 15m 완성봉 단순이동평균 &nbsp;|&nbsp; 역배열강도 = (200MA−50MA)÷50MA×100</p>
-        <p>1차: 38개 → 2차: 3개 → ⭐ 3차: 1개</p>
+        <p>생성: 2026-04-01 20:14:04 | 바이낸스 USDT 선물 전종목 542개</p>
+        <p>종목명 클릭 → Binance 선물 15m 차트 &nbsp;|&nbsp; MA = 15m 완성봉 단순이동평균</p>
+        <p>[A타입] 1차:38 → 2차A:3 → ⭐ 3차A:1개 &nbsp;|&nbsp;
+           [B타입] 1차:38 → 2차B:1 → ⭐ 3차B:0개</p>
     </div>
 
 </div>
