@@ -82,13 +82,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);
 /* ── 테이블 ── */
 table tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
 table tbody tr:hover{background:#f0fff4;}
-table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
-.rank{color:#6c757d;font-size:1.1rem;}
+table tbody td{vertical-align:middle;padding:.5rem .55rem;white-space:nowrap;font-size:.92rem;}
+.rank{color:#6c757d;font-size:.9rem;}
 .num{text-align:right;}
-.bold{font-weight:600;}
+.bold{font-weight:600;font-size:.92rem;}
 .empty{text-align:center;padding:2rem;color:#6c757d;font-size:1.2rem;}
 .slink{display:inline-flex;align-items:center;gap:4px;text-decoration:none;
-  color:#2c3e50;font-size:1.15rem;}
+  color:#2c3e50;font-size:1.0rem;}
 .slink:hover{color:#28a745;}
 .sq{color:#6c757d;font-size:1rem;font-weight:400;}
 .ico{width:10px;height:10px;color:#adb5bd;flex-shrink:0;}
@@ -99,7 +99,7 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
 .vw{display:flex;align-items:center;gap:7px;justify-content:flex-end;}
 .vbar{width:50px;height:5px;background:#e9ecef;border-radius:3px;overflow:hidden;}
 .vfill{height:100%;background:#4facfe;border-radius:3px;}
-.fb{display:inline-block;padding:2px 8px;border-radius:6px;font-size:1.05rem;font-weight:700;white-space:nowrap;}
+.fb{display:inline-block;padding:2px 6px;border-radius:5px;font-size:.88rem;font-weight:700;white-space:nowrap;}
 .fd{background:#fff3cd;color:#856404;border:1px solid #ffc107;}
 .fw2{background:#d4edda;color:#155724;border:1px solid #28a745;}
 .fp{background:#d1ecf1;color:#0c5460;border:1px solid #17a2b8;}
@@ -110,18 +110,18 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
 .cross-golden{
   display:inline-block;padding:3px 9px;border-radius:8px;
   background:#fffbe6;border:1px solid #f5c518;
-  color:#7a5c00;font-size:1.05rem;font-weight:700;
-  line-height:1.5;text-align:center;white-space:nowrap;
+  color:#7a5c00;font-size:.88rem;font-weight:700;
+  line-height:1.4;text-align:center;white-space:nowrap;
 }
 .cross-dead{
   display:inline-block;padding:3px 9px;border-radius:8px;
   background:#fff0f0;border:1px solid #dc3545;
-  color:#9b1c1c;font-size:1.05rem;font-weight:700;
-  line-height:1.5;text-align:center;white-space:nowrap;
+  color:#9b1c1c;font-size:.88rem;font-weight:700;
+  line-height:1.4;text-align:center;white-space:nowrap;
 }
 .cross-time{
-  display:block;font-size:.95rem;font-weight:400;
-  color:#6c757d;margin-top:1px;
+  display:block;font-size:.82rem;font-weight:400;
+  color:#6c757d;margin-top:0;
 }
 .cross-na{color:#adb5bd;font-size:1.1rem;}
 
@@ -162,7 +162,7 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
     <div class="header-right">
       <div class="live-dot"></div>
       <span class="live-txt">LIVE</span>
-      <span class="timestamp">📅 2026-04-19 23:13:04</span>
+      <span class="timestamp">📅 2026-04-19 23:18:17</span>
     </div>
   </div>
 </div>
@@ -278,21 +278,21 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                      background:#28a745;color:white;">9개</span>
       </div>
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;min-width:960px;">
+        <table style="width:100%;border-collapse:collapse;min-width:880px;">
           <thead>
             <tr style="background:linear-gradient(135deg,#0d2b0d,#1a4a1a);border-bottom:2px solid #28a745;">
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">#</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">종목</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">현재가 (USDT)</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 등락</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 거래대금</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">정배열 강도</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">펀딩비 (8H)</th>
-              <th style="padding:.7rem .8rem;text-align:center;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">크로스 경과</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">#</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">종목</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">현재가 (USDT)</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 등락</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 거래대금</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">정배열 강도</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">펀딩비 (8H)</th>
+              <th style="padding:.45rem .55rem;text-align:center;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">크로스 경과</th>
             </tr>
           </thead>
           <tbody>
@@ -302,15 +302,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>HIGH</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.30970</td>
-                <td class="num neg">-30.07%</td>
+                <td class="num bold">0.31230</td>
+                <td class="num neg">-29.38%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:100%"></div></div>1.1조</div></td>
-                <td class="num">0.30159</td>
-                <td class="num">0.27932</td>
-                <td class="num pos">+2.69%</td>
-                <td class="num pos">+10.87%</td>
-                <td class="num warn">+7.97%</td>
-                <td><span class="fb fn">-0.9252%</span></td>
+                <td class="num">0.30260</td>
+                <td class="num">0.28030</td>
+                <td class="num pos">+3.21%</td>
+                <td class="num pos">+11.42%</td>
+                <td class="num warn">+7.95%</td>
+                <td><span class="fb fn">-0.9137%</span></td>
                 <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">2일 10h</span></span></td>
               </tr>
               <tr>
@@ -319,15 +319,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>PROM</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">2.3050</td>
-                <td class="num pos">+18.20%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:31%"></div></div>3654억</div></td>
-                <td class="num">2.1526</td>
-                <td class="num">1.9133</td>
-                <td class="num pos">+7.08%</td>
-                <td class="num pos">+20.47%</td>
-                <td class="num warn">+12.51%</td>
-                <td><span class="fb fn">-0.0261%</span></td>
+                <td class="num bold">2.3160</td>
+                <td class="num pos">+16.21%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:32%"></div></div>3655억</div></td>
+                <td class="num">2.1533</td>
+                <td class="num">1.9172</td>
+                <td class="num pos">+7.56%</td>
+                <td class="num pos">+20.80%</td>
+                <td class="num warn">+12.32%</td>
+                <td><span class="fb fn">-0.0249%</span></td>
                 <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">3일 0h</span></span></td>
               </tr>
               <tr>
@@ -336,16 +336,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>ENJ</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.06567</td>
-                <td class="num pos">+18.41%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:26%"></div></div>3035억</div></td>
-                <td class="num">0.06337</td>
-                <td class="num">0.06055</td>
-                <td class="num pos">+3.63%</td>
-                <td class="num pos">+8.45%</td>
-                <td class="num warn">+4.66%</td>
-                <td><span class="fb fn">-0.6894%</span></td>
-                <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">3h 58m</span></span></td>
+                <td class="num bold">0.06598</td>
+                <td class="num pos">+19.29%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:26%"></div></div>3044억</div></td>
+                <td class="num">0.06355</td>
+                <td class="num">0.06054</td>
+                <td class="num pos">+3.82%</td>
+                <td class="num pos">+8.98%</td>
+                <td class="num warn">+4.97%</td>
+                <td><span class="fb fn">-0.6853%</span></td>
+                <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">4h 3m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">4</td>
@@ -353,15 +353,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>PHB</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.15050</td>
-                <td class="num pos">+27.98%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:21%"></div></div>2485억</div></td>
-                <td class="num">0.15046</td>
-                <td class="num">0.12641</td>
-                <td class="num pos">+0.03%</td>
-                <td class="num pos">+19.06%</td>
-                <td class="num warn">+19.03%</td>
-                <td><span class="fb fn">-0.3286%</span></td>
+                <td class="num bold">0.15420</td>
+                <td class="num pos">+31.35%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:21%"></div></div>2490억</div></td>
+                <td class="num">0.15006</td>
+                <td class="num">0.12662</td>
+                <td class="num pos">+2.76%</td>
+                <td class="num pos">+21.78%</td>
+                <td class="num warn">+18.51%</td>
+                <td><span class="fb fn">-0.3501%</span></td>
                 <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">4일 8h</span></span></td>
               </tr>
               <tr>
@@ -370,15 +370,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>BLUR</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.03107</td>
-                <td class="num pos">+24.28%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:16%"></div></div>1835억</div></td>
-                <td class="num">0.02974</td>
-                <td class="num">0.02666</td>
-                <td class="num pos">+4.46%</td>
-                <td class="num pos">+16.55%</td>
-                <td class="num warn">+11.57%</td>
-                <td><span class="fb fn">-0.2893%</span></td>
+                <td class="num bold">0.03132</td>
+                <td class="num pos">+25.43%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:16%"></div></div>1843억</div></td>
+                <td class="num">0.02984</td>
+                <td class="num">0.02669</td>
+                <td class="num pos">+4.95%</td>
+                <td class="num pos">+17.35%</td>
+                <td class="num warn">+11.81%</td>
+                <td><span class="fb fn">-0.2836%</span></td>
                 <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">1일 9h</span></span></td>
               </tr>
               <tr>
@@ -387,16 +387,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>MOVE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.02019</td>
-                <td class="num pos">+9.43%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:14%"></div></div>1714억</div></td>
-                <td class="num">0.02017</td>
-                <td class="num">0.01941</td>
-                <td class="num pos">+0.08%</td>
-                <td class="num pos">+4.01%</td>
-                <td class="num warn">+3.93%</td>
-                <td><span class="fb fn">-0.2100%</span></td>
-                <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">18h 27m</span></span></td>
+                <td class="num bold">0.02028</td>
+                <td class="num pos">+9.86%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:15%"></div></div>1715억</div></td>
+                <td class="num">0.02019</td>
+                <td class="num">0.01942</td>
+                <td class="num pos">+0.45%</td>
+                <td class="num pos">+4.44%</td>
+                <td class="num warn">+3.98%</td>
+                <td><span class="fb fn">-0.2094%</span></td>
+                <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">18h 33m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">7</td>
@@ -404,15 +404,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>GTC</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.13914</td>
-                <td class="num pos">+30.11%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:13%"></div></div>1564억</div></td>
-                <td class="num">0.12676</td>
-                <td class="num">0.10366</td>
-                <td class="num pos">+9.77%</td>
-                <td class="num pos">+34.23%</td>
-                <td class="num warn">+22.28%</td>
-                <td><span class="fb fn">-0.2356%</span></td>
+                <td class="num bold">0.13942</td>
+                <td class="num pos">+31.70%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:13%"></div></div>1570억</div></td>
+                <td class="num">0.12765</td>
+                <td class="num">0.10389</td>
+                <td class="num pos">+9.22%</td>
+                <td class="num pos">+34.20%</td>
+                <td class="num warn">+22.87%</td>
+                <td><span class="fb fn">-0.2423%</span></td>
                 <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">5일 23h</span></span></td>
               </tr>
               <tr>
@@ -421,15 +421,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>PIEVERSE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.64660</td>
-                <td class="num pos">+23.85%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:13%"></div></div>1498억</div></td>
-                <td class="num">0.61961</td>
-                <td class="num">0.54681</td>
-                <td class="num pos">+4.36%</td>
-                <td class="num pos">+18.25%</td>
-                <td class="num warn">+13.31%</td>
-                <td><span class="fb fp">+0.0564%</span></td>
+                <td class="num bold">0.64190</td>
+                <td class="num pos">+23.56%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:13%"></div></div>1504억</div></td>
+                <td class="num">0.62059</td>
+                <td class="num">0.54773</td>
+                <td class="num pos">+3.43%</td>
+                <td class="num pos">+17.19%</td>
+                <td class="num warn">+13.30%</td>
+                <td><span class="fb fp">+0.0599%</span></td>
                 <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">3일 8h</span></span></td>
               </tr>
               <tr>
@@ -438,16 +438,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>TRX</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.33032</td>
-                <td class="num pos">+0.50%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:9%"></div></div>1067억</div></td>
-                <td class="num">0.32961</td>
-                <td class="num">0.32798</td>
-                <td class="num pos">+0.22%</td>
-                <td class="num pos">+0.71%</td>
+                <td class="num bold">0.33065</td>
+                <td class="num pos">+0.68%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:9%"></div></div>1065억</div></td>
+                <td class="num">0.32967</td>
+                <td class="num">0.32801</td>
+                <td class="num pos">+0.30%</td>
+                <td class="num pos">+0.80%</td>
                 <td class="num warn">+0.50%</td>
                 <td><span class="fb fp">+0.0021%</span></td>
-                <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">1일 13h</span></span></td>
+                <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">1일 14h</span></span></td>
               </tr></tbody>
         </table>
       </div>
@@ -467,21 +467,21 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                      background:#e67e00;color:white;">2개</span>
       </div>
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;min-width:960px;">
+        <table style="width:100%;border-collapse:collapse;min-width:880px;">
           <thead>
             <tr style="background:linear-gradient(135deg,#0d2b0d,#1a4a1a);border-bottom:2px solid #28a745;">
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">#</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">종목</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">현재가 (USDT)</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 등락</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 거래대금</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">정배열 강도</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">펀딩비 (8H)</th>
-              <th style="padding:.7rem .8rem;text-align:center;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">크로스 경과</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">#</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">종목</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">현재가 (USDT)</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 등락</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 거래대금</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">정배열 강도</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">펀딩비 (8H)</th>
+              <th style="padding:.45rem .55rem;text-align:center;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">크로스 경과</th>
             </tr>
           </thead>
           <tbody>
@@ -491,15 +491,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>GWEI</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.10976</td>
-                <td class="num pos">+2.57%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:26%"></div></div>3031억</div></td>
-                <td class="num">0.11119</td>
-                <td class="num">0.09500</td>
-                <td class="num neg">-1.29%</td>
-                <td class="num pos">+15.54%</td>
-                <td class="num warn">+17.05%</td>
-                <td><span class="fb fp">+0.0149%</span></td>
+                <td class="num bold">0.10796</td>
+                <td class="num neg">-2.23%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:26%"></div></div>3007억</div></td>
+                <td class="num">0.11137</td>
+                <td class="num">0.09518</td>
+                <td class="num neg">-3.06%</td>
+                <td class="num pos">+13.43%</td>
+                <td class="num warn">+17.01%</td>
+                <td><span class="fb fp">+0.0141%</span></td>
                 <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">3일 2h</span></span></td>
               </tr>
               <tr>
@@ -508,16 +508,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>BIO</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.03032</td>
-                <td class="num pos">+12.13%</td>
+                <td class="num bold">0.03037</td>
+                <td class="num pos">+11.61%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:15%"></div></div>1725억</div></td>
                 <td class="num">0.03040</td>
-                <td class="num">0.02979</td>
-                <td class="num neg">-0.28%</td>
-                <td class="num pos">+1.79%</td>
-                <td class="num warn">+2.07%</td>
-                <td><span class="fb fn">-0.0913%</span></td>
-                <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">7h 57m</span></span></td>
+                <td class="num">0.02978</td>
+                <td class="num neg">-0.11%</td>
+                <td class="num pos">+2.00%</td>
+                <td class="num warn">+2.10%</td>
+                <td><span class="fb fn">-0.0946%</span></td>
+                <td class="num cross-col"><span class="cross-golden">🟡 골든<br><span class="cross-time">8h 3m</span></span></td>
               </tr></tbody>
         </table>
       </div>
@@ -537,21 +537,21 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                      background:#dc3545;color:white;">0개</span>
       </div>
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;min-width:960px;">
+        <table style="width:100%;border-collapse:collapse;min-width:880px;">
           <thead>
             <tr style="background:linear-gradient(135deg,#0d2b0d,#1a4a1a);border-bottom:2px solid #28a745;">
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">#</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">종목</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">현재가 (USDT)</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 등락</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 거래대금</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">정배열 강도</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">펀딩비 (8H)</th>
-              <th style="padding:.7rem .8rem;text-align:center;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">크로스 경과</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">#</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">종목</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">현재가 (USDT)</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 등락</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 거래대금</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">정배열 강도</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">펀딩비 (8H)</th>
+              <th style="padding:.45rem .55rem;text-align:center;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">크로스 경과</th>
             </tr>
           </thead>
           <tbody><tr><td colspan="12" class="empty">해당 종목 없음</td></tr></tbody>
@@ -598,21 +598,21 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                      background:#4facfe;color:white;">3개</span>
       </div>
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;min-width:960px;">
+        <table style="width:100%;border-collapse:collapse;min-width:880px;">
           <thead>
             <tr style="background:linear-gradient(135deg,#0d2b0d,#1a4a1a);border-bottom:2px solid #28a745;">
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">#</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">종목</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">현재가 (USDT)</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 등락</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 거래대금</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">역배열 강도</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">펀딩비 (8H)</th>
-              <th style="padding:.7rem .8rem;text-align:center;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">크로스 경과</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">#</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">종목</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">현재가 (USDT)</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 등락</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 거래대금</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">역배열 강도</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">펀딩비 (8H)</th>
+              <th style="padding:.45rem .55rem;text-align:center;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">크로스 경과</th>
             </tr>
           </thead>
           <tbody>
@@ -622,16 +622,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>币安人生</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.45405</td>
-                <td class="num neg">-10.35%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:6%"></div></div>7408억</div></td>
-                <td class="num">0.43903</td>
-                <td class="num">0.42256</td>
-                <td class="num pos">+3.42%</td>
-                <td class="num pos">+7.45%</td>
-                <td class="num warn">+3.90%</td>
+                <td class="num bold">0.45781</td>
+                <td class="num neg">-8.30%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:6%"></div></div>7439억</div></td>
+                <td class="num">0.43952</td>
+                <td class="num">0.42264</td>
+                <td class="num pos">+4.16%</td>
+                <td class="num pos">+8.32%</td>
+                <td class="num warn">+3.99%</td>
                 <td><span class="fb fp">+0.0050%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">3h 42m</span></span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">3h 48m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">2</td>
@@ -639,15 +639,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>ZEC</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">329.4000</td>
-                <td class="num pos">+1.47%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:4%"></div></div>4775억</div></td>
-                <td class="num">329.2872</td>
-                <td class="num">325.2108</td>
-                <td class="num pos">+0.03%</td>
-                <td class="num pos">+1.29%</td>
-                <td class="num warn">+1.25%</td>
-                <td><span class="fb fn">-0.0086%</span></td>
+                <td class="num bold">329.7300</td>
+                <td class="num pos">+1.40%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:4%"></div></div>4788억</div></td>
+                <td class="num">329.2688</td>
+                <td class="num">325.3218</td>
+                <td class="num pos">+0.14%</td>
+                <td class="num pos">+1.36%</td>
+                <td class="num warn">+1.21%</td>
+                <td><span class="fb fn">-0.0085%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">4일 17h</span></span></td>
               </tr>
               <tr>
@@ -656,16 +656,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>ALICE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.16330</td>
-                <td class="num neg">-20.23%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1328억</div></td>
-                <td class="num">0.15774</td>
-                <td class="num">0.15613</td>
-                <td class="num pos">+3.53%</td>
-                <td class="num pos">+4.59%</td>
-                <td class="num warn">+1.03%</td>
-                <td><span class="fb fn">-0.0008%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">2h 12m</span></span></td>
+                <td class="num bold">0.16390</td>
+                <td class="num neg">-20.05%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1323억</div></td>
+                <td class="num">0.15793</td>
+                <td class="num">0.15623</td>
+                <td class="num pos">+3.78%</td>
+                <td class="num pos">+4.91%</td>
+                <td class="num warn">+1.09%</td>
+                <td><span class="fb fn">-0.0025%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">2h 17m</span></span></td>
               </tr></tbody>
         </table>
       </div>
@@ -685,21 +685,21 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                      background:#e67e00;color:white;">23개</span>
       </div>
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;min-width:960px;">
+        <table style="width:100%;border-collapse:collapse;min-width:880px;">
           <thead>
             <tr style="background:linear-gradient(135deg,#0d2b0d,#1a4a1a);border-bottom:2px solid #28a745;">
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">#</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">종목</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">현재가 (USDT)</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 등락</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 거래대금</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">역배열 강도</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">펀딩비 (8H)</th>
-              <th style="padding:.7rem .8rem;text-align:center;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">크로스 경과</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">#</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">종목</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">현재가 (USDT)</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 등락</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 거래대금</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">역배열 강도</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">펀딩비 (8H)</th>
+              <th style="padding:.45rem .55rem;text-align:center;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">크로스 경과</th>
             </tr>
           </thead>
           <tbody>
@@ -709,16 +709,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>BTC</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">75,719.9</td>
-                <td class="num neg">-0.50%</td>
+                <td class="num bold">75,735.7</td>
+                <td class="num neg">-0.53%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:100%"></div></div>11.2조</div></td>
-                <td class="num">76,305.8</td>
-                <td class="num">75,404.3</td>
-                <td class="num neg">-0.77%</td>
-                <td class="num pos">+0.42%</td>
-                <td class="num warn">+1.20%</td>
-                <td><span class="fb fn">-0.0110%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">18h 27m</span></span></td>
+                <td class="num">76,306.4</td>
+                <td class="num">75,409.1</td>
+                <td class="num neg">-0.75%</td>
+                <td class="num pos">+0.43%</td>
+                <td class="num warn">+1.19%</td>
+                <td><span class="fb fn">-0.0109%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">18h 32m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">2</td>
@@ -726,16 +726,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>ETH</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">2,329.70</td>
+                <td class="num bold">2,330.22</td>
                 <td class="num neg">-1.07%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:88%"></div></div>10.0조</div></td>
-                <td class="num">2,374.49</td>
-                <td class="num">2,327.31</td>
-                <td class="num neg">-1.89%</td>
-                <td class="num pos">+0.10%</td>
+                <td class="num">2,374.36</td>
+                <td class="num">2,327.03</td>
+                <td class="num neg">-1.86%</td>
+                <td class="num pos">+0.14%</td>
                 <td class="num warn">+2.03%</td>
                 <td><span class="fb fn">-0.0250%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">21h 12m</span></span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">21h 18m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">3</td>
@@ -743,15 +743,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>SOL</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">86.1100</td>
-                <td class="num neg">-0.53%</td>
+                <td class="num bold">86.2000</td>
+                <td class="num neg">-0.54%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:17%"></div></div>2.0조</div></td>
-                <td class="num">87.2362</td>
-                <td class="num">85.3388</td>
-                <td class="num neg">-1.29%</td>
-                <td class="num pos">+0.90%</td>
-                <td class="num warn">+2.22%</td>
-                <td><span class="fb fn">-0.0112%</span></td>
+                <td class="num">87.2265</td>
+                <td class="num">85.3498</td>
+                <td class="num neg">-1.18%</td>
+                <td class="num pos">+1.00%</td>
+                <td class="num warn">+2.20%</td>
+                <td><span class="fb fn">-0.0110%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 2h</span></span></td>
               </tr>
               <tr>
@@ -760,16 +760,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>XRP</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">1.4344</td>
-                <td class="num neg">-0.06%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:7%"></div></div>8410억</div></td>
+                <td class="num bold">1.4342</td>
+                <td class="num neg">-0.13%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:7%"></div></div>8418억</div></td>
                 <td class="num">1.4499</td>
-                <td class="num">1.4272</td>
-                <td class="num neg">-1.07%</td>
-                <td class="num pos">+0.50%</td>
-                <td class="num warn">+1.59%</td>
+                <td class="num">1.4273</td>
+                <td class="num neg">-1.08%</td>
+                <td class="num pos">+0.48%</td>
+                <td class="num warn">+1.58%</td>
                 <td><span class="fb fp">+0.0004%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">23h 12m</span></span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">23h 18m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">5</td>
@@ -777,14 +777,14 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>DOGE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.09491</td>
-                <td class="num neg">-0.96%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:7%"></div></div>8105억</div></td>
-                <td class="num">0.09700</td>
+                <td class="num bold">0.09480</td>
+                <td class="num neg">-1.15%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:7%"></div></div>8114억</div></td>
+                <td class="num">0.09698</td>
                 <td class="num">0.09448</td>
-                <td class="num neg">-2.15%</td>
-                <td class="num pos">+0.45%</td>
-                <td class="num warn">+2.66%</td>
+                <td class="num neg">-2.24%</td>
+                <td class="num pos">+0.33%</td>
+                <td class="num warn">+2.64%</td>
                 <td><span class="fb fn">-0.0065%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 3h</span></span></td>
               </tr>
@@ -794,15 +794,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>1000PEPE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.0037842</td>
-                <td class="num neg">-0.98%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>3935억</div></td>
-                <td class="num">0.0038724</td>
-                <td class="num">0.0037567</td>
-                <td class="num neg">-2.28%</td>
-                <td class="num pos">+0.73%</td>
-                <td class="num warn">+3.08%</td>
-                <td><span class="fb fn">-0.0138%</span></td>
+                <td class="num bold">0.0037818</td>
+                <td class="num neg">-1.11%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>3940억</div></td>
+                <td class="num">0.0038716</td>
+                <td class="num">0.0037570</td>
+                <td class="num neg">-2.32%</td>
+                <td class="num pos">+0.66%</td>
+                <td class="num warn">+3.05%</td>
+                <td><span class="fb fn">-0.0134%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 3h</span></span></td>
               </tr>
               <tr>
@@ -811,16 +811,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>BNB</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">624.3600</td>
+                <td class="num bold">624.5600</td>
                 <td class="num neg">-1.53%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>3924억</div></td>
-                <td class="num">634.3805</td>
-                <td class="num">622.8942</td>
-                <td class="num neg">-1.58%</td>
-                <td class="num pos">+0.24%</td>
-                <td class="num warn">+1.84%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>3920억</div></td>
+                <td class="num">634.3373</td>
+                <td class="num">622.8262</td>
+                <td class="num neg">-1.54%</td>
+                <td class="num pos">+0.28%</td>
+                <td class="num warn">+1.85%</td>
                 <td><span class="fb fn">0.0000%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">20h 27m</span></span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">20h 32m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">8</td>
@@ -828,16 +828,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>HYPE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">43.6250</td>
-                <td class="num neg">-1.16%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>3564억</div></td>
-                <td class="num">44.1790</td>
-                <td class="num">43.3112</td>
-                <td class="num neg">-1.25%</td>
-                <td class="num pos">+0.72%</td>
+                <td class="num bold">43.4900</td>
+                <td class="num neg">-1.57%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>3583억</div></td>
+                <td class="num">44.1782</td>
+                <td class="num">43.3119</td>
+                <td class="num neg">-1.56%</td>
+                <td class="num pos">+0.41%</td>
                 <td class="num warn">+2.00%</td>
-                <td><span class="fb fn">-0.0001%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">16h 42m</span></span></td>
+                <td><span class="fb fp">+0.0001%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">16h 48m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">9</td>
@@ -846,15 +846,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
                 <td class="num bold">0.24810</td>
-                <td class="num neg">-1.12%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>2107억</div></td>
-                <td class="num">0.25352</td>
+                <td class="num neg">-1.27%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>2108억</div></td>
+                <td class="num">0.25347</td>
                 <td class="num">0.24702</td>
-                <td class="num neg">-2.14%</td>
+                <td class="num neg">-2.12%</td>
                 <td class="num pos">+0.44%</td>
-                <td class="num warn">+2.63%</td>
-                <td><span class="fb fn">-0.0008%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 2h</span></span></td>
+                <td class="num warn">+2.61%</td>
+                <td><span class="fb fn">-0.0006%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 3h</span></span></td>
               </tr>
               <tr>
                 <td class="rank">10</td>
@@ -862,16 +862,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>TAO</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">247.3200</td>
-                <td class="num neg">-1.08%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>2012억</div></td>
-                <td class="num">250.3998</td>
-                <td class="num">243.8830</td>
-                <td class="num neg">-1.23%</td>
-                <td class="num pos">+1.41%</td>
-                <td class="num warn">+2.67%</td>
-                <td><span class="fb fn">-0.0160%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">22h 13m</span></span></td>
+                <td class="num bold">247.9800</td>
+                <td class="num neg">-1.00%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>2024억</div></td>
+                <td class="num">250.3751</td>
+                <td class="num">244.0322</td>
+                <td class="num neg">-0.96%</td>
+                <td class="num pos">+1.62%</td>
+                <td class="num warn">+2.60%</td>
+                <td><span class="fb fn">-0.0158%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">22h 17m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">11</td>
@@ -879,16 +879,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>ENA</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.12034</td>
-                <td class="num neg">-0.33%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1834억</div></td>
-                <td class="num">0.12182</td>
-                <td class="num">0.11961</td>
-                <td class="num neg">-1.21%</td>
-                <td class="num pos">+0.61%</td>
-                <td class="num warn">+1.84%</td>
+                <td class="num bold">0.12025</td>
+                <td class="num neg">-0.77%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1829억</div></td>
+                <td class="num">0.12185</td>
+                <td class="num">0.11963</td>
+                <td class="num neg">-1.32%</td>
+                <td class="num pos">+0.52%</td>
+                <td class="num warn">+1.86%</td>
                 <td><span class="fb fn">-0.0038%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">9h 12m</span></span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">9h 18m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">12</td>
@@ -896,15 +896,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>SUI</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.95960</td>
-                <td class="num neg">-0.68%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1805억</div></td>
-                <td class="num">0.97850</td>
-                <td class="num">0.94799</td>
-                <td class="num neg">-1.93%</td>
-                <td class="num pos">+1.22%</td>
-                <td class="num warn">+3.22%</td>
-                <td><span class="fb fn">-0.0096%</span></td>
+                <td class="num bold">0.95970</td>
+                <td class="num neg">-0.72%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1806억</div></td>
+                <td class="num">0.97828</td>
+                <td class="num">0.94823</td>
+                <td class="num neg">-1.90%</td>
+                <td class="num pos">+1.21%</td>
+                <td class="num warn">+3.17%</td>
+                <td><span class="fb fn">-0.0088%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 3h</span></span></td>
               </tr>
               <tr>
@@ -913,16 +913,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>AVAX</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">9.2680</td>
-                <td class="num neg">-1.27%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1615억</div></td>
-                <td class="num">9.5036</td>
-                <td class="num">9.2431</td>
-                <td class="num neg">-2.48%</td>
-                <td class="num pos">+0.27%</td>
-                <td class="num warn">+2.82%</td>
-                <td><span class="fb fn">-0.0100%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 2h</span></span></td>
+                <td class="num bold">9.2750</td>
+                <td class="num neg">-1.36%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1613억</div></td>
+                <td class="num">9.5017</td>
+                <td class="num">9.2434</td>
+                <td class="num neg">-2.39%</td>
+                <td class="num pos">+0.34%</td>
+                <td class="num warn">+2.79%</td>
+                <td><span class="fb fn">-0.0096%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 3h</span></span></td>
               </tr>
               <tr>
                 <td class="rank">14</td>
@@ -930,16 +930,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>M</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">3.7028</td>
-                <td class="num neg">-14.03%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1585억</div></td>
-                <td class="num">3.8813</td>
-                <td class="num">3.4980</td>
-                <td class="num neg">-4.60%</td>
-                <td class="num pos">+5.85%</td>
-                <td class="num warn">+10.96%</td>
+                <td class="num bold">3.7287</td>
+                <td class="num neg">-12.61%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1588억</div></td>
+                <td class="num">3.8815</td>
+                <td class="num">3.5008</td>
+                <td class="num neg">-3.94%</td>
+                <td class="num pos">+6.51%</td>
+                <td class="num warn">+10.87%</td>
                 <td><span class="fb fp">+0.0050%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">15h 58m</span></span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">16h 2m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">15</td>
@@ -947,16 +947,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>GENIUS</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.66620</td>
-                <td class="num neg">-14.62%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1583억</div></td>
-                <td class="num">0.71247</td>
-                <td class="num">0.62870</td>
-                <td class="num neg">-6.49%</td>
-                <td class="num pos">+5.97%</td>
-                <td class="num warn">+13.32%</td>
-                <td><span class="fb fn">-0.7518%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">8h 13m</span></span></td>
+                <td class="num bold">0.66590</td>
+                <td class="num neg">-15.59%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1588억</div></td>
+                <td class="num">0.71259</td>
+                <td class="num">0.62790</td>
+                <td class="num neg">-6.55%</td>
+                <td class="num pos">+6.05%</td>
+                <td class="num warn">+13.49%</td>
+                <td><span class="fb fn">-0.7257%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">8h 18m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">16</td>
@@ -964,16 +964,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>API3</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.33950</td>
-                <td class="num neg">-18.39%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1497억</div></td>
-                <td class="num">0.34234</td>
-                <td class="num">0.33820</td>
-                <td class="num neg">-0.83%</td>
-                <td class="num pos">+0.38%</td>
-                <td class="num warn">+1.22%</td>
-                <td><span class="fb fn">-0.2177%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1h 27m</span></span></td>
+                <td class="num bold">0.34040</td>
+                <td class="num neg">-18.25%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1484억</div></td>
+                <td class="num">0.34248</td>
+                <td class="num">0.33814</td>
+                <td class="num neg">-0.61%</td>
+                <td class="num pos">+0.67%</td>
+                <td class="num warn">+1.28%</td>
+                <td><span class="fb fn">-0.2085%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1h 32m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">17</td>
@@ -981,16 +981,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>LINK</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">9.2700</td>
-                <td class="num neg">-1.15%</td>
+                <td class="num bold">9.2740</td>
+                <td class="num neg">-1.20%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1383억</div></td>
-                <td class="num">9.4340</td>
-                <td class="num">9.1998</td>
-                <td class="num neg">-1.74%</td>
-                <td class="num pos">+0.76%</td>
-                <td class="num warn">+2.55%</td>
-                <td><span class="fb fp">+0.0017%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 0h</span></span></td>
+                <td class="num">9.4327</td>
+                <td class="num">9.2013</td>
+                <td class="num neg">-1.68%</td>
+                <td class="num pos">+0.79%</td>
+                <td class="num warn">+2.52%</td>
+                <td><span class="fb fp">+0.0022%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 1h</span></span></td>
               </tr>
               <tr>
                 <td class="rank">18</td>
@@ -998,15 +998,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>ZRO</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">1.6811</td>
-                <td class="num neg">-10.50%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1346억</div></td>
-                <td class="num">1.8423</td>
-                <td class="num">1.6132</td>
-                <td class="num neg">-8.75%</td>
-                <td class="num pos">+4.21%</td>
-                <td class="num warn">+14.20%</td>
-                <td><span class="fb fn">-0.0079%</span></td>
+                <td class="num bold">1.6815</td>
+                <td class="num neg">-10.92%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1347억</div></td>
+                <td class="num">1.8409</td>
+                <td class="num">1.6126</td>
+                <td class="num neg">-8.66%</td>
+                <td class="num pos">+4.27%</td>
+                <td class="num warn">+14.16%</td>
+                <td><span class="fb fn">-0.0078%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 6h</span></span></td>
               </tr>
               <tr>
@@ -1015,16 +1015,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>NEAR</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">1.3730</td>
+                <td class="num bold">1.3720</td>
                 <td class="num neg">-0.51%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1327억</div></td>
-                <td class="num">1.3800</td>
-                <td class="num">1.3435</td>
-                <td class="num neg">-0.50%</td>
-                <td class="num pos">+2.20%</td>
-                <td class="num warn">+2.71%</td>
-                <td><span class="fb fp">+0.0029%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 10h</span></span></td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1324억</div></td>
+                <td class="num">1.3799</td>
+                <td class="num">1.3442</td>
+                <td class="num neg">-0.57%</td>
+                <td class="num pos">+2.07%</td>
+                <td class="num warn">+2.65%</td>
+                <td><span class="fb fp">+0.0013%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 11h</span></span></td>
               </tr>
               <tr>
                 <td class="rank">20</td>
@@ -1032,15 +1032,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>DOT</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">1.2730</td>
-                <td class="num neg">-1.17%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1290억</div></td>
-                <td class="num">1.2996</td>
-                <td class="num">1.2664</td>
-                <td class="num neg">-2.05%</td>
-                <td class="num pos">+0.52%</td>
-                <td class="num warn">+2.62%</td>
-                <td><span class="fb fp">+0.0013%</span></td>
+                <td class="num bold">1.2720</td>
+                <td class="num neg">-1.24%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1292억</div></td>
+                <td class="num">1.2994</td>
+                <td class="num">1.2665</td>
+                <td class="num neg">-2.11%</td>
+                <td class="num pos">+0.43%</td>
+                <td class="num warn">+2.60%</td>
+                <td><span class="fb fp">+0.0005%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 1h</span></span></td>
               </tr>
               <tr>
@@ -1049,15 +1049,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>WLD</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.26750</td>
-                <td class="num neg">-2.80%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1066억</div></td>
-                <td class="num">0.27660</td>
-                <td class="num">0.26190</td>
-                <td class="num neg">-3.29%</td>
-                <td class="num pos">+2.14%</td>
-                <td class="num warn">+5.61%</td>
-                <td><span class="fb fn">-0.1022%</span></td>
+                <td class="num bold">0.26740</td>
+                <td class="num neg">-2.98%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1069억</div></td>
+                <td class="num">0.27641</td>
+                <td class="num">0.26203</td>
+                <td class="num neg">-3.26%</td>
+                <td class="num pos">+2.05%</td>
+                <td class="num warn">+5.49%</td>
+                <td><span class="fb fn">-0.1028%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 20h</span></span></td>
               </tr>
               <tr>
@@ -1066,15 +1066,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>FIL</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.93100</td>
-                <td class="num neg">-2.51%</td>
+                <td class="num bold">0.93000</td>
+                <td class="num neg">-2.72%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1054억</div></td>
-                <td class="num">0.96138</td>
-                <td class="num">0.92562</td>
-                <td class="num neg">-3.16%</td>
-                <td class="num pos">+0.58%</td>
-                <td class="num warn">+3.86%</td>
-                <td><span class="fb fn">-0.0139%</span></td>
+                <td class="num">0.96106</td>
+                <td class="num">0.92560</td>
+                <td class="num neg">-3.23%</td>
+                <td class="num pos">+0.48%</td>
+                <td class="num warn">+3.83%</td>
+                <td><span class="fb fn">-0.0137%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 8h</span></span></td>
               </tr>
               <tr>
@@ -1083,14 +1083,14 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>TRUMP</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">2.8440</td>
-                <td class="num neg">-2.40%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1035억</div></td>
-                <td class="num">2.9390</td>
+                <td class="num bold">2.8430</td>
+                <td class="num neg">-2.50%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1034억</div></td>
+                <td class="num">2.9381</td>
                 <td class="num">2.8378</td>
-                <td class="num neg">-3.23%</td>
-                <td class="num pos">+0.22%</td>
-                <td class="num warn">+3.57%</td>
+                <td class="num neg">-3.24%</td>
+                <td class="num pos">+0.18%</td>
+                <td class="num warn">+3.53%</td>
                 <td><span class="fb fn">-0.0082%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 4h</span></span></td>
               </tr></tbody>
@@ -1112,21 +1112,21 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                      background:#dc3545;color:white;">6개</span>
       </div>
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;min-width:960px;">
+        <table style="width:100%;border-collapse:collapse;min-width:880px;">
           <thead>
             <tr style="background:linear-gradient(135deg,#0d2b0d,#1a4a1a);border-bottom:2px solid #28a745;">
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">#</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">종목</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">현재가 (USDT)</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 등락</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">24H 거래대금</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">15m 50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔200MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">↔50MA</th>
-              <th style="padding:.7rem .8rem;text-align:right;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">역배열 강도</th>
-              <th style="padding:.7rem .8rem;text-align:left;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">펀딩비 (8H)</th>
-              <th style="padding:.7rem .8rem;text-align:center;color:#f0f6fc;font-size:1.1rem;white-space:nowrap;">크로스 경과</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">#</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">종목</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">현재가 (USDT)</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 등락</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">24H 거래대금</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">15m 50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔200MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">↔50MA</th>
+              <th style="padding:.45rem .55rem;text-align:right;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">역배열 강도</th>
+              <th style="padding:.45rem .55rem;text-align:left;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">펀딩비 (8H)</th>
+              <th style="padding:.45rem .55rem;text-align:center;color:#f0f6fc;font-size:.9rem;white-space:nowrap;">크로스 경과</th>
             </tr>
           </thead>
           <tbody>
@@ -1136,16 +1136,16 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>RAVE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">1.1514</td>
-                <td class="num neg">-88.95%</td>
+                <td class="num bold">1.1672</td>
+                <td class="num neg">-88.17%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:45%"></div></div>5.1조</div></td>
-                <td class="num">12.8854</td>
-                <td class="num">1.3315</td>
-                <td class="num neg">-91.06%</td>
-                <td class="num neg">-13.53%</td>
-                <td class="num warn">+867.73%</td>
-                <td><span class="fb fp">+0.0421%</span></td>
-                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">21h 13m</span></span></td>
+                <td class="num">12.7980</td>
+                <td class="num">1.3027</td>
+                <td class="num neg">-90.88%</td>
+                <td class="num neg">-10.40%</td>
+                <td class="num warn">+882.43%</td>
+                <td><span class="fb fp">+0.0415%</span></td>
+                <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">21h 18m</span></span></td>
               </tr>
               <tr>
                 <td class="rank">2</td>
@@ -1153,15 +1153,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>AAVE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">92.5800</td>
-                <td class="num neg">-17.05%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:6%"></div></div>7020억</div></td>
-                <td class="num">107.7376</td>
-                <td class="num">93.3466</td>
-                <td class="num neg">-14.07%</td>
-                <td class="num neg">-0.82%</td>
+                <td class="num bold">92.6200</td>
+                <td class="num neg">-17.08%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:6%"></div></div>7018억</div></td>
+                <td class="num">107.6153</td>
+                <td class="num">93.2344</td>
+                <td class="num neg">-13.93%</td>
+                <td class="num neg">-0.66%</td>
                 <td class="num warn">+15.42%</td>
-                <td><span class="fb fn">-0.0148%</span></td>
+                <td><span class="fb fn">-0.0149%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 1h</span></span></td>
               </tr>
               <tr>
@@ -1170,14 +1170,14 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>ORDI</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">4.3620</td>
-                <td class="num neg">-20.17%</td>
+                <td class="num bold">4.3410</td>
+                <td class="num neg">-21.14%</td>
                 <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:4%"></div></div>4648억</div></td>
-                <td class="num">5.5053</td>
-                <td class="num">4.4382</td>
-                <td class="num neg">-20.77%</td>
-                <td class="num neg">-1.72%</td>
-                <td class="num warn">+24.04%</td>
+                <td class="num">5.4924</td>
+                <td class="num">4.4229</td>
+                <td class="num neg">-20.96%</td>
+                <td class="num neg">-1.85%</td>
+                <td class="num warn">+24.18%</td>
                 <td><span class="fb fp">+0.0050%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 15h</span></span></td>
               </tr>
@@ -1187,15 +1187,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>SIREN</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.64790</td>
-                <td class="num neg">-16.55%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2309억</div></td>
-                <td class="num">0.70365</td>
-                <td class="num">0.65722</td>
-                <td class="num neg">-7.92%</td>
-                <td class="num neg">-1.42%</td>
-                <td class="num warn">+7.06%</td>
-                <td><span class="fb fn">-0.0273%</span></td>
+                <td class="num bold">0.64020</td>
+                <td class="num neg">-17.19%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2305억</div></td>
+                <td class="num">0.70345</td>
+                <td class="num">0.65534</td>
+                <td class="num neg">-8.99%</td>
+                <td class="num neg">-2.31%</td>
+                <td class="num warn">+7.34%</td>
+                <td><span class="fb fn">-0.0265%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 21h</span></span></td>
               </tr>
               <tr>
@@ -1204,15 +1204,15 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>BASED</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">0.08302</td>
-                <td class="num neg">-23.63%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1724억</div></td>
-                <td class="num">0.10853</td>
-                <td class="num">0.08752</td>
-                <td class="num neg">-23.51%</td>
-                <td class="num neg">-5.14%</td>
-                <td class="num warn">+24.01%</td>
-                <td><span class="fb fn">-0.0120%</span></td>
+                <td class="num bold">0.08397</td>
+                <td class="num neg">-22.64%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1729억</div></td>
+                <td class="num">0.10834</td>
+                <td class="num">0.08726</td>
+                <td class="num neg">-22.49%</td>
+                <td class="num neg">-3.78%</td>
+                <td class="num warn">+24.15%</td>
+                <td><span class="fb fn">-0.0108%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 22h</span></span></td>
               </tr>
               <tr>
@@ -1221,14 +1221,14 @@ table tbody td{vertical-align:middle;padding:.75rem .8rem;white-space:nowrap;}
                   <b>RIVER</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="num bold">5.5320</td>
-                <td class="num neg">-18.95%</td>
-                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1369억</div></td>
-                <td class="num">6.8696</td>
-                <td class="num">5.8324</td>
-                <td class="num neg">-19.47%</td>
-                <td class="num neg">-5.15%</td>
-                <td class="num warn">+17.78%</td>
+                <td class="num bold">5.6380</td>
+                <td class="num neg">-16.91%</td>
+                <td class="num"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1375억</div></td>
+                <td class="num">6.8595</td>
+                <td class="num">5.8190</td>
+                <td class="num neg">-17.81%</td>
+                <td class="num neg">-3.11%</td>
+                <td class="num warn">+17.88%</td>
                 <td><span class="fb fp">+0.0050%</span></td>
                 <td class="num cross-col"><span class="cross-dead">🔴 데드<br><span class="cross-time">1일 4h</span></span></td>
               </tr></tbody>
