@@ -129,7 +129,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
     <div class="header-right">
       <div class="live-dot"></div>
       <span class="live-txt">LIVE</span>
-      <span class="timestamp">📅 2026-04-27 06:28:17</span>
+      <span class="timestamp">📅 2026-04-27 18:28:22</span>
     </div>
   </div>
 </div>
@@ -144,7 +144,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
   <h2 style="font-family:Rajdhani,sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:.8rem;">
     📋 전체 요약
     <span style="font-size:1rem;color:#6c757d;font-weight:400;">
-      — 거래대금 1000억원↑ · 30m 완성봉 기준 · 총 37개
+      — 거래대금 1000억원↑ · 30m 완성봉 기준 · 총 40개
     </span>
   </h2>
   <div style="display:flex;flex-direction:column;gap:.6rem;">
@@ -152,27 +152,27 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
     <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
       <span style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
                    color:#28a745;">📈 정배열 (50MA > 200MA)</span>
-      <span style="font-size:1.1rem;color:#6c757d;">총 <b style="color:#28a745;">25</b>개</span>
+      <span style="font-size:1.1rem;color:#6c757d;">총 <b style="color:#28a745;">32</b>개</span>
       <span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
                   font-weight:700;border:1px solid #28a745;color:#28a745;">
-        Zone A 17개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
+        Zone A 8개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
                   font-weight:700;border:1px solid #28a745;color:#28a745;">
-        Zone B 8개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
+        Zone B 13개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
                   font-weight:700;border:1px solid #28a745;color:#28a745;">
-        Zone C 0개</span>
+        Zone C 11개</span>
     </div>
     
     <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
       <span style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
                    color:#dc3545;">📉 역배열 (200MA > 50MA)</span>
-      <span style="font-size:1.1rem;color:#6c757d;">총 <b style="color:#dc3545;">12</b>개</span>
+      <span style="font-size:1.1rem;color:#6c757d;">총 <b style="color:#dc3545;">8</b>개</span>
       <span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
                   font-weight:700;border:1px solid #dc3545;color:#dc3545;">
-        Zone A 2개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
+        Zone A 0개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
                   font-weight:700;border:1px solid #dc3545;color:#dc3545;">
-        Zone B 7개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
+        Zone B 1개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:1rem;
                   font-weight:700;border:1px solid #dc3545;color:#dc3545;">
-        Zone C 3개</span>
+        Zone C 7개</span>
     </div>
   </div>
   <div style="margin-top:.8rem;padding:.7rem 1.2rem;background:#f0fff4;
@@ -191,12 +191,12 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
   <button class="tab-btn normal active" onclick="switchTab('normal')">
     📈 정배열 (50MA &gt; 200MA) &nbsp;
     <span style="background:white;color:#28a745;border-radius:10px;
-                 padding:1px 8px;font-size:.95rem;">25개</span>
+                 padding:1px 8px;font-size:.95rem;">32개</span>
   </button>
   <button class="tab-btn inverse" onclick="switchTab('inverse')">
     📉 역배열 (200MA &gt; 50MA) &nbsp;
     <span style="background:white;color:#dc3545;border-radius:10px;
-                 padding:1px 8px;font-size:.95rem;">12개</span>
+                 padding:1px 8px;font-size:.95rem;">8개</span>
   </button>
 </div>
 
@@ -232,7 +232,455 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
           <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 현재가 > 50MA > 200MA (강한 정배열 상단)</span>
         </div>
         <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
-                     background:#28a745;color:white;">17개</span>
+                     background:#28a745;color:white;">8개</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>종목</th>
+              <th>현재가</th>
+              <th>1H등락</th>
+              <th>24H등락</th>
+              <th>24H거래대금</th>
+              <th>30m 50MA</th>
+              <th>30m 200MA</th>
+              <th>↔50MA</th>
+              <th>↔200MA</th>
+              <th>정배열강도</th>
+              <th>펀딩비</th>
+              <th>크로스경과</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td class="c-rk">1</td>
+                <td><a href="https://www.binance.com/en/futures/BSBUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>BSB</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.85018</td>
+                <td class="n neg">-3.76%</td>
+                <td class="n pos">+40.02%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:5%"></div></div>8745억</div></td>
+                <td class="n">0.74352</td>
+                <td class="n">0.56741</td>
+                <td class="n pos">+14.35%</td>
+                <td class="n pos">+49.84%</td>
+                <td class="n warn">+31.04%</td>
+                <td style="text-align:center;"><span class="fb fw2">+0.123%↑</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">6일 15h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">2</td>
+                <td><a href="https://www.binance.com/en/futures/ZECUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>ZEC</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">358.2800</td>
+                <td class="n pos">+1.33%</td>
+                <td class="n pos">+1.05%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>5629억</div></td>
+                <td class="n">356.0934</td>
+                <td class="n">349.2436</td>
+                <td class="n pos">+0.61%</td>
+                <td class="n pos">+2.59%</td>
+                <td class="n warn">+1.96%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5일 2h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">3</td>
+                <td><a href="https://www.binance.com/en/futures/HYPEUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>HYPE</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">42.2770</td>
+                <td class="n pos">+0.16%</td>
+                <td class="n pos">+2.72%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>3832억</div></td>
+                <td class="n">41.9370</td>
+                <td class="n">41.3843</td>
+                <td class="n pos">+0.81%</td>
+                <td class="n pos">+2.16%</td>
+                <td class="n warn">+1.34%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">3일 21h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">4</td>
+                <td><a href="https://www.binance.com/en/futures/PENGUUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>PENGU</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.0096640</td>
+                <td class="n pos">+1.04%</td>
+                <td class="n pos">+9.71%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>3249억</div></td>
+                <td class="n">0.0091582</td>
+                <td class="n">0.0086829</td>
+                <td class="n pos">+5.52%</td>
+                <td class="n pos">+11.30%</td>
+                <td class="n warn">+5.47%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.006%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">6일 3h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">5</td>
+                <td><a href="https://www.binance.com/en/futures/PRLUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>PRL</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.23170</td>
+                <td class="n neg">-7.09%</td>
+                <td class="n pos">+8.12%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>2008억</div></td>
+                <td class="n">0.22489</td>
+                <td class="n">0.21330</td>
+                <td class="n pos">+3.03%</td>
+                <td class="n pos">+8.63%</td>
+                <td class="n warn">+5.44%</td>
+                <td style="text-align:center;"><span class="fb fn">-1.570%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">12h 28m</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">6</td>
+                <td><a href="https://www.binance.com/en/futures/AIOTUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>AIOT</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.07177</td>
+                <td class="n neg">-8.69%</td>
+                <td class="n pos">+23.06%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1788억</div></td>
+                <td class="n">0.06788</td>
+                <td class="n">0.05228</td>
+                <td class="n pos">+5.72%</td>
+                <td class="n pos">+37.29%</td>
+                <td class="n warn">+29.85%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.020%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">3일 7h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">7</td>
+                <td><a href="https://www.binance.com/en/futures/NAORISUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>NAORIS</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.09083</td>
+                <td class="n pos">+3.33%</td>
+                <td class="n pos">+18.65%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1298억</div></td>
+                <td class="n">0.08539</td>
+                <td class="n">0.07220</td>
+                <td class="n pos">+6.38%</td>
+                <td class="n pos">+25.80%</td>
+                <td class="n warn">+18.26%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.023%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">1일 8h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">8</td>
+                <td><a href="https://www.binance.com/en/futures/1000LUNCUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>1000LUNC</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.05832</td>
+                <td class="n pos">+2.85%</td>
+                <td class="n pos">+13.04%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1172억</div></td>
+                <td class="n">0.05640</td>
+                <td class="n">0.05167</td>
+                <td class="n pos">+3.41%</td>
+                <td class="n pos">+12.87%</td>
+                <td class="n warn">+9.15%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.006%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5일 12h</span></span></td>
+              </tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="section-card" style="margin-bottom:1rem;
+         border-left:4px solid #e67e00;
+         background:rgba(230,126,0,.08);">
+      <div style="display:flex;align-items:center;justify-content:space-between;
+                  margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem;">
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
+                    color:#e67e00;">Zone B — MA 사이
+          <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 50MA > 현재가 > 200MA (MA 사이 조정)</span>
+        </div>
+        <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
+                     background:#e67e00;color:white;">13개</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>종목</th>
+              <th>현재가</th>
+              <th>1H등락</th>
+              <th>24H등락</th>
+              <th>24H거래대금</th>
+              <th>30m 50MA</th>
+              <th>30m 200MA</th>
+              <th>↔50MA</th>
+              <th>↔200MA</th>
+              <th>정배열강도</th>
+              <th>펀딩비</th>
+              <th>크로스경과</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td class="c-rk">1</td>
+                <td><a href="https://www.binance.com/en/futures/ZBTUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>ZBT</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.17171</td>
+                <td class="n neg">-2.23%</td>
+                <td class="n neg">-4.64%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:7%"></div></div>1.2조</div></td>
+                <td class="n">0.20684</td>
+                <td class="n">0.15203</td>
+                <td class="n neg">-16.98%</td>
+                <td class="n pos">+12.95%</td>
+                <td class="n warn">+36.06%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.002%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">3일 7h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">2</td>
+                <td><a href="https://www.binance.com/en/futures/ORCAUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>ORCA</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">1.1970</td>
+                <td class="n neg">-1.79%</td>
+                <td class="n neg">-29.38%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:5%"></div></div>9132억</div></td>
+                <td class="n">1.4237</td>
+                <td class="n">1.1221</td>
+                <td class="n neg">-15.92%</td>
+                <td class="n pos">+6.67%</td>
+                <td class="n warn">+26.87%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.019%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5일 8h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">3</td>
+                <td><a href="https://www.binance.com/en/futures/DOGEUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>DOGE</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.09797</td>
+                <td class="n pos">+0.49%</td>
+                <td class="n neg">-0.42%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:4%"></div></div>7391억</div></td>
+                <td class="n">0.09897</td>
+                <td class="n">0.09793</td>
+                <td class="n neg">-1.01%</td>
+                <td class="n pos">+0.04%</td>
+                <td class="n warn">+1.06%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.007%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5일 3h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">4</td>
+                <td><a href="https://www.binance.com/en/futures/AGTUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>AGT</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.01772</td>
+                <td class="n neg">-14.45%</td>
+                <td class="n pos">+3.26%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>3381억</div></td>
+                <td class="n">0.01942</td>
+                <td class="n">0.01436</td>
+                <td class="n neg">-8.74%</td>
+                <td class="n pos">+23.43%</td>
+                <td class="n warn">+35.26%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.038%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">1일 4h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">5</td>
+                <td><a href="https://www.binance.com/en/futures/ENSOUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>ENSO</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.86810</td>
+                <td class="n neg">-1.31%</td>
+                <td class="n neg">-16.37%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1714억</div></td>
+                <td class="n">0.96736</td>
+                <td class="n">0.86208</td>
+                <td class="n neg">-10.26%</td>
+                <td class="n pos">+0.70%</td>
+                <td class="n warn">+12.21%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.037%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 21h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">6</td>
+                <td><a href="https://www.binance.com/en/futures/TAOUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>TAO</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">249.4800</td>
+                <td class="n pos">+0.27%</td>
+                <td class="n pos">+1.44%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1632억</div></td>
+                <td class="n">249.7874</td>
+                <td class="n">247.7885</td>
+                <td class="n neg">-0.12%</td>
+                <td class="n pos">+0.68%</td>
+                <td class="n warn">+0.81%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.000%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">13h 58m</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">7</td>
+                <td><a href="https://www.binance.com/en/futures/AAVEUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>AAVE</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">96.0600</td>
+                <td class="n pos">+0.63%</td>
+                <td class="n pos">+1.01%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1581억</div></td>
+                <td class="n">96.4112</td>
+                <td class="n">94.5059</td>
+                <td class="n neg">-0.36%</td>
+                <td class="n pos">+1.64%</td>
+                <td class="n warn">+2.02%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.001%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4일 12h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">8</td>
+                <td><a href="https://www.binance.com/en/futures/AXSUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>AXS</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">1.3710</td>
+                <td class="n pos">+0.37%</td>
+                <td class="n neg">-1.08%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1515억</div></td>
+                <td class="n">1.4026</td>
+                <td class="n">1.2902</td>
+                <td class="n neg">-2.26%</td>
+                <td class="n pos">+6.26%</td>
+                <td class="n warn">+8.72%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 13h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">9</td>
+                <td><a href="https://www.binance.com/en/futures/GWEIUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>GWEI</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.11664</td>
+                <td class="n neg">-1.97%</td>
+                <td class="n pos">+17.30%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1411억</div></td>
+                <td class="n">0.11681</td>
+                <td class="n">0.10395</td>
+                <td class="n neg">-0.14%</td>
+                <td class="n pos">+12.21%</td>
+                <td class="n warn">+12.37%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.006%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 58m</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">10</td>
+                <td><a href="https://www.binance.com/en/futures/HYPERUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>HYPER</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.11862</td>
+                <td class="n pos">+1.41%</td>
+                <td class="n neg">-5.80%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1239억</div></td>
+                <td class="n">0.12426</td>
+                <td class="n">0.11467</td>
+                <td class="n neg">-4.54%</td>
+                <td class="n pos">+3.44%</td>
+                <td class="n warn">+8.36%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.054%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 21h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">11</td>
+                <td><a href="https://www.binance.com/en/futures/LABUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>LAB</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.76300</td>
+                <td class="n pos">+1.32%</td>
+                <td class="n neg">-17.96%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1125억</div></td>
+                <td class="n">0.80982</td>
+                <td class="n">0.75627</td>
+                <td class="n neg">-5.78%</td>
+                <td class="n pos">+0.89%</td>
+                <td class="n warn">+7.08%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.023%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">6일 5h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">12</td>
+                <td><a href="https://www.binance.com/en/futures/APEUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>APE</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.14340</td>
+                <td class="n neg">-0.07%</td>
+                <td class="n neg">-6.64%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1021억</div></td>
+                <td class="n">0.14876</td>
+                <td class="n">0.14207</td>
+                <td class="n neg">-3.60%</td>
+                <td class="n pos">+0.93%</td>
+                <td class="n warn">+4.70%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.006%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">3일 0h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">13</td>
+                <td><a href="https://www.binance.com/en/futures/币安人生USDT?timeframe=30m" target="_blank" class="slink">
+                  <b>币安人生</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.35049</td>
+                <td class="n pos">+1.45%</td>
+                <td class="n pos">+0.22%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1002억</div></td>
+                <td class="n">0.35229</td>
+                <td class="n">0.34988</td>
+                <td class="n neg">-0.51%</td>
+                <td class="n pos">+0.18%</td>
+                <td class="n warn">+0.69%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5h 58m</span></span></td>
+              </tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="section-card" style="margin-bottom:1rem;
+         border-left:4px solid #dc3545;
+         background:rgba(220,53,69,.08);">
+      <div style="display:flex;align-items:center;justify-content:space-between;
+                  margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem;">
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
+                    color:#dc3545;">Zone C — 200MA 아래
+          <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 50MA > 200MA > 현재가 (정배열이나 가격 하락)</span>
+        </div>
+        <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
+                     background:#dc3545;color:white;">11개</span>
       </div>
       <div style="overflow-x:auto;">
         <table>
@@ -260,17 +708,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>BTC</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">78,234.8</td>
-                <td class="n neg">-0.04%</td>
-                <td class="n pos">+1.01%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:100%"></div></div>7.0조</div></td>
-                <td class="n">77,822.7</td>
-                <td class="n">77,819.9</td>
-                <td class="n pos">+0.53%</td>
-                <td class="n pos">+0.53%</td>
-                <td class="n warn">+0.00%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">58m</span></span></td>
+                <td class="n bold">77,716.3</td>
+                <td class="n pos">+0.27%</td>
+                <td class="n neg">-0.36%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:100%"></div></div>16.0조</div></td>
+                <td class="n">78,203.3</td>
+                <td class="n">77,822.8</td>
+                <td class="n neg">-0.62%</td>
+                <td class="n neg">-0.14%</td>
+                <td class="n warn">+0.49%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.010%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">12h 58m</span></span></td>
               </tr>
               <tr>
                 <td class="c-rk">2</td>
@@ -278,17 +726,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>ETH</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">2,366.49</td>
-                <td class="n neg">-0.22%</td>
-                <td class="n pos">+2.24%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:98%"></div></div>6.9조</div></td>
-                <td class="n">2,331.00</td>
-                <td class="n">2,328.73</td>
-                <td class="n pos">+1.52%</td>
-                <td class="n pos">+1.62%</td>
-                <td class="n warn">+0.10%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.006%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">1h 28m</span></span></td>
+                <td class="n bold">2,317.16</td>
+                <td class="n pos">+0.16%</td>
+                <td class="n neg">-0.65%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:86%"></div></div>13.9조</div></td>
+                <td class="n">2,350.80</td>
+                <td class="n">2,326.47</td>
+                <td class="n neg">-1.43%</td>
+                <td class="n neg">-0.40%</td>
+                <td class="n warn">+1.05%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.011%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">13h 28m</span></span></td>
               </tr>
               <tr>
                 <td class="c-rk">3</td>
@@ -296,484 +744,162 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>SOL</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">86.8600</td>
-                <td class="n neg">-0.23%</td>
-                <td class="n pos">+1.09%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:17%"></div></div>1.2조</div></td>
-                <td class="n">86.3088</td>
-                <td class="n">86.1639</td>
-                <td class="n pos">+0.64%</td>
-                <td class="n pos">+0.81%</td>
-                <td class="n warn">+0.17%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.001%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2h 58m</span></span></td>
+                <td class="n bold">85.1300</td>
+                <td class="n pos">+0.27%</td>
+                <td class="n neg">-1.62%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:15%"></div></div>2.4조</div></td>
+                <td class="n">86.5746</td>
+                <td class="n">86.1383</td>
+                <td class="n neg">-1.67%</td>
+                <td class="n neg">-1.17%</td>
+                <td class="n warn">+0.51%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.010%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">14h 58m</span></span></td>
               </tr>
               <tr>
                 <td class="c-rk">4</td>
-                <td><a href="https://www.binance.com/en/futures/ZBTUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>ZBT</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.24665</td>
-                <td class="n neg">-3.60%</td>
-                <td class="n pos">+44.29%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:14%"></div></div>1.0조</div></td>
-                <td class="n">0.19014</td>
-                <td class="n">0.13927</td>
-                <td class="n pos">+29.72%</td>
-                <td class="n pos">+77.10%</td>
-                <td class="n warn">+36.53%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 19h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">5</td>
-                <td><a href="https://www.binance.com/en/futures/BSBUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>BSB</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.73646</td>
-                <td class="n neg">-6.85%</td>
-                <td class="n pos">+6.86%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:13%"></div></div>9324억</div></td>
-                <td class="n">0.69428</td>
-                <td class="n">0.51444</td>
-                <td class="n pos">+6.08%</td>
-                <td class="n pos">+43.16%</td>
-                <td class="n warn">+34.96%</td>
-                <td style="text-align:center;"><span class="fb fw2">+0.102%↑</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">6일 3h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">6</td>
-                <td><a href="https://www.binance.com/en/futures/DOGEUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>DOGE</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.09931</td>
-                <td class="n neg">-0.10%</td>
-                <td class="n pos">+1.47%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:6%"></div></div>4614억</div></td>
-                <td class="n">0.09841</td>
-                <td class="n">0.09759</td>
-                <td class="n pos">+0.92%</td>
-                <td class="n pos">+1.76%</td>
-                <td class="n warn">+0.83%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.003%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4일 15h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">7</td>
-                <td><a href="https://www.binance.com/en/futures/ZECUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>ZEC</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">359.5700</td>
-                <td class="n pos">+0.15%</td>
-                <td class="n neg">-0.05%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:5%"></div></div>3699억</div></td>
-                <td class="n">355.8300</td>
-                <td class="n">344.5830</td>
-                <td class="n pos">+1.05%</td>
-                <td class="n pos">+4.35%</td>
-                <td class="n warn">+3.26%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.004%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4일 14h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">8</td>
                 <td><a href="https://www.binance.com/en/futures/LDOUSDT?timeframe=30m" target="_blank" class="slink">
                   <b>LDO</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.43730</td>
-                <td class="n neg">-4.44%</td>
-                <td class="n pos">+16.58%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>2741억</div></td>
-                <td class="n">0.39307</td>
-                <td class="n">0.38379</td>
-                <td class="n pos">+11.25%</td>
-                <td class="n pos">+13.94%</td>
-                <td class="n warn">+2.42%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.007%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4h 58m</span></span></td>
+                <td class="n bold">0.38320</td>
+                <td class="n pos">+0.47%</td>
+                <td class="n neg">-0.52%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>4347억</div></td>
+                <td class="n">0.42074</td>
+                <td class="n">0.38916</td>
+                <td class="n neg">-8.92%</td>
+                <td class="n neg">-1.53%</td>
+                <td class="n warn">+8.11%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.025%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 58m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">9</td>
+                <td class="c-rk">5</td>
                 <td><a href="https://www.binance.com/en/futures/1000PEPEUSDT?timeframe=30m" target="_blank" class="slink">
                   <b>1000PEPE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.0039217</td>
-                <td class="n pos">+0.08%</td>
-                <td class="n pos">+2.37%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>2420억</div></td>
-                <td class="n">0.0038766</td>
-                <td class="n">0.0038424</td>
-                <td class="n pos">+1.16%</td>
-                <td class="n pos">+2.06%</td>
-                <td class="n warn">+0.89%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">12h 28m</span></span></td>
+                <td class="n bold">0.0038300</td>
+                <td class="n pos">+0.38%</td>
+                <td class="n neg">-1.64%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>4134억</div></td>
+                <td class="n">0.0039054</td>
+                <td class="n">0.0038522</td>
+                <td class="n neg">-1.93%</td>
+                <td class="n neg">-0.58%</td>
+                <td class="n warn">+1.38%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.039%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">1일 0h</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">10</td>
-                <td><a href="https://www.binance.com/en/futures/MASKUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>MASK</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.57060</td>
-                <td class="n pos">+0.33%</td>
-                <td class="n pos">+8.29%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>1986억</div></td>
-                <td class="n">0.56388</td>
-                <td class="n">0.52291</td>
-                <td class="n pos">+1.19%</td>
-                <td class="n pos">+9.12%</td>
-                <td class="n warn">+7.84%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.050%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4일 18h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">11</td>
-                <td><a href="https://www.binance.com/en/futures/HYPEUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>HYPE</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">42.0740</td>
-                <td class="n neg">-0.20%</td>
-                <td class="n pos">+1.64%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>1733억</div></td>
-                <td class="n">41.3417</td>
-                <td class="n">41.1986</td>
-                <td class="n pos">+1.77%</td>
-                <td class="n pos">+2.12%</td>
-                <td class="n warn">+0.35%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">3일 9h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">12</td>
+                <td class="c-rk">6</td>
                 <td><a href="https://www.binance.com/en/futures/ADAUSDT?timeframe=30m" target="_blank" class="slink">
                   <b>ADA</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.25250</td>
-                <td class="n neg">-0.16%</td>
-                <td class="n pos">+1.24%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>1627억</div></td>
-                <td class="n">0.25110</td>
-                <td class="n">0.25001</td>
-                <td class="n pos">+0.56%</td>
-                <td class="n pos">+1.00%</td>
-                <td class="n warn">+0.44%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">13h 28m</span></span></td>
+                <td class="n bold">0.24740</td>
+                <td class="n pos">+0.36%</td>
+                <td class="n neg">-2.06%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>2504억</div></td>
+                <td class="n">0.25188</td>
+                <td class="n">0.25021</td>
+                <td class="n neg">-1.78%</td>
+                <td class="n neg">-1.12%</td>
+                <td class="n warn">+0.67%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.013%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">1일 1h</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">13</td>
-                <td><a href="https://www.binance.com/en/futures/PENGUUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>PENGU</b><span class="sq">/USDT</span>
+                <td class="c-rk">7</td>
+                <td><a href="https://www.binance.com/en/futures/MASKUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>MASK</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.0090180</td>
-                <td class="n pos">+0.13%</td>
-                <td class="n pos">+4.96%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1393억</div></td>
-                <td class="n">0.0087279</td>
-                <td class="n">0.0085479</td>
-                <td class="n pos">+3.32%</td>
-                <td class="n pos">+5.50%</td>
-                <td class="n warn">+2.11%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5일 15h</span></span></td>
+                <td class="n bold">0.52380</td>
+                <td class="n pos">+0.15%</td>
+                <td class="n neg">-5.47%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>2181억</div></td>
+                <td class="n">0.56956</td>
+                <td class="n">0.53031</td>
+                <td class="n neg">-8.03%</td>
+                <td class="n neg">-1.23%</td>
+                <td class="n warn">+7.40%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.008%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5일 6h</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">14</td>
-                <td><a href="https://www.binance.com/en/futures/AGTUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>AGT</b><span class="sq">/USDT</span>
+                <td class="c-rk">8</td>
+                <td><a href="https://www.binance.com/en/futures/SUIUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>SUI</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.02249</td>
-                <td class="n neg">-1.08%</td>
-                <td class="n pos">+43.49%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1312억</div></td>
-                <td class="n">0.01656</td>
-                <td class="n">0.01355</td>
-                <td class="n pos">+35.78%</td>
-                <td class="n pos">+65.99%</td>
-                <td class="n warn">+22.25%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.097%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 28m</span></span></td>
+                <td class="n bold">0.92790</td>
+                <td class="n pos">+0.45%</td>
+                <td class="n neg">-1.45%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1857억</div></td>
+                <td class="n">0.94425</td>
+                <td class="n">0.94311</td>
+                <td class="n neg">-1.73%</td>
+                <td class="n neg">-1.61%</td>
+                <td class="n warn">+0.12%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.016%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">7h 58m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">15</td>
-                <td><a href="https://www.binance.com/en/futures/INJUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>INJ</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">3.7720</td>
-                <td class="n pos">+0.13%</td>
-                <td class="n pos">+6.49%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1222억</div></td>
-                <td class="n">3.6368</td>
-                <td class="n">3.4576</td>
-                <td class="n pos">+3.72%</td>
-                <td class="n pos">+9.09%</td>
-                <td class="n warn">+5.18%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.115%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5일 12h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">16</td>
+                <td class="c-rk">9</td>
                 <td><a href="https://www.binance.com/en/futures/AVAXUSDT?timeframe=30m" target="_blank" class="slink">
                   <b>AVAX</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">9.4610</td>
-                <td class="n neg">-0.23%</td>
-                <td class="n pos">+1.44%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1212억</div></td>
-                <td class="n">9.4057</td>
-                <td class="n">9.3791</td>
-                <td class="n pos">+0.59%</td>
-                <td class="n pos">+0.87%</td>
-                <td class="n warn">+0.28%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4h 58m</span></span></td>
+                <td class="n bold">9.2380</td>
+                <td class="n pos">+0.22%</td>
+                <td class="n neg">-2.17%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1844억</div></td>
+                <td class="n">9.4316</td>
+                <td class="n">9.3808</td>
+                <td class="n neg">-2.05%</td>
+                <td class="n neg">-1.52%</td>
+                <td class="n warn">+0.54%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.026%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 58m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">17</td>
-                <td><a href="https://www.binance.com/en/futures/AAVEUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>AAVE</b><span class="sq">/USDT</span>
+                <td class="c-rk">10</td>
+                <td><a href="https://www.binance.com/en/futures/LINKUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>LINK</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">97.1900</td>
-                <td class="n neg">-0.22%</td>
-                <td class="n pos">+3.04%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1151억</div></td>
-                <td class="n">94.9346</td>
-                <td class="n">94.1120</td>
-                <td class="n pos">+2.38%</td>
-                <td class="n pos">+3.27%</td>
-                <td class="n warn">+0.87%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.007%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4일 0h</span></span></td>
+                <td class="n bold">9.3210</td>
+                <td class="n pos">+0.28%</td>
+                <td class="n neg">-1.19%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1333억</div></td>
+                <td class="n">9.4543</td>
+                <td class="n">9.3611</td>
+                <td class="n neg">-1.41%</td>
+                <td class="n neg">-0.43%</td>
+                <td class="n warn">+0.99%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.001%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 3h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">11</td>
+                <td><a href="https://www.binance.com/en/futures/ENAUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>ENA</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.10634</td>
+                <td class="n pos">+0.45%</td>
+                <td class="n neg">-2.92%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:0%"></div></div>1318억</div></td>
+                <td class="n">0.10946</td>
+                <td class="n">0.10837</td>
+                <td class="n neg">-2.85%</td>
+                <td class="n neg">-1.88%</td>
+                <td class="n warn">+1.00%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.004%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">13h 28m</span></span></td>
               </tr></tbody>
-        </table>
-      </div>
-    </div>
-    <div class="section-card" style="margin-bottom:1rem;
-         border-left:4px solid #e67e00;
-         background:rgba(230,126,0,.08);">
-      <div style="display:flex;align-items:center;justify-content:space-between;
-                  margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem;">
-        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
-                    color:#e67e00;">Zone B — MA 사이
-          <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 50MA > 현재가 > 200MA (MA 사이 조정)</span>
-        </div>
-        <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
-                     background:#e67e00;color:white;">8개</span>
-      </div>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>종목</th>
-              <th>현재가</th>
-              <th>1H등락</th>
-              <th>24H등락</th>
-              <th>24H거래대금</th>
-              <th>30m 50MA</th>
-              <th>30m 200MA</th>
-              <th>↔50MA</th>
-              <th>↔200MA</th>
-              <th>정배열강도</th>
-              <th>펀딩비</th>
-              <th>크로스경과</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr>
-                <td class="c-rk">1</td>
-                <td><a href="https://www.binance.com/en/futures/ORCAUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>ORCA</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">1.3810</td>
-                <td class="n pos">+1.75%</td>
-                <td class="n pos">+20.51%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:23%"></div></div>1.7조</div></td>
-                <td class="n">1.4599</td>
-                <td class="n">1.0806</td>
-                <td class="n neg">-5.41%</td>
-                <td class="n pos">+27.80%</td>
-                <td class="n warn">+35.10%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.109%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4일 20h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">2</td>
-                <td><a href="https://www.binance.com/en/futures/ENSOUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>ENSO</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.96700</td>
-                <td class="n pos">+0.68%</td>
-                <td class="n pos">+10.25%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:5%"></div></div>3995억</div></td>
-                <td class="n">0.97602</td>
-                <td class="n">0.84622</td>
-                <td class="n neg">-0.92%</td>
-                <td class="n pos">+14.27%</td>
-                <td class="n warn">+15.34%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.146%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 9h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">3</td>
-                <td><a href="https://www.binance.com/en/futures/HYPERUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>HYPER</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.12568</td>
-                <td class="n pos">+0.27%</td>
-                <td class="n neg">-21.35%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:5%"></div></div>3733억</div></td>
-                <td class="n">0.13327</td>
-                <td class="n">0.11162</td>
-                <td class="n neg">-5.70%</td>
-                <td class="n pos">+12.59%</td>
-                <td class="n warn">+19.40%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.064%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 9h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">4</td>
-                <td><a href="https://www.binance.com/en/futures/AXSUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>AXS</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">1.4280</td>
-                <td class="n pos">+1.42%</td>
-                <td class="n neg">-7.45%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:4%"></div></div>3301억</div></td>
-                <td class="n">1.4344</td>
-                <td class="n">1.2547</td>
-                <td class="n neg">-0.44%</td>
-                <td class="n pos">+13.81%</td>
-                <td class="n warn">+14.32%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.011%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 1h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">5</td>
-                <td><a href="https://www.binance.com/en/futures/LABUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>LAB</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.73640</td>
-                <td class="n neg">-3.44%</td>
-                <td class="n pos">+2.12%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>2342억</div></td>
-                <td class="n">0.84914</td>
-                <td class="n">0.73458</td>
-                <td class="n neg">-13.28%</td>
-                <td class="n pos">+0.25%</td>
-                <td class="n warn">+15.59%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">5일 17h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">6</td>
-                <td><a href="https://www.binance.com/en/futures/APEUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>APE</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.15060</td>
-                <td class="n pos">+2.55%</td>
-                <td class="n neg">-5.22%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>1757억</div></td>
-                <td class="n">0.15266</td>
-                <td class="n">0.13672</td>
-                <td class="n neg">-1.35%</td>
-                <td class="n pos">+10.15%</td>
-                <td class="n warn">+11.65%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 12h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">7</td>
-                <td><a href="https://www.binance.com/en/futures/RAYSOLUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>RAYSOL</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.74890</td>
-                <td class="n neg">-0.07%</td>
-                <td class="n pos">+9.22%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>1594억</div></td>
-                <td class="n">0.75160</td>
-                <td class="n">0.68708</td>
-                <td class="n neg">-0.36%</td>
-                <td class="n pos">+9.00%</td>
-                <td class="n warn">+9.39%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.066%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">1일 15h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">8</td>
-                <td><a href="https://www.binance.com/en/futures/SOMIUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>SOMI</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.18520</td>
-                <td class="n neg">-0.16%</td>
-                <td class="n pos">+1.65%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>1471억</div></td>
-                <td class="n">0.19355</td>
-                <td class="n">0.17593</td>
-                <td class="n neg">-4.31%</td>
-                <td class="n pos">+5.27%</td>
-                <td class="n warn">+10.01%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.055%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">2일 8h</span></span></td>
-              </tr></tbody>
-        </table>
-      </div>
-    </div>
-    <div class="section-card" style="margin-bottom:1rem;
-         border-left:4px solid #dc3545;
-         background:rgba(220,53,69,.08);">
-      <div style="display:flex;align-items:center;justify-content:space-between;
-                  margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem;">
-        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
-                    color:#dc3545;">Zone C — 200MA 아래
-          <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 50MA > 200MA > 현재가 (정배열이나 가격 하락)</span>
-        </div>
-        <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
-                     background:#dc3545;color:white;">0개</span>
-      </div>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>종목</th>
-              <th>현재가</th>
-              <th>1H등락</th>
-              <th>24H등락</th>
-              <th>24H거래대금</th>
-              <th>30m 50MA</th>
-              <th>30m 200MA</th>
-              <th>↔50MA</th>
-              <th>↔200MA</th>
-              <th>정배열강도</th>
-              <th>펀딩비</th>
-              <th>크로스경과</th>
-            </tr>
-          </thead>
-          <tbody><tr><td colspan="13" class="empty">해당 종목 없음</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -811,7 +937,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
           <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 현재가 > 200MA > 50MA (역배열이나 반등)</span>
         </div>
         <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
-                     background:#4facfe;color:white;">2개</span>
+                     background:#4facfe;color:white;">0개</span>
       </div>
       <div style="overflow-x:auto;">
         <table>
@@ -832,43 +958,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
               <th>크로스경과</th>
             </tr>
           </thead>
-          <tbody>
-              <tr>
-                <td class="c-rk">1</td>
-                <td><a href="https://www.binance.com/en/futures/BNBUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>BNB</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">636.4600</td>
-                <td class="n neg">-0.21%</td>
-                <td class="n pos">+1.13%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:44%"></div></div>2093억</div></td>
-                <td class="n">635.4326</td>
-                <td class="n">631.4258</td>
-                <td class="n pos">+0.16%</td>
-                <td class="n pos">+0.80%</td>
-                <td class="n warn">+0.63%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">1일 8h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">2</td>
-                <td><a href="https://www.binance.com/en/futures/SUIUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>SUI</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.94590</td>
-                <td class="n neg">-0.15%</td>
-                <td class="n pos">+1.07%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:23%"></div></div>1126억</div></td>
-                <td class="n">0.94377</td>
-                <td class="n">0.94124</td>
-                <td class="n pos">+0.23%</td>
-                <td class="n pos">+0.50%</td>
-                <td class="n warn">+0.27%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">1일 5h</span></span></td>
-              </tr></tbody>
+          <tbody><tr><td colspan="13" class="empty">해당 종목 없음</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -882,7 +972,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
           <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 200MA > 현재가 > 50MA (핵심 관찰 구간)</span>
         </div>
         <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
-                     background:#e67e00;color:white;">7개</span>
+                     background:#e67e00;color:white;">1개</span>
       </div>
       <div style="overflow-x:auto;">
         <table>
@@ -910,125 +1000,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>CHIP</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.07388</td>
-                <td class="n neg">-3.57%</td>
-                <td class="n pos">+2.47%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:100%"></div></div>4732억</div></td>
-                <td class="n">0.08761</td>
-                <td class="n">0.07111</td>
-                <td class="n neg">-15.68%</td>
-                <td class="n pos">+3.90%</td>
-                <td class="n warn">+23.22%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.125%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">1일 12h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">2</td>
-                <td><a href="https://www.binance.com/en/futures/XRPUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>XRP</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">1.4287</td>
-                <td class="n neg">-0.20%</td>
-                <td class="n pos">+0.51%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:78%"></div></div>3699억</div></td>
-                <td class="n">1.4289</td>
-                <td class="n">1.4247</td>
-                <td class="n neg">-0.01%</td>
-                <td class="n pos">+0.28%</td>
-                <td class="n warn">+0.29%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.000%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">1일 4h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">3</td>
-                <td><a href="https://www.binance.com/en/futures/TRUMPUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>TRUMP</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">2.6260</td>
-                <td class="n pos">+0.54%</td>
-                <td class="n pos">+2.74%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:55%"></div></div>2642억</div></td>
-                <td class="n">2.7992</td>
-                <td class="n">2.6230</td>
-                <td class="n neg">-6.19%</td>
-                <td class="n pos">+0.12%</td>
-                <td class="n warn">+6.72%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.022%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">1일 6h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">4</td>
-                <td><a href="https://www.binance.com/en/futures/OPGUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>OPG</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.30280</td>
-                <td class="n neg">-1.06%</td>
-                <td class="n pos">+14.70%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:31%"></div></div>1502억</div></td>
-                <td class="n">0.31235</td>
-                <td class="n">0.29851</td>
-                <td class="n neg">-3.06%</td>
-                <td class="n pos">+1.44%</td>
-                <td class="n warn">+4.64%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-                <td class="n cross-col"><span class="cross-na">—</span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">5</td>
-                <td><a href="https://www.binance.com/en/futures/TRADOORUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>TRADOOR</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.84300</td>
-                <td class="n pos">+5.75%</td>
-                <td class="n neg">-6.02%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:25%"></div></div>1194억</div></td>
-                <td class="n">4.5358</td>
-                <td class="n">0.82134</td>
-                <td class="n neg">-81.41%</td>
-                <td class="n pos">+2.64%</td>
-                <td class="n warn">+452.24%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">2일 1h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">6</td>
-                <td><a href="https://www.binance.com/en/futures/GIGGLEUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>GIGGLE</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">34.0300</td>
-                <td class="n neg">-0.12%</td>
-                <td class="n pos">+4.80%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:21%"></div></div>1035억</div></td>
-                <td class="n">34.9285</td>
-                <td class="n">33.7408</td>
-                <td class="n neg">-2.57%</td>
-                <td class="n pos">+0.86%</td>
-                <td class="n warn">+3.52%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">2일 1h</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">7</td>
-                <td><a href="https://www.binance.com/en/futures/HIGHUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>HIGH</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">0.22500</td>
-                <td class="n neg">-0.62%</td>
-                <td class="n pos">+6.43%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:21%"></div></div>1028억</div></td>
-                <td class="n">0.22712</td>
-                <td class="n">0.22183</td>
-                <td class="n neg">-0.93%</td>
-                <td class="n pos">+1.43%</td>
-                <td class="n warn">+2.38%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.259%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">4일 23h</span></span></td>
+                <td class="n bold">0.07442</td>
+                <td class="n pos">+0.96%</td>
+                <td class="n pos">+9.20%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:97%"></div></div>6681억</div></td>
+                <td class="n">0.08347</td>
+                <td class="n">0.07420</td>
+                <td class="n neg">-10.84%</td>
+                <td class="n pos">+0.29%</td>
+                <td class="n warn">+12.49%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.127%</span></td>
+                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">2일 0h</span></span></td>
               </tr></tbody>
         </table>
       </div>
@@ -1043,7 +1025,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
           <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 200MA > 50MA > 현재가 (완전 하락 국면)</span>
         </div>
         <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
-                     background:#dc3545;color:white;">3개</span>
+                     background:#dc3545;color:white;">7개</span>
       </div>
       <div style="overflow-x:auto;">
         <table>
@@ -1067,57 +1049,129 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
           <tbody>
               <tr>
                 <td class="c-rk">1</td>
-                <td><a href="https://www.binance.com/en/futures/RAVEUSDT?timeframe=30m" target="_blank" class="slink">
-                  <b>RAVE</b><span class="sq">/USDT</span>
+                <td><a href="https://www.binance.com/en/futures/XRPUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>XRP</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.91558</td>
-                <td class="n neg">-1.69%</td>
-                <td class="n pos">+3.11%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:91%"></div></div>4343억</div></td>
-                <td class="n">0.97500</td>
-                <td class="n">0.92504</td>
-                <td class="n neg">-6.09%</td>
-                <td class="n neg">-1.02%</td>
-                <td class="n warn">+5.40%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">3일 10h</span></span></td>
+                <td class="n bold">1.4149</td>
+                <td class="n pos">+0.29%</td>
+                <td class="n neg">-0.80%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:100%"></div></div>6834억</div></td>
+                <td class="n">1.4285</td>
+                <td class="n">1.4279</td>
+                <td class="n neg">-0.95%</td>
+                <td class="n neg">-0.91%</td>
+                <td class="n warn">+0.04%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.005%</span></td>
+                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">1h 58m</span></span></td>
               </tr>
               <tr>
                 <td class="c-rk">2</td>
+                <td><a href="https://www.binance.com/en/futures/BNBUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>BNB</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">628.1800</td>
+                <td class="n pos">+0.33%</td>
+                <td class="n neg">-0.47%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:52%"></div></div>3574억</div></td>
+                <td class="n">634.7053</td>
+                <td class="n">633.3568</td>
+                <td class="n neg">-1.03%</td>
+                <td class="n neg">-0.82%</td>
+                <td class="n warn">+0.21%</td>
+                <td style="text-align:center;"><span class="fb fn">0.000%</span></td>
+                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">1일 20h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">3</td>
                 <td><a href="https://www.binance.com/en/futures/SOONUSDT?timeframe=30m" target="_blank" class="slink">
                   <b>SOON</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.18680</td>
-                <td class="n neg">-0.58%</td>
-                <td class="n neg">-5.94%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:70%"></div></div>3356억</div></td>
-                <td class="n">0.19179</td>
-                <td class="n">0.18872</td>
-                <td class="n neg">-2.60%</td>
-                <td class="n neg">-1.02%</td>
-                <td class="n warn">+1.63%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.022%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">4h 58m</span></span></td>
+                <td class="n bold">0.17760</td>
+                <td class="n neg">-0.67%</td>
+                <td class="n neg">-6.62%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:46%"></div></div>3199억</div></td>
+                <td class="n">0.19249</td>
+                <td class="n">0.18608</td>
+                <td class="n neg">-7.73%</td>
+                <td class="n neg">-4.56%</td>
+                <td class="n warn">+3.44%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
+                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">16h 58m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">3</td>
+                <td class="c-rk">4</td>
+                <td><a href="https://www.binance.com/en/futures/RAVEUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>RAVE</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.86210</td>
+                <td class="n pos">+1.52%</td>
+                <td class="n neg">-5.50%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:30%"></div></div>2072억</div></td>
+                <td class="n">0.95795</td>
+                <td class="n">0.90491</td>
+                <td class="n neg">-10.01%</td>
+                <td class="n neg">-4.73%</td>
+                <td class="n warn">+5.86%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
+                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">3일 22h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">5</td>
+                <td><a href="https://www.binance.com/en/futures/TRUMPUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>TRUMP</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">2.5550</td>
+                <td class="n neg">-0.12%</td>
+                <td class="n neg">-3.98%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:27%"></div></div>1891억</div></td>
+                <td class="n">2.7600</td>
+                <td class="n">2.6207</td>
+                <td class="n neg">-7.43%</td>
+                <td class="n neg">-2.51%</td>
+                <td class="n warn">+5.31%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.014%</span></td>
+                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">1일 18h</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">6</td>
                 <td><a href="https://www.binance.com/en/futures/KATUSDT?timeframe=30m" target="_blank" class="slink">
                   <b>KAT</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.01235</td>
-                <td class="n neg">-1.21%</td>
-                <td class="n neg">-24.37%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:58%"></div></div>2757억</div></td>
-                <td class="n">0.01558</td>
-                <td class="n">0.01340</td>
-                <td class="n neg">-20.72%</td>
-                <td class="n neg">-7.84%</td>
-                <td class="n warn">+16.25%</td>
-                <td style="text-align:center;"><span class="fb fn">-0.052%</span></td>
-                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">10h 58m</span></span></td>
+                <td class="n bold">0.01132</td>
+                <td class="n pos">+0.62%</td>
+                <td class="n neg">-10.37%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:25%"></div></div>1714억</div></td>
+                <td class="n">0.01586</td>
+                <td class="n">0.01237</td>
+                <td class="n neg">-28.64%</td>
+                <td class="n neg">-8.48%</td>
+                <td class="n warn">+28.25%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.004%</span></td>
+                <td class="n cross-col"><span class="cross-dead">🔴데드 <span class="cross-time">22h 58m</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">7</td>
+                <td><a href="https://www.binance.com/en/futures/OPGUSDT?timeframe=30m" target="_blank" class="slink">
+                  <b>OPG</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">0.26060</td>
+                <td class="n neg">-3.68%</td>
+                <td class="n neg">-15.03%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:21%"></div></div>1478억</div></td>
+                <td class="n">0.30280</td>
+                <td class="n">0.29823</td>
+                <td class="n neg">-13.94%</td>
+                <td class="n neg">-12.62%</td>
+                <td class="n warn">+1.53%</td>
+                <td style="text-align:center;"><span class="fb fn">-0.101%</span></td>
+                <td class="n cross-col"><span class="cross-na">—</span></td>
               </tr></tbody>
         </table>
       </div>
