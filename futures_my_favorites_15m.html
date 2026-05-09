@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>불왕 MY FAVORITES — 이평선 Zone 분석 (15m)</title>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- TradingView 위젯 라이브러리 -->
+<script src="https://s3.tradingview.com/tv.js"></script>
 <style>
 :root{
   --bg:#f8f9fa;--card:#ffffff;--border:#e0e6ed;--border2:#c8d6e5;
@@ -15,8 +17,6 @@
 body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);
       color:var(--text);line-height:1.5;font-size:13px;}
 .container{max-width:1600px;margin:0 auto;padding:12px 16px;}
-
-/* ── 헤더 ── */
 .header{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
   color:white;padding:1.2rem 1.8rem;border-radius:12px;margin-bottom:1rem;
   box-shadow:0 8px 24px rgba(0,0,0,.25);border:1px solid #2a3a5e;
@@ -42,8 +42,6 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);
 .live-txt{font-family:Rajdhani,sans-serif;font-size:11px;color:#ffd700;letter-spacing:2px;font-weight:700;}
 .timestamp{font-size:11px;color:#a8b9d5;background:rgba(0,0,0,.3);
   padding:4px 10px;border-radius:5px;border:1px solid #2a3a5e;}
-
-/* ── 네비 ── */
 .nav-menu{background:var(--card);border-radius:10px;padding:.8rem 1.2rem;
   margin-bottom:1rem;box-shadow:0 3px 12px rgba(0,0,0,.07);border:1px solid var(--border);}
 .nav-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
@@ -53,8 +51,6 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);
 .nav-link.purple{background:linear-gradient(135deg,#667eea,#764ba2);}
 .nav-link.teal{background:linear-gradient(135deg,#11998e,#38ef7d);color:#0a2e1e;}
 .nav-link:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.2);filter:brightness(1.08);}
-
-/* ── 탭 ── */
 .tab-bar{display:flex;gap:0;margin-bottom:1rem;border-radius:10px;overflow:hidden;
   box-shadow:0 3px 10px rgba(0,0,0,.08);border:1px solid var(--border);}
 .tab-btn{flex:1;padding:.75rem;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;
@@ -68,8 +64,6 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);
 .tab-btn:hover:not(.active){filter:brightness(.96);}
 .tab-pane{display:none;}
 .tab-pane.active{display:block;animation:fadeUp .3s ease both;}
-
-/* ── 카드 / 테이블 ── */
 .section-card{background:var(--card);border:1px solid var(--border);border-radius:12px;
   padding:1.2rem 1.4rem;box-shadow:0 4px 14px rgba(0,0,0,.06);}
 .section-card:hover{border-color:var(--border2);box-shadow:0 6px 22px rgba(0,0,0,.1);}
@@ -124,16 +118,16 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
 .leg-item{display:flex;align-items:center;gap:.4rem;padding:.3rem .7rem;
   border-radius:6px;border:1px solid var(--border);font-size:.9rem;}
 .dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0;}
-@media(max-width:700px){.header h1{font-size:1.5rem;}.nav-link{font-size:.9rem;padding:.5rem 1rem;}}
+/* TV 탭 스크롤바 */
 ::-webkit-scrollbar{width:4px;height:4px;}
-::-webkit-scrollbar-track{background:#f1f3f5;}
-::-webkit-scrollbar-thumb{background:#ced4da;border-radius:3px;}
+::-webkit-scrollbar-track{background:#0d1520;}
+::-webkit-scrollbar-thumb{background:#21262d;border-radius:3px;}
+@media(max-width:700px){.header h1{font-size:1.5rem;}.nav-link{font-size:.9rem;padding:.5rem 1rem;}}
 </style>
 </head>
 <body>
 <div class="container">
 
-<!-- 헤더 -->
 <div class="header">
   <div class="header-inner">
     <div style="display:flex;align-items:center;gap:12px;">
@@ -148,41 +142,32 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
     <div class="header-right">
       <div class="live-dot"></div>
       <span class="live-txt">LIVE</span>
-      <span class="timestamp">📅 2026-05-09 19:58:55</span>
+      <span class="timestamp">📅 2026-05-09 20:14:16</span>
     </div>
   </div>
 </div>
 
-<!-- 네비게이션 -->
 <div class="nav-menu">
   <div class="nav-links">
-    <a href="bullking_dashboard.html"      class="nav-link purple">🔫 불왕 주요 지표 현황</a>
-    <a href="futures_result_15m.html"      class="nav-link teal">📊 전체 종목 15m 스캔</a>
+    <a href="bullking_dashboard.html" class="nav-link purple">🔫 불왕 주요 지표 현황</a>
+    <a href="futures_result_15m.html" class="nav-link teal">📊 전체 종목 15m 스캔</a>
   </div>
 </div>
 
-<!-- 경고 -->
 
 
-<!-- 요약 카드 -->
 <div class="section-card" style="margin-bottom:1rem;">
   <h2 style="font-family:Rajdhani,sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:.8rem;">
     ⭐ 관심종목 현황
     <span style="font-size:1rem;color:#6c757d;font-weight:400;"> — 총 16개 분석</span>
   </h2>
-
-  <!-- 종목 태그 -->
-  <div style="margin-bottom:.9rem;display:flex;flex-wrap:wrap;gap:.4rem;">
-    <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ADA<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ZEC<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ENA<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">XRP<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#28a74522;border:1px solid #28a74588;color:#28a745;">SOL<small style="font-weight:400;opacity:.7;margin-left:3px;">A</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ETH<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">DOGE<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">AVAX<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">LINK<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">DOT<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">BTC<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">1000PEPE<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">HYPE<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">TAO<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ONDO<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">SUI<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> 
-  </div>
-
-  <!-- 배열별 요약 -->
+  <div style="margin-bottom:.9rem;display:flex;flex-wrap:wrap;gap:.4rem;"><span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ADA<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ZEC<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ENA<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">XRP<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#28a74522;border:1px solid #28a74588;color:#28a745;">SOL<small style="font-weight:400;opacity:.7;margin-left:3px;">A</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#28a74522;border:1px solid #28a74588;color:#28a745;">ETH<small style="font-weight:400;opacity:.7;margin-left:3px;">A</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">DOGE<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">AVAX<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">LINK<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">DOT<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#28a74522;border:1px solid #28a74588;color:#28a745;">BTC<small style="font-weight:400;opacity:.7;margin-left:3px;">A</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">1000PEPE<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">HYPE<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">TAO<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">ONDO<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> <span style="padding:.25rem .8rem;border-radius:20px;font-size:.9rem;font-weight:700;background:#e67e0022;border:1px solid #e67e0088;color:#e67e00;">SUI<small style="font-weight:400;opacity:.7;margin-left:3px;">B</small></span> </div>
   <div style="display:flex;flex-direction:column;gap:.5rem;">
     
         <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
           <span style="font-family:Rajdhani,sans-serif;font-size:1.3rem;font-weight:700;color:#28a745;">📈 정배열 (50MA > 200MA)</span>
           <span style="font-size:1rem;color:#6c757d;">총 <b style="color:#28a745;">16</b>개</span>
-          <span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #28a745;color:#28a745;">Zone A 1개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #28a745;color:#28a745;">Zone B 15개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #28a745;color:#28a745;">Zone C 0개</span>
+          <span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #28a745;color:#28a745;">Zone A 3개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #28a745;color:#28a745;">Zone B 13개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #28a745;color:#28a745;">Zone C 0개</span>
         </div>
     
         <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
@@ -191,7 +176,6 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
           <span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #dc3545;color:#dc3545;">Zone A 0개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #dc3545;color:#dc3545;">Zone B 0개</span><span style="padding:.15rem .7rem;border-radius:10px;font-size:.95rem;font-weight:700;border:1px solid #dc3545;color:#dc3545;">Zone C 0개</span>
         </div>
   </div>
-
   <div style="margin-top:.8rem;padding:.7rem 1.2rem;background:#f0f4ff;
               border-radius:8px;border-left:3px solid #667eea;
               font-size:.9rem;color:#495057;line-height:1.8;">
@@ -205,7 +189,6 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
   </div>
 </div>
 
-<!-- 탭 -->
 <div class="tab-bar">
   <button class="tab-btn all active" onclick="switchTab('all')">
     ⭐ 전체 &nbsp;
@@ -221,7 +204,6 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
   </button>
 </div>
 
-<!-- 전체 탭 -->
 <div id="pane-all" class="tab-pane active">
   <div class="section-card">
     <div style="font-family:Rajdhani,sans-serif;font-size:1.3rem;font-weight:700;
@@ -234,21 +216,10 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
       <table>
         <thead>
           <tr>
-            <th>#</th>
-            <th>종목</th>
-            <th>배열</th>
-            <th>Zone</th>
-            <th>현재가</th>
-            <th>1H등락</th>
-            <th>24H등락</th>
-            <th>24H거래대금</th>
-            <th>상단MA</th>
-            <th>하단MA</th>
-            <th>↔상단MA</th>
-            <th>↔하단MA</th>
-            <th>MA강도</th>
-            <th>펀딩비</th>
-            <th>크로스경과</th>
+            <th>#</th><th>종목</th><th>배열</th><th>Zone</th>
+            <th>현재가</th><th>1H등락</th><th>24H등락</th><th>24H거래대금</th>
+            <th>상단MA</th><th>하단MA</th><th>↔상단MA</th><th>↔하단MA</th>
+            <th>MA강도</th><th>펀딩비</th><th>크로스경과</th>
           </tr>
         </thead>
         <tbody>
@@ -260,17 +231,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">0.27290</td>
-            <td class="n pos">+0.15%</td>
-            <td class="n pos">+3.33%</td>
-            <td class="n">2369억</td>
-            <td class="n">0.27523<span class="sq"> 50MA</span></td>
-            <td class="n">0.26754<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.85%</td>
-            <td class="n pos">+2.00%</td>
-            <td class="n warn">+2.87%</td>
+            <td class="n bold">0.27350</td>
+            <td class="n neg">-0.04%</td>
+            <td class="n pos">+3.64%</td>
+            <td class="n">2363억</td>
+            <td class="n">0.27518<span class="sq"> 50MA</span></td>
+            <td class="n">0.26757<span class="sq"> 200MA</span></td>
+            <td class="n neg">-0.61%</td>
+            <td class="n pos">+2.22%</td>
+            <td class="n warn">+2.84%</td>
             <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 58m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 14m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">2</td>
@@ -280,15 +251,15 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">602.7400</td>
-            <td class="n neg">-1.09%</td>
-            <td class="n pos">+5.56%</td>
-            <td class="n">2.6조</td>
-            <td class="n">614.1822<span class="sq"> 50MA</span></td>
-            <td class="n">581.5121<span class="sq"> 200MA</span></td>
-            <td class="n neg">-1.86%</td>
-            <td class="n pos">+3.65%</td>
-            <td class="n warn">+5.62%</td>
+            <td class="n bold">601.7300</td>
+            <td class="n neg">-1.01%</td>
+            <td class="n pos">+4.57%</td>
+            <td class="n">2.5조</td>
+            <td class="n">613.9616<span class="sq"> 50MA</span></td>
+            <td class="n">581.7293<span class="sq"> 200MA</span></td>
+            <td class="n neg">-1.99%</td>
+            <td class="n pos">+3.44%</td>
+            <td class="n warn">+5.54%</td>
             <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
             <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">8일 21h</span></span></td>
           </tr>
@@ -300,15 +271,15 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">0.12865</td>
-            <td class="n pos">+0.05%</td>
-            <td class="n pos">+6.10%</td>
-            <td class="n">2400억</td>
-            <td class="n">0.13168<span class="sq"> 50MA</span></td>
-            <td class="n">0.12454<span class="sq"> 200MA</span></td>
-            <td class="n neg">-2.30%</td>
-            <td class="n pos">+3.30%</td>
-            <td class="n warn">+5.73%</td>
+            <td class="n bold">0.12881</td>
+            <td class="n neg">-0.12%</td>
+            <td class="n pos">+5.99%</td>
+            <td class="n">2397억</td>
+            <td class="n">0.13160<span class="sq"> 50MA</span></td>
+            <td class="n">0.12458<span class="sq"> 200MA</span></td>
+            <td class="n neg">-2.12%</td>
+            <td class="n pos">+3.39%</td>
+            <td class="n warn">+5.64%</td>
             <td style="text-align:center;"><span class="fb fp">+0.004%</span></td>
             <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4일 1h</span></span></td>
           </tr>
@@ -320,17 +291,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">1.4204</td>
-            <td class="n pos">+0.06%</td>
-            <td class="n pos">+2.21%</td>
-            <td class="n">8964억</td>
+            <td class="n bold">1.4207</td>
+            <td class="n pos">+0.11%</td>
+            <td class="n pos">+2.22%</td>
+            <td class="n">8943억</td>
             <td class="n">1.4243<span class="sq"> 50MA</span></td>
             <td class="n">1.4018<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.27%</td>
-            <td class="n pos">+1.33%</td>
+            <td class="n neg">-0.26%</td>
+            <td class="n pos">+1.35%</td>
             <td class="n warn">+1.61%</td>
             <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">12h 58m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">13h 14m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">5</td>
@@ -340,17 +311,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#28a745;background:#e9f7ef;border:1px solid #28a74566;">Zone A</span></td>
-            <td class="n bold">93.3300</td>
-            <td class="n pos">+0.20%</td>
-            <td class="n pos">+5.30%</td>
+            <td class="n bold">93.4500</td>
+            <td class="n pos">+0.10%</td>
+            <td class="n pos">+5.58%</td>
             <td class="n">3.5조</td>
-            <td class="n">93.1640<span class="sq"> 50MA</span></td>
-            <td class="n">90.0521<span class="sq"> 200MA</span></td>
-            <td class="n pos">+0.18%</td>
-            <td class="n pos">+3.64%</td>
+            <td class="n">93.1832<span class="sq"> 50MA</span></td>
+            <td class="n">90.0712<span class="sq"> 200MA</span></td>
+            <td class="n pos">+0.29%</td>
+            <td class="n pos">+3.75%</td>
             <td class="n warn">+3.46%</td>
             <td style="text-align:center;"><span class="fb fp">+0.003%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 13m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 29m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">6</td>
@@ -359,18 +330,18 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
               <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
-            <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">2,311.60</td>
+            <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#28a745;background:#e9f7ef;border:1px solid #28a74566;">Zone A</span></td>
+            <td class="n bold">2,313.73</td>
+            <td class="n neg">-0.02%</td>
+            <td class="n pos">+1.07%</td>
+            <td class="n">9.0조</td>
+            <td class="n">2,313.02<span class="sq"> 50MA</span></td>
+            <td class="n">2,299.55<span class="sq"> 200MA</span></td>
             <td class="n pos">+0.03%</td>
-            <td class="n pos">+1.06%</td>
-            <td class="n">9.1조</td>
-            <td class="n">2,313.03<span class="sq"> 50MA</span></td>
-            <td class="n">2,299.66<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.06%</td>
-            <td class="n pos">+0.52%</td>
-            <td class="n warn">+0.58%</td>
+            <td class="n pos">+0.62%</td>
+            <td class="n warn">+0.59%</td>
             <td style="text-align:center;"><span class="fb fp">+0.006%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">9h 13m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">9h 29m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">7</td>
@@ -380,17 +351,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">0.10962</td>
-            <td class="n neg">-0.04%</td>
-            <td class="n pos">+2.01%</td>
-            <td class="n">7162억</td>
-            <td class="n">0.11012<span class="sq"> 50MA</span></td>
-            <td class="n">0.10853<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.46%</td>
-            <td class="n pos">+1.00%</td>
-            <td class="n warn">+1.47%</td>
+            <td class="n bold">0.10964</td>
+            <td class="n neg">-0.24%</td>
+            <td class="n pos">+2.20%</td>
+            <td class="n">7147억</td>
+            <td class="n">0.11013<span class="sq"> 50MA</span></td>
+            <td class="n">0.10852<span class="sq"> 200MA</span></td>
+            <td class="n neg">-0.44%</td>
+            <td class="n pos">+1.03%</td>
+            <td class="n warn">+1.48%</td>
             <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">8h 58m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">9h 14m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">8</td>
@@ -400,17 +371,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">9.8950</td>
-            <td class="n pos">+0.06%</td>
-            <td class="n pos">+3.03%</td>
-            <td class="n">1978억</td>
-            <td class="n">9.9672<span class="sq"> 50MA</span></td>
-            <td class="n">9.6776<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.72%</td>
-            <td class="n pos">+2.25%</td>
-            <td class="n warn">+2.99%</td>
+            <td class="n bold">9.9180</td>
+            <td class="n pos">+0.07%</td>
+            <td class="n pos">+3.46%</td>
+            <td class="n">1977억</td>
+            <td class="n">9.9663<span class="sq"> 50MA</span></td>
+            <td class="n">9.6789<span class="sq"> 200MA</span></td>
+            <td class="n neg">-0.48%</td>
+            <td class="n pos">+2.47%</td>
+            <td class="n warn">+2.97%</td>
             <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">19h 43m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">19h 59m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">9</td>
@@ -420,17 +391,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">10.4260</td>
-            <td class="n neg">-0.02%</td>
-            <td class="n pos">+5.16%</td>
-            <td class="n">2444억</td>
-            <td class="n">10.4662<span class="sq"> 50MA</span></td>
-            <td class="n">10.0931<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.38%</td>
-            <td class="n pos">+3.30%</td>
-            <td class="n warn">+3.70%</td>
+            <td class="n bold">10.4450</td>
+            <td class="n pos">+0.05%</td>
+            <td class="n pos">+5.54%</td>
+            <td class="n">2440억</td>
+            <td class="n">10.4677<span class="sq"> 50MA</span></td>
+            <td class="n">10.0949<span class="sq"> 200MA</span></td>
+            <td class="n neg">-0.22%</td>
+            <td class="n pos">+3.47%</td>
+            <td class="n warn">+3.69%</td>
             <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 28m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 44m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">10</td>
@@ -442,14 +413,14 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
             <td class="n bold">1.3580</td>
             <td class="n pos">+0.15%</td>
-            <td class="n pos">+2.65%</td>
-            <td class="n">1054억</td>
-            <td class="n">1.3717<span class="sq"> 50MA</span></td>
-            <td class="n">1.3346<span class="sq"> 200MA</span></td>
-            <td class="n neg">-1.00%</td>
-            <td class="n pos">+1.75%</td>
-            <td class="n warn">+2.78%</td>
-            <td style="text-align:center;"><span class="fb fp">+0.006%</span></td>
+            <td class="n pos">+3.04%</td>
+            <td class="n">1050억</td>
+            <td class="n">1.3714<span class="sq"> 50MA</span></td>
+            <td class="n">1.3348<span class="sq"> 200MA</span></td>
+            <td class="n neg">-0.97%</td>
+            <td class="n pos">+1.74%</td>
+            <td class="n warn">+2.74%</td>
+            <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
             <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">1일 0h</span></span></td>
           </tr>
           <tr>
@@ -459,18 +430,18 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
               <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
-            <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">80,228.0</td>
-            <td class="n pos">+0.11%</td>
-            <td class="n pos">+0.06%</td>
-            <td class="n">10.4조</td>
-            <td class="n">80,281.3<span class="sq"> 50MA</span></td>
-            <td class="n">80,092.2<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.07%</td>
-            <td class="n pos">+0.17%</td>
+            <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#28a745;background:#e9f7ef;border:1px solid #28a74566;">Zone A</span></td>
+            <td class="n bold">80,291.0</td>
+            <td class="n pos">+0.04%</td>
+            <td class="n pos">+0.15%</td>
+            <td class="n">10.2조</td>
+            <td class="n">80,279.9<span class="sq"> 50MA</span></td>
+            <td class="n">80,087.4<span class="sq"> 200MA</span></td>
+            <td class="n pos">+0.01%</td>
+            <td class="n pos">+0.25%</td>
             <td class="n warn">+0.24%</td>
-            <td style="text-align:center;"><span class="fb fp">+0.001%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">6h 13m</span></span></td>
+            <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">6h 29m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">12</td>
@@ -480,17 +451,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">0.0043104</td>
-            <td class="n pos">+0.57%</td>
-            <td class="n pos">+2.67%</td>
-            <td class="n">4330억</td>
-            <td class="n">0.0043240<span class="sq"> 50MA</span></td>
-            <td class="n">0.0042213<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.32%</td>
-            <td class="n pos">+2.11%</td>
-            <td class="n warn">+2.43%</td>
+            <td class="n bold">0.0043130</td>
+            <td class="n pos">+0.38%</td>
+            <td class="n pos">+3.12%</td>
+            <td class="n">4326억</td>
+            <td class="n">0.0043237<span class="sq"> 50MA</span></td>
+            <td class="n">0.0042218<span class="sq"> 200MA</span></td>
+            <td class="n neg">-0.25%</td>
+            <td class="n pos">+2.16%</td>
+            <td class="n warn">+2.41%</td>
             <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">20h 58m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">21h 14m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">13</td>
@@ -500,17 +471,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">43.5610</td>
-            <td class="n neg">-0.59%</td>
-            <td class="n pos">+2.42%</td>
-            <td class="n">4014억</td>
-            <td class="n">43.7442<span class="sq"> 50MA</span></td>
-            <td class="n">42.8847<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.42%</td>
-            <td class="n pos">+1.58%</td>
-            <td class="n warn">+2.00%</td>
+            <td class="n bold">43.6930</td>
+            <td class="n neg">-0.07%</td>
+            <td class="n pos">+3.09%</td>
+            <td class="n">4010억</td>
+            <td class="n">43.7493<span class="sq"> 50MA</span></td>
+            <td class="n">42.8883<span class="sq"> 200MA</span></td>
+            <td class="n neg">-0.13%</td>
+            <td class="n pos">+1.88%</td>
+            <td class="n warn">+2.01%</td>
             <td style="text-align:center;"><span class="fb fp">+0.003%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 13m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 29m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">14</td>
@@ -520,17 +491,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">310.9900</td>
-            <td class="n pos">+0.16%</td>
-            <td class="n pos">+0.50%</td>
-            <td class="n">2332억</td>
-            <td class="n">312.9000<span class="sq"> 50MA</span></td>
-            <td class="n">308.6733<span class="sq"> 200MA</span></td>
-            <td class="n neg">-0.61%</td>
-            <td class="n pos">+0.75%</td>
-            <td class="n warn">+1.37%</td>
-            <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 43m</span></span></td>
+            <td class="n bold">312.1000</td>
+            <td class="n pos">+0.21%</td>
+            <td class="n pos">+1.61%</td>
+            <td class="n">2260억</td>
+            <td class="n">312.8026<span class="sq"> 50MA</span></td>
+            <td class="n">308.6900<span class="sq"> 200MA</span></td>
+            <td class="n neg">-0.22%</td>
+            <td class="n pos">+1.10%</td>
+            <td class="n warn">+1.33%</td>
+            <td style="text-align:center;"><span class="fb fp">+0.004%</span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 59m</span></span></td>
           </tr>
           <tr>
             <td class="c-rk">15</td>
@@ -540,15 +511,15 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">0.42120</td>
-            <td class="n pos">+0.89%</td>
-            <td class="n pos">+5.70%</td>
-            <td class="n">8503억</td>
-            <td class="n">0.44476<span class="sq"> 50MA</span></td>
-            <td class="n">0.39428<span class="sq"> 200MA</span></td>
-            <td class="n neg">-5.30%</td>
-            <td class="n pos">+6.83%</td>
-            <td class="n warn">+12.80%</td>
+            <td class="n bold">0.42470</td>
+            <td class="n pos">+1.10%</td>
+            <td class="n pos">+5.52%</td>
+            <td class="n">8484억</td>
+            <td class="n">0.44434<span class="sq"> 50MA</span></td>
+            <td class="n">0.39465<span class="sq"> 200MA</span></td>
+            <td class="n neg">-4.42%</td>
+            <td class="n pos">+7.62%</td>
+            <td class="n warn">+12.59%</td>
             <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
             <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">8일 6h</span></span></td>
           </tr>
@@ -560,24 +531,23 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
             </a></td>
             <td style="text-align:center;"><span class="align-normal">📈 정배열</span></td>
             <td style="text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;font-weight:700;font-size:.82rem;color:#e67e00;background:#fff3e0;border:1px solid #e67e0066;">Zone B</span></td>
-            <td class="n bold">1.0497</td>
-            <td class="n neg">-0.47%</td>
-            <td class="n pos">+6.73%</td>
-            <td class="n">5293억</td>
-            <td class="n">1.0656<span class="sq"> 50MA</span></td>
-            <td class="n">1.0038<span class="sq"> 200MA</span></td>
-            <td class="n neg">-1.50%</td>
-            <td class="n pos">+4.58%</td>
-            <td class="n warn">+6.16%</td>
+            <td class="n bold">1.0508</td>
+            <td class="n pos">+0.11%</td>
+            <td class="n pos">+7.08%</td>
+            <td class="n">5289억</td>
+            <td class="n">1.0662<span class="sq"> 50MA</span></td>
+            <td class="n">1.0040<span class="sq"> 200MA</span></td>
+            <td class="n neg">-1.44%</td>
+            <td class="n pos">+4.66%</td>
+            <td class="n warn">+6.19%</td>
             <td style="text-align:center;"><span class="fb fn">-0.008%</span></td>
-            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 58m</span></span></td>
+            <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">18h 14m</span></span></td>
           </tr></tbody>
       </table>
     </div>
   </div>
 </div>
 
-<!-- 정배열 탭 -->
 <div id="pane-normal" class="tab-pane">
   <div class="legend-card">
     <div class="leg-row">
@@ -601,8 +571,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
   </div>
   
     <div class="section-card" style="margin-bottom:1rem;
-         border-left:4px solid #28a745;
-         background:rgba(40,167,69,.08);">
+         border-left:4px solid #28a745;background:rgba(40,167,69,.08);">
       <div style="display:flex;align-items:center;justify-content:space-between;
                   margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem;">
         <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
@@ -610,7 +579,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
           <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 현재가 > 50MA > 200MA (강한 정배열 상단)</span>
         </div>
         <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
-                     background:#28a745;color:white;">1개</span>
+                     background:#28a745;color:white;">3개</span>
       </div>
       <div style="overflow-x:auto;">
         <table>
@@ -629,24 +598,59 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>SOL</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">93.3300</td>
-                <td class="n pos">+0.20%</td>
-                <td class="n pos">+5.30%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:33%"></div></div>3.5조</div></td>
-                <td class="n">93.1640</td>
-                <td class="n">90.0521</td>
-                <td class="n pos">+0.18%</td>
-                <td class="n pos">+3.64%</td>
+                <td class="n bold">93.4500</td>
+                <td class="n pos">+0.10%</td>
+                <td class="n pos">+5.58%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:34%"></div></div>3.5조</div></td>
+                <td class="n">93.1832</td>
+                <td class="n">90.0712</td>
+                <td class="n pos">+0.29%</td>
+                <td class="n pos">+3.75%</td>
                 <td class="n warn">+3.46%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.003%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 13m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 29m</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">2</td>
+                <td><a href="https://www.binance.com/en/futures/ETHUSDT?timeframe=15m" target="_blank" class="slink">
+                  <b>ETH</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">2,313.73</td>
+                <td class="n neg">-0.02%</td>
+                <td class="n pos">+1.07%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:87%"></div></div>9.0조</div></td>
+                <td class="n">2,313.02</td>
+                <td class="n">2,299.55</td>
+                <td class="n pos">+0.03%</td>
+                <td class="n pos">+0.62%</td>
+                <td class="n warn">+0.59%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.006%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">9h 29m</span></span></td>
+              </tr>
+              <tr>
+                <td class="c-rk">3</td>
+                <td><a href="https://www.binance.com/en/futures/BTCUSDT?timeframe=15m" target="_blank" class="slink">
+                  <b>BTC</b><span class="sq">/USDT</span>
+                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+                </a></td>
+                <td class="n bold">80,291.0</td>
+                <td class="n pos">+0.04%</td>
+                <td class="n pos">+0.15%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:100%"></div></div>10.2조</div></td>
+                <td class="n">80,279.9</td>
+                <td class="n">80,087.4</td>
+                <td class="n pos">+0.01%</td>
+                <td class="n pos">+0.25%</td>
+                <td class="n warn">+0.24%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">6h 29m</span></span></td>
               </tr></tbody>
         </table>
       </div>
     </div>
     <div class="section-card" style="margin-bottom:1rem;
-         border-left:4px solid #e67e00;
-         background:rgba(230,126,0,.08);">
+         border-left:4px solid #e67e00;background:rgba(230,126,0,.08);">
       <div style="display:flex;align-items:center;justify-content:space-between;
                   margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem;">
         <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
@@ -654,7 +658,7 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
           <span style="font-size:.95rem;color:#6c757d;font-weight:400;"> — 50MA > 현재가 > 200MA (MA 사이 조정)</span>
         </div>
         <span style="padding:.2rem .9rem;border-radius:20px;font-size:1.1rem;font-weight:700;
-                     background:#e67e00;color:white;">15개</span>
+                     background:#e67e00;color:white;">13개</span>
       </div>
       <div style="overflow-x:auto;">
         <table>
@@ -673,17 +677,17 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>ADA</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.27290</td>
-                <td class="n pos">+0.15%</td>
-                <td class="n pos">+3.33%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2369억</div></td>
-                <td class="n">0.27523</td>
-                <td class="n">0.26754</td>
-                <td class="n neg">-0.85%</td>
-                <td class="n pos">+2.00%</td>
-                <td class="n warn">+2.87%</td>
+                <td class="n bold">0.27350</td>
+                <td class="n neg">-0.04%</td>
+                <td class="n pos">+3.64%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2363억</div></td>
+                <td class="n">0.27518</td>
+                <td class="n">0.26757</td>
+                <td class="n neg">-0.61%</td>
+                <td class="n pos">+2.22%</td>
+                <td class="n warn">+2.84%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 58m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 14m</span></span></td>
               </tr>
               <tr>
                 <td class="c-rk">2</td>
@@ -691,15 +695,15 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>ZEC</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">602.7400</td>
-                <td class="n neg">-1.09%</td>
-                <td class="n pos">+5.56%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:24%"></div></div>2.6조</div></td>
-                <td class="n">614.1822</td>
-                <td class="n">581.5121</td>
-                <td class="n neg">-1.86%</td>
-                <td class="n pos">+3.65%</td>
-                <td class="n warn">+5.62%</td>
+                <td class="n bold">601.7300</td>
+                <td class="n neg">-1.01%</td>
+                <td class="n pos">+4.57%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:24%"></div></div>2.5조</div></td>
+                <td class="n">613.9616</td>
+                <td class="n">581.7293</td>
+                <td class="n neg">-1.99%</td>
+                <td class="n pos">+3.44%</td>
+                <td class="n warn">+5.54%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.002%</span></td>
                 <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">8일 21h</span></span></td>
               </tr>
@@ -709,15 +713,15 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>ENA</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.12865</td>
-                <td class="n pos">+0.05%</td>
-                <td class="n pos">+6.10%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2400억</div></td>
-                <td class="n">0.13168</td>
-                <td class="n">0.12454</td>
-                <td class="n neg">-2.30%</td>
-                <td class="n pos">+3.30%</td>
-                <td class="n warn">+5.73%</td>
+                <td class="n bold">0.12881</td>
+                <td class="n neg">-0.12%</td>
+                <td class="n pos">+5.99%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2397억</div></td>
+                <td class="n">0.13160</td>
+                <td class="n">0.12458</td>
+                <td class="n neg">-2.12%</td>
+                <td class="n pos">+3.39%</td>
+                <td class="n warn">+5.64%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.004%</span></td>
                 <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">4일 1h</span></span></td>
               </tr>
@@ -727,222 +731,185 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
                   <b>XRP</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">1.4204</td>
-                <td class="n pos">+0.06%</td>
-                <td class="n pos">+2.21%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:8%"></div></div>8964억</div></td>
+                <td class="n bold">1.4207</td>
+                <td class="n pos">+0.11%</td>
+                <td class="n pos">+2.22%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:8%"></div></div>8943억</div></td>
                 <td class="n">1.4243</td>
                 <td class="n">1.4018</td>
-                <td class="n neg">-0.27%</td>
-                <td class="n pos">+1.33%</td>
+                <td class="n neg">-0.26%</td>
+                <td class="n pos">+1.35%</td>
                 <td class="n warn">+1.61%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">12h 58m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">13h 14m</span></span></td>
               </tr>
               <tr>
                 <td class="c-rk">5</td>
-                <td><a href="https://www.binance.com/en/futures/ETHUSDT?timeframe=15m" target="_blank" class="slink">
-                  <b>ETH</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">2,311.60</td>
-                <td class="n pos">+0.03%</td>
-                <td class="n pos">+1.06%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:87%"></div></div>9.1조</div></td>
-                <td class="n">2,313.03</td>
-                <td class="n">2,299.66</td>
-                <td class="n neg">-0.06%</td>
-                <td class="n pos">+0.52%</td>
-                <td class="n warn">+0.58%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.006%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">9h 13m</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">6</td>
                 <td><a href="https://www.binance.com/en/futures/DOGEUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>DOGE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.10962</td>
-                <td class="n neg">-0.04%</td>
-                <td class="n pos">+2.01%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:6%"></div></div>7162억</div></td>
-                <td class="n">0.11012</td>
-                <td class="n">0.10853</td>
-                <td class="n neg">-0.46%</td>
-                <td class="n pos">+1.00%</td>
-                <td class="n warn">+1.47%</td>
+                <td class="n bold">0.10964</td>
+                <td class="n neg">-0.24%</td>
+                <td class="n pos">+2.20%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:6%"></div></div>7147억</div></td>
+                <td class="n">0.11013</td>
+                <td class="n">0.10852</td>
+                <td class="n neg">-0.44%</td>
+                <td class="n pos">+1.03%</td>
+                <td class="n warn">+1.48%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">8h 58m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">9h 14m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">7</td>
+                <td class="c-rk">6</td>
                 <td><a href="https://www.binance.com/en/futures/AVAXUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>AVAX</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">9.8950</td>
-                <td class="n pos">+0.06%</td>
-                <td class="n pos">+3.03%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1978억</div></td>
-                <td class="n">9.9672</td>
-                <td class="n">9.6776</td>
-                <td class="n neg">-0.72%</td>
-                <td class="n pos">+2.25%</td>
-                <td class="n warn">+2.99%</td>
+                <td class="n bold">9.9180</td>
+                <td class="n pos">+0.07%</td>
+                <td class="n pos">+3.46%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1977억</div></td>
+                <td class="n">9.9663</td>
+                <td class="n">9.6789</td>
+                <td class="n neg">-0.48%</td>
+                <td class="n pos">+2.47%</td>
+                <td class="n warn">+2.97%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">19h 43m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">19h 59m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">8</td>
+                <td class="c-rk">7</td>
                 <td><a href="https://www.binance.com/en/futures/LINKUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>LINK</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">10.4260</td>
-                <td class="n neg">-0.02%</td>
-                <td class="n pos">+5.16%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2444억</div></td>
-                <td class="n">10.4662</td>
-                <td class="n">10.0931</td>
-                <td class="n neg">-0.38%</td>
-                <td class="n pos">+3.30%</td>
-                <td class="n warn">+3.70%</td>
+                <td class="n bold">10.4450</td>
+                <td class="n pos">+0.05%</td>
+                <td class="n pos">+5.54%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2440억</div></td>
+                <td class="n">10.4677</td>
+                <td class="n">10.0949</td>
+                <td class="n neg">-0.22%</td>
+                <td class="n pos">+3.47%</td>
+                <td class="n warn">+3.69%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 28m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 44m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">9</td>
+                <td class="c-rk">8</td>
                 <td><a href="https://www.binance.com/en/futures/DOTUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>DOT</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
                 <td class="n bold">1.3580</td>
                 <td class="n pos">+0.15%</td>
-                <td class="n pos">+2.65%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1054억</div></td>
-                <td class="n">1.3717</td>
-                <td class="n">1.3346</td>
-                <td class="n neg">-1.00%</td>
-                <td class="n pos">+1.75%</td>
-                <td class="n warn">+2.78%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.006%</span></td>
+                <td class="n pos">+3.04%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:1%"></div></div>1050억</div></td>
+                <td class="n">1.3714</td>
+                <td class="n">1.3348</td>
+                <td class="n neg">-0.97%</td>
+                <td class="n pos">+1.74%</td>
+                <td class="n warn">+2.74%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
                 <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">1일 0h</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">10</td>
-                <td><a href="https://www.binance.com/en/futures/BTCUSDT?timeframe=15m" target="_blank" class="slink">
-                  <b>BTC</b><span class="sq">/USDT</span>
-                  <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-                </a></td>
-                <td class="n bold">80,228.0</td>
-                <td class="n pos">+0.11%</td>
-                <td class="n pos">+0.06%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:100%"></div></div>10.4조</div></td>
-                <td class="n">80,281.3</td>
-                <td class="n">80,092.2</td>
-                <td class="n neg">-0.07%</td>
-                <td class="n pos">+0.17%</td>
-                <td class="n warn">+0.24%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.001%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">6h 13m</span></span></td>
-              </tr>
-              <tr>
-                <td class="c-rk">11</td>
+                <td class="c-rk">9</td>
                 <td><a href="https://www.binance.com/en/futures/1000PEPEUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>1000PEPE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.0043104</td>
-                <td class="n pos">+0.57%</td>
-                <td class="n pos">+2.67%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:4%"></div></div>4330억</div></td>
-                <td class="n">0.0043240</td>
-                <td class="n">0.0042213</td>
-                <td class="n neg">-0.32%</td>
-                <td class="n pos">+2.11%</td>
-                <td class="n warn">+2.43%</td>
+                <td class="n bold">0.0043130</td>
+                <td class="n pos">+0.38%</td>
+                <td class="n pos">+3.12%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:4%"></div></div>4326억</div></td>
+                <td class="n">0.0043237</td>
+                <td class="n">0.0042218</td>
+                <td class="n neg">-0.25%</td>
+                <td class="n pos">+2.16%</td>
+                <td class="n warn">+2.41%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.010%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">20h 58m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">21h 14m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">12</td>
+                <td class="c-rk">10</td>
                 <td><a href="https://www.binance.com/en/futures/HYPEUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>HYPE</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">43.5610</td>
-                <td class="n neg">-0.59%</td>
-                <td class="n pos">+2.42%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>4014억</div></td>
-                <td class="n">43.7442</td>
-                <td class="n">42.8847</td>
-                <td class="n neg">-0.42%</td>
-                <td class="n pos">+1.58%</td>
-                <td class="n warn">+2.00%</td>
+                <td class="n bold">43.6930</td>
+                <td class="n neg">-0.07%</td>
+                <td class="n pos">+3.09%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:3%"></div></div>4010억</div></td>
+                <td class="n">43.7493</td>
+                <td class="n">42.8883</td>
+                <td class="n neg">-0.13%</td>
+                <td class="n pos">+1.88%</td>
+                <td class="n warn">+2.01%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.003%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 13m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">16h 29m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">13</td>
+                <td class="c-rk">11</td>
                 <td><a href="https://www.binance.com/en/futures/TAOUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>TAO</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">310.9900</td>
-                <td class="n pos">+0.16%</td>
-                <td class="n pos">+0.50%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2332억</div></td>
-                <td class="n">312.9000</td>
-                <td class="n">308.6733</td>
-                <td class="n neg">-0.61%</td>
-                <td class="n pos">+0.75%</td>
-                <td class="n warn">+1.37%</td>
-                <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 43m</span></span></td>
+                <td class="n bold">312.1000</td>
+                <td class="n pos">+0.21%</td>
+                <td class="n pos">+1.61%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:2%"></div></div>2260억</div></td>
+                <td class="n">312.8026</td>
+                <td class="n">308.6900</td>
+                <td class="n neg">-0.22%</td>
+                <td class="n pos">+1.10%</td>
+                <td class="n warn">+1.33%</td>
+                <td style="text-align:center;"><span class="fb fp">+0.004%</span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 59m</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">14</td>
+                <td class="c-rk">12</td>
                 <td><a href="https://www.binance.com/en/futures/ONDOUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>ONDO</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">0.42120</td>
-                <td class="n pos">+0.89%</td>
-                <td class="n pos">+5.70%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:8%"></div></div>8503억</div></td>
-                <td class="n">0.44476</td>
-                <td class="n">0.39428</td>
-                <td class="n neg">-5.30%</td>
-                <td class="n pos">+6.83%</td>
-                <td class="n warn">+12.80%</td>
+                <td class="n bold">0.42470</td>
+                <td class="n pos">+1.10%</td>
+                <td class="n pos">+5.52%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:8%"></div></div>8484억</div></td>
+                <td class="n">0.44434</td>
+                <td class="n">0.39465</td>
+                <td class="n neg">-4.42%</td>
+                <td class="n pos">+7.62%</td>
+                <td class="n warn">+12.59%</td>
                 <td style="text-align:center;"><span class="fb fp">+0.005%</span></td>
                 <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">8일 6h</span></span></td>
               </tr>
               <tr>
-                <td class="c-rk">15</td>
+                <td class="c-rk">13</td>
                 <td><a href="https://www.binance.com/en/futures/SUIUSDT?timeframe=15m" target="_blank" class="slink">
                   <b>SUI</b><span class="sq">/USDT</span>
                   <svg viewBox="0 0 10 10" class="ico"><path d="M1.5 1.5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
                 </a></td>
-                <td class="n bold">1.0497</td>
-                <td class="n neg">-0.47%</td>
-                <td class="n pos">+6.73%</td>
-                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:5%"></div></div>5293억</div></td>
-                <td class="n">1.0656</td>
-                <td class="n">1.0038</td>
-                <td class="n neg">-1.50%</td>
-                <td class="n pos">+4.58%</td>
-                <td class="n warn">+6.16%</td>
+                <td class="n bold">1.0508</td>
+                <td class="n pos">+0.11%</td>
+                <td class="n pos">+7.08%</td>
+                <td class="n"><div class="vw"><div class="vbar"><div class="vfill" style="width:5%"></div></div>5289억</div></td>
+                <td class="n">1.0662</td>
+                <td class="n">1.0040</td>
+                <td class="n neg">-1.44%</td>
+                <td class="n pos">+4.66%</td>
+                <td class="n warn">+6.19%</td>
                 <td style="text-align:center;"><span class="fb fn">-0.008%</span></td>
-                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">17h 58m</span></span></td>
+                <td class="n cross-col"><span class="cross-golden">🟡골든 <span class="cross-time">18h 14m</span></span></td>
               </tr></tbody>
         </table>
       </div>
     </div>
     <div class="section-card" style="margin-bottom:1rem;
-         border-left:4px solid #dc3545;
-         background:rgba(220,53,69,.08);">
+         border-left:4px solid #dc3545;background:rgba(220,53,69,.08);">
       <div style="display:flex;align-items:center;justify-content:space-between;
                   margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem;">
         <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;
@@ -968,7 +935,6 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
     </div>
 </div>
 
-<!-- 역배열 탭 -->
 <div id="pane-inverse" class="tab-pane">
   <div class="legend-card">
     <div class="leg-row">
@@ -992,6 +958,1743 @@ table tbody td{vertical-align:middle;padding:.32rem .45rem;white-space:nowrap;fo
   </div>
   <p style="text-align:center;color:#6c757d;padding:2rem;">역배열 종목 없음</p>
 </div>
+
+<!-- TradingView 차트 섹션 (신규) -->
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TradingView 10분봉 차트 섹션                    -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-card" style="margin-bottom:1.5rem;padding:1.2rem 1.4rem;">
+  <h2 style="font-family:Rajdhani,sans-serif;font-size:1.5rem;font-weight:700;
+              margin-bottom:1rem;color:#f0f6fc;">
+    📈 TradingView 차트
+    <span style="font-size:1rem;color:#8b949e;font-weight:400;">
+      — 10분봉 · SMA50
+      <span style="color:#26a69a;font-weight:700;">━━</span>
+      / SMA200
+      <span style="color:#ef5350;font-weight:700;">━━</span>
+      · 실시간
+    </span>
+  </h2>
+
+  <!-- 종목 탭 스크롤 바 -->
+  <div style="display:flex;overflow-x:auto;background:#0d1520;border-radius:10px 10px 0 0;
+              border:1px solid #21262d;border-bottom:none;
+              scrollbar-width:thin;scrollbar-color:#21262d #0d1520;">
+    
+      <button class="tv-tab tv-tab-active"
+              onclick="switchTvTab('ADAUSDT', this)"
+              data-sym="ADAUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#1a2a3a;
+                     color:#ffffff;
+                     border-bottom:3px solid #e67e00;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>ADA
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+3.6%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('ZECUSDT', this)"
+              data-sym="ZECUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>ZEC
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+4.6%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('ENAUSDT', this)"
+              data-sym="ENAUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>ENA
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+6.0%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('XRPUSDT', this)"
+              data-sym="XRPUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>XRP
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+2.2%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('SOLUSDT', this)"
+              data-sym="SOLUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#28a745;margin-right:3px;">●</span>SOL
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+5.6%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#28a74522;color:#28a745;
+                     border:1px solid #28a74555;">ZA</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('ETHUSDT', this)"
+              data-sym="ETHUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#28a745;margin-right:3px;">●</span>ETH
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+1.1%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#28a74522;color:#28a745;
+                     border:1px solid #28a74555;">ZA</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('DOGEUSDT', this)"
+              data-sym="DOGEUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>DOGE
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+2.2%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('AVAXUSDT', this)"
+              data-sym="AVAXUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>AVAX
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+3.5%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('LINKUSDT', this)"
+              data-sym="LINKUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>LINK
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+5.5%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('DOTUSDT', this)"
+              data-sym="DOTUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>DOT
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+3.0%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('BTCUSDT', this)"
+              data-sym="BTCUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#28a745;margin-right:3px;">●</span>BTC
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+0.2%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#28a74522;color:#28a745;
+                     border:1px solid #28a74555;">ZA</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('1000PEPEUSDT', this)"
+              data-sym="1000PEPEUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>1000PEPE
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+3.1%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('HYPEUSDT', this)"
+              data-sym="HYPEUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>HYPE
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+3.1%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('TAOUSDT', this)"
+              data-sym="TAOUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>TAO
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+1.6%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('ONDOUSDT', this)"
+              data-sym="ONDOUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>ONDO
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+5.5%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+      <button class="tv-tab "
+              onclick="switchTvTab('SUIUSDT', this)"
+              data-sym="SUIUSDT"
+              style="flex-shrink:0;padding:.55rem 1rem;border:none;cursor:pointer;
+                     font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;
+                     background:#0d1520;
+                     color:#8b949e;
+                     border-bottom:3px solid transparent;
+                     border-right:1px solid #21262d;
+                     transition:all .2s;white-space:nowrap;">
+        <span style="color:#e67e00;margin-right:3px;">●</span>SUI
+        <span style="font-size:.75rem;color:#28a745;margin-left:3px;">+7.1%</span>
+        <span style="display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;
+                     font-size:.7rem;background:#e67e0022;color:#e67e00;
+                     border:1px solid #e67e0055;">ZB</span>
+      </button>
+  </div>
+
+  <!-- 차트 패널 영역 -->
+  <div style="border:1px solid #21262d;border-top:none;border-radius:0 0 10px 10px;
+              padding:1rem;background:#06090f;">
+    
+    <div id="panel_ADAUSDT" style="display:block;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">ADA</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          0.27350
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +3.64%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#dc3545;">
+          1H: -0.04%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">0.27518</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.61%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">0.26757</b>
+            <span style="color:#28a745;font-size:.78rem;">(+2.22%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_ADAUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:ADAUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_ADAUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_ZECUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">ZEC</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          601.7300
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +4.57%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#dc3545;">
+          1H: -1.01%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">613.9616</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-1.99%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">581.7293</b>
+            <span style="color:#28a745;font-size:.78rem;">(+3.44%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_ZECUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:ZECUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_ZECUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_ENAUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">ENA</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          0.12881
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +5.99%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#dc3545;">
+          1H: -0.12%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">0.13160</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-2.12%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">0.12458</b>
+            <span style="color:#28a745;font-size:.78rem;">(+3.39%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_ENAUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:ENAUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_ENAUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_XRPUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">XRP</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          1.4207
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +2.22%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.11%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">1.4243</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.26%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">1.4018</b>
+            <span style="color:#28a745;font-size:.78rem;">(+1.35%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_XRPUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:XRPUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_XRPUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_SOLUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">SOL</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          93.4500
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +5.58%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.10%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          Zone A
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">93.1832</b>
+            <span style="color:#28a745;font-size:.78rem;">(+0.29%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">90.0712</b>
+            <span style="color:#28a745;font-size:.78rem;">(+3.75%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_SOLUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:SOLUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_SOLUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_ETHUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">ETH</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          2,313.73
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +1.07%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#dc3545;">
+          1H: -0.02%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          Zone A
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">2,313.02</b>
+            <span style="color:#28a745;font-size:.78rem;">(+0.03%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">2,299.55</b>
+            <span style="color:#28a745;font-size:.78rem;">(+0.62%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_ETHUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:ETHUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_ETHUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_DOGEUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">DOGE</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          0.10964
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +2.20%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#dc3545;">
+          1H: -0.24%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">0.11013</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.44%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">0.10852</b>
+            <span style="color:#28a745;font-size:.78rem;">(+1.03%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_DOGEUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:DOGEUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_DOGEUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_AVAXUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">AVAX</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          9.9180
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +3.46%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.07%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">9.9663</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.48%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">9.6789</b>
+            <span style="color:#28a745;font-size:.78rem;">(+2.47%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_AVAXUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:AVAXUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_AVAXUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_LINKUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">LINK</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          10.4450
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +5.54%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.05%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">10.4677</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.22%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">10.0949</b>
+            <span style="color:#28a745;font-size:.78rem;">(+3.47%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_LINKUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:LINKUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_LINKUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_DOTUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">DOT</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          1.3580
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +3.04%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.15%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">1.3714</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.97%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">1.3348</b>
+            <span style="color:#28a745;font-size:.78rem;">(+1.74%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_DOTUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:DOTUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_DOTUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_BTCUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">BTC</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          80,291.0
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +0.15%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.04%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          Zone A
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">80,279.9</b>
+            <span style="color:#28a745;font-size:.78rem;">(+0.01%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">80,087.4</b>
+            <span style="color:#28a745;font-size:.78rem;">(+0.25%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_BTCUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:BTCUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_BTCUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_1000PEPEUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">1000PEPE</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          0.0043130
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +3.12%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.38%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">0.0043237</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.25%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">0.0042218</b>
+            <span style="color:#28a745;font-size:.78rem;">(+2.16%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_1000PEPEUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:1000PEPEUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_1000PEPEUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_HYPEUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">HYPE</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          43.6930
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +3.09%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#dc3545;">
+          1H: -0.07%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">43.7493</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.13%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">42.8883</b>
+            <span style="color:#28a745;font-size:.78rem;">(+1.88%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_HYPEUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:HYPEUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_HYPEUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_TAOUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">TAO</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          312.1000
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +1.61%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.21%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">312.8026</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-0.22%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">308.6900</b>
+            <span style="color:#28a745;font-size:.78rem;">(+1.10%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_TAOUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:TAOUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_TAOUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_ONDOUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">ONDO</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          0.42470
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +5.52%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +1.10%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">0.44434</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-4.42%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">0.39465</b>
+            <span style="color:#28a745;font-size:.78rem;">(+7.62%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_ONDOUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:ONDOUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_ONDOUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div id="panel_SUIUSDT" style="display:none;">
+      <!-- 종목 요약 정보 바 -->
+      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+                  padding:.8rem 1.2rem;background:#0d1520;border-radius:10px;
+                  margin-bottom:.8rem;border:1px solid #21262d;">
+        <div>
+          <span style="font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;
+                       color:#f0f6fc;">SUI</span>
+          <span style="font-size:.9rem;color:#6c757d;">/USDT PERP</span>
+        </div>
+        <div style="font-family:Rajdhani,sans-serif;font-size:1.4rem;font-weight:700;color:#f0f6fc;">
+          1.0508
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          24H: +7.08%
+        </div>
+        <div style="font-size:.85rem;font-weight:700;color:#28a745;">
+          1H: +0.11%
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#28a74520;border:1px solid #28a74555;
+                    color:#28a745;font-weight:700;">
+          정배열 (50MA>200MA)
+        </div>
+        <div style="font-size:.82rem;padding:.2rem .7rem;border-radius:8px;
+                    background:#e67e0020;border:1px solid #e67e0055;
+                    color:#e67e00;font-weight:700;">
+          Zone B
+        </div>
+        <div style="font-size:.82rem;color:#8b949e;margin-left:auto;display:flex;gap:1.2rem;">
+          <span>50MA: <b style="color:#26a69a;">1.0662</b>
+            <span style="color:#dc3545;font-size:.78rem;">(-1.44%)</span>
+          </span>
+          <span>200MA: <b style="color:#ef5350;">1.0040</b>
+            <span style="color:#28a745;font-size:.78rem;">(+4.66%)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- TradingView 위젯 컨테이너 -->
+      <div id="tv_chart_SUIUSDT" style="width:100%;height:460px;background:#0c1220;border-radius:10px;
+                              border:1px solid #21262d;overflow:hidden;"></div>
+
+      <script>
+      (function() {
+        var _now  = Math.floor(Date.now() / 1000);
+        var _from = _now - 60 * 60 * 24 * 10;   // 최근 10일
+        new TradingView.widget({
+          "autosize":           true,
+          "symbol":             "BINANCE:SUIUSDT.P",
+          "interval":           "10",
+          "from":               _from,
+          "to":                 _now,
+          "timezone":           "Asia/Seoul",
+          "theme":              "dark",
+          "style":              "1",
+          "locale":             "kr",
+          "toolbar_bg":         "#0c1220",
+          "enable_publishing":  false,
+          "hide_side_toolbar":  false,
+          "allow_symbol_change":false,
+          "save_image":         false,
+          "container_id":       "tv_chart_SUIUSDT",
+          "studies": [
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 50}},
+            {"id": "MASimple@tv-basicstudies", "inputs": {"length": 200}}
+          ],
+          "studies_overrides": {
+            "moving average.plot.color":       "#26a69a",
+            "moving average.plot.linewidth":   2,
+            "moving average 1.plot.color":     "#ef5350",
+            "moving average 1.plot.linewidth": 2
+          },
+          "overrides": {
+            "paneProperties.background":                "#06090f",
+            "paneProperties.vertGridProperties.color":  "#111827",
+            "paneProperties.horzGridProperties.color":  "#111827",
+            "candleStyle.upColor":                      "#26a69a",
+            "candleStyle.downColor":                    "#ef5350",
+            "candleStyle.borderUpColor":                "#26a69a",
+            "candleStyle.borderDownColor":              "#ef5350",
+            "candleStyle.wickUpColor":                  "#26a69a",
+            "candleStyle.wickDownColor":                "#ef5350"
+          }
+        });
+      })();
+      </script>
+    </div>
+  </div>
+
+  <!-- 범례 -->
+  <div style="margin-top:.8rem;padding:.7rem 1.2rem;background:#0d1520;border-radius:8px;
+              border:1px solid #21262d;font-size:.85rem;color:#8b949e;line-height:1.8;">
+    <span style="color:#26a69a;font-weight:700;">━━ SMA 50</span> &nbsp;|&nbsp;
+    <span style="color:#ef5350;font-weight:700;">━━ SMA 200</span> &nbsp;|&nbsp;
+    Zone 색상:
+    <span style="color:#28a745;">● A(정배열강)</span>
+    <span style="color:#4facfe;">● A(역배열반등)</span>
+    <span style="color:#e67e00;">● B(사이)</span>
+    <span style="color:#dc3545;">● C(하단)</span> &nbsp;|&nbsp;
+    종목 탭 클릭으로 전환 · 차트 클릭 후 TradingView에서 전체화면 가능
+  </div>
+</div>
+
+<script>
+function switchTvTab(sym, btn) {
+  // 모든 패널 숨김
+  document.querySelectorAll('[id^="panel_"]').forEach(function(p) {
+    p.style.display = 'none';
+  });
+  // 모든 탭 비활성화
+  document.querySelectorAll('.tv-tab').forEach(function(b) {
+    b.style.background   = '#0d1520';
+    b.style.color        = '#8b949e';
+    b.style.borderBottom = '3px solid transparent';
+    b.classList.remove('tv-tab-active');
+  });
+  // 선택 패널 표시
+  var panel = document.getElementById('panel_' + sym);
+  if (panel) panel.style.display = 'block';
+  // 선택 탭 활성화
+  btn.style.background = '#1a2a3a';
+  btn.style.color      = '#ffffff';
+  btn.classList.add('tv-tab-active');
+
+  // Zone 색상으로 border-bottom 유지 (data-sym 기반)
+  var zoneColor = btn.querySelector('span[style*="color"]') ?
+    getComputedStyle(btn.querySelector('span')).color : '#667eea';
+  btn.style.borderBottom = '3px solid ' + (btn.getAttribute('data-color') || '#667eea');
+}
+</script>
 
 <div style="margin-top:1.5rem;padding:1rem 1.2rem;text-align:center;
             font-size:.85rem;color:#6c757d;border-top:1px solid var(--border);">
