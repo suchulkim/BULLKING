@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>🔫 불왕 데일리 브리핑 — 2026.05.21</title>
+<title>🔫 불왕 데일리 브리핑 — 2026.05.21 저녁</title>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --bg:#0a0e17;--bg2:#0f1520;--bg3:#151d2e;
   --border:#1e2d45;--border2:#2a3f5f;
   --gold:#f0b429;--gold2:#ffd166;
@@ -20,188 +20,162 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(0,212,170,.06) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 90%,rgba(79,172,254,.05) 0%,transparent 60%);pointer-events:none;z-index:0;}
 .wrap{max-width:1080px;margin:0 auto;padding:32px 24px;position:relative;z-index:1;}
 
-/* 용어 사전 */
-.glossary{background:linear-gradient(135deg,#0f1a2e,#0a1525);border:1px solid rgba(0,212,170,.2);border-radius:16px;padding:20px 24px;margin-bottom:28px;}
-.glossary-title{font-family:Rajdhani,sans-serif;font-size:1rem;font-weight:700;color:var(--teal);letter-spacing:1px;margin-bottom:12px;}
-.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;}
-.gl-item{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:8px 12px;}
-.gl-term{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;color:var(--gold);}
-.gl-def{font-size:.78rem;color:var(--muted);line-height:1.5;margin-top:2px;}
-
 /* HERO */
 .hero{position:relative;border:1px solid var(--border2);border-radius:20px;padding:36px 40px 30px;margin-bottom:28px;background:linear-gradient(135deg,#0d1e35 0%,#0a1525 60%,#0f1c2e 100%);overflow:hidden;}
 .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold),var(--teal));background-size:200% 100%;animation:shimmer 3s linear infinite;}
 @keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes glow{0%,100%{box-shadow:0 0 12px rgba(0,212,170,.4)}50%{box-shadow:0 0 28px rgba(0,212,170,.9)}}
 .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;}
 .hero-brand{display:flex;align-items:center;gap:16px;}
-.brand-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(240,180,41,.2),rgba(0,212,170,.15));border:1px solid rgba(240,180,41,.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;}
-.brand-title{font-family:Rajdhani,sans-serif;font-size:1.7rem;font-weight:700;color:var(--text);letter-spacing:1px;}
-.brand-sub{font-size:.75rem;color:var(--muted);letter-spacing:.5px;margin-top:2px;}
-.hero-meta{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
-.live-badge{display:flex;align-items:center;gap:6px;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.25);border-radius:20px;padding:4px 12px;}
-.live-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:pulse 1.4s ease-in-out infinite;}
-.live-txt{font-size:.72rem;font-weight:700;color:var(--teal);letter-spacing:1px;}
-.date-txt{font-size:.82rem;color:var(--muted);}
+.brand-icon{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#0d2b20,#0f3828);border:1px solid var(--teal);display:flex;align-items:center;justify-content:center;font-size:26px;animation:glow 3s ease-in-out infinite;flex-shrink:0;}
+.brand-title{font-family:Rajdhani,sans-serif;font-size:2.4rem;font-weight:700;color:#fff;letter-spacing:1px;}
+.brand-sub{font-size:.8rem;color:var(--muted);letter-spacing:.5px;margin-top:2px;}
+.hero-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.live-badge{display:flex;align-items:center;gap:6px;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.3);border-radius:20px;padding:4px 12px;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 1.5s ease-in-out infinite;}
+.live-txt{font-family:Rajdhani,sans-serif;font-size:.75rem;color:var(--teal);letter-spacing:2px;font-weight:700;}
+.date-txt{font-size:.85rem;color:var(--sub);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px 12px;}
 .hero-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:20px 0;}
 .hero-desc{font-size:.88rem;color:var(--muted);line-height:1.7;}
-.hero-desc span{color:var(--teal);font-weight:600;}
+.hero-desc span{color:var(--gold);font-weight:600;}
 
-/* TOC */
-.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
-.toc a{background:var(--bg3);border:1px solid var(--border);color:var(--muted);font-size:.8rem;padding:6px 14px;border-radius:20px;text-decoration:none;transition:all .2s;}
-.toc a:hover{border-color:var(--teal);color:var(--teal);}
+/* 용어 박스 */
+.glossary-box{background:rgba(240,180,41,.05);border:1px solid rgba(240,180,41,.2);border-radius:14px;padding:16px 22px;margin-bottom:26px;}
+.glossary-title{font-family:Rajdhani,sans-serif;font-size:.95rem;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:10px;}
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:7px;}
+.gterm{font-size:.79rem;line-height:1.6;color:var(--sub);}
+.gterm strong{color:var(--gold2);font-weight:600;}
 
 /* SECTION */
-.section{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px 28px;margin-bottom:20px;animation:fadeUp .4s ease both;}
-.sec-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);}
-.sec-num{font-family:Rajdhani,sans-serif;font-size:1.6rem;font-weight:700;color:var(--border2);line-height:1;}
-.sec-title{font-family:Rajdhani,sans-serif;font-size:1.15rem;font-weight:700;color:var(--text);letter-spacing:.5px;}
+.section{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:26px 30px;margin-bottom:22px;animation:fadeUp .4s ease both;}
+.sec-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.sec-num{font-family:Rajdhani,sans-serif;font-size:2rem;font-weight:700;color:var(--border2);line-height:1;}
+.sec-title{font-size:1.08rem;font-weight:700;color:var(--text);}
+.section:nth-child(1){animation-delay:.05s}.section:nth-child(2){animation-delay:.1s}.section:nth-child(3){animation-delay:.15s}.section:nth-child(4){animation-delay:.2s}.section:nth-child(5){animation-delay:.25s}
 
-/* ISSUE CARDS */
-.issue-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-@media(max-width:680px){.issue-grid{grid-template-columns:1fr;}}
-.issue-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;transition:border-color .2s;}
-.issue-card.pos{border-left:3px solid var(--teal);}
-.issue-card.neg{border-left:3px solid var(--red);}
-.issue-card.warn{border-left:3px solid var(--gold);}
-.issue-card.neutral{border-left:3px solid var(--blue);}
-.issue-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:7px;}
-.tag-pos{background:rgba(0,212,170,.12);color:var(--teal);}
-.tag-neg{background:rgba(255,77,109,.12);color:var(--red);}
-.tag-warn{background:rgba(240,180,41,.12);color:var(--gold);}
-.tag-neutral{background:rgba(79,172,254,.1);color:var(--blue);}
-.issue-ttl{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:7px;}
-.issue-body{font-size:.83rem;color:var(--sub);line-height:1.6;margin-bottom:10px;}
-.issue-body strong{color:var(--text);}
-.impact-bar{font-size:.78rem;font-weight:700;padding:6px 10px;border-radius:7px;}
-.impact-pos{background:rgba(0,212,170,.08);color:var(--teal);}
-.impact-neg{background:rgba(255,77,109,.08);color:var(--red);}
-.impact-neutral{background:rgba(79,172,254,.08);color:var(--blue);}
-.impact-warn{background:rgba(240,180,41,.08);color:var(--gold);}
+/* 이슈 */
+.issue-list{display:flex;flex-direction:column;gap:12px;}
+.issue-item{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px 18px;border-left:3px solid var(--teal);}
+.issue-item.hot{border-left-color:var(--gold);}
+.issue-item.warn{border-left-color:var(--red);}
+.issue-item.blue{border-left-color:var(--blue);}
+.issue-tag{display:inline-block;font-size:.71rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:7px;letter-spacing:.5px;}
+.tag-hot{background:rgba(240,180,41,.15);color:var(--gold);}
+.tag-reg{background:rgba(0,212,170,.12);color:var(--teal);}
+.tag-warn{background:rgba(255,77,109,.12);color:var(--red);}
+.tag-blue{background:rgba(79,172,254,.12);color:var(--blue);}
+.issue-ttl{font-size:.93rem;font-weight:700;color:var(--text);margin-bottom:5px;}
+.issue-desc{font-size:.83rem;color:var(--sub);line-height:1.7;}
+.issue-desc strong{color:var(--gold);}
+.issue-desc .teal{color:var(--teal);}
+.issue-desc .red{color:var(--red);}
 
-/* TIMELINE */
+/* 타임라인 */
 .timeline{display:flex;flex-direction:column;gap:0;}
-.tl-item{position:relative;padding:14px 14px 14px 32px;border-left:2px solid var(--border);}
-.tl-item::before{content:'';position:absolute;left:-5px;top:20px;width:8px;height:8px;background:var(--border2);border-radius:50%;}
-.tl-item.done::before{background:var(--teal);}
-.tl-item.hot::before{background:var(--gold);box-shadow:0 0 8px rgba(240,180,41,.6);}
-.tl-item.warn::before{background:var(--red);}
-.tl-time{font-size:.78rem;color:var(--muted);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
-.tl-badge{font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:4px;}
-.badge-done{background:rgba(0,212,170,.15);color:var(--teal);}
-.badge-hot{background:rgba(240,180,41,.15);color:var(--gold);}
-.badge-pending{background:rgba(79,172,254,.15);color:var(--blue);}
-.badge-warn{background:rgba(255,77,109,.15);color:var(--red);}
-.tl-ttl{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:4px;}
-.tl-desc{font-size:.82rem;color:var(--sub);line-height:1.55;}
-.tl-desc strong{color:var(--text);}
+.tl-item{display:grid;grid-template-columns:195px 1fr;gap:0 18px;padding:13px 0;border-bottom:1px solid var(--border);}
+.tl-item:last-child{border-bottom:none;}
+.tl-time{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);padding-top:2px;}
+.tl-badge{display:inline-block;font-size:.67rem;font-weight:700;padding:1px 7px;border-radius:4px;margin-left:5px;vertical-align:middle;}
+.badge-hot{background:rgba(255,77,109,.2);color:var(--red);}
+.badge-pass{background:rgba(0,212,170,.15);color:var(--teal);}
+.badge-pending{background:rgba(240,180,41,.15);color:var(--gold);}
+.tl-ttl{font-size:.89rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.tl-desc{font-size:.81rem;color:var(--sub);line-height:1.6;}
+.tl-desc strong{color:var(--gold);}
 
-/* INDICATOR GRID */
-.indicator-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
-@media(max-width:800px){.indicator-grid{grid-template-columns:1fr 1fr;}}
-.ind-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;}
-.ind-name{font-size:.75rem;font-weight:700;margin-bottom:4px;letter-spacing:.5px;}
-.ind-val{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:6px;}
-.ind-signal{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:8px;}
-.sig-green{background:rgba(0,212,170,.12);color:var(--teal);}
-.sig-red{background:rgba(255,77,109,.12);color:var(--red);}
-.sig-yellow{background:rgba(240,180,41,.12);color:var(--gold);}
-.ind-detail{font-size:.75rem;color:var(--muted);line-height:1.6;}
+/* 지표 그리드 */
+.indicator-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:18px;}
+.ind-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:15px 17px;}
+.ind-name{font-family:Rajdhani,sans-serif;font-size:.78rem;font-weight:700;letter-spacing:1px;margin-bottom:4px;color:var(--muted);}
+.ind-val{font-family:'JetBrains Mono',monospace;font-size:1.55rem;font-weight:600;color:var(--text);margin-bottom:5px;}
+.ind-signal{display:inline-block;font-size:.73rem;font-weight:700;padding:2px 9px;border-radius:6px;margin-bottom:9px;}
+.sig-red{background:rgba(255,77,109,.15);color:var(--red);}
+.sig-teal{background:rgba(0,212,170,.15);color:var(--teal);}
+.sig-warn{background:rgba(240,180,41,.15);color:var(--gold);}
+.ind-detail{font-size:.77rem;color:var(--muted);line-height:1.7;}
 
-/* MA ALIGNMENT TABLE */
-.ma-align-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;}
-.ma-align-title{font-size:.82rem;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:.5px;}
-.ma-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-@media(max-width:640px){.ma-grid{grid-template-columns:1fr 1fr;}}
-.ma-cell{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center;}
-.ma-tf{font-size:.72rem;color:var(--muted);margin-bottom:4px;}
-.ma-stat{font-size:.82rem;font-weight:700;}
-.ma-stat.bull{color:var(--teal);}
-.ma-stat.bear{color:var(--red);}
-.ma-stat.mix{color:var(--gold);}
+/* MA 배열 바 */
+.ma-summary{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:14px;}
+.ma-row{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);}
+.ma-row:last-child{border-bottom:none;}
+.ma-tf{font-family:Rajdhani,sans-serif;font-size:.83rem;font-weight:700;color:var(--muted);width:58px;flex-shrink:0;}
+.ma-bar-wrap{flex:1;background:var(--bg);border-radius:6px;height:17px;overflow:hidden;}
+.ma-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 7px;font-size:.73rem;font-weight:700;}
+.ma-bull{background:linear-gradient(90deg,rgba(0,212,170,.35),rgba(0,212,170,.15));color:var(--teal);}
+.ma-bear{background:linear-gradient(90deg,rgba(255,77,109,.35),rgba(255,77,109,.15));color:var(--red);}
+.ma-note{font-size:.73rem;color:var(--sub);width:150px;text-align:right;flex-shrink:0;}
 
-/* ZONE CHIPS */
-.zone-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
-.zone-chip{font-size:.78rem;font-weight:700;padding:3px 9px;border-radius:10px;font-family:'JetBrains Mono',monospace;}
-.zc-a{background:rgba(0,212,170,.12);color:var(--teal);border:1px solid rgba(0,212,170,.25);}
-.zc-b{background:rgba(240,180,41,.1);color:var(--gold);border:1px solid rgba(240,180,41,.25);}
-.zc-c{background:rgba(255,77,109,.12);color:var(--red);border:1px solid rgba(255,77,109,.25);}
+/* Zone 테이블 */
+.zone-tbl{width:100%;border-collapse:collapse;font-size:.81rem;margin-top:12px;}
+.zone-tbl th{background:var(--bg3);color:var(--muted);font-weight:700;padding:7px 10px;text-align:left;border-bottom:1px solid var(--border);}
+.zone-tbl td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--sub);vertical-align:middle;}
+.zone-tbl tr:last-child td{border-bottom:none;}
+.zone-tbl tr:hover td{background:rgba(255,255,255,.02);}
+.zc-a{display:inline-block;font-size:.69rem;font-weight:700;padding:1px 7px;border-radius:4px;background:rgba(0,212,170,.15);color:var(--teal);}
+.zc-b{display:inline-block;font-size:.69rem;font-weight:700;padding:1px 7px;border-radius:4px;background:rgba(240,180,41,.12);color:var(--gold);}
+.zc-c{display:inline-block;font-size:.69rem;font-weight:700;padding:1px 7px;border-radius:4px;background:rgba(255,77,109,.12);color:var(--red);}
+.bt{display:inline-block;font-size:.69rem;padding:1px 6px;border-radius:3px;margin-right:3px;}
+.bt-bull{background:rgba(0,212,170,.1);color:var(--teal);}
+.bt-bear{background:rgba(255,77,109,.1);color:var(--red);}
+.num-up{color:var(--teal);}
+.num-dn{color:var(--red);}
+.num-neu{color:var(--muted);}
 
-/* MONITOR */
-.monitor-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-@media(max-width:640px){.monitor-list{grid-template-columns:1fr;}}
-.monitor-item{display:flex;align-items:flex-start;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;}
-.monitor-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.mi-gold{background:rgba(240,180,41,.15);border:1px solid rgba(240,180,41,.3);}
-.mi-red{background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.3);}
-.mi-teal{background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.25);}
-.mi-blue{background:rgba(79,172,254,.1);border:1px solid rgba(79,172,254,.25);}
-.monitor-txt strong{font-size:.9rem;color:var(--text);display:block;margin-bottom:4px;}
-.monitor-txt span{font-size:.82rem;color:var(--muted);line-height:1.55;}
+/* 매크로 신호 박스 */
+.macro-box{border-radius:12px;padding:14px 18px;margin-bottom:18px;}
+.macro-box.red{background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.25);}
+.macro-box.warn{background:rgba(240,180,41,.06);border:1px solid rgba(240,180,41,.25);}
+.macro-ttl{font-family:Rajdhani,sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:5px;}
+.macro-body{font-size:.84rem;color:var(--muted);line-height:1.8;}
+.macro-body strong{color:var(--gold);}
 
-/* FORECAST */
-.forecast-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+/* 모니터링 */
+.monitor-list{display:flex;flex-direction:column;gap:9px;}
+.monitor-item{display:flex;gap:13px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:13px 15px;}
+.m-num{font-family:Rajdhani,sans-serif;font-size:1.35rem;font-weight:700;color:var(--border2);width:22px;flex-shrink:0;line-height:1;}
+.m-ttl{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.m-desc{font-size:.81rem;color:var(--sub);line-height:1.6;}
+.m-desc strong{color:var(--gold);}
+.m-desc .teal{color:var(--teal);}
+.m-desc .red{color:var(--red);}
+
+/* 전망 */
+.forecast-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}
 @media(max-width:640px){.forecast-grid{grid-template-columns:1fr;}}
-.forecast-card{background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:20px;position:relative;overflow:hidden;}
-.forecast-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;}
-.fc-btc::after{background:linear-gradient(90deg,var(--gold),var(--orange));}
-.fc-alt::after{background:linear-gradient(90deg,var(--teal),var(--blue));}
-.fc-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.fc-icon{font-size:22px;}
-.fc-title{font-family:Rajdhani,sans-serif;font-size:1.25rem;font-weight:700;color:var(--text);}
-.scenario-block{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:10px;}
-.scenario-block:last-child{margin-bottom:0;}
-.scenario-label{font-size:.75rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
-.sl-bull{color:var(--teal);}
-.sl-bear{color:var(--red);}
-.sl-base{color:var(--gold);}
-.scenario-body{font-size:.85rem;color:var(--sub);line-height:1.6;}
-.scenario-body strong{color:var(--text);}
+.fc{background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:18px;}
+.fc-hd{display:flex;align-items:center;gap:9px;margin-bottom:12px;}
+.fc-ico{font-size:1.3rem;}
+.fc-ttl{font-family:Rajdhani,sans-serif;font-size:.98rem;font-weight:700;color:var(--text);letter-spacing:.5px;}
+.sc{margin-bottom:10px;}
+.sc-lbl{font-size:.73rem;font-weight:700;letter-spacing:.5px;margin-bottom:4px;}
+.sc-bull{color:var(--teal);}
+.sc-bear{color:var(--red);}
+.sc-base{color:var(--muted);}
+.sc-warn{color:var(--gold);}
+.sc-body{font-size:.81rem;color:var(--sub);line-height:1.65;}
+.sc-body strong{color:var(--gold);}
 
-/* VERDICT */
-.verdict-banner{background:linear-gradient(135deg,#0d1e12,#0a1a10);border:1px solid rgba(0,212,170,.25);border-radius:14px;padding:20px 24px;margin-top:20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-.verdict-label{font-family:Rajdhani,sans-serif;font-size:1rem;font-weight:700;color:var(--teal);letter-spacing:1px;white-space:nowrap;}
-.verdict-text{font-size:.9rem;color:var(--sub);line-height:1.6;}
-.verdict-text strong{color:var(--gold);}
+/* 판정 배너 */
+.verdict{background:linear-gradient(135deg,#0d1e12,#0a1a10);border:1px solid rgba(0,212,170,.25);border-radius:14px;padding:18px 22px;margin-top:18px;display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.v-lbl{font-family:Rajdhani,sans-serif;font-size:.98rem;font-weight:700;color:var(--teal);letter-spacing:1px;white-space:nowrap;}
+.v-txt{font-size:.88rem;color:var(--sub);line-height:1.65;}
+.v-txt strong{color:var(--gold);}
 
-/* DIVIDER */
-.divider-label{display:flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;color:var(--muted);letter-spacing:1px;margin:18px 0 12px;}
-.divider-label::before,.divider-label::after{content:'';flex:1;height:1px;background:var(--border);}
+/* 구분선 */
+.div-lbl{display:flex;align-items:center;gap:9px;font-size:.74rem;font-weight:700;color:var(--muted);letter-spacing:1px;margin:16px 0 11px;}
+.div-lbl::before,.div-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* FOOT */
-.footer{text-align:center;padding:24px 0 12px;font-size:.78rem;color:var(--muted);border-top:1px solid var(--border);margin-top:10px;}
+/* 일봉 존 요약 */
+.dzone-box{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:13px 17px;font-size:.82rem;line-height:1.9;}
+
+.footer{text-align:center;padding:22px 0 10px;font-size:.77rem;color:var(--muted);border-top:1px solid var(--border);margin-top:8px;}
 .footer span{color:var(--teal);}
-.hl-gold{color:var(--gold);font-weight:700;}
-.hl-teal{color:var(--teal);font-weight:700;}
-.hl-red{color:var(--red);font-weight:700;}
-.section:nth-child(1){animation-delay:.05s}
-.section:nth-child(2){animation-delay:.1s}
-.section:nth-child(3){animation-delay:.15s}
-.section:nth-child(4){animation-delay:.2s}
-.section:nth-child(5){animation-delay:.25s}
 </style>
 </head>
 <body>
 <div class="wrap">
-
-<!-- 용어 사전 -->
-<div class="glossary">
-  <div class="glossary-title">📖 용어 사전 — 불단왕 매매법 핵심 용어 복습</div>
-  <div class="glossary-grid">
-    <div class="gl-item"><div class="gl-term">TOTAL3</div><div class="gl-def">BTC·ETH·스테이블코인 제외 알트코인 전체 시가총액. 알트장 여부 판단의 핵심 선행지표.</div></div>
-    <div class="gl-item"><div class="gl-term">BTC.D (비트코인 도미넌스)</div><div class="gl-def">전체 코인 시총 중 BTC 비중. 하락 시 알트로 자금 이동 신호.</div></div>
-    <div class="gl-item"><div class="gl-term">USDT.D (테더 도미넌스)</div><div class="gl-def">전체 시총 중 USDT 비중. 상승 시 달러 대피(관망), 하락 시 코인 매수 신호.</div></div>
-    <div class="gl-item"><div class="gl-term">Zone A / B / C</div><div class="gl-def">A=현재가&gt;50MA&gt;200MA (상단 강세) / B=두 MA 사이 / C=두 MA 모두 아래 (하락권)</div></div>
-    <div class="gl-item"><div class="gl-term">정배열 / 역배열</div><div class="gl-def">정배열: 50MA &gt; 200MA (상승 추세) / 역배열: 200MA &gt; 50MA (하락 추세)</div></div>
-    <div class="gl-item"><div class="gl-term">골든크로스 / 데드크로스</div><div class="gl-def">골든: 50MA가 200MA를 위로 돌파(매수 신호) / 데드: 아래로 돌파(매도 신호)</div></div>
-    <div class="gl-item"><div class="gl-term">2-of-3 조건</div><div class="gl-def">TOTAL3·BTC.D·USDT.D 3개 지표 중 2개 이상 알트 매수 신호 시 적극 진입 허용.</div></div>
-    <div class="gl-item"><div class="gl-term">펀딩비</div><div class="gl-def">선물 포지션 유지 비용. 롱 많으면 롱이 숏에게 지불. 0.1%=주의, 0.3%=위험.</div></div>
-    <div class="gl-item"><div class="gl-term">CLARITY Act</div><div class="gl-def">미국 디지털자산 시장구조 법안. 코인 규제 명확화 → 기관 투자 확대 기대.</div></div>
-    <div class="gl-item"><div class="gl-term">GENIUS Act</div><div class="gl-def">2025년 7월 서명된 미국 스테이블코인 규제법. 1:1 준비금 의무화. CLARITY의 선행 입법.</div></div>
-  </div>
-</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -215,25 +189,34 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     </div>
     <div class="hero-meta">
       <div class="live-badge"><div class="live-dot"></div><span class="live-txt">LIVE</span></div>
-      <div class="date-txt">📅 2026-05-21 (목) 오전 07:30 KST</div>
+      <div class="date-txt">📅 2026-05-21 (목) 오후 05:58 KST</div>
     </div>
   </div>
   <div class="hero-divider"></div>
   <div class="hero-desc">
     <span>불단왕 매매법</span> 기반 거시지표(TOTAL3·BTC.D·USDT.D) 신호 + 관심종목 Zone 분석 + 주요 이슈를 종합한 데일리 시장 브리핑입니다.
-    본 자료는 <span>교육 및 참고 목적</span>이며 투자 손실에 대한 책임은 본인에게 있습니다.
+    본 자료는 <span>교육 및 복습 목적</span>이며 투자 손실에 대한 책임은 본인에게 있습니다.
   </div>
 </div>
 
-<!-- TOC -->
-<div class="toc">
-  <a href="#s1">① 주요 이슈</a>
-  <a href="#s2">② 주요 일정</a>
-  <a href="#s3">③ 주요 지수 현황</a>
-  <a href="#s4">④ 핵심 모니터링 포인트</a>
-  <a href="#s5">⑤ BTC·알트 전망</a>
+<!-- 용어 사전 -->
+<div class="glossary-box">
+  <div class="glossary-title">📖 용어 사전 (복습용)</div>
+  <div class="glossary-grid">
+    <div class="gterm"><strong>TOTAL3</strong> — BTC·ETH·스테이블 제외 알트 전체 시총. 50MA 위에 있어야 알트 상승장.</div>
+    <div class="gterm"><strong>BTC.D (비트도미넌스)</strong> — 전체 시장 내 BTC 비중. 내려야 알트로 자금이 흘러감.</div>
+    <div class="gterm"><strong>USDT.D (테더도미넌스)</strong> — 달러로 대기 중인 자금 비중. 내려야 코인 매수 자금 유입.</div>
+    <div class="gterm"><strong>2-of-3 조건</strong> — 위 세 지표 중 2개 이상 긍정이어야 알트 롱 가능. 불단왕 핵심 룰.</div>
+    <div class="gterm"><strong>Zone A</strong> — 현재가 &gt; 50MA &gt; 200MA. 가장 강한 상승 구간.</div>
+    <div class="gterm"><strong>Zone B</strong> — 50MA와 200MA 사이. 중간 조정/반등 관찰 구간.</div>
+    <div class="gterm"><strong>Zone C</strong> — 현재가 &lt; 50MA, 200MA. 가장 약한 구간, 진입 신중.</div>
+    <div class="gterm"><strong>정배열</strong> — 50MA &gt; 200MA. 상승 추세. <strong>역배열</strong> — 200MA &gt; 50MA. 하락 추세.</div>
+    <div class="gterm"><strong>클리프 언락</strong> — 특정 날짜에 대량 토큰이 한꺼번에 유통. 단기 매도 압력 유발.</div>
+    <div class="gterm"><strong>BTC 200일선</strong> — 일봉 200MA. 장기 추세의 기준선. 이탈 시 하락장 진입 신호.</div>
+    <div class="gterm"><strong>펀딩비</strong> — 선물 포지션 보유 비용. +0.1% 이상=주의, +0.3% 이상=위험.</div>
+    <div class="gterm"><strong>골든크로스</strong> — 50MA가 200MA 위로 돌파. 상승 전환 신호.</div>
+  </div>
 </div>
-
 
 <!-- S1: 주요 이슈 -->
 <div class="section" id="s1">
@@ -241,65 +224,64 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <span class="sec-num">01</span>
     <span class="sec-title">📰 주요 이슈 및 코인시장 영향</span>
   </div>
-  <div class="issue-grid">
+  <div class="issue-list">
 
-    <div class="issue-card pos">
-      <div class="issue-tag tag-pos">✅ 규제 호재</div>
-      <div class="issue-ttl">CLARITY Act 상원 위원회 통과 — 본회의 진격</div>
-      <div class="issue-body">
-        5월 14일(목) 상원 은행위원회 <strong>15-9 찬성</strong>으로 CLARITY Act(디지털자산 시장구조 법안) 통과. 공화 13명 전원 + 민주 2명 지지. 이제 상원 본회의 <strong>60표</strong>가 관건. 윤리 조항(트럼프 이해충돌 제한) 협상 타결이 60표 확보 열쇠. 업계는 현충일(5월 25일) 전 상원 본회의 표결 추진 중.
+    <div class="issue-item hot">
+      <div class="issue-tag tag-hot">🔥 초핵심 이슈</div>
+      <div class="issue-ttl">BTC 200일선(일봉) 이탈 후 반등 공방 — $77,900 박스권</div>
+      <div class="issue-desc">
+        BTC가 <strong>일봉 200MA($81,097) 아래</strong>에서 약 3주째 체류 중. 현재 $77,902로 15분봉 기준 50MA($77,750) 소폭 상회 중. CoinDesk 분석에 따르면 BTC가 200일선에서 하향 전환된 것은 매물 소화 과정이며, 온체인 지표(Realized Cap 안정화, 펀딩비 중립 회복)는 2월 $60K 저점이 사이클 바닥이었음을 시사.
+        <br>📌 <strong>영향:</strong> <strong class="teal">중기 바닥 형성 가능성</strong>은 있으나 단기적으로는 $78K~$79K 회복 확인 전까지 낙관 자제. 지금 구간은 15m Zone A이나 일봉은 역배열 Zone B.
       </div>
-      <div class="impact-bar impact-pos">📈 코인 영향: 기관 진입 제도적 기반 확립 — 중기 구조적 호재</div>
     </div>
 
-    <div class="issue-card pos">
-      <div class="issue-tag tag-pos">✅ 규제 호재</div>
-      <div class="issue-ttl">GENIUS Act (스테이블코인) 이행 박차</div>
-      <div class="issue-body">
-        2025년 7월 서명 완료된 GENIUS Act 구현 규정 작업 진행 중. 은행 연합은 OCC 규정 선행 마련 전까지 재무부·FDIC의 코멘트 기간 연장 요청. 최종 규정 목표: <strong>2026년 7월</strong>까지. 스테이블코인 시장 기반 정비 → 달러 패권 강화 + 코인 시장 신뢰도 상승.
+    <div class="issue-item hot">
+      <div class="issue-tag tag-hot">🔥 핵심 이슈</div>
+      <div class="issue-ttl">HYPE 24H +20.4% — SpaceX Pre-IPO 영구선물 상장 모멘텀</div>
+      <div class="issue-desc">
+        하이퍼리퀴드 플랫폼에 <strong>Trade.xyz가 SpaceX Pre-IPO 영구선물 마켓을 최초 상장</strong>하면서 HYPE가 24시간 만에 +20% 급등. 현재가 $58.45. 일봉 Zone A(50MA $41.68, 200MA $34.02 대비 각각 +40%, +72%) 으로 연초 이후 YTD +101% 달성. 탈중앙화 선물 플랫폼으로서 하이퍼리퀴드의 실질 사용량과 소각 규모(주간 $793만)가 뒷받침.
+        <br>📌 <strong>영향:</strong> 일봉 Zone A 메이저 중 유일. 단, 15분봉 기준 50MA 대비 +5.16% 과열 구간 — <strong>눌림 후 50MA 터치 반등 확인 시 권총 패턴 유효.</strong>
       </div>
-      <div class="impact-bar impact-pos">📈 코인 영향: 스테이블코인 생태계 안정화 → 코인 시장 중장기 긍정</div>
     </div>
 
-    <div class="issue-card warn">
-      <div class="issue-tag tag-warn">⚠️ 기술적 저항</div>
-      <div class="issue-ttl">BTC $77,700 — 일봉 200MA 저항 & 50MA 아래 구간</div>
-      <div class="issue-body">
-        BTC 현재 <strong>$77,721</strong> (06:13 KST). 일봉 기준 200MA(<strong>$81,260</strong>) 아래, 50MA($75,806) 위의 Zone B 구간. 4월 $66,000 저점 대비 +18% 반등했으나 핵심 저항인 $81K 돌파 시도 미성공. 선물 오픈 인터레스트 하락 + 혼조 알트코인 성과 → 위험 축소 신호.
+    <div class="issue-item hot">
+      <div class="issue-tag tag-hot">🔥 핵심 이슈</div>
+      <div class="issue-ttl">ZEC +15% — SEC 조사 종료 후 이틀째 강세 지속</div>
+      <div class="issue-desc">
+        ZEC 파운데이션의 SEC 조사 공식 종료(권고조치 없음) 발표 이후 ZEC가 이틀째 강세. 현재가 $666, 일봉 50MA($406) 대비 +63.9%로 과열 구간. 15분봉 기준 50MA($671.9) 아래로 하락하며 Zone B 진입.
+        <br>📌 <strong>영향:</strong> <span class="red">15분봉 Zone B로 조정 중</span> — 현재 추격 매수 금물. 50MA($671~672) 지지 확인 후 반등 캔들 출현 시 진입 고려. 일봉 Zone A이므로 중기 상승 구조는 유지.
       </div>
-      <div class="impact-bar impact-warn">📊 코인 영향: $81K 저항 돌파 실패 시 재조정 가능성</div>
     </div>
 
-    <div class="issue-card neutral">
-      <div class="issue-tag tag-neutral">📊 수급 지표</div>
-      <div class="issue-ttl">비트코인 ETF 유입 강세 — 기관 매집 지속</div>
-      <div class="issue-body">
-        주간 비트코인 현물 ETF 순유입 <strong>8억 2,370만 달러</strong> (5월 12~18일 주간) — 5주 연속 플러스. 5월 1일 단 하루 6억 3,000만 달러 흡수. 아부다비 국부펀드 BTC 배분 증가, 이탈리아 최대 은행 암호화폐 익스포저 2배 확대(<strong>2억 3,500만 달러</strong>). 기관 수요 구조적 유지.
+    <div class="issue-item">
+      <div class="issue-tag tag-reg">🏛️ 규제 이슈</div>
+      <div class="issue-ttl">CLARITY Act — 상원 본회의 표결 Q3 2026 예상, 메모리얼데이 휴회 시작</div>
+      <div class="issue-desc">
+        5월 21일(오늘) 미 상원 메모리얼데이 휴회 시작. <strong>CLARITY Act 상원 본회의 표결은 Q2 후반~Q3 2026 예상</strong>으로 밀림. 60표 필요(필리버스터 극복 기준), 현재 위원회 표결 15-9 대비 7명 이상 민주당 추가 확보 필요. Cynthia Lummis 의원은 "이 창을 놓치면 2030년으로 밀린다"고 경고.
+        <br>📌 <strong>영향:</strong> 오늘 본회의 표결은 없음. 중기 규제 호재는 유효하나 단기 촉매로는 이미 소화됨. 본회의 표결 일정 공식 발표 시 재차 급등 촉매.
       </div>
-      <div class="impact-bar impact-pos">📈 코인 영향: 기관 매집 지속 — 하방 지지력 강화</div>
     </div>
 
-    <div class="issue-card neg">
-      <div class="issue-tag tag-neg">❌ 시장 구조</div>
-      <div class="issue-ttl">BTC 도미넌스 ~60% 고점권 — 알트 자금 순환 미개시</div>
-      <div class="issue-body">
-        BTC 도미넌스 <strong>약 60%</strong> 유지. 알트코인 시즌 지수 <strong>30~35%</strong> 수준으로 알트 전반 상승 미확인. 약 40%의 알트코인만 단기 BTC 대비 아웃퍼폼 중 — 초기 선별 순환 단계. 불단왕 3대 지표 기준 현재 BTC.D·USDT.D 혼재 신호로 <strong>2-of-3 조건 미충족</strong>.
+    <div class="issue-item blue">
+      <div class="issue-tag tag-blue">🚀 기업 이슈</div>
+      <div class="issue-ttl">SpaceX IPO 신청 — BTC 18,712개(~$14.6억) 보유 공시</div>
+      <div class="issue-desc">
+        일론 머스크의 스페이스X가 IPO 신청서에서 <strong>Q1 기준 BTC 18,712개 보유($14.6억 규모)</strong> 공시. 기업 가치 $1.78조 이상 평가. AI 매출 폭증 중인 엔비디아 실적 서프라이즈와 맞물려 AI+코인 인프라 종목 동반 강세.
+        <br>📌 <strong>영향:</strong> BTC 기업 보유 트렌드 확산 확인. 단기 BTC 심리 긍정. 마이크로스트래티지 전략 대비 기업 BTC 매수 내러티브 강화.
       </div>
-      <div class="impact-bar impact-neg">📉 코인 영향: 알트 전반 강세 아직 — 선별 종목만 기회</div>
     </div>
 
-    <div class="issue-card neutral">
-      <div class="issue-tag tag-neutral">📈 알트 반등</div>
-      <div class="issue-ttl">ZEC +18.8%, HYPE +8%, ONDO +10.5% — 선별 강세</div>
-      <div class="issue-body">
-        일부 알트코인이 강한 24H 반등 시현. <strong>ZEC</strong>(Zcash) 프라이버시 코인 급등 24H +18.8%·거래대금 3조. <strong>HYPE</strong>(Hyperliquid) DEX 토큰 +8%, 일봉 Zone A 정배열 유지. <strong>ONDO</strong>(RWA) +10.5%. 그러나 대부분 관심종목 일봉은 역배열 — 단기 반등 vs 구조적 약세 구분 필요.
+    <div class="issue-item warn">
+      <div class="issue-tag tag-warn">⚠️ 매크로 리스크</div>
+      <div class="issue-ttl">미국채 10년물 4.68% — 연준 금리 인상 가능성 60% 반영</div>
+      <div class="issue-desc">
+        CME FedWatch 기준 <strong>2026년 내 금리 인상 가능성 약 60% 반영</strong>. 나스닥과 코인 동반 약세 압력 지속. 달러 강세 = 위험자산 전반 억제. BTC가 $77K 아래로 재하락 시 $75K 일봉 50MA 재시험 시나리오.
+        <br>📌 <strong>영향:</strong> 매크로 역풍은 당분간 지속. 뚜렷한 리스크오프 완화 신호 없이는 공격적 포지션 자제.
       </div>
-      <div class="impact-bar impact-neutral">📊 코인 영향: 테마별 선별 강세 — 추세 확인 후 진입 원칙 유지</div>
     </div>
 
   </div>
 </div>
-
 
 <!-- S2: 주요 일정 -->
 <div class="section" id="s2">
@@ -307,51 +289,58 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <span class="sec-num">02</span>
     <span class="sec-title">📅 주요 일정</span>
   </div>
-
-  <div class="divider-label">✅ 최근 완료된 일정</div>
   <div class="timeline">
-    <div class="tl-item done">
-      <div class="tl-time">5월 14일 (목) 23:30 KST <span class="tl-badge badge-done">완료</span></div>
-      <div class="tl-ttl">🏛️ CLARITY Act 상원 은행위원회 마크업</div>
-      <div class="tl-desc">결과: <strong>15-9 찬성 통과</strong> ✅ — 공화 13 + 민주 2. 본회의 표결로 진행.</div>
-    </div>
-    <div class="tl-item done">
-      <div class="tl-time">5월 12~18일 주간 <span class="tl-badge badge-done">완료</span></div>
-      <div class="tl-ttl">📊 비트코인 현물 ETF — 주간 순유입 $823M</div>
-      <div class="tl-desc">5주 연속 순유입 지속. 기관 수요 구조적 유지 확인.</div>
-    </div>
-  </div>
-
-  <div class="divider-label">🔥 금일 및 이번 주 주요 일정</div>
-  <div class="timeline">
-    <div class="tl-item hot">
-      <div class="tl-time">5월 21일 (목) 오늘 <span class="tl-badge badge-hot">오늘</span></div>
-      <div class="tl-ttl">🏛️ CLARITY Act 상원 본회의 표결 추진 가능 구간</div>
-      <div class="tl-desc">업계 목표: 현충일(5월 25일) 전 표결. <strong>60표 확보</strong> 여부 + 윤리 조항 최종 합의 진행 모니터링 필요.</div>
-    </div>
-    <div class="tl-item hot">
-      <div class="tl-time">5월 21일 (목) 21:30 KST <span class="tl-badge badge-hot">예정</span></div>
-      <div class="tl-ttl">🇺🇸 미국 주간 신규 실업수당 청구건수</div>
-      <div class="tl-desc">노동시장 강도 지표 — 예상 대비 낮으면 연준 긴축 유지 시그널로 위험자산 압박 가능.</div>
-    </div>
-    <div class="tl-item warn">
-      <div class="tl-time">5월 22일 (금) <span class="tl-badge badge-warn">주의</span></div>
-      <div class="tl-ttl">📊 미국 4월 PCE 물가지수 발표</div>
-      <div class="tl-desc">연준 선호 인플레 지표. 예상치 상회 시 금리 인하 기대 후퇴 → 위험자산 매도 압박.</div>
+    <div class="tl-item">
+      <div class="tl-time">5월 21일 (오늘) <span class="tl-badge badge-hot">오늘</span></div>
+      <div>
+        <div class="tl-ttl">🇺🇸 미국 상원 메모리얼데이 휴회 시작</div>
+        <div class="tl-desc">CLARITY Act 본회의 표결 <strong>Q3 2026으로 연기</strong>. 오늘 표결 없음 확인됨.</div>
+      </div>
     </div>
     <div class="tl-item">
-      <div class="tl-time">5월 25일 (월) <span class="tl-badge badge-pending">예정</span></div>
-      <div class="tl-ttl">🇺🇸 현충일 (메모리얼 데이) — 미국 시장 휴장</div>
-      <div class="tl-desc">휴장 전후 거래량 감소 구간 — 변동성 확대 또는 방향성 상실 주의.</div>
+      <div class="tl-time">5월 22일 (금) <span class="tl-badge badge-pending">내일</span></div>
+      <div>
+        <div class="tl-ttl">🍕 비트코인 피자데이 (Bitcoin Pizza Day)</div>
+        <div class="tl-desc">2010년 최초 BTC 실물 거래 기념일. 커뮤니티 행사. 단기 심리 호재 가능성.</div>
+      </div>
     </div>
     <div class="tl-item">
-      <div class="tl-time">7월 2026 <span class="tl-badge badge-pending">목표</span></div>
-      <div class="tl-ttl">⚖️ GENIUS Act 최종 규정 마감 (재무부·FDIC)</div>
-      <div class="tl-desc">스테이블코인 규제 세부지침 확정 목표 시점. 완료 시 코인 시장 기관 신뢰도 추가 상승 기대.</div>
+      <div class="tl-time">6월 1일 <span class="tl-badge badge-hot">언락 주의</span></div>
+      <div>
+        <div class="tl-ttl">🔓 SUI 4,400만 토큰 언락 (~$1.6억)</div>
+        <div class="tl-desc">커뮤니티 리저브·얼리 컨트리뷰터 배분. <strong>현재 15분봉 Zone A 강세이나 언락 전후 매도 압력 주의.</strong></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">6월 12일 <span class="tl-badge badge-pending">예정</span></div>
+      <div>
+        <div class="tl-ttl">🔓 APT (압토스) 대규모 언락</div>
+        <div class="tl-desc">Community 배분 클리프 언락. 규모 확인 필요.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">6월 16일 <span class="tl-badge badge-pending">예정</span></div>
+      <div>
+        <div class="tl-ttl">🔓 ARB (아비트럼) DAO 트레저리 언락</div>
+        <div class="tl-desc">DAO 트레저리 배분. 시장 출회 여부 모니터링.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">6월 30일 <span class="tl-badge badge-hot">BTC 주의</span></div>
+      <div>
+        <div class="tl-ttl">⚖️ Mt. Gox BTC 상환 이벤트</div>
+        <div class="tl-desc">대규모 BTC 시장 출회 잠재력. <strong>BTC 단기 약세 압력 최대 변수.</strong></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Q3 2026 <span class="tl-badge badge-pending">예상</span></div>
+      <div>
+        <div class="tl-ttl">🏛️ CLARITY Act 상원 본회의 표결</div>
+        <div class="tl-desc">60표 확보 시 코인 시장 중기 강세 최대 촉매. 일정 공식 발표 즉시 사전 랠리 가능성.</div>
+      </div>
     </div>
   </div>
 </div>
-
 
 <!-- S3: 주요 지수 현황 -->
 <div class="section" id="s3">
@@ -360,307 +349,247 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <span class="sec-title">📊 주요 지수 현황</span>
   </div>
 
-  <div class="divider-label">🔫 불왕 3대 거시지표 (15분봉 기준 · 2026-05-21 06:13 KST)</div>
+  <div class="div-lbl">🔫 불왕 3대 거시지표 (15분봉 · 2026-05-21 17:58 KST)</div>
 
   <div class="indicator-grid">
     <div class="ind-card">
-      <div class="ind-name" style="color:var(--teal);">TOTAL3</div>
-      <div class="ind-val">746.0B</div>
-      <div class="ind-signal sig-green">매수 ✅</div>
+      <div class="ind-name" style="color:var(--teal);">TOTAL3 · 알트 시총</div>
+      <div class="ind-val">750.9B</div>
+      <div class="ind-signal sig-red">관망 ❌</div>
       <div class="ind-detail">
-        50MA: 742.3B <span style="color:var(--teal)">(+0.50%)</span><br>
-        200MA: 740.1B <span style="color:var(--teal)">(+0.80%)</span><br>
-        <span style="color:var(--teal);font-weight:700;">현재가 50MA·200MA 위</span> — 알트 상승장 조건 충족<br>
-        <span style="color:var(--muted);font-size:.72rem;">3봉 추세: ▲▲▲ 상승</span>
+        50MA: 748.6B <span style="color:var(--teal);">(+0.31%)</span><br>
+        200MA: 741.8B <span style="color:var(--teal);">(+1.23%)</span><br>
+        3봉 추세: ▲▼▼ <span style="color:var(--red);">혼재</span>
       </div>
     </div>
     <div class="ind-card">
-      <div class="ind-name" style="color:var(--gold);">BTC.D</div>
-      <div class="ind-val">~60%</div>
-      <div class="ind-signal sig-yellow">혼재 ↔</div>
+      <div class="ind-name" style="color:#ffc107;">BTC.D · 비트 도미넌스</div>
+      <div class="ind-val">60.72%</div>
+      <div class="ind-signal sig-red">관망 ❌</div>
       <div class="ind-detail">
-        데이터 일시 미로드 (혼재 판정)<br>
-        <span style="color:var(--gold);font-weight:700;">도미넌스 고점권 유지</span><br>
-        BTC.D 하락 전환 미확인<br>
-        <span style="color:var(--muted);font-size:.72rem;">알트 자본순환 대기 중</span>
+        50MA: 60.74% <span style="color:var(--red);">(-0.03%)</span><br>
+        200MA: 60.77% <span style="color:var(--red);">(-0.07%)</span><br>
+        3봉 추세: ▼▼▲ <span style="color:var(--red);">혼재</span>
       </div>
     </div>
     <div class="ind-card">
-      <div class="ind-name" style="color:var(--blue);">USDT.D</div>
-      <div class="ind-val">—</div>
-      <div class="ind-signal sig-yellow">혼재 ↔</div>
+      <div class="ind-name" style="color:#00bcd4;">USDT.D · 테더 도미넌스</div>
+      <div class="ind-val">7.38%</div>
+      <div class="ind-signal sig-red">관망 ❌</div>
       <div class="ind-detail">
-        데이터 일시 미로드 (혼재 판정)<br>
-        <span style="color:var(--gold);font-weight:700;">방향성 확인 필요</span><br>
-        USDT.D 하락 확인 시<br>
-        <span style="color:var(--teal);font-size:.72rem;">달러 유출 → 코인 매수 신호</span>
+        50MA: 7.40% <span style="color:var(--teal);">(-0.21%)</span><br>
+        200MA: 7.46% <span style="color:var(--teal);">(-0.95%)</span><br>
+        3봉 추세: ▲▲▲ <span style="color:var(--red);">상승 (나쁨)</span>
       </div>
     </div>
     <div class="ind-card">
-      <div class="ind-name" style="color:var(--gold2);">BTC 선물</div>
-      <div class="ind-val">$77,721</div>
-      <div class="ind-signal sig-yellow">혼재 ↔</div>
+      <div class="ind-name" style="color:#f7931a;">BTC 선물 · BYBIT</div>
+      <div class="ind-val">$77,902</div>
+      <div class="ind-signal sig-red">관망 ❌</div>
       <div class="ind-detail">
-        50MA(15m): $77,438 <span style="color:var(--teal)">(+0.36%)</span><br>
-        200MA(15m): $77,009 <span style="color:var(--teal)">(+0.93%)</span><br>
-        <span style="color:var(--gold);font-weight:700;">15m Zone A 정배열</span><br>
-        <span style="color:var(--muted);font-size:.72rem;">일봉: 200MA $81,260 저항 중</span>
+        50MA: $77,755 <span style="color:var(--teal);">(+0.19%)</span><br>
+        200MA: $77,216 <span style="color:var(--teal);">(+0.89%)</span><br>
+        3봉 추세: ▼▼▲ <span style="color:var(--red);">혼재</span>
       </div>
     </div>
   </div>
 
-  <!-- 불단왕 2-of-3 판정 -->
-  <div style="background:rgba(240,180,41,.06);border:1px solid rgba(240,180,41,.25);border-radius:12px;padding:16px 20px;margin-bottom:20px;">
-    <div style="font-family:Rajdhani,sans-serif;font-size:1.2rem;font-weight:700;color:var(--gold);margin-bottom:6px;">
-      🟡 불단왕 2-of-3 매크로 조건 — 혼재 (1/3)
-    </div>
-    <div style="font-size:.88rem;color:var(--muted);line-height:1.7;">
-      ✅ TOTAL3: 15m 기준 50MA·200MA 위 — <span style="color:var(--teal);font-weight:700;">매수 신호</span><br>
-      ↔ BTC.D: 혼재 — 알트 자본순환 미확인<br>
-      ↔ USDT.D: 혼재 — 방향성 대기 중<br>
-      <span style="color:var(--gold);font-weight:700;margin-top:4px;display:block;">→ 1/3 충족. 2-of-3 달성까지 BTC.D 하락 전환 또는 USDT.D 하락 확인 필요. 준비기·수렴 구간 — 급진입 자제.</span>
+  <div class="macro-box red">
+    <div class="macro-ttl" style="color:var(--red);">🔴 불단왕 2-of-3 매크로 조건 — 미충족 (0/3)</div>
+    <div class="macro-body">
+      ❌ <strong>TOTAL3</strong>: 3봉 추세 혼재 — 알트 상승 지속성 미확인<br>
+      ❌ <strong>BTC.D</strong>: 60.72%, 50MA·200MA 위 — 알트 자금 순환 미개시<br>
+      ❌ <strong>USDT.D</strong>: 3봉 연속 상승(▲▲▲) — 달러 대기자금 이탈 없음<br>
+      <strong style="color:var(--gold);display:block;margin-top:4px;">→ 알트 적극 롱 조건 미충족. USDT.D 3봉 상승은 단기 하방 압력 신호.</strong>
     </div>
   </div>
 
-  <!-- 이평선 배열 현황 -->
-  <div class="divider-label">📊 이평선 배열 우세 현황 (전체 36종목 · 06:12 KST 기준)</div>
-  <div class="ma-align-wrap">
-    <div class="ma-align-title">타임프레임별 정배열 비율 (정배열=50MA &gt; 200MA)</div>
-    <div class="ma-grid">
-      <div class="ma-cell">
-        <div class="ma-tf">5분봉</div>
-        <div class="ma-stat bull">정배열 86.1%</div>
-        <div style="font-size:.72rem;color:var(--muted);margin-top:3px;">31/36 종목</div>
-      </div>
-      <div class="ma-cell">
-        <div class="ma-tf">15분봉</div>
-        <div class="ma-stat bull">정배열 83.3%</div>
-        <div style="font-size:.72rem;color:var(--muted);margin-top:3px;">30/36 종목</div>
-      </div>
-      <div class="ma-cell">
-        <div class="ma-tf">30분봉</div>
-        <div class="ma-stat mix">정배열 55.6%</div>
-        <div style="font-size:.72rem;color:var(--muted);margin-top:3px;">20/36 종목</div>
-      </div>
-      <div class="ma-cell">
-        <div class="ma-tf">1시간봉</div>
-        <div class="ma-stat bear">역배열 66.7%</div>
-        <div style="font-size:.72rem;color:var(--muted);margin-top:3px;">24/36 역배열</div>
-      </div>
+  <div class="div-lbl">📈 이평선 배열 우세 분석 (전체 41종목 · 17:57~17:58 KST)</div>
+
+  <div class="ma-summary">
+    <div class="ma-row">
+      <div class="ma-tf">5분봉</div>
+      <div class="ma-bar-wrap"><div class="ma-fill ma-bull" style="width:65.9%;">정배열 65.9% (27/41)</div></div>
+      <div class="ma-note">Zone A 20 / B 3 / C 4 | 역A 2 / 역B 2 / 역C 10</div>
     </div>
-    <div style="font-size:.8rem;color:var(--muted);margin-top:12px;padding:10px;background:rgba(240,180,41,.05);border-radius:8px;border:1px solid rgba(240,180,41,.15);">
-      ⚠️ <strong style="color:var(--gold);">단기(5m·15m) 정배열 우세 vs 중기(1h) 역배열 우세 — 추세 불일치 구간.</strong> 단기 반등 국면이나 중기 방향성 미확정. 1시간봉 정배열 전환 확인 전까지 적극 롱 자제.
+    <div class="ma-row">
+      <div class="ma-tf">15분봉</div>
+      <div class="ma-bar-wrap"><div class="ma-fill ma-bull" style="width:90.2%;">정배열 90.2% (37/41)</div></div>
+      <div class="ma-note">Zone A 23 / B 12 / C 2 | 역A 1 / 역B 0 / 역C 3</div>
+    </div>
+    <div class="ma-row">
+      <div class="ma-tf">30분봉</div>
+      <div class="ma-bar-wrap"><div class="ma-fill ma-bull" style="width:80.5%;">정배열 80.5% (33/41)</div></div>
+      <div class="ma-note">Zone A 24 / B 5 / C 4 | 역A 3 / 역B 2 / 역C 3</div>
+    </div>
+    <div class="ma-row">
+      <div class="ma-tf">1시간봉</div>
+      <div class="ma-bar-wrap"><div class="ma-fill ma-bear" style="width:58.5%;">역배열 58.5% (24/41)</div></div>
+      <div class="ma-note">정A 15 / 정B 0 / 정C 2 | 역A 7 / 역B 14 / 역C 3</div>
     </div>
   </div>
 
-  <!-- 관심종목 15분봉 현황 -->
-  <div class="divider-label">⭐ 관심종목 15분봉 Zone 현황 (2026-05-21 06:13 KST · 17종목)</div>
-  <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;">
-    <div style="display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap;">
-      <span style="color:var(--teal);font-size:.85rem;font-weight:700;">📈 정배열 15종목</span>
-      <span style="color:var(--red);font-size:.85rem;font-weight:700;">📉 역배열 2종목</span>
-    </div>
-    <div style="font-size:.82rem;color:var(--muted);margin-bottom:10px;">🟢 Zone A (현재가 &gt; 50MA &gt; 200MA) — 15종목 전부 Zone A</div>
-    <div class="zone-wrap">
-      <span class="zone-chip zc-a">ZEC +18.8%</span>
-      <span class="zone-chip zc-a">NEAR +4.4%</span>
-      <span class="zone-chip zc-a">ENA +2.7%</span>
-      <span class="zone-chip zc-a">SOL +2.1%</span>
-      <span class="zone-chip zc-a">ETH +0.95%</span>
-      <span class="zone-chip zc-a">DOGE +0.5%</span>
-      <span class="zone-chip zc-a">AVAX +1.9%</span>
-      <span class="zone-chip zc-a">LINK +1.8%</span>
-      <span class="zone-chip zc-a">DOT +1.9%</span>
-      <span class="zone-chip zc-a">BTC +0.99%</span>
-      <span class="zone-chip zc-a">1000PEPE +1.9%</span>
-      <span class="zone-chip zc-a">HYPE +8.0%</span>
-      <span class="zone-chip zc-a">TAO +5.4%</span>
-      <span class="zone-chip zc-a">ONDO +10.5%</span>
-      <span class="zone-chip zc-a">SUI +1.2%</span>
-    </div>
-    <div style="font-size:.82rem;color:var(--muted);margin-top:12px;margin-bottom:8px;">🔴 역배열 종목</div>
-    <div class="zone-wrap">
-      <span class="zone-chip zc-a" style="background:rgba(167,139,250,.1);color:var(--purple);border-color:rgba(167,139,250,.25);">ADA (역배열 Zone A) +0.56%</span>
-      <span class="zone-chip zc-b" style="color:var(--red);">XRP (역배열 Zone B) +0.73%</span>
-    </div>
-    <div style="font-size:.78rem;color:var(--muted);margin-top:10px;font-style:italic;">※ 15m 정배열 = 단기 추세만 회복. 일봉 구조 확인 필수.</div>
+  <div style="font-size:.81rem;color:var(--muted);padding:6px 4px;margin-bottom:14px;">
+    💡 오전 대비 <span style="color:var(--red);">5분봉 정배열 비율이 86.8% → 65.9%로 크게 하락</span>. 오후 들어 조정 심화. 1시간봉은 여전히 역배열 우위 — 단기 과열 해소 진행 중.
   </div>
 
-  <!-- 관심종목 일봉 Zone -->
-  <div class="divider-label">⭐ 관심종목 일봉 Zone 현황 (구조적 중기 추세)</div>
-  <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;">
-    <div style="display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap;">
-      <span style="color:var(--teal);font-size:.85rem;font-weight:700;">📈 정배열 3종목</span>
-      <span style="color:var(--red);font-size:.85rem;font-weight:700;">📉 역배열 14종목</span>
-    </div>
-    <div style="font-size:.82rem;color:var(--sub);margin-bottom:8px;font-weight:700;">✅ 일봉 정배열 (구조적 강세)</div>
-    <div class="zone-wrap">
-      <span class="zone-chip zc-a">ZEC Zone A +71% vs 50MA</span>
-      <span class="zone-chip zc-a">HYPE Zone A +26% vs 50MA</span>
-      <span class="zone-chip zc-b">TAO Zone B (정배열)</span>
-    </div>
-    <div style="font-size:.82rem;color:var(--muted);margin-top:12px;margin-bottom:8px;">⚠️ 일봉 역배열 Zone B (200MA 아래 반등 시도)</div>
-    <div class="zone-wrap">
-      <span class="zone-chip zc-b">SOL -21% vs 200MA</span>
-      <span class="zone-chip zc-b">DOGE -12% vs 200MA</span>
-      <span class="zone-chip zc-b">LINK -13% vs 200MA</span>
-      <span class="zone-chip zc-b">BTC -4% vs 200MA</span>
-      <span class="zone-chip zc-b">SUI -16% vs 200MA</span>
-      <span class="zone-chip zc-b">ENA (역배열 B)</span>
-    </div>
-    <div style="font-size:.82rem;color:var(--muted);margin-top:12px;margin-bottom:8px;">❌ 일봉 역배열 Zone C (두 MA 모두 아래 — 구조적 약세)</div>
-    <div class="zone-wrap">
-      <span class="zone-chip zc-c">ADA -25% vs 200MA</span>
-      <span class="zone-chip zc-c">XRP -20% vs 200MA</span>
-      <span class="zone-chip zc-c">ETH -17% vs 200MA</span>
-      <span class="zone-chip zc-c">AVAX -18% vs 200MA</span>
-      <span class="zone-chip zc-c">DOT -28% vs 200MA</span>
-      <span class="zone-chip zc-c">1000PEPE -14% vs 200MA</span>
-    </div>
-    <div style="font-size:.78rem;color:var(--muted);margin-top:10px;font-style:italic;">※ 일봉 역배열 Zone C = 불단왕 알트 단타 조건 미충족. 단기 반등만 활용 가능 (채널 상단 숏 우선 검토 구간).</div>
+  <div class="div-lbl">⭐ 관심종목 Zone 현황 — 15분봉 (17개 · 17:58 KST)</div>
+
+  <table class="zone-tbl">
+    <tr>
+      <th>종목</th><th>배열 / Zone</th><th>현재가</th><th>24H</th><th>↔50MA</th><th>펀딩비</th>
+    </tr>
+    <tr><td><strong>HYPE</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$58.45</td><td class="num-up">+20.39%</td><td class="num-up">+5.16%</td><td>-0.003%</td></tr>
+    <tr><td><strong>TAO</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$286.96</td><td class="num-up">+9.55%</td><td class="num-up">+3.83%</td><td>-0.007%</td></tr>
+    <tr><td><strong>NEAR</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$1.7710</td><td class="num-up">+7.07%</td><td class="num-up">+2.80%</td><td>-0.007%</td></tr>
+    <tr><td><strong>ONDO</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$0.4072</td><td class="num-up">+8.15%</td><td class="num-up">+0.96%</td><td>+0.000%</td></tr>
+    <tr><td><strong>SUI</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$1.1206</td><td class="num-up">+5.87%</td><td class="num-up">+1.63%</td><td>-0.001%</td></tr>
+    <tr><td><strong>DOT</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$1.2740</td><td class="num-up">+2.66%</td><td class="num-up">+0.87%</td><td>+0.008%</td></tr>
+    <tr><td><strong>DOGE</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$0.10578</td><td class="num-up">+1.98%</td><td class="num-up">+0.99%</td><td>+0.006%</td></tr>
+    <tr><td><strong>SOL</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$86.83</td><td class="num-up">+2.25%</td><td class="num-up">+0.47%</td><td>+0.005%</td></tr>
+    <tr><td><strong>AVAX</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$9.4100</td><td class="num-up">+1.93%</td><td class="num-up">+0.69%</td><td>+0.003%</td></tr>
+    <tr><td><strong>1000PEPE</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$0.003774</td><td class="num-up">+2.42%</td><td class="num-up">+0.71%</td><td>+0.010%</td></tr>
+    <tr><td><strong>ENA</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$0.10706</td><td class="num-up">+1.02%</td><td class="num-up">+0.51%</td><td>+0.003%</td></tr>
+    <tr><td><strong>XRP</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$1.3799</td><td class="num-up">+0.77%</td><td class="num-up">+0.42%</td><td>+0.006%</td></tr>
+    <tr><td><strong>ETH</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$2,137.86</td><td class="num-up">+0.37%</td><td class="num-up">+0.09%</td><td>+0.004%</td></tr>
+    <tr><td><strong>BTC</strong></td><td><span class="bt bt-bull">정배열</span><span class="zc-a">A</span></td><td>$77,902</td><td class="num-up">+0.61%</td><td class="num-up">+0.20%</td><td>+0.005%</td></tr>
+    <tr style="opacity:.7;"><td>ZEC</td><td><span class="bt bt-bull">정배열</span><span class="zc-b">B</span></td><td>$666.16</td><td class="num-up">+15.03%</td><td class="num-dn">-0.85%</td><td>-0.020%</td></tr>
+    <tr style="opacity:.7;"><td>ADA</td><td><span class="bt bt-bull">정배열</span><span class="zc-b">B</span></td><td>$0.24960</td><td class="num-dn">-0.08%</td><td class="num-dn">-0.15%</td><td>+0.005%</td></tr>
+    <tr style="opacity:.7;"><td>LINK</td><td><span class="bt bt-bull">정배열</span><span class="zc-b">B</span></td><td>$9.6780</td><td class="num-up">+0.78%</td><td class="num-neu">-0.01%</td><td>+0.009%</td></tr>
+  </table>
+
+  <div style="margin-top:10px;font-size:.8rem;color:var(--muted);">
+    📌 오전 대비 변화: <span style="color:var(--red);">ADA·ZEC·LINK가 Zone A → Zone B로 하락</span>. 오후 들어 조정 압력 반영. 역배열 종목 없음 유지.
+  </div>
+
+  <div class="div-lbl">📅 관심종목 일봉 Zone (중기 구조)</div>
+  <div class="dzone-box">
+    <div style="margin-bottom:5px;"><span style="color:var(--teal);font-weight:700;">정배열 Zone A (일봉 중기 강세):</span> <strong>ZEC</strong>(+63.9% vs 50MA), <strong>HYPE</strong>(+40.2%), <strong>TAO</strong>(+3.3%)</div>
+    <div style="margin-bottom:5px;"><span style="color:var(--orange);font-weight:700;">역배열 Zone A (200MA 위 반등):</span> <strong>NEAR</strong>(+16.7% vs 200MA), <strong>ONDO</strong>(+13.4%)</div>
+    <div style="margin-bottom:5px;"><span style="color:var(--red);font-weight:700;">역배열 Zone B (200MA~50MA 사이):</span> ENA, SOL, DOGE, AVAX, LINK, DOT, <strong>BTC</strong>, SUI</div>
+    <div><span style="color:var(--red);font-weight:700;">역배열 Zone C (50MA도 아래):</span> <strong>ADA</strong>(-25% vs 200MA), <strong>XRP</strong>(-19%), <strong>ETH</strong>(-17%), 1000PEPE(-13%)</div>
   </div>
 </div>
 
-
-<!-- S4: 핵심 모니터링 포인트 -->
+<!-- S4: 핵심 모니터링 -->
 <div class="section" id="s4">
   <div class="sec-header">
     <span class="sec-num">04</span>
     <span class="sec-title">🎯 금일 핵심 모니터링 포인트</span>
   </div>
   <div class="monitor-list">
+
     <div class="monitor-item">
-      <div class="monitor-icon mi-gold">🏛️</div>
-      <div class="monitor-txt">
-        <strong>CLARITY Act 상원 본회의 표결 진행 여부</strong>
-        <span>목표: 현충일(5/25) 전 표결. <span class="hl-gold">60표</span> 확보 여부 + 트럼프 윤리 조항 협상 타결 모니터링. 통과 시 BTC·알트 단기 강세 촉매. 지연 시 상승 동력 약화.</span>
+      <div class="m-num">1</div>
+      <div>
+        <div class="m-ttl">USDT.D 3봉 연속 상승 — 단기 하방 압력 핵심 지표</div>
+        <div class="m-desc">
+          오후 기준 USDT.D가 3봉 연속 상승(▲▲▲) 중. 이는 <strong>자금이 테더로 다시 피신하고 있다는 신호</strong>. USDT.D가 50MA(7.40%) 위로 확정적으로 돌파하면 단기 추가 하락 위험. <span class="teal">USDT.D 꺾임(▼ 전환) 확인 시 재진입 신호.</span>
+        </div>
       </div>
     </div>
+
     <div class="monitor-item">
-      <div class="monitor-icon mi-gold">₿</div>
-      <div class="monitor-txt">
-        <strong>BTC $81,260 돌파 여부 (일봉 200MA)</strong>
-        <span>일봉 200MA <span class="hl-gold">$81,260</span> 이 핵심 저항. 이 라인 돌파·안착 시 Zone A 진입 → 알트 단타 여건 개선. 실패 시 $75,806(50MA) 지지 테스트 가능.</span>
+      <div class="m-num">2</div>
+      <div>
+        <div class="m-ttl">BTC $77,750 (15분봉 50MA) 지지 여부</div>
+        <div class="m-desc">
+          현재 BTC $77,902로 15분봉 50MA($77,755) 위 겨우 +0.19%. <strong>$77,750 이탈 시 Zone B 진입 → 단기 추가 하락 $77,000~$76,500</strong> 시나리오. 반대로 $78,500 이상 복귀 시 단기 반등 재개.
+        </div>
       </div>
     </div>
+
     <div class="monitor-item">
-      <div class="monitor-icon mi-teal">📊</div>
-      <div class="monitor-txt">
-        <strong>BTC.D 하락 전환 확인 (60% 이탈)</strong>
-        <span>BTC 도미넌스 <span class="hl-teal">60% 하향 돌파</span> + TOTAL3 상승 동반 시 2-of-3 조건 충족. 알트 적극 롱 진입 허가 신호. 현재 혼재 구간으로 미충족.</span>
+      <div class="m-num">3</div>
+      <div>
+        <div class="m-ttl">ZEC 15분봉 Zone B 조정 — 50MA($671~672) 지지 확인</div>
+        <div class="m-desc">
+          ZEC가 오전 Zone A에서 <span class="red">오후 Zone B로 이탈</span>. 불단왕 정석 진입은 <strong>50MA 터치 후 반등 캔들 확인 시</strong>. 현재 $666으로 50MA($671.9) 아래 — 진입 대기 구간. 200MA($606)까지 하락 시 구조적 지지 가능.
+        </div>
       </div>
     </div>
+
     <div class="monitor-item">
-      <div class="monitor-icon mi-blue">📉</div>
-      <div class="monitor-txt">
-        <strong>미국 실업수당 청구건수 (21:30 KST)</strong>
-        <span>예상치 대비 낮으면 노동시장 강세 → 연준 긴축 유지 → 위험자산 압박. <span class="hl-teal">예상 이상 높으면</span> 경기 둔화 우려 vs 금리 인하 기대 상충 — 변동성 확대 주의.</span>
+      <div class="m-num">4</div>
+      <div>
+        <div class="m-ttl">HYPE $55.59 (15분봉 50MA) 눌림 대기</div>
+        <div class="m-desc">
+          HYPE 현재 $58.45로 15분봉 50MA($55.59) 대비 +5.16% 이격. <strong>50MA 방향 눌림 후 반등 확인 시 권총 패턴 유효</strong>. 펀딩비 -0.003%로 중립. 일봉 Zone A이므로 조정 후 재진입 구조 탄탄.
+        </div>
       </div>
     </div>
+
     <div class="monitor-item">
-      <div class="monitor-icon mi-teal">⚡</div>
-      <div class="monitor-txt">
-        <strong>1시간봉 정배열 전환 확인</strong>
-        <span>현재 1h 역배열 우세(66.7%). <span class="hl-teal">1시간봉 정배열 비율 50% 이상 전환</span> 시 중기 추세 회복 신호. 그 전까지 단기 5m·15m 정배열 기반 권총 패턴만 활용.</span>
+      <div class="m-num">5</div>
+      <div>
+        <div class="m-ttl">5분봉 정배열 비율 65.9% — 오전 86.8% 대비 급락, 시장 경계</div>
+        <div class="m-desc">
+          오전 5분봉 정배열 86.8%에서 오후 65.9%로 급락. <strong>역배열 Zone C 종목 10개로 증가</strong>. 단기 조정 심화 신호. 정배열 65% 이하로 추가 하락 시 단기 매수 포지션 리스크 상승.
+        </div>
       </div>
     </div>
-    <div class="monitor-item">
-      <div class="monitor-icon mi-red">🔴</div>
-      <div class="monitor-txt">
-        <strong>ZEC·HYPE·ONDO 추세 지속성 확인</strong>
-        <span>일봉 정배열 Zone A 유지 종목. <span class="hl-gold">ZEC</span> 급등 후 거래량 감소 여부, <span class="hl-teal">HYPE</span> $50 지지 여부. 일봉 Zone A 이탈 시 즉시 포지션 재검토.</span>
-      </div>
-    </div>
+
   </div>
 </div>
 
-
-<!-- S5: BTC·알트 전망 -->
+<!-- S5: 전망 -->
 <div class="section" id="s5">
   <div class="sec-header">
     <span class="sec-num">05</span>
     <span class="sec-title">🔮 대세 선물 포지션 분석 — BTC 및 알트코인 전망</span>
   </div>
-  <div class="forecast-grid">
 
-    <div class="forecast-card fc-btc">
-      <div class="fc-header">
-        <span class="fc-icon">₿</span>
-        <span class="fc-title">비트코인 전망</span>
+  <div class="forecast-grid">
+    <div class="fc">
+      <div class="fc-hd"><span class="fc-ico">₿</span><span class="fc-ttl">비트코인 전망</span></div>
+      <div class="sc">
+        <div class="sc-lbl sc-base">📍 현재 구조</div>
+        <div class="sc-body">15분봉 Zone A (정배열) 겨우 유지 중. 일봉 역배열 Zone B($75,992~$81,097 사이). USDT.D 3봉 상승으로 단기 하방 압력 증대. 오전 고점 $77,946 대비 소폭 하락 중.</div>
       </div>
-      <div class="scenario-block">
-        <div class="scenario-label sl-base">📍 현재 포지션 (일봉 기준)</div>
-        <div class="scenario-body">
-          <strong>일봉 역배열 Zone B</strong> — 200MA($81,260) 아래, 50MA($75,806) 위.<br>
-          15m 기준은 정배열 Zone A로 단기 상승 모멘텀 존재.<br>
-          4월 $66K 저점 대비 +18% 반등 후 $77~$82K 박스권 횡보.
-        </div>
+      <div class="sc">
+        <div class="sc-lbl sc-bull">✅ 강세 시나리오</div>
+        <div class="sc-body">USDT.D 꺾임 + BTC $78,500 돌파 유지 → <strong>$79,000~$80,000 재시험</strong>. SpaceX IPO BTC 보유 공시로 기관 수요 내러티브 강화.</div>
       </div>
-      <div class="scenario-block">
-        <div class="scenario-label sl-bull">✅ 상승 시나리오 (조건부)</div>
-        <div class="scenario-body">
-          <strong>조건:</strong> $81,260 돌파 + 일봉 종가 안착<br>
-          → Zone A 재진입 + 정배열 회복 → $84K~$86K 목표<br>
-          촉매: CLARITY Act 본회의 통과 + ETF 유입 지속<br>
-          <strong>이 경우 알트 단타 조건 개선 시작.</strong>
-        </div>
-      </div>
-      <div class="scenario-block">
-        <div class="scenario-label sl-bear">⚠️ 하락 시나리오</div>
-        <div class="scenario-body">
-          $77K 지지 이탈 시 → $75,806(50MA) 테스트<br>
-          추가 이탈 시 $73~$74K 구간 (4월 반등 되돌림)<br>
-          트리거: PCE 인플레 서프라이즈, CLARITY Act 지연
-        </div>
+      <div class="sc">
+        <div class="sc-lbl sc-bear">⚠️ 약세 시나리오</div>
+        <div class="sc-body">USDT.D 추가 상승 + BTC $77,750 (15m 50MA) 이탈 → <strong>$76,500~$75,992 (일봉 50MA) 재시험</strong>. 일봉 50MA 이탈 시 $73,000 열림.</div>
       </div>
     </div>
 
-    <div class="forecast-card fc-alt">
-      <div class="fc-header">
-        <span class="fc-icon">🪙</span>
-        <span class="fc-title">알트코인 전망</span>
+    <div class="fc">
+      <div class="fc-hd"><span class="fc-ico">🪙</span><span class="fc-ttl">알트코인 전망</span></div>
+      <div class="sc">
+        <div class="sc-lbl sc-base">📍 현재 시장 환경</div>
+        <div class="sc-body">15분봉 관심종목 <strong>14개 Zone A, 3개 Zone B</strong>(ZEC·ADA·LINK 오후 조정 이탈). 2-of-3 매크로 조건 미충족. 일봉 기준 대다수 역배열 구조 유지.</div>
       </div>
-      <div class="scenario-block">
-        <div class="scenario-label sl-base">📍 현재 시장 환경</div>
-        <div class="scenario-body">
-          15m 기준 관심종목 <strong>15/17종목 Zone A 정배열</strong> — 단기 긍정적.<br>
-          그러나 일봉 기준 역배열 14종목 — 구조적 약세 지속.<br>
-          불단왕 2-of-3 조건: <strong>1/3만 충족</strong> → 알트 적극 롱 조건 미달.
+      <div class="sc">
+        <div class="sc-lbl sc-bull">✅ 주목 종목 (15m Zone A 상위)</div>
+        <div class="sc-body">
+          <strong>HYPE</strong> — 50MA 눌림 후 진입 대기. 일봉 Zone A 강세 구조.<br>
+          <strong>TAO</strong> — 24H +9.55%, 일봉도 Zone A. 펀딩비 음수로 롱 우호.<br>
+          <strong>NEAR/ONDO</strong> — 일봉 역배열 Zone A(200MA 위). 반등 모멘텀 유효.<br>
+          <strong>SUI</strong> — 6/1 언락 전 모멘텀. 언락 후 주의.
         </div>
       </div>
-      <div class="scenario-block">
-        <div class="scenario-label sl-bull">✅ 주목 종목 (일봉 구조 강한 순)</div>
-        <div class="scenario-body">
-          <strong>ZEC</strong> — 일봉 Zone A, 50MA 괴리 +71%, 24H 거래대금 3조 급등. 단 과열 후 조정 주의.<br>
-          <strong>HYPE</strong> — 일봉 Zone A 정배열 44일 지속, $48 200MA 탄탄한 지지.<br>
-          <strong>ONDO</strong> — 일봉 역배열이나 200MA 위 Zone A 반등, RWA 테마 강세.<br>
-          <strong>TAO</strong> — 일봉 정배열 Zone B, AI 테마 지속성 모니터링.
-        </div>
-      </div>
-      <div class="scenario-block">
-        <div class="scenario-label sl-bear">⚠️ 주의 종목 (일봉 Zone C — 깊은 역배열)</div>
-        <div class="scenario-body">
-          <strong>DOT</strong> — 200MA 대비 -28%, 50MA도 아래 (Zone C 최심)<br>
-          <strong>ADA</strong> — 데드크로스 197일 지속, 회복에 긴 시간 필요<br>
-          <strong>ETH·XRP</strong> — 단기 반등 포착 가능하나 200MA 저항 강력 → 채널 상단 숏 적합
-        </div>
+      <div class="sc">
+        <div class="sc-lbl sc-warn">📌 진입 기준</div>
+        <div class="sc-body">USDT.D 꺾임 확인 후 진입. BTC $77,750 지지 확인 전 알트 신규 진입 자제. ZEC·ADA·LINK 50MA 복귀(Zone A 재진입) 대기.</div>
       </div>
     </div>
   </div>
 
-  <!-- 종합 판정 -->
-  <div class="verdict-banner">
-    <div class="verdict-label">🔫 불왕 종합 판정</div>
-    <div class="verdict-text">
-      현재는 <strong>준비기 · 선별 롱 가능 구간</strong>입니다. TOTAL3는 15m 기준 매수 신호로 전환됐으나 BTC.D·USDT.D는 혼재 — <strong>2-of-3 미충족</strong> 상태. 일봉 구조는 대부분 역배열 Zone B~C로 아직 불단왕 전면 알트 단타 조건 미달. <strong>ZEC·HYPE처럼 일봉 Zone A 유지 종목에 한해</strong> 권총 패턴 진입 검토 가능. BTC <strong>$81,260 돌파 + BTC.D 60% 하향</strong> 이 동반될 때 알트 본격 진입 신호. CLARITY Act 본회의 통과 시 단기 급등 촉매 가능 — 뉴스 모니터링 필수.
+  <div class="verdict">
+    <div class="v-lbl">🔫 불왕 종합 판정</div>
+    <div class="v-txt">
+      오전 대비 <strong>시장 분위기 소폭 약화</strong>. USDT.D 3봉 연속 상승, 5분봉 정배열 비율 65.9%로 하락, ZEC·ADA·LINK Zone B 이탈 등 오후 조정 신호 복합 출현. BTC는 <strong>15분봉 50MA($77,755) 지지 확인이 최우선</strong>. 
+      현 포지션 전략: <strong>신규 진입 자제 + USDT.D 꺾임 확인 후 대응</strong>. HYPE·TAO는 50MA 눌림 후 반등 확인 시 진입. ZEC는 15분봉 Zone A 복귀(50MA 돌파) 확인 후 진입.
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
-  <span>🔫 불왕 데일리 브리핑</span> · 2026.05.21 (목) · Binance USDT-M Perpetual · 15m + 1D 기준<br>
-  본 자료는 교육 목적 참고용이며 투자 손실에 대한 책임은 본인에게 있습니다. | Generated by BULLKING Dashboard
+  <span>🔫 불왕 데일리 브리핑</span> · 2026.05.21 (목) 저녁 · Binance USDT-M Perpetual · 15m/1D 기준 · 17:58 KST<br>
+  본 자료는 복습 및 교육 목적 참고용이며 투자 손실에 대한 책임은 본인에게 있습니다. | Generated by BULLKING Dashboard
 </div>
 
 </div>
